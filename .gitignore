@@ -1,0 +1,20 @@
+## gradle
+/.gradle
+/build
+/output
+
+## ForgeGradle
+/run
+
+## eclipse
+/eclipse
+/.settings
+/.metadata
+/.classpath
+/.project
+/bin
+
+/*.txt
+
+*.launch
+*.hprof
