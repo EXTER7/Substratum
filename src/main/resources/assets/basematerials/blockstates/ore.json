@@ -1,0 +1,13 @@
+{
+ "variants":
+ { 
+   "ore=copper": { "model": "basematerials:oreCopper" },
+   "ore=tin": { "model": "basematerials:oreTin" },
+   "ore=nickel": { "model": "basematerials:oreNickel" },
+   "ore=zinc": { "model": "basematerials:oreZinc" },
+   "ore=silver": { "model": "basematerials:oreSilver" },
+   "ore=lead": { "model": "basematerials:oreLead" },
+   "ore=platinum": { "model": "basematerials:orePlatinum" }
+  }
+}
+

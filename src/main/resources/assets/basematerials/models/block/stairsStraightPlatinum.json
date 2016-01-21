@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures":
+  {
+    "bottom": "basematerials:blocks/blockPlatinum",
+    "top": "basematerials:blocks/blockPlatinum",
+    "side": "basematerials:blocks/blockPlatinum"
+  }
+}

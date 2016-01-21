@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures":
+  {
+    "bottom": "basematerials:blocks/blockSignalum",
+    "top": "basematerials:blocks/blockSignalum",
+    "side": "basematerials:blocks/blockSignalum"
+  }
+}

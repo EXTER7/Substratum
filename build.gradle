@@ -1,0 +1,69 @@
+/*
+plugins {
+    id "net.minecraftforge.gradle.forge" version "2.0.1"
+}
+*/
+
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+def mod_version = "1.0.0.0-pre"
+
+def mc_version = "1.8.9"
+
+def build_number = System.getenv("DRONE_BUILD_NUMBER")
+
+version = mc_version + "-" + mod_version + ( build_number != null ?("-" + build_number): "")
+group = "exter.basematerials" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "BaseMaterials"
+
+minecraft {
+    version = "1.8.9-11.15.0.1699"
+    runDir = "eclipse"
+    mappings = "stable_20"
+}
+
+repositories {
+     maven {
+        name "DVS1 Maven FS'"
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
+}
+
+dependencies {
+
+}
+
+
+
+processResources
+{
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+jar {
+    destinationDir = file 'output'
+}
+

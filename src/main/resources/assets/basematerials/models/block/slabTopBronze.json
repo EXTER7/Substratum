@@ -1,0 +1,9 @@
+{
+   "parent": "minecraft:block/upper_slab",
+   "textures":
+   {
+     "bottom": "basematerials:blocks/blockBronze",
+     "top": "basematerials:blocks/blockBronze",
+     "side": "basematerials:blocks/blockBronze"
+  }
+}

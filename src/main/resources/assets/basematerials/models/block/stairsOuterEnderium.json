@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures":
+  {
+    "bottom": "basematerials:blocks/blockEnderium",
+    "top": "basematerials:blocks/blockEnderium",
+    "side": "basematerials:blocks/blockEnderium"
+  }
+}

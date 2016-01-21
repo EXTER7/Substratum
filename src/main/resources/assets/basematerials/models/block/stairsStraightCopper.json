@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures":
+  {
+    "bottom": "basematerials:blocks/blockCopper",
+    "top": "basematerials:blocks/blockCopper",
+    "side": "basematerials:blocks/blockCopper"
+  }
+}

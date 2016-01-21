@@ -1,0 +1,9 @@
+{
+   "parent": "minecraft:block/half_slab",
+   "textures":
+   {
+     "bottom": "basematerials:blocks/blockCupronickel",
+     "top": "basematerials:blocks/blockCupronickel",
+     "side": "basematerials:blocks/blockCupronickel"
+  }
+}

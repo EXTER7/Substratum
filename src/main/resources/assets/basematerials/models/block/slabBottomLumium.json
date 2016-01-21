@@ -1,0 +1,9 @@
+{
+   "parent": "minecraft:block/half_slab",
+   "textures":
+   {
+     "bottom": "basematerials:blocks/blockLumium",
+     "top": "basematerials:blocks/blockLumium",
+     "side": "basematerials:blocks/blockLumium"
+  }
+}

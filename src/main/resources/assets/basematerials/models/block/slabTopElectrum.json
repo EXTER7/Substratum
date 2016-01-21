@@ -1,0 +1,9 @@
+{
+   "parent": "minecraft:block/upper_slab",
+   "textures":
+   {
+     "bottom": "basematerials:blocks/blockElectrum",
+     "top": "basematerials:blocks/blockElectrum",
+     "side": "basematerials:blocks/blockElectrum"
+  }
+}
