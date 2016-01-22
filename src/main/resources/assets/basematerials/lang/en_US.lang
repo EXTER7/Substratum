@@ -108,7 +108,7 @@ item.basematerials.dustInvar.name=Invar Dust
 item.basematerials.dustNickel.name=Nickel Dust
 item.basematerials.dustZinc.name=Zinc Dust
 item.basematerials.dustBrass.name=Brass Dust
-item.basematerials.dustSilvername=Silver Dust
+item.basematerials.dustSilver.name=Silver Dust
 item.basematerials.dustSteel.name=Steel Dust
 item.basematerials.dustLead.name=Lead Dust
 item.basematerials.dustPlatinum.name=Platinum Dust
@@ -177,3 +177,11 @@ item.basematerials.plateCupronickel.name=Cupronickel Plate
 item.basematerials.plateSignalum.name=Signalum Plate
 item.basematerials.plateLumium.name=Lumium Plate
 item.basematerials.plateEnderium.name=Enderium Plate
+
+item.basematerials.bucketDustRedstone.name=Redstone Dust Bucket
+item.basematerials.bucketDustGlowstone.name=Glowstone Dust Bucket
+item.basematerials.bucketDustEnderpearl.name=Enderpearl Dust Bucket
+
+item.basematerials.bucketLiquidRedstone.name=Liquid Redstone Bucket
+item.basematerials.bucketLiquidGlowstone.name=Liquid Glowstone Bucket
+item.basematerials.bucketLiquidEnderpearl.name=Liquid Enderpearl Bucket

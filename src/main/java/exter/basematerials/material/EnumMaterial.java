@@ -19,6 +19,8 @@ public enum EnumMaterial
   LEAD("Lead"),
   PLATINUM("Platinum"),
   CUPRONICKEL("Cupronickel"),
+  REDSTONE("Redstone"),
+  GLOWSTONE("Glowstone"),
   ENDERPEARL("Enderpearl"),
   SIGNALUM("Signalum"),
   LUMIUM("Lumium"),

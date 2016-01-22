@@ -5,6 +5,7 @@ import java.util.Map;
 
 import exter.basematerials.material.EnumMaterial;
 import exter.basematerials.material.EnumMaterialItem;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -26,7 +27,9 @@ public class BMItems
       {
         OreDictionary.registerOre(matitem.prefix + mat.suffix, item.getStack(mat));
       }
-    }    
+    }
+    item_materials.get(EnumMaterialItem.BUCKET_DUST).setContainerItem(Items.bucket).setMaxStackSize(1);
+    item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setContainerItem(Items.bucket).setMaxStackSize(1);
   }
 
 

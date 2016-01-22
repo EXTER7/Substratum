@@ -1,5 +1,10 @@
 package exter.basematerials.config;
 
+import java.util.EnumMap;
+import java.util.Map;
+
+import exter.basematerials.material.EnumMaterial;
+import exter.basematerials.material.EnumMaterialItem;
 import net.minecraftforge.common.config.Configuration;
 
 
@@ -14,10 +19,10 @@ public class BMConfig
 
     public WorldgenConfig(Configuration config, String ore, int min_y,int max_y,int frequency)
     {
-      this.enabled = config.getBoolean("enabled", "worldgen." + ore, true, null);
-      this.min_y = config.getInt("minY", "worldgen." + ore, min_y, 0, 256, null);
-      this.max_y = config.getInt("maxY", "worldgen." + ore, max_y, min_y, 256, null);
-      this.frequency = config.getInt("frequency", "worldgen." + ore, frequency, 1, 100, null);
+      this.enabled = config.getBoolean("enabled", "worldgen." + ore, true, "Enable/disable worldgen for this ore.");
+      this.min_y = config.getInt("minY", "worldgen." + ore, min_y, 0, 256, "Lowest Y level the ore is generated.");
+      this.max_y = config.getInt("maxY", "worldgen." + ore, max_y, 0, 256, "Highest Y level the ore is generated.");
+      this.frequency = config.getInt("frequency", "worldgen." + ore, frequency, 1, 100, "Amount ore clusters per chunk.");
     }
   }
   
@@ -34,7 +39,7 @@ public class BMConfig
   public static boolean recipe_invar_enable;
   public static boolean recipe_electrum_enable;
   public static boolean recipe_cupronickel_enable;
-  
+
   public static boolean recipe_steel_enable;
   public static boolean recipe_signalum_enable;
   public static boolean recipe_lumium_enable;
@@ -42,8 +47,9 @@ public class BMConfig
   public static boolean recipe_enderpearldust_enable;
   public static boolean recipe_coaldust_enable;
 
-  public static boolean recipe_gears_enable;
-  public static boolean recipe_plates_enable;
+  public static Map<EnumMaterial,Boolean> recipe_buckets_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
+  public static Map<EnumMaterial,Boolean> recipe_gears_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
+  public static Map<EnumMaterial,Boolean> recipe_plates_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
 
   static public void load(Configuration config)
   {
@@ -55,20 +61,31 @@ public class BMConfig
     worldgen_lead = new WorldgenConfig(config, "lead", 8, 48, 5);
     worldgen_platinum = new WorldgenConfig(config, "platinum", 2, 12, 1);
     
-    recipe_bronze_enable = config.getBoolean("recipes", "crafting.bronze", true, null);
-    recipe_brass_enable = config.getBoolean("recipes", "crafting.brass", true, null);
-    recipe_invar_enable = config.getBoolean("recipes", "crafting.invar", true, null);
-    recipe_electrum_enable = config.getBoolean("recipes", "crafting.electrum", true, null);
-    recipe_cupronickel_enable = config.getBoolean("recipes", "crafting.cupronickel", true, null);
+    recipe_bronze_enable = config.getBoolean("dust", "recipes.bronze", true, "");
+    recipe_brass_enable = config.getBoolean("dust", "recipes.brass", true, "");
+    recipe_invar_enable = config.getBoolean("dust", "recipes.invar", true, "");
+    recipe_electrum_enable = config.getBoolean("dust", "recipes.electrum", true, "");
+    recipe_cupronickel_enable = config.getBoolean("dust", "recipes.cupronickel", true, "");
 
-    recipe_steel_enable = config.getBoolean("recipes", "crafting.steel", false, null);
-    recipe_signalum_enable = config.getBoolean("recipes", "crafting.signalum", false, null);
-    recipe_lumium_enable = config.getBoolean("recipes", "crafting.lumium", false, null);
-    recipe_enderium_enable = config.getBoolean("recipes", "crafting.enderium", false, null);
-    recipe_coaldust_enable = config.getBoolean("recipes", "crafting.coaldust", false, null);
-    recipe_enderpearldust_enable = config.getBoolean("recipes", "crafting.enderpearldust", false, null);
+    recipe_steel_enable = config.getBoolean("dust", "recipes.steel", false, null);
+    recipe_signalum_enable = config.getBoolean("dust", "recipes.signalum", false, "");
+    recipe_lumium_enable = config.getBoolean("dust", "recipes.lumium", false, null);
+    recipe_enderium_enable = config.getBoolean("dust", "recipes.enderium", false, "");
+    recipe_coaldust_enable = config.getBoolean("dust", "recipes.coal", false, "");
+    recipe_enderpearldust_enable = config.getBoolean("dust", "recipes.enderpearl", false, "");
 
-    recipe_gears_enable = config.getBoolean("recipes", "gears", true, null);
-    recipe_plates_enable = config.getBoolean("recipes", "plates", true, null);
+    for(EnumMaterial mat:EnumMaterialItem.BUCKET_LIQUID.materials)
+    {
+      recipe_buckets_enable.put(mat,config.getBoolean("bucket", "recipes." + mat.suffix.toLowerCase(), true, ""));
+    }
+
+    for(EnumMaterial mat:EnumMaterialItem.GEAR.materials)
+    {
+      recipe_gears_enable.put(mat,config.getBoolean("gear", "recipes." + mat.suffix.toLowerCase(), true, ""));
+    }
+    for(EnumMaterial mat:EnumMaterialItem.PLATE.materials)
+    {
+      recipe_plates_enable.put(mat,config.getBoolean("plate", "recipes." + mat.suffix.toLowerCase(), true, ""));
+    }
   }
 }

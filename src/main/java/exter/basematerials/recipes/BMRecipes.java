@@ -87,6 +87,49 @@ public class BMRecipes
           'E', new ItemStack(Items.ender_pearl)));
     }
 
+    ItemStack bucket = new ItemStack(Items.bucket);
+    if(BMConfig.recipe_buckets_enable.get(EnumMaterial.REDSTONE))
+    {
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          BMItems.getStack(EnumMaterialItem.BUCKET_DUST,EnumMaterial.REDSTONE),
+          bucket,
+          "blockRedstone", 
+          "dustRedstone"));
+    }
+
+    if(BMConfig.recipe_buckets_enable.get(EnumMaterial.GLOWSTONE))
+    {
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          BMItems.getStack(EnumMaterialItem.BUCKET_DUST,EnumMaterial.GLOWSTONE),
+          bucket,
+          "dustGlowstone", 
+          "dustGlowstone", 
+          "dustGlowstone", 
+          "dustGlowstone"));
+    }
+
+    if(BMConfig.recipe_buckets_enable.get(EnumMaterial.ENDERPEARL))
+    {
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          BMItems.getStack(EnumMaterialItem.BUCKET_DUST,EnumMaterial.ENDERPEARL),
+          bucket,
+          "dustEnderpearl", 
+          "dustEnderpearl", 
+          "dustEnderpearl", 
+          "dustEnderpearl"));
+    }
+
+    for(EnumMaterial mat:EnumMaterialItem.BUCKET_DUST.materials)
+    {
+      if(BMConfig.recipe_buckets_enable.get(mat))
+      {
+        GameRegistry.addSmelting(
+            BMItems.getStack(EnumMaterialItem.BUCKET_DUST,mat),
+            BMItems.getStack(EnumMaterialItem.BUCKET_LIQUID,mat),
+            0);
+      }
+    }
+    
     if(BMConfig.recipe_signalum_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
@@ -95,8 +138,7 @@ public class BMRecipes
           "dustCopper", 
           "dustCopper", 
           "dustSilver",
-          "blockRedstone", 
-          "dustRedstone"));
+          "bucketLiquidRedstone"));
     }
 
     if(BMConfig.recipe_lumium_enable)
@@ -107,10 +149,7 @@ public class BMRecipes
           "dustTin", 
           "dustTin", 
           "dustSilver",
-          "dustGlowstone",
-          "dustGlowstone",
-          "dustGlowstone",
-          "dustGlowstone" ));
+          "bucketLiquidGlowstone" ));
     }
 
     if(BMConfig.recipe_enderium_enable)
@@ -121,10 +160,7 @@ public class BMRecipes
           "dustTin", 
           "dustTin", 
           "dustPlatinum",
-          "dustEnderpearl",
-          "dustEnderpearl",
-          "dustEnderpearl",
-          "dustEnderpearl" ));
+          "bucketLiquidEnderpearl" ));
     }
 
 
@@ -178,11 +214,11 @@ public class BMRecipes
     }
     
     //Gear crafting recipes.
-    if(BMConfig.recipe_gears_enable)
+    ItemStack stick = new ItemStack(Items.stick);
+    ItemStack stone = new ItemStack(Blocks.cobblestone);
+    for(EnumMaterial mat:EnumMaterialItem.GEAR.materials)
     {
-      ItemStack stick = new ItemStack(Items.stick);
-      ItemStack stone = new ItemStack(Blocks.cobblestone);
-      for(EnumMaterial mat:EnumMaterialItem.GEAR.materials)
+      if(BMConfig.recipe_gears_enable.get(mat))
       {
         if(mat == EnumMaterial.STONE)
         {
@@ -207,9 +243,9 @@ public class BMRecipes
     }
     
     //Plate crafting recipes.
-    if(BMConfig.recipe_plates_enable)
+    for(EnumMaterial mat:EnumMaterialItem.PLATE.materials)
     {
-      for(EnumMaterial mat:EnumMaterialItem.PLATE.materials)
+      if(BMConfig.recipe_plates_enable.get(mat))
       {
         GameRegistry.addRecipe(new ShapedOreRecipe(
             BMItems.getStack(EnumMaterialItem.PLATE, mat, 3),
@@ -220,7 +256,9 @@ public class BMRecipes
       }
     }
   }
+  
   static public void postInit()
   {
+    
   }
 }

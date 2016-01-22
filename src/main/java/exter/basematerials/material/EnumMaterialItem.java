@@ -102,12 +102,22 @@ public enum EnumMaterialItem
       EnumMaterial.CUPRONICKEL,
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
-      EnumMaterial.ENDERIUM));
+      EnumMaterial.ENDERIUM)),  
   
+  BUCKET_DUST("bucketDust", ImmutableList.of(
+      EnumMaterial.REDSTONE,
+      EnumMaterial.GLOWSTONE,
+      EnumMaterial.ENDERPEARL)),
+
+  BUCKET_LIQUID("bucketLiquid", ImmutableList.of(
+      EnumMaterial.REDSTONE,
+      EnumMaterial.GLOWSTONE,
+      EnumMaterial.ENDERPEARL));
+
   
   public final ImmutableList<EnumMaterial> materials;
   public final String prefix;
-  
+
   EnumMaterialItem(String prefix, ImmutableList<EnumMaterial> materials)
   {
     this.materials = materials;
