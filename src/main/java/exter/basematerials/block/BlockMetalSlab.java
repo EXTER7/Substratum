@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import exter.basematerials.creativetab.TabMaterials;
+import exter.basematerials.material.EnumMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
@@ -29,27 +30,25 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
 
   static public class Variant implements IStringSerializable,Comparable<Variant>
   {
-    public final String name;
-    public final String oredict;
+    public final EnumMaterial material;
     public int id;
     
-    public Variant(String name, String oredict)
+    public Variant(EnumMaterial material)
     {
-      this.name = name;
-      this.oredict = oredict;
+      this.material = material;
       this.id = -1;
     }
 
     @Override
     public String getName()
     {
-      return name;
+      return material.suffix.toLowerCase();
     }
 
     @Override
     public String toString()
     {
-      return name;
+      return getName();
     }
 
     @Override
@@ -84,7 +83,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
     @Override
     public String getName(Variant value)
     {
-      return value.name;
+      return value.getName();
     }
   }
 
@@ -102,7 +101,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
     setHardness(5.0F);
     setResistance(10.0F);
     setStepSound(Block.soundTypeMetal);
-    setUnlocalizedName("basematerials.slab" + (single != null?".double":""));
+    setUnlocalizedName("basematerials.slab" + (single != null?"Double":""));
     useNeighborBrightness = true;
   }
   
@@ -191,7 +190,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
   @Override
   public String getUnlocalizedName(int meta)
   {
-    return getUnlocalizedName() + "." + ((Variant)getStateFromMeta(meta).getValue(getVariantProperty())).name;
+    return getUnlocalizedName() + getStateFromMeta(meta).getValue(getVariantProperty()).material.suffix;
   }
 
   @Override

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import exter.basematerials.creativetab.TabMaterials;
+import exter.basematerials.material.EnumMaterial;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -22,29 +23,25 @@ public abstract class BlockMetal extends Block implements IBlockVariants
 {
   static public class Variant implements IStringSerializable,Comparable<Variant>
   {
-    public final String name;
-    public final String oredict;
-    public final String oredict_stairs;
+    public final EnumMaterial material;
     public int id;
     
-    public Variant(String name,String oredict,String oredict_stairs)
+    public Variant(EnumMaterial material)
     {
-      this.name = name;
-      this.oredict = oredict;
-      this.oredict_stairs = oredict_stairs;
+      this.material = material;
       this.id = -1;
     }
 
     @Override
     public String getName()
     {
-      return name;
+      return material.suffix.toLowerCase();
     }
 
     @Override
     public String toString()
     {
-      return name;
+      return getName();
     }
 
     @Override
@@ -79,7 +76,7 @@ public abstract class BlockMetal extends Block implements IBlockVariants
     @Override
     public String getName(Variant value)
     {
-      return value.name;
+      return value.getName();
     }
   }
 
@@ -146,6 +143,6 @@ public abstract class BlockMetal extends Block implements IBlockVariants
   @Override
   public String getUnlocalizedName(int meta)
   {
-    return getUnlocalizedName() + "." + getStateFromMeta(meta).getValue(property_variant).name;
+    return getUnlocalizedName() + getStateFromMeta(meta).getValue(property_variant).material.suffix;
   }
 }

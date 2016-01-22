@@ -1,6 +1,7 @@
 package exter.basematerials.block;
 
 import exter.basematerials.creativetab.TabMaterials;
+import exter.basematerials.material.EnumMaterial;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
 
@@ -8,15 +9,15 @@ import net.minecraft.block.state.IBlockState;
 public class BlockMetalStairs extends BlockStairs
 {
   
-  public final String oredict;
+  public final EnumMaterial material;
   
   // Make BlockStairs's constructor accessible.
-  public BlockMetalStairs(IBlockState modelState,String name,String oredict)
+  public BlockMetalStairs(IBlockState model_state,EnumMaterial material)
   {
-    super(modelState);
-    this.oredict = oredict;
+    super(model_state);
+    this.material = material;
     setCreativeTab(TabMaterials.tab);
-    setUnlocalizedName("basematerials.stairs." + name);
+    setUnlocalizedName("basematerials.stairs" + material.suffix);
     useNeighborBrightness = true;
   }
 

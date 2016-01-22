@@ -5,38 +5,23 @@ import java.util.Map;
 import exter.basematerials.block.BMBlocks;
 import exter.basematerials.block.BlockMetal;
 import exter.basematerials.block.BlockMetalSlab;
-import exter.basematerials.block.BlockMetalStairs;
 import exter.basematerials.block.BlockOre;
 import exter.basematerials.item.BMItems;
-import exter.basematerials.item.ItemDust;
-import exter.basematerials.item.ItemIngot;
-import exter.basematerials.item.ItemNugget;
-
+import exter.basematerials.material.EnumMaterial;
+import exter.basematerials.material.EnumMaterialItem;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class ClientProxy extends CommonProxy
 {
-  
-  private void registerItemModel(Block block,String name)
-  {
-    registerItemModel(Item.getItemFromBlock(block), name);
-  }
-
   private void registerItemModel(Block block,String name,int meta)
   {
     registerItemModel(Item.getItemFromBlock(block), name, meta);
-  }
-
-  private void registerItemModel(Item item,String name)
-  {
-    Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
-    .register(item, 0,
-      new ModelResourceLocation("basematerials:" + name, "inventory"));
   }
 
   private void registerItemModel(Item item,String name,int meta)
@@ -57,16 +42,16 @@ public class ClientProxy extends CommonProxy
   public void init()
   {
    
-    for(BlockOre.EnumMaterial ore:BlockOre.EnumMaterial.values())
+    for(BlockOre.EnumVariant ore:BlockOre.EnumVariant.values())
     {
-      registerItemModel(BMBlocks.block_ore,ore.oredict, ore.ordinal());
+      registerItemModel(BMBlocks.block_ore,"ore" + ore.material.suffix, ore.ordinal());
     }
 
     for(BlockMetal block:BMBlocks.block_metal)
     {
       for(BlockMetal.Variant v:block.getVariants())
       {
-        registerItemModel(block,v.oredict, v.id);
+        registerItemModel(block,"block" + v.material.suffix, v.id);
       }
     }
 
@@ -74,29 +59,27 @@ public class ClientProxy extends CommonProxy
     {
       for(BlockMetalSlab.Variant v:block.getVariants())
       {
-        registerItemModel(block,v.oredict, block.getBottomVariantMeta(v));
+        registerItemModel(block,"slab" + v.material.suffix, block.getBottomVariantMeta(v));
       }
     }
 
-    for(Map.Entry<String, BlockMetalStairs> e:BMBlocks.stairs_blocks.entrySet())
+    for(Map.Entry<EnumMaterial, ItemStack> e:BMBlocks.stairs_stacks.entrySet())
     {
-      registerItemModel(e.getValue(),e.getValue().oredict);
+      ItemStack item = e.getValue();
+      registerItemModel(item.getItem(),"stairs" + e.getKey().suffix,item.getMetadata());
     }
 
 
-    for(ItemIngot.EnumMaterial material:ItemIngot.EnumMaterial.values())
+    for(EnumMaterialItem matitem:EnumMaterialItem.values())
     {
-      registerItemModel(BMItems.item_ingot,material.oredict, material.ordinal());
-    }
-
-    for(ItemDust.EnumMaterial material:ItemDust.EnumMaterial.values())
-    {
-      registerItemModel(BMItems.item_dust,material.oredict, material.ordinal());
-    }
-
-    for(ItemNugget.EnumMaterial material:ItemNugget.EnumMaterial.values())
-    {
-      registerItemModel(BMItems.item_nugget,material.oredict, material.ordinal());
+      for(EnumMaterial material:EnumMaterial.values())
+      {
+        ItemStack item = BMItems.getStack(matitem, material);
+        if(item != null)
+        {
+          registerItemModel(item.getItem(),matitem.prefix + material.suffix, item.getMetadata());
+        }
+      }
     }
   }
   

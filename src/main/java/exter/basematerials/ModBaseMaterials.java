@@ -74,13 +74,13 @@ public class ModBaseMaterials
 
     BMRecipes.init();
 
-    WorldGenOre.registerOre(BMConfig.worldgen_copper, BMBlocks.block_ore.asState(BlockOre.EnumMaterial.COPPER));
-    WorldGenOre.registerOre(BMConfig.worldgen_tin, BMBlocks.block_ore.asState(BlockOre.EnumMaterial.TIN));
-    WorldGenOre.registerOre(BMConfig.worldgen_zinc, BMBlocks.block_ore.asState(BlockOre.EnumMaterial.ZINC));
-    WorldGenOre.registerOre(BMConfig.worldgen_nickel, BMBlocks.block_ore.asState(BlockOre.EnumMaterial.NICKEL));
-    WorldGenOre.registerOre(BMConfig.worldgen_silver, BMBlocks.block_ore.asState(BlockOre.EnumMaterial.SILVER));
-    WorldGenOre.registerOre(BMConfig.worldgen_lead, BMBlocks.block_ore.asState(BlockOre.EnumMaterial.LEAD));
-    WorldGenOre.registerOre(BMConfig.worldgen_platinum, BMBlocks.block_ore.asState(BlockOre.EnumMaterial.PLATINUM));
+    WorldGenOre.registerOre(BMConfig.worldgen_copper, BMBlocks.block_ore.asState(BlockOre.EnumVariant.COPPER));
+    WorldGenOre.registerOre(BMConfig.worldgen_tin, BMBlocks.block_ore.asState(BlockOre.EnumVariant.TIN));
+    WorldGenOre.registerOre(BMConfig.worldgen_zinc, BMBlocks.block_ore.asState(BlockOre.EnumVariant.ZINC));
+    WorldGenOre.registerOre(BMConfig.worldgen_nickel, BMBlocks.block_ore.asState(BlockOre.EnumVariant.NICKEL));
+    WorldGenOre.registerOre(BMConfig.worldgen_silver, BMBlocks.block_ore.asState(BlockOre.EnumVariant.SILVER));
+    WorldGenOre.registerOre(BMConfig.worldgen_lead, BMBlocks.block_ore.asState(BlockOre.EnumVariant.LEAD));
+    WorldGenOre.registerOre(BMConfig.worldgen_platinum, BMBlocks.block_ore.asState(BlockOre.EnumVariant.PLATINUM));
     GameRegistry.registerWorldGenerator(new BMWorldGenerator(),0);
 
     proxy.init();

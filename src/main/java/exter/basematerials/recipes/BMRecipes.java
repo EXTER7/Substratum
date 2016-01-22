@@ -10,7 +10,8 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 import exter.basematerials.block.BMBlocks;
 import exter.basematerials.config.BMConfig;
 import exter.basematerials.item.BMItems;
-import exter.basematerials.item.ItemDust;
+import exter.basematerials.material.EnumMaterial;
+import exter.basematerials.material.EnumMaterialItem;
 
 
 public class BMRecipes
@@ -25,7 +26,7 @@ public class BMRecipes
     if(BMConfig.recipe_bronze_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          BMItems.dust(ItemDust.EnumMaterial.BRONZE,4),
+          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.BRONZE,4),
           "dustCopper", 
           "dustCopper", 
           "dustCopper", 
@@ -35,7 +36,7 @@ public class BMRecipes
     if(BMConfig.recipe_brass_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          BMItems.dust(ItemDust.EnumMaterial.BRASS,4),
+          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.BRASS,4),
           "dustCopper", 
           "dustCopper", 
           "dustCopper", 
@@ -45,7 +46,7 @@ public class BMRecipes
     if(BMConfig.recipe_cupronickel_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          BMItems.dust(ItemDust.EnumMaterial.CUPRONICKEL,2),
+          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.CUPRONICKEL,2),
           "dustCopper",
           "dustNickel"));
     }
@@ -53,7 +54,7 @@ public class BMRecipes
     if(BMConfig.recipe_invar_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          BMItems.dust(ItemDust.EnumMaterial.INVAR,3),
+          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.INVAR,3),
           "dustIron", 
           "dustIron", 
           "dustNickel"));
@@ -62,7 +63,7 @@ public class BMRecipes
     if(BMConfig.recipe_electrum_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          BMItems.dust(ItemDust.EnumMaterial.ELECTRUM,2),
+          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ELECTRUM,2),
           "dustGold", 
           "dustSilver"));
     }
@@ -70,7 +71,7 @@ public class BMRecipes
     if(BMConfig.recipe_coaldust_enable)
     {
       GameRegistry.addRecipe(new ShapedOreRecipe(
-          BMItems.dust(ItemDust.EnumMaterial.COAL,1),
+          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.COAL,1),
           "FCF",
           'F', new ItemStack(Items.flint), 
           'C', new ItemStack(Items.coal,1,0)));
@@ -79,7 +80,7 @@ public class BMRecipes
     if(BMConfig.recipe_enderpearldust_enable)
     {
       GameRegistry.addRecipe(new ShapedOreRecipe(
-          BMItems.dust(ItemDust.EnumMaterial.ENDERPEARL,1),
+          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ENDERPEARL,1),
           "FEF",
           'F', new ItemStack(Items.flint), 
           'E', new ItemStack(Items.ender_pearl)));
@@ -88,7 +89,7 @@ public class BMRecipes
     if(BMConfig.recipe_signalum_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          BMItems.dust(ItemDust.EnumMaterial.SIGNALUM,4),
+          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.SIGNALUM,4),
           "dustCopper", 
           "dustCopper", 
           "dustCopper", 
@@ -100,7 +101,7 @@ public class BMRecipes
     if(BMConfig.recipe_lumium_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          BMItems.dust(ItemDust.EnumMaterial.LUMIUM,4),
+          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.LUMIUM,4),
           "dustTin", 
           "dustTin", 
           "dustTin", 
@@ -114,7 +115,7 @@ public class BMRecipes
     if(BMConfig.recipe_enderium_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          BMItems.dust(ItemDust.EnumMaterial.ENDERIUM,2),
+          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ENDERIUM,2),
           "dustTin", 
           "dustTin", 
           "dustTin", 
@@ -127,47 +128,37 @@ public class BMRecipes
 
 
     //Dust -> Ingot smelting recipes.
-    for(Map.Entry<String, ItemStack> metal:BMItems.dust_stacks.entrySet())
+    for(EnumMaterial mat:EnumMaterialItem.INGOT.materials)
     {
       GameRegistry.addSmelting(
-          metal.getValue(),
-          BMItems.ingot_stacks.get(metal.getKey()),
+          BMItems.getStack(EnumMaterialItem.DUST, mat),
+          BMItems.getStack(EnumMaterialItem.INGOT, mat),
           0);
     }
 
     //Nugget <-> Ingot crafting recipes.
-    for(Map.Entry<String, ItemStack> metal:BMItems.nugget_stacks.entrySet())
+    for(EnumMaterial mat:EnumMaterialItem.INGOT.materials)
     {
-      ItemStack nuggets = metal.getValue().copy();
-      nuggets.stackSize = 9;
+      ItemStack ingot = BMItems.getStack(EnumMaterialItem.INGOT, mat);
       GameRegistry.addShapelessRecipe(
-          nuggets,
-          BMItems.ingot_stacks.get(metal.getKey()));
-      GameRegistry.addRecipe(new ShapedOreRecipe(
-          BMItems.ingot_stacks.get(metal.getKey()),
+          BMItems.getStack(EnumMaterialItem.INGOT, mat, 9),
+          ingot);
+      GameRegistry.addRecipe(
+          ingot,
           "NNN",
           "NNN",
           "NNN",
-          'N', metal.getValue())); 
+          'N', BMItems.getStack(EnumMaterialItem.INGOT, mat)); 
     }
 
-
-    //TODO Ore -> ingot furnace recipes
-    for(Map.Entry<String, ItemStack> metal:BMBlocks.ore_stacks.entrySet())
+    //Ore -> ingot furnace recipes
+    for(Map.Entry<EnumMaterial, ItemStack> metal:BMBlocks.ore_stacks.entrySet())
     {
       GameRegistry.addSmelting(
           metal.getValue(),
-          BMItems.ingot_stacks.get(metal.getKey()),
+          BMItems.getStack(EnumMaterialItem.INGOT, metal.getKey()),
           0);
-    }
-    
-//    BRUtils.registerOreSmelting(BlockFoundryOre.EnumOre.COPPER,ItemIngot.INGOT_COPPER);
-//    BRUtils.registerOreSmelting(BlockFoundryOre.EnumOre.TIN,ItemIngot.INGOT_TIN);
-//    BRUtils.registerOreSmelting(BlockFoundryOre.EnumOre.ZINC,ItemIngot.INGOT_ZINC);
-//    BRUtils.registerOreSmelting(BlockFoundryOre.EnumOre.NICKEL,ItemIngot.INGOT_NICKEL);
-//    BRUtils.registerOreSmelting(BlockFoundryOre.EnumOre.SILVER,ItemIngot.INGOT_SILVER);
-//    BRUtils.registerOreSmelting(BlockFoundryOre.EnumOre.LEAD,ItemIngot.INGOT_LEAD);
-    
+    }    
   }
 
   static public void postInit()

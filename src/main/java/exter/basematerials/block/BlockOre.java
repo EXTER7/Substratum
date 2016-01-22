@@ -3,6 +3,7 @@ package exter.basematerials.block;
 import java.util.List;
 
 import exter.basematerials.creativetab.TabMaterials;
+import exter.basematerials.material.EnumMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -18,30 +19,27 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockOre extends Block implements IBlockVariants
 {
 
-  public enum EnumMaterial implements IStringSerializable
+  public enum EnumVariant implements IStringSerializable
   {
-    COPPER( "copper", "oreCopper"),
-    TIN( "tin", "oreTin"),
-    NICKEL( "nickel", "oreNickel"),
-    ZINC( "zinc", "oreZinc"),
-    SILVER( "silver", "oreSilver"),
-    LEAD( "lead", "oreLead"),
-    PLATINUM( "platinum", "orePlatinum");
+    COPPER(EnumMaterial.COPPER),
+    TIN(EnumMaterial.TIN),
+    NICKEL(EnumMaterial.NICKEL),
+    ZINC(EnumMaterial.ZINC),
+    SILVER(EnumMaterial.SILVER),
+    LEAD(EnumMaterial.LEAD),
+    PLATINUM(EnumMaterial.PLATINUM);
+    
+    public final EnumMaterial material;
 
-    public final String name;
-    public final String oredict;
-
-    private EnumMaterial(String name,String oredict)
+    private EnumVariant(EnumMaterial material)
     {
-      this.name = name;
-      this.oredict = oredict;
-      
+      this.material = material;
     }
 
     @Override
     public String getName()
     {
-      return name;
+      return material.suffix.toLowerCase();
     }
 
     @Override
@@ -51,7 +49,7 @@ public class BlockOre extends Block implements IBlockVariants
     }
   }
 
-  public static final PropertyEnum<EnumMaterial> VARIANT = PropertyEnum.create("ore", EnumMaterial.class);
+  public static final PropertyEnum<EnumVariant> VARIANT = PropertyEnum.create("ore", EnumVariant.class);
 
   public BlockOre()
   {
@@ -73,7 +71,7 @@ public class BlockOre extends Block implements IBlockVariants
   @Override
   public IBlockState getStateFromMeta(int meta)
   {
-    return getDefaultState().withProperty(VARIANT, EnumMaterial.values()[meta]);
+    return getDefaultState().withProperty(VARIANT, EnumVariant.values()[meta]);
   }
 
   @Override
@@ -93,18 +91,18 @@ public class BlockOre extends Block implements IBlockVariants
   @SideOnly(Side.CLIENT)
   public void getSubBlocks(Item item, CreativeTabs tab, @SuppressWarnings("rawtypes") List list)
   {
-    for(EnumMaterial ore:EnumMaterial.values())
+    for(EnumVariant ore:EnumVariant.values())
     {
       list.add(new ItemStack(item, 1, ore.ordinal()));
     }
   }
   
-  public ItemStack asItemStack(EnumMaterial ore)
+  public ItemStack asItemStack(EnumVariant ore)
   {
     return new ItemStack(this,1,ore.ordinal());
   }
 
-  public IBlockState asState(EnumMaterial ore)
+  public IBlockState asState(EnumVariant ore)
   {
     return getDefaultState().withProperty(VARIANT, ore);
   }
@@ -112,6 +110,6 @@ public class BlockOre extends Block implements IBlockVariants
   @Override
   public String getUnlocalizedName(int meta)
   {
-    return getUnlocalizedName() + "." + ((EnumMaterial)getStateFromMeta(meta).getValue(VARIANT)).name;
+    return getUnlocalizedName() + getStateFromMeta(meta).getValue(VARIANT).material.suffix;
   }
 }
