@@ -2,6 +2,7 @@ package exter.basematerials.material;
 
 public enum EnumMaterial
 {
+  STONE("Stone"),
   COAL("Coal"),
   IRON("Iron"),
   GOLD("Gold"),

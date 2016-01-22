@@ -1,4 +1,4 @@
-itemGroup.basematerials=Base Materials
+itemGroup.baseMaterials=Base Materials
 
 tile.basematerials.blockCopper.name=Block of Copper
 tile.basematerials.blockTin.name=Block of Tin
@@ -138,3 +138,23 @@ item.basematerials.nuggetIron.name=Iron Nugget
 item.basematerials.nuggetSignalum.name=Signalum Nugget
 item.basematerials.nuggetLumium.name=Lumium Nugget
 item.basematerials.nuggetEnderium.name=Enderium Nugget
+
+item.basematerials.gearStone.name=Stone Gear
+item.basematerials.gearIron.name=Iron Gear
+item.basematerials.gearGold.name=Gold Gear
+item.basematerials.gearCopper.name=Copper Gear
+item.basematerials.gearTin.name=Tin Gear
+item.basematerials.gearBronze.name=Bronze Gear
+item.basematerials.gearElectrum.name=Electrum Gear
+item.basematerials.gearInvar.name=Invar Gear
+item.basematerials.gearNickel.name=Nickel Gear
+item.basematerials.gearZinc.name=Zinc Gear
+item.basematerials.gearBrass.name=Brass Gear
+item.basematerials.gearSilver.name=Silver Gear
+item.basematerials.gearSteel.name=Steel Gear
+item.basematerials.gearLead.name=Lead Gear
+item.basematerials.gearPlatinum.name=Platinum Gear
+item.basematerials.gearCupronickel.name=Cupronickel Gear
+item.basematerials.gearSignalum.name=Signalum Gear
+item.basematerials.gearLumium.name=Lumium Gear
+item.basematerials.gearEnderium.name=Enderium Gear

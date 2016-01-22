@@ -61,6 +61,27 @@ public enum EnumMaterialItem
       EnumMaterial.CUPRONICKEL,
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
+      EnumMaterial.ENDERIUM)),
+
+  GEAR("gear",ImmutableList.of(
+      EnumMaterial.STONE,
+      EnumMaterial.IRON,
+      EnumMaterial.GOLD,
+      EnumMaterial.COPPER,
+      EnumMaterial.TIN,
+      EnumMaterial.BRONZE,
+      EnumMaterial.ELECTRUM,
+      EnumMaterial.INVAR,
+      EnumMaterial.NICKEL,
+      EnumMaterial.ZINC,
+      EnumMaterial.BRASS,
+      EnumMaterial.SILVER,
+      EnumMaterial.STEEL,
+      EnumMaterial.LEAD,
+      EnumMaterial.PLATINUM,
+      EnumMaterial.CUPRONICKEL,
+      EnumMaterial.SIGNALUM,
+      EnumMaterial.LUMIUM,
       EnumMaterial.ENDERIUM));
 
   
