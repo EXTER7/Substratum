@@ -2,6 +2,7 @@ package exter.basematerials.recipes;
 
 import java.util.Map;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -137,18 +138,34 @@ public class BMRecipes
     }
 
     //Nugget <-> Ingot crafting recipes.
-    for(EnumMaterial mat:EnumMaterialItem.INGOT.materials)
+    for(EnumMaterial mat:EnumMaterialItem.NUGGET.materials)
     {
-      ItemStack ingot = BMItems.getStack(EnumMaterialItem.INGOT, mat);
+      ItemStack ingot = mat == EnumMaterial.IRON?new ItemStack(Items.iron_ingot):BMItems.getStack(EnumMaterialItem.INGOT, mat);
       GameRegistry.addShapelessRecipe(
-          BMItems.getStack(EnumMaterialItem.INGOT, mat, 9),
+          BMItems.getStack(EnumMaterialItem.NUGGET, mat, 9),
           ingot);
       GameRegistry.addRecipe(
           ingot,
           "NNN",
           "NNN",
           "NNN",
-          'N', BMItems.getStack(EnumMaterialItem.INGOT, mat)); 
+          'N', BMItems.getStack(EnumMaterialItem.NUGGET, mat)); 
+    }
+
+    //Block <-> Ingot crafting recipes.
+    for(Map.Entry<EnumMaterial, ItemStack> entry:BMBlocks.block_stacks.entrySet())
+    {
+      ItemStack block = entry.getValue();
+      EnumMaterial mat = entry.getKey(); 
+      GameRegistry.addShapelessRecipe(
+          BMItems.getStack(EnumMaterialItem.INGOT, mat, 9),
+          block);
+      GameRegistry.addRecipe(
+          block,
+          "III",
+          "III",
+          "III",
+          'I', BMItems.getStack(EnumMaterialItem.INGOT, mat)); 
     }
 
     //Ore -> ingot furnace recipes
@@ -158,9 +175,51 @@ public class BMRecipes
           metal.getValue(),
           BMItems.getStack(EnumMaterialItem.INGOT, metal.getKey()),
           0);
-    }    
+    }
+    
+    //Gear crafting recipes.
+    if(BMConfig.recipe_gears_enable)
+    {
+      ItemStack stick = new ItemStack(Items.stick);
+      ItemStack stone = new ItemStack(Blocks.cobblestone);
+      for(EnumMaterial mat:EnumMaterialItem.GEAR.materials)
+      {
+        if(mat == EnumMaterial.STONE)
+        {
+          GameRegistry.addRecipe(new ShapedOreRecipe(
+              BMItems.getStack(EnumMaterialItem.GEAR, mat),
+              " I ",
+              "ISI",
+              " I ",
+              'I', stone,
+              'S', stick)); 
+        } else
+        {
+          GameRegistry.addRecipe(new ShapedOreRecipe(
+              BMItems.getStack(EnumMaterialItem.GEAR, mat),
+              " I ",
+              "ISI",
+              " I ",
+              'I', "ingot" + mat.suffix,
+              'S', stick)); 
+        }
+      }
+    }
+    
+    //Plate crafting recipes.
+    if(BMConfig.recipe_plates_enable)
+    {
+      for(EnumMaterial mat:EnumMaterialItem.PLATE.materials)
+      {
+        GameRegistry.addRecipe(new ShapedOreRecipe(
+            BMItems.getStack(EnumMaterialItem.PLATE, mat, 3),
+            "III",
+            "   ",
+            "   ",
+            'I', "ingot" + mat.suffix)); 
+      }
+    }
   }
-
   static public void postInit()
   {
   }

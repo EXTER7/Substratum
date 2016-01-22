@@ -41,7 +41,10 @@ public class BMConfig
   public static boolean recipe_enderium_enable;
   public static boolean recipe_enderpearldust_enable;
   public static boolean recipe_coaldust_enable;
-  
+
+  public static boolean recipe_gears_enable;
+  public static boolean recipe_plates_enable;
+
   static public void load(Configuration config)
   {
     worldgen_copper = new WorldgenConfig(config, "copper", 16, 80, 12);
@@ -64,5 +67,8 @@ public class BMConfig
     recipe_enderium_enable = config.getBoolean("recipes", "crafting.enderium", false, null);
     recipe_coaldust_enable = config.getBoolean("recipes", "crafting.coaldust", false, null);
     recipe_enderpearldust_enable = config.getBoolean("recipes", "crafting.enderpearldust", false, null);
+
+    recipe_gears_enable = config.getBoolean("recipes", "gears", true, null);
+    recipe_plates_enable = config.getBoolean("recipes", "plates", true, null);
   }
 }
