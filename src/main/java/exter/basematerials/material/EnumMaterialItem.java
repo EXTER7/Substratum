@@ -82,8 +82,27 @@ public enum EnumMaterialItem
       EnumMaterial.CUPRONICKEL,
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
-      EnumMaterial.ENDERIUM));
+      EnumMaterial.ENDERIUM)),
 
+  PLATE("plate",ImmutableList.of(
+      EnumMaterial.IRON,
+      EnumMaterial.GOLD,
+      EnumMaterial.COPPER,
+      EnumMaterial.TIN,
+      EnumMaterial.BRONZE,
+      EnumMaterial.ELECTRUM,
+      EnumMaterial.INVAR,
+      EnumMaterial.NICKEL,
+      EnumMaterial.ZINC,
+      EnumMaterial.BRASS,
+      EnumMaterial.SILVER,
+      EnumMaterial.STEEL,
+      EnumMaterial.LEAD,
+      EnumMaterial.PLATINUM,
+      EnumMaterial.CUPRONICKEL,
+      EnumMaterial.SIGNALUM,
+      EnumMaterial.LUMIUM,
+      EnumMaterial.ENDERIUM));
   
   
   public final ImmutableList<EnumMaterial> materials;
