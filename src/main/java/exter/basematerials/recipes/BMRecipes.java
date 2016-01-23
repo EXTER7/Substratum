@@ -6,6 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import exter.basematerials.block.BMBlocks;
@@ -69,22 +70,43 @@ public class BMRecipes
           "dustSilver"));
     }
     
-    if(BMConfig.recipe_coaldust_enable)
+    if(BMItems.item_mortar != null)
     {
-      GameRegistry.addRecipe(new ShapedOreRecipe(
-          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.COAL,1),
-          "FCF",
-          'F', new ItemStack(Items.flint), 
-          'C', new ItemStack(Items.coal,1,0)));
-    }
+      
+      GameRegistry.addRecipe(
+          new ItemStack(BMItems.item_mortar),
+          "  T",
+          " F ",
+          " S ",
+          'F', new ItemStack(Items.flint),
+          'T', new ItemStack(Items.stick),
+          'S', new ItemStack(Blocks.stone)); 
 
-    if(BMConfig.recipe_enderpearldust_enable)
-    {
-      GameRegistry.addRecipe(new ShapedOreRecipe(
-          BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ENDERPEARL,1),
-          "FEF",
-          'F', new ItemStack(Items.flint), 
-          'E', new ItemStack(Items.ender_pearl)));
+      ItemStack mortar = new ItemStack(BMItems.item_mortar,1,OreDictionary.WILDCARD_VALUE);
+
+      if(BMConfig.recipe_dusts_enable.get(EnumMaterial.COAL))
+      {
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+            BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.COAL),
+            mortar, new ItemStack(Items.coal,1,0)));
+      }
+
+      if(BMConfig.recipe_dusts_enable.get(EnumMaterial.ENDERPEARL))
+      {
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+            BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ENDERPEARL),
+            mortar, new ItemStack(Items.ender_pearl)));
+      }
+      
+      for(EnumMaterial mat:EnumMaterialItem.INGOT.materials)
+      {
+        if(BMConfig.recipe_dusts_enable.get(mat))
+        {
+          GameRegistry.addRecipe(new ShapelessOreRecipe(
+              BMItems.getStack(EnumMaterialItem.DUST,mat),
+              mortar, "ingot" + mat.suffix));
+        }
+      }
     }
 
     ItemStack bucket = new ItemStack(Items.bucket);
@@ -176,7 +198,7 @@ public class BMRecipes
     //Nugget <-> Ingot crafting recipes.
     for(EnumMaterial mat:EnumMaterialItem.NUGGET.materials)
     {
-      ItemStack ingot = mat == EnumMaterial.IRON?new ItemStack(Items.iron_ingot):BMItems.getStack(EnumMaterialItem.INGOT, mat);
+      ItemStack ingot = BMItems.getStack(EnumMaterialItem.INGOT, mat);
       GameRegistry.addShapelessRecipe(
           BMItems.getStack(EnumMaterialItem.NUGGET, mat, 9),
           ingot);

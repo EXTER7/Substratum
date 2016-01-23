@@ -44,13 +44,14 @@ public class BMConfig
   public static boolean recipe_signalum_enable;
   public static boolean recipe_lumium_enable;
   public static boolean recipe_enderium_enable;
-  public static boolean recipe_enderpearldust_enable;
-  public static boolean recipe_coaldust_enable;
 
   public static Map<EnumMaterial,Boolean> recipe_buckets_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
   public static Map<EnumMaterial,Boolean> recipe_gears_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
   public static Map<EnumMaterial,Boolean> recipe_plates_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
+  public static Map<EnumMaterial,Boolean> recipe_dusts_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
 
+  public static int misc_mortar_uses;
+  
   static public void load(Configuration config)
   {
     worldgen_copper = new WorldgenConfig(config, "copper", 16, 80, 12);
@@ -61,31 +62,41 @@ public class BMConfig
     worldgen_lead = new WorldgenConfig(config, "lead", 8, 48, 5);
     worldgen_platinum = new WorldgenConfig(config, "platinum", 2, 12, 1);
     
-    recipe_bronze_enable = config.getBoolean("dust", "recipes.bronze", true, "");
-    recipe_brass_enable = config.getBoolean("dust", "recipes.brass", true, "");
-    recipe_invar_enable = config.getBoolean("dust", "recipes.invar", true, "");
-    recipe_electrum_enable = config.getBoolean("dust", "recipes.electrum", true, "");
-    recipe_cupronickel_enable = config.getBoolean("dust", "recipes.cupronickel", true, "");
+    recipe_bronze_enable = config.getBoolean("blend", "recipes.bronze", true, "Enable/disable bronze dust blending recipe.");
+    recipe_brass_enable = config.getBoolean("blend", "recipes.brass", true, "Enable/disable brass dust blending recipe.");
+    recipe_invar_enable = config.getBoolean("blend", "recipes.invar", true, "Enable/disable invar dust blending recipe.");
+    recipe_electrum_enable = config.getBoolean("blend", "recipes.electrum", true, "Enable/disable electrum dust blending recipe.");
+    recipe_cupronickel_enable = config.getBoolean("blend", "recipes.cupronickel", true, "Enable/disable cupronickel dust blending recipe.");
 
-    recipe_steel_enable = config.getBoolean("dust", "recipes.steel", false, null);
-    recipe_signalum_enable = config.getBoolean("dust", "recipes.signalum", false, "");
-    recipe_lumium_enable = config.getBoolean("dust", "recipes.lumium", false, null);
-    recipe_enderium_enable = config.getBoolean("dust", "recipes.enderium", false, "");
-    recipe_coaldust_enable = config.getBoolean("dust", "recipes.coal", false, "");
-    recipe_enderpearldust_enable = config.getBoolean("dust", "recipes.enderpearl", false, "");
+    recipe_steel_enable = config.getBoolean("blend", "recipes.steel", false, "Enable/disable steel dust blending recipe.");
+    recipe_signalum_enable = config.getBoolean("blend", "recipes.signalum", false, "Enable/disable signalum dust blending recipe.");
+    recipe_lumium_enable = config.getBoolean("blend", "recipes.lumium", false, "Enable/disable lumium dust blending recipe.");
+    recipe_enderium_enable = config.getBoolean("blend", "recipes.enderium", false, "Enable/disable enderium dust blending recipe.");
+
+    misc_mortar_uses = config.getInt("mortar_uses", "misc", 20, 0, 1000, "How many uses the mortar has unti it breaks. Setting this to 0 disables the item.");
+
+    for(EnumMaterial mat:EnumMaterialItem.DUST.materials)
+    {
+      String name = mat.suffix.toLowerCase();
+      recipe_dusts_enable.put(mat,config.getBoolean("dust", "recipes." + name, true, "Enable/disable " + name + " dust mortar recipe."));
+    }
 
     for(EnumMaterial mat:EnumMaterialItem.BUCKET_LIQUID.materials)
     {
-      recipe_buckets_enable.put(mat,config.getBoolean("bucket", "recipes." + mat.suffix.toLowerCase(), true, ""));
+      String name = mat.suffix.toLowerCase();
+      recipe_buckets_enable.put(mat,config.getBoolean("bucket", "recipes." + name, true, "Enable/disable " + name + " bucket recipe."));
     }
 
     for(EnumMaterial mat:EnumMaterialItem.GEAR.materials)
     {
-      recipe_gears_enable.put(mat,config.getBoolean("gear", "recipes." + mat.suffix.toLowerCase(), true, ""));
+      String name = mat.suffix.toLowerCase();
+      recipe_gears_enable.put(mat,config.getBoolean("gear", "recipes." + name, true, "Enable/disable " + name + " gear recipe."));
     }
+    
     for(EnumMaterial mat:EnumMaterialItem.PLATE.materials)
     {
-      recipe_plates_enable.put(mat,config.getBoolean("plate", "recipes." + mat.suffix.toLowerCase(), true, ""));
+      String name = mat.suffix.toLowerCase();
+      recipe_plates_enable.put(mat,config.getBoolean("plate", "recipes." + name, true, "Enable/disable " + name + " plate recipe."));
     }
   }
 }

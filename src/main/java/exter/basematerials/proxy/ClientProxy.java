@@ -11,6 +11,7 @@ import exter.basematerials.material.EnumMaterial;
 import exter.basematerials.material.EnumMaterialItem;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -19,6 +20,23 @@ import net.minecraft.util.ResourceLocation;
 
 public class ClientProxy extends CommonProxy
 {
+  static private class SimpleItemMeshDefinition implements ItemMeshDefinition
+  {
+    public final ModelResourceLocation location;
+    
+    public SimpleItemMeshDefinition(ModelResourceLocation location)
+    {
+      this.location = location;
+    }
+
+    @Override
+    public ModelResourceLocation getModelLocation(ItemStack stack)
+    {
+      return location;
+    }    
+  }
+  
+  
   private void registerItemModel(Block block,String name,int meta)
   {
     registerItemModel(Item.getItemFromBlock(block), name, meta);
@@ -30,6 +48,14 @@ public class ClientProxy extends CommonProxy
     ModelBakery.registerItemVariants(item, new ResourceLocation(name));
     Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
     .register(item, meta, new ModelResourceLocation(name, "inventory"));
+  }
+
+  private void registerItemModel(Item item,String name)
+  {
+    name = "basematerials:" + name;
+    ModelBakery.registerItemVariants(item, new ResourceLocation(name));
+    Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+    .register(item, new SimpleItemMeshDefinition(new ModelResourceLocation(name, "inventory")));
   }
 
   @Override
@@ -74,13 +100,15 @@ public class ClientProxy extends CommonProxy
     {
       for(EnumMaterial material:EnumMaterial.values())
       {
-        ItemStack item = BMItems.getStack(matitem, material);
+        ItemStack item = BMItems.getStack(matitem, material, false);
         if(item != null)
         {
           registerItemModel(item.getItem(),matitem.prefix + material.suffix, item.getMetadata());
         }
       }
     }
+    
+    registerItemModel(BMItems.item_mortar,"mortar");
   }
   
 

@@ -82,6 +82,7 @@ tile.basematerials.stairsSignalum.name=Signalum Stairs
 tile.basematerials.stairsLumium.name=Lumium Stairs
 tile.basematerials.stairsEnderium.name=Enderium Stairs
 
+item.basematerials.mortar.name=Mortar
   
 item.basematerials.ingotCopper.name=Copper Ingot
 item.basematerials.ingotTin.name=Tin Ingot
