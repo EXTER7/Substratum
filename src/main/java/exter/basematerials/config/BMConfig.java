@@ -15,14 +15,16 @@ public class BMConfig
     public final boolean enabled;
     public final int min_y;
     public final int max_y;
-    public final int frequency;
+    public final int min_clusters;
+    public final int max_clusters;
 
-    public WorldgenConfig(Configuration config, String ore, int min_y,int max_y,int frequency)
+    public WorldgenConfig(Configuration config, String ore, int min_y, int max_y, int min_clusters, int max_clusters)
     {
       this.enabled = config.getBoolean("enabled", "worldgen." + ore, true, "Enable/disable worldgen for this ore.");
       this.min_y = config.getInt("minY", "worldgen." + ore, min_y, 0, 256, "Lowest Y level the ore is generated.");
       this.max_y = config.getInt("maxY", "worldgen." + ore, max_y, 0, 256, "Highest Y level the ore is generated.");
-      this.frequency = config.getInt("frequency", "worldgen." + ore, frequency, 1, 100, "Amount ore clusters per chunk.");
+      this.min_clusters = config.getInt("min_clusters", "worldgen." + ore, min_clusters, 1, 100, "Minimum amount of ore clusters per chunk.");
+      this.max_clusters = config.getInt("max_clusters", "worldgen." + ore, max_clusters, 1, 100, "Maximum amount pf ore clusters per chunk.");
     }
   }
   
@@ -59,16 +61,16 @@ public class BMConfig
   
   static public void load(Configuration config)
   {
-    worldgen_copper = new WorldgenConfig(config, "copper", 16, 80, 12);
-    worldgen_tin = new WorldgenConfig(config, "tin", 16, 52, 8);
-    worldgen_zinc = new WorldgenConfig(config, "zinc", 8, 48, 6);
-    worldgen_nickel = new WorldgenConfig(config, "nickel", 8, 36, 5);
-    worldgen_silver = new WorldgenConfig(config, "silver", 8, 30, 3);
-    worldgen_lead = new WorldgenConfig(config, "lead", 8, 48, 5);
-    worldgen_platinum = new WorldgenConfig(config, "platinum", 2, 12, 1);
+    worldgen_copper = new WorldgenConfig(config, "copper", 20, 80, 10, 20);
+    worldgen_tin = new WorldgenConfig(config, "tin", 20, 52, 6, 12);
+    worldgen_zinc = new WorldgenConfig(config, "zinc", 8, 48, 5, 7);
+    worldgen_nickel = new WorldgenConfig(config, "nickel", 8, 36, 3, 6);
+    worldgen_silver = new WorldgenConfig(config, "silver", 8, 30, 3, 4);
+    worldgen_lead = new WorldgenConfig(config, "lead", 8, 48, 5, 6);
+    worldgen_platinum = new WorldgenConfig(config, "platinum", 2, 12, 0, 1);
     
-    worldgen_sulfur = new WorldgenConfig(config, "sulfur", 0, 128, 20);
-    worldgen_niter = new WorldgenConfig(config, "niter", 0, 128, 15);
+    worldgen_sulfur = new WorldgenConfig(config, "sulfur", 5, 123, 20, 15);
+    worldgen_niter = new WorldgenConfig(config, "niter", 5, 123, 15, 10);
 
     recipe_bronze_enable = config.getBoolean("blend", "recipes.bronze", true, "Enable/disable bronze dust blending recipe.");
     recipe_brass_enable = config.getBoolean("blend", "recipes.brass", true, "Enable/disable brass dust blending recipe.");

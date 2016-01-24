@@ -10,10 +10,8 @@ import net.minecraft.block.state.pattern.BlockHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraftforge.common.BiomeDictionary;
 
 public class WorldGenOre
 {
@@ -22,16 +20,16 @@ public class WorldGenOre
   public final int min;
   public final int max;
 
-  public final int frequency;
+  public final int min_clusters;
+  public final int max_clusters;
 
   public final IBlockState block;
   
   
   private WorldGenMinable wgm;
   
-  private boolean nether;
   
-  private WorldGenOre(int min,int max,int freqquency,IBlockState state, boolean nether)
+  private WorldGenOre(int min,int max,int min_clusters, int max_clusters,IBlockState state, boolean nether)
   {
     if(min < max)
     {
@@ -43,7 +41,15 @@ public class WorldGenOre
       this.max = min;
     }
 
-    this.frequency = freqquency;
+    if(min_clusters < max_clusters)
+    {
+      this.min_clusters = min_clusters;
+      this.max_clusters = max_clusters;
+    } else
+    {
+      this.min_clusters = max_clusters;
+      this.max_clusters = min_clusters;
+    }
 
     block = state;
     wgm = new WorldGenMinable(state, 7, BlockHelper.forBlock(nether?Blocks.netherrack:Blocks.stone));
@@ -52,36 +58,14 @@ public class WorldGenOre
   private void generateOre(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
   {
     int i;
-    main:for(i = 0; i < frequency; i++)
+    int clusters = random.nextInt(max_clusters - min_clusters + 1) + min_clusters;
+    for(i = 0; i < clusters; i++)
     {
       int x = chunkX * 16 + random.nextInt(16);
-      int y = min + random.nextInt(max - min);
+      int y = min + random.nextInt(max - min + 1);
       int z = chunkZ * 16 + random.nextInt(16);
       BlockPos pos = new BlockPos(x,y,z);
-      BiomeGenBase biome = world.getBiomeGenForCoords(pos);
-      for(BiomeGenBase bio : BiomeDictionary.getBiomesForType(BiomeDictionary.Type.END))
-      {
-        if(bio == biome)
-        {
-          continue;
-        }
-      }
-      for(BiomeGenBase bio : BiomeDictionary.getBiomesForType(BiomeDictionary.Type.NETHER))
-      {
-        if(bio == biome)
-        {
-          if(nether)
-          {
-            wgm.generate(world, random, pos);
-            continue main;
-          }
-          continue;
-        }
-      }
-      if(!nether)
-      {
-        wgm.generate(world, random, pos);
-      }
+      wgm.generate(world, random, pos);
     }
   }
   
@@ -97,7 +81,7 @@ public class WorldGenOre
   {
     if(config.enabled)
     {
-      ores.add(new WorldGenOre(config.min_y, config.max_y, config.frequency, state, nether));
+      ores.add(new WorldGenOre(config.min_y, config.max_y, config.min_clusters, config.max_clusters, state, nether));
     }
   }
 }
