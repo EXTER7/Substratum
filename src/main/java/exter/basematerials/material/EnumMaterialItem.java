@@ -42,7 +42,11 @@ public enum EnumMaterialItem
       EnumMaterial.ENDERPEARL,
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
-      EnumMaterial.ENDERIUM)),
+      EnumMaterial.ENDERIUM,
+      EnumMaterial.CHARCOAL,
+      EnumMaterial.OBSIDIAN,
+      EnumMaterial.SULFUR,
+      EnumMaterial.NITER)),
   
   NUGGET("nugget",ImmutableList.of(
       EnumMaterial.IRON,

@@ -91,6 +91,20 @@ public class BMRecipes
             mortar, new ItemStack(Items.coal,1,0)));
       }
 
+      if(BMConfig.recipe_dusts_enable.get(EnumMaterial.CHARCOAL))
+      {
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+            BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.CHARCOAL),
+            mortar, new ItemStack(Items.coal,1,1)));
+      }
+
+      if(BMConfig.recipe_dusts_enable.get(EnumMaterial.OBSIDIAN))
+      {
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+            BMItems.getStack(EnumMaterialItem.DUST,EnumMaterial.OBSIDIAN,2),
+            mortar, new ItemStack(Blocks.obsidian)));
+      }
+
       if(BMConfig.recipe_dusts_enable.get(EnumMaterial.ENDERPEARL))
       {
         GameRegistry.addRecipe(new ShapelessOreRecipe(
@@ -151,7 +165,17 @@ public class BMRecipes
             0);
       }
     }
-    
+
+    if(BMConfig.recipe_gunpowder_enable)
+    {
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          new ItemStack(Items.gunpowder,2),
+          "dustNiter", 
+          "dustNiter", 
+          "dustSulfur", 
+          "dustCharcoal"));
+    }
+
     if(BMConfig.recipe_signalum_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
@@ -189,10 +213,14 @@ public class BMRecipes
     //Dust -> Ingot smelting recipes.
     for(EnumMaterial mat:EnumMaterialItem.INGOT.materials)
     {
-      GameRegistry.addSmelting(
-          BMItems.getStack(EnumMaterialItem.DUST, mat),
-          BMItems.getStack(EnumMaterialItem.INGOT, mat),
-          0);
+      ItemStack ingot = BMItems.getStack(EnumMaterialItem.INGOT, mat);
+      if(ingot != null)
+      {
+        GameRegistry.addSmelting(
+            BMItems.getStack(EnumMaterialItem.DUST, mat),
+            ingot,
+            0);
+      }
     }
 
     //Nugget <-> Ingot crafting recipes.
@@ -229,10 +257,14 @@ public class BMRecipes
     //Ore -> ingot furnace recipes
     for(Map.Entry<EnumMaterial, ItemStack> metal:BMBlocks.ore_stacks.entrySet())
     {
-      GameRegistry.addSmelting(
-          metal.getValue(),
-          BMItems.getStack(EnumMaterialItem.INGOT, metal.getKey()),
-          0);
+      ItemStack ingot = BMItems.getStack(EnumMaterialItem.INGOT, metal.getKey());
+      if(ingot != null)
+      {
+        GameRegistry.addSmelting(
+            metal.getValue(),
+            ingot,
+            0);
+      }
     }
     
     //Gear crafting recipes.

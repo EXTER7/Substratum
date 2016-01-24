@@ -24,6 +24,8 @@ tile.basematerials.oreZinc.name=Zinc Ore
 tile.basematerials.oreSilver.name=Silver Ore
 tile.basematerials.oreLead.name=Lead Ore
 tile.basematerials.orePlatinum.name=Platinum Ore
+tile.basematerials.oreSulfur.name=Sulfur Ore
+tile.basematerials.oreNiter.name=Niter Ore
 
 tile.basematerials.slabIron.name=Iron Slab
 tile.basematerials.slabGold.name=Gold Slab
@@ -117,10 +119,14 @@ item.basematerials.dustCupronickel.name=Cupronickel Dust
 item.basematerials.dustIron.name=Iron Dust
 item.basematerials.dustGold.name=Gold Dust
 item.basematerials.dustCoal.name=Coal Dust
+item.basematerials.dustCharcoal.name=Charcoal Dust
 item.basematerials.dustEnderpearl.name=Enderpearl Dust
 item.basematerials.dustSignalum.name=Signalum Dust
 item.basematerials.dustLumium.name=Lumium Dust
 item.basematerials.dustEnderium.name=Enderium Dust
+item.basematerials.dustSulfur.name=Sulfur
+item.basematerials.dustNiter.name=Niter
+item.basematerials.dustObsidian.name=Obsidian Dust
 
 item.basematerials.nuggetCopper.name=Copper Nugget
 item.basematerials.nuggetTin.name=Tin Nugget

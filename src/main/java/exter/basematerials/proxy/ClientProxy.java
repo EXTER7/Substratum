@@ -3,6 +3,7 @@ package exter.basematerials.proxy;
 import java.util.Map;
 
 import exter.basematerials.block.BMBlocks;
+import exter.basematerials.block.BlockDustOre;
 import exter.basematerials.block.BlockMetal;
 import exter.basematerials.block.BlockMetalSlab;
 import exter.basematerials.block.BlockOre;
@@ -71,6 +72,11 @@ public class ClientProxy extends CommonProxy
     for(BlockOre.EnumVariant ore:BlockOre.EnumVariant.values())
     {
       registerItemModel(BMBlocks.block_ore,"ore" + ore.material.suffix, ore.ordinal());
+    }
+
+    for(BlockDustOre.EnumVariant ore:BlockDustOre.EnumVariant.values())
+    {
+      registerItemModel(BMBlocks.block_ore_dust,"ore" + ore.material.suffix, ore.ordinal());
     }
 
     for(BlockMetal block:BMBlocks.block_metal)

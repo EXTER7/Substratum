@@ -75,6 +75,7 @@ public class BMBlocks
 
   public static BlockMetal[] block_metal;
   public static BlockOre block_ore;
+  public static BlockDustOre block_ore_dust;
   
   public static BlockMetalSlab[] block_slab;
 
@@ -146,6 +147,7 @@ public class BMBlocks
     block_metal[0] = new BlockMetal() { public Variant[] getVariants() { return BLOCK1_METALS; } };
     block_metal[1] = new BlockMetal() { public Variant[] getVariants() { return BLOCK2_METALS; } };
     block_ore = new BlockOre();
+    block_ore_dust = new BlockDustOre();
 
     for(i = 0; i < block_metal.length; i++)
     {
@@ -165,6 +167,14 @@ public class BMBlocks
     for(BlockOre.EnumVariant ore:BlockOre.EnumVariant.values())
     {
       ItemStack item = block_ore.asItemStack(ore);
+      ore_stacks.put(ore.material, item);
+      OreDictionary.registerOre("ore" + ore.material.suffix, item);
+    }
+
+    GameRegistry.registerBlock(block_ore_dust, ItemBlockMulti.class, "oreDust");
+    for(BlockDustOre.EnumVariant ore:BlockDustOre.EnumVariant.values())
+    {
+      ItemStack item = block_ore_dust.asItemStack(ore);
       ore_stacks.put(ore.material, item);
       OreDictionary.registerOre("ore" + ore.material.suffix, item);
     }

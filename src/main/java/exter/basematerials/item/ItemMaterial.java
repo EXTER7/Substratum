@@ -45,6 +45,11 @@ public class ItemMaterial extends Item
       list.add(itemstack);
     }
   }
+  
+  public int getMaterialMeta(EnumMaterial material)
+  {
+    return materials.indexOf(material);
+  }
 
   public ItemStack getStack(EnumMaterial material)
   {
@@ -53,7 +58,7 @@ public class ItemMaterial extends Item
 
   public ItemStack getStack(EnumMaterial material,int amount)
   {
-    int meta = materials.indexOf(material);
+    int meta = getMaterialMeta(material);
     if(meta == -1)
     {
       return null;

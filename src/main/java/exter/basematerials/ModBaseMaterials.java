@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import exter.basematerials.block.BMBlocks;
 import exter.basematerials.block.BlockOre;
+import exter.basematerials.block.BlockDustOre;
 import exter.basematerials.config.BMConfig;
 import exter.basematerials.item.BMItems;
 import exter.basematerials.proxy.CommonProxy;
@@ -74,13 +75,16 @@ public class ModBaseMaterials
 
     BMRecipes.init();
 
-    WorldGenOre.registerOre(BMConfig.worldgen_copper, BMBlocks.block_ore.asState(BlockOre.EnumVariant.COPPER));
-    WorldGenOre.registerOre(BMConfig.worldgen_tin, BMBlocks.block_ore.asState(BlockOre.EnumVariant.TIN));
-    WorldGenOre.registerOre(BMConfig.worldgen_zinc, BMBlocks.block_ore.asState(BlockOre.EnumVariant.ZINC));
-    WorldGenOre.registerOre(BMConfig.worldgen_nickel, BMBlocks.block_ore.asState(BlockOre.EnumVariant.NICKEL));
-    WorldGenOre.registerOre(BMConfig.worldgen_silver, BMBlocks.block_ore.asState(BlockOre.EnumVariant.SILVER));
-    WorldGenOre.registerOre(BMConfig.worldgen_lead, BMBlocks.block_ore.asState(BlockOre.EnumVariant.LEAD));
-    WorldGenOre.registerOre(BMConfig.worldgen_platinum, BMBlocks.block_ore.asState(BlockOre.EnumVariant.PLATINUM));
+    WorldGenOre.registerOre(BMConfig.worldgen_copper, BMBlocks.block_ore.asState(BlockOre.EnumVariant.COPPER), false);
+    WorldGenOre.registerOre(BMConfig.worldgen_tin, BMBlocks.block_ore.asState(BlockOre.EnumVariant.TIN), false);
+    WorldGenOre.registerOre(BMConfig.worldgen_zinc, BMBlocks.block_ore.asState(BlockOre.EnumVariant.ZINC), false);
+    WorldGenOre.registerOre(BMConfig.worldgen_nickel, BMBlocks.block_ore.asState(BlockOre.EnumVariant.NICKEL), false);
+    WorldGenOre.registerOre(BMConfig.worldgen_silver, BMBlocks.block_ore.asState(BlockOre.EnumVariant.SILVER), false);
+    WorldGenOre.registerOre(BMConfig.worldgen_lead, BMBlocks.block_ore.asState(BlockOre.EnumVariant.LEAD), false);
+    WorldGenOre.registerOre(BMConfig.worldgen_platinum, BMBlocks.block_ore.asState(BlockOre.EnumVariant.PLATINUM), false);
+    WorldGenOre.registerOre(BMConfig.worldgen_sulfur, BMBlocks.block_ore_dust.asState(BlockDustOre.EnumVariant.SULFUR), true);
+    WorldGenOre.registerOre(BMConfig.worldgen_niter, BMBlocks.block_ore_dust.asState(BlockDustOre.EnumVariant.NITER), true);
+
     GameRegistry.registerWorldGenerator(new BMWorldGenerator(),0);
 
     proxy.init();

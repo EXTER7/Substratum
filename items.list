@@ -15,6 +15,7 @@ ingotZinc
 ingotSignalum
 ingotLumium
 ingotEnderium
+dustCharcoal
 dustCoal
 dustBrass
 dustBronze
@@ -35,6 +36,9 @@ dustEnderpearl
 dustSignalum
 dustLumium
 dustEnderium
+dustSulfur
+dustNiter
+dustObsidian
 nuggetBrass
 nuggetBronze
 nuggetCopper

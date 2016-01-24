@@ -6,7 +6,8 @@ import java.util.Random;
 
 import exter.basematerials.config.BMConfig.WorldgenConfig;
 import net.minecraft.block.state.IBlockState;
-
+import net.minecraft.block.state.pattern.BlockHelper;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -18,8 +19,8 @@ public class WorldGenOre
 {
   static private List<WorldGenOre> ores = new ArrayList<WorldGenOre>();
   
-  public final int min_y;
-  public final int max_y;
+  public final int min;
+  public final int max;
 
   public final int frequency;
 
@@ -28,31 +29,33 @@ public class WorldGenOre
   
   private WorldGenMinable wgm;
   
-  private WorldGenOre(int min,int max,int freq,IBlockState state)
+  private boolean nether;
+  
+  private WorldGenOre(int min,int max,int freqquency,IBlockState state, boolean nether)
   {
     if(min < max)
     {
-      min_y = min;
-      max_y = max;
+      this.min = min;
+      this.max = max;
     } else
     {
-      min_y = max;
-      max_y = min;
+      this.min = max;
+      this.max = min;
     }
 
-    frequency = freq;
+    this.frequency = freqquency;
 
     block = state;
-    wgm = new WorldGenMinable(state, 7);
+    wgm = new WorldGenMinable(state, 7, BlockHelper.forBlock(nether?Blocks.netherrack:Blocks.stone));
   }
 
   private void generateOre(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
   {
     int i;
-    for(i = 0; i < frequency; i++)
+    main:for(i = 0; i < frequency; i++)
     {
       int x = chunkX * 16 + random.nextInt(16);
-      int y = min_y + random.nextInt(max_y - min_y);
+      int y = min + random.nextInt(max - min);
       int z = chunkZ * 16 + random.nextInt(16);
       BlockPos pos = new BlockPos(x,y,z);
       BiomeGenBase biome = world.getBiomeGenForCoords(pos);
@@ -67,10 +70,18 @@ public class WorldGenOre
       {
         if(bio == biome)
         {
+          if(nether)
+          {
+            wgm.generate(world, random, pos);
+            continue main;
+          }
           continue;
         }
       }
-      wgm.generate(world, random, pos);
+      if(!nether)
+      {
+        wgm.generate(world, random, pos);
+      }
     }
   }
   
@@ -82,11 +93,11 @@ public class WorldGenOre
     }
   }
     
-  static public void registerOre(WorldgenConfig config,IBlockState state)
+  static public void registerOre(WorldgenConfig config, IBlockState state, boolean nether)
   {
     if(config.enabled)
     {
-      ores.add(new WorldGenOre(config.min_y,config.max_y,config.frequency,state));
+      ores.add(new WorldGenOre(config.min_y, config.max_y, config.frequency, state, nether));
     }
   }
 }

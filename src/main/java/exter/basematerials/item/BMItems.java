@@ -15,7 +15,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class BMItems
 {
 
-  static private Map<EnumMaterialItem,ItemMaterial> item_materials = new EnumMap<EnumMaterialItem,ItemMaterial>(EnumMaterialItem.class);
+  static public Map<EnumMaterialItem,ItemMaterial> item_materials = new EnumMap<EnumMaterialItem,ItemMaterial>(EnumMaterialItem.class);
 
   static public ItemMortar item_mortar = null;
   
@@ -49,7 +49,7 @@ public class BMItems
 
   static public ItemStack getStack(EnumMaterialItem item, EnumMaterial material,int amount)
   {
-    return getStack(item, material,1,true);
+    return getStack(item, material, amount, true);
   }
 
   static public ItemStack getStack(EnumMaterialItem item, EnumMaterial material, boolean vanilla)

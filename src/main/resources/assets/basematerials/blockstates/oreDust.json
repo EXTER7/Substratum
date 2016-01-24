@@ -1,0 +1,8 @@
+{
+ "variants":
+ { 
+   "ore=sulfur": { "model": "basematerials:oreSulfur" },
+   "ore=niter": { "model": "basematerials:oreNiter" }
+  }
+}
+

@@ -4,6 +4,7 @@ public enum EnumMaterial
 {
   STONE("Stone"),
   COAL("Coal"),
+  CHARCOAL("Charcoal"),
   IRON("Iron"),
   GOLD("Gold"),
   COPPER("Copper"),
@@ -24,7 +25,11 @@ public enum EnumMaterial
   ENDERPEARL("Enderpearl"),
   SIGNALUM("Signalum"),
   LUMIUM("Lumium"),
-  ENDERIUM("Enderium");
+  ENDERIUM("Enderium"),
+  SULFUR("Sulfur"),
+  NITER("Niter"),
+  GUNPOWDER("Gunpowder"),
+  OBSIDIAN("Obsidian");
   
   public final String suffix;
   
