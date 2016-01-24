@@ -69,8 +69,8 @@ public class BMConfig
     worldgen_lead = new WorldgenConfig(config, "lead", 8, 48, 5, 6);
     worldgen_platinum = new WorldgenConfig(config, "platinum", 2, 12, 0, 1);
     
-    worldgen_sulfur = new WorldgenConfig(config, "sulfur", 5, 123, 20, 15);
-    worldgen_niter = new WorldgenConfig(config, "niter", 5, 123, 15, 10);
+    worldgen_sulfur = new WorldgenConfig(config, "sulfur", 5, 123, 15, 20);
+    worldgen_niter = new WorldgenConfig(config, "niter", 5, 123, 10, 15);
 
     recipe_bronze_enable = config.getBoolean("blend", "recipes.bronze", true, "Enable/disable bronze dust blending recipe.");
     recipe_brass_enable = config.getBoolean("blend", "recipes.brass", true, "Enable/disable brass dust blending recipe.");
