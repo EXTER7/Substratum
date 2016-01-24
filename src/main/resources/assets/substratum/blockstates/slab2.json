@@ -1,0 +1,22 @@
+{
+  "variants":
+  {
+    "half=top,metal=zinc": { "model": "substratum:slabTopZinc" },
+    "half=top,metal=brass": { "model": "substratum:slabTopBrass" },
+    "half=top,metal=silver": { "model": "substratum:slabTopSilver" },
+    "half=top,metal=steel": { "model": "substratum:slabTopSteel" },
+    "half=top,metal=lead": { "model": "substratum:slabTopLead" },
+    "half=top,metal=platinum": { "model": "substratum:slabTopPlatinum" },
+    "half=top,metal=cupronickel": { "model": "substratum:slabTopCupronickel"  },
+    "half=top,metal=signalum": { "model": "substratum:slabTopSignalum"  },
+    "half=bottom,metal=zinc": { "model": "substratum:slabBottomZinc" },
+    "half=bottom,metal=brass": { "model": "substratum:slabBottomBrass" },
+    "half=bottom,metal=silver": { "model": "substratum:slabBottomSilver" },
+    "half=bottom,metal=steel": { "model": "substratum:slabBottomSteel" },
+    "half=bottom,metal=lead": { "model": "substratum:slabBottomLead" },
+    "half=bottom,metal=platinum": { "model": "substratum:slabBottomPlatinum" },
+    "half=bottom,metal=cupronickel": { "model": "substratum:slabBottomCupronickel"  },
+    "half=bottom,metal=signalum": { "model": "substratum:slabBottomSignalum"  }
+  }
+}
+

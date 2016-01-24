@@ -1,0 +1,21 @@
+{
+  "variants":
+  { 
+    "metal=copper": { "model": "substratum:blockCopper" },
+    "metal=tin": { "model": "substratum:blockTin" },
+    "metal=nickel": { "model": "substratum:blockNickel" },
+    "metal=zinc": { "model": "substratum:blockZinc" },
+    "metal=silver": { "model": "substratum:blockSilver" },
+    "metal=lead": { "model": "substratum:blockLead" },
+    "metal=bronze": { "model": "substratum:blockBronze" },
+    "metal=electrum": { "model": "substratum:blockElectrum" },
+    "metal=invar": { "model": "substratum:blockInvar" },
+    "metal=brass": { "model": "substratum:blockBrass" },
+    "metal=steel": { "model": "substratum:blockSteel" },
+    "metal=platinum": { "model": "substratum:blockPlatinum" },
+    "metal=cupronickel": { "model": "substratum:blockCupronickel"  },
+    "metal=signalum": { "model": "substratum:blockSignalum"  },
+    "metal=lumium": { "model": "substratum:blockLumium"  }
+  }
+}
+

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-modeldir="src/main/resources/assets/basematerials/models"
-blockstatedir="src/main/resources/assets/basematerials/blockstates"
+modeldir="src/main/resources/assets/substratum/models"
+blockstatedir="src/main/resources/assets/substratum/blockstates"
 
 
 for block in $(cat "blocks.list")
@@ -12,7 +12,7 @@ do
 	  "parent": "minecraft:block/cube_all",
 	  "textures":
 	  {
-	    "all": "basematerials:blocks/@@TEXTURE@@"
+	    "all": "substratum:blocks/@@TEXTURE@@"
 	  }
 	}
 	EOF
@@ -21,7 +21,7 @@ do
   ( # Block item model
   cat <<- EOF
 	{
-	    "parent": "basematerials:block/@@MODEL@@",
+	    "parent": "substratum:block/@@MODEL@@",
 	    "display": {
 	        "thirdperson": {
 	            "rotation": [ 10, -45, 170 ],
@@ -42,15 +42,15 @@ do
 	   "parent": "minecraft:block/half_slab",
 	   "textures":
 	   {
-	     "bottom": "basematerials:blocks/@@TEXTURE@@",
-	     "top": "basematerials:blocks/@@TEXTURE@@",
-	     "side": "basematerials:blocks/@@TEXTURE@@"
+	     "bottom": "substratum:blocks/@@TEXTURE@@",
+	     "top": "substratum:blocks/@@TEXTURE@@",
+	     "side": "substratum:blocks/@@TEXTURE@@"
 	  }
 	}
 	EOF
   ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e 's/basematerials:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/basematerials:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slabBottom"$slab".json"
+    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slabBottom"$slab".json"
 
   ( # Top slab
   cat <<- EOF
@@ -58,20 +58,20 @@ do
 	   "parent": "minecraft:block/upper_slab",
 	   "textures":
 	   {
-	     "bottom": "basematerials:blocks/@@TEXTURE@@",
-	     "top": "basematerials:blocks/@@TEXTURE@@",
-	     "side": "basematerials:blocks/@@TEXTURE@@"
+	     "bottom": "substratum:blocks/@@TEXTURE@@",
+	     "top": "substratum:blocks/@@TEXTURE@@",
+	     "side": "substratum:blocks/@@TEXTURE@@"
 	  }
 	}
 	EOF
   ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e 's/basematerials:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/basematerials:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slabTop"$slab".json"
+    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slabTop"$slab".json"
 
   ( # Slab item model
   cat <<- EOF
 	{
-	    "parent": "basematerials:block/@@MODEL@@",
+	    "parent": "substratum:block/@@MODEL@@",
 	    "display": {
 	        "thirdperson": {
 	            "rotation": [ 10, -45, 170 ],
@@ -87,46 +87,46 @@ do
   cat <<- EOF
 	{
 	  "variants": {
-	    "facing=east,half=bottom,shape=straight":  { "model": "basematerials:@@MODELSTRAIGHT@@" },
-	    "facing=west,half=bottom,shape=straight":  { "model": "basematerials:@@MODELSTRAIGHT@@", "y": 180, "uvlock": true },
-	    "facing=south,half=bottom,shape=straight": { "model": "basematerials:@@MODELSTRAIGHT@@", "y": 90, "uvlock": true },
-	    "facing=north,half=bottom,shape=straight": { "model": "basematerials:@@MODELSTRAIGHT@@", "y": 270, "uvlock": true },
-	    "facing=east,half=bottom,shape=outer_right":  { "model": "basematerials:@@MODELOUTER@@" },
-	    "facing=west,half=bottom,shape=outer_right":  { "model": "basematerials:@@MODELOUTER@@", "y": 180, "uvlock": true },
-	    "facing=south,half=bottom,shape=outer_right": { "model": "basematerials:@@MODELOUTER@@", "y": 90, "uvlock": true },
-	    "facing=north,half=bottom,shape=outer_right": { "model": "basematerials:@@MODELOUTER@@", "y": 270, "uvlock": true },
-	    "facing=east,half=bottom,shape=outer_left":  { "model": "basematerials:@@MODELOUTER@@", "y": 270, "uvlock": true },
-	    "facing=west,half=bottom,shape=outer_left":  { "model": "basematerials:@@MODELOUTER@@", "y": 90, "uvlock": true },
-	    "facing=south,half=bottom,shape=outer_left": { "model": "basematerials:@@MODELOUTER@@" },
-	    "facing=north,half=bottom,shape=outer_left": { "model": "basematerials:@@MODELOUTER@@", "y": 180, "uvlock": true },
-	    "facing=east,half=bottom,shape=inner_right":  { "model": "basematerials:@@MODELINNER@@" },
-	    "facing=west,half=bottom,shape=inner_right":  { "model": "basematerials:@@MODELINNER@@", "y": 180, "uvlock": true },
-	    "facing=south,half=bottom,shape=inner_right": { "model": "basematerials:@@MODELINNER@@", "y": 90, "uvlock": true },
-	    "facing=north,half=bottom,shape=inner_right": { "model": "basematerials:@@MODELINNER@@", "y": 270, "uvlock": true },
-	    "facing=east,half=bottom,shape=inner_left":  { "model": "basematerials:@@MODELINNER@@", "y": 270, "uvlock": true },
-	    "facing=west,half=bottom,shape=inner_left":  { "model": "basematerials:@@MODELINNER@@", "y": 90, "uvlock": true },
-	    "facing=south,half=bottom,shape=inner_left": { "model": "basematerials:@@MODELINNER@@" },
-	    "facing=north,half=bottom,shape=inner_left": { "model": "basematerials:@@MODELINNER@@", "y": 180, "uvlock": true },
-	    "facing=east,half=top,shape=straight":  { "model": "basematerials:@@MODELSTRAIGHT@@", "x": 180, "uvlock": true },
-	    "facing=west,half=top,shape=straight":  { "model": "basematerials:@@MODELSTRAIGHT@@", "x": 180, "y": 180, "uvlock": true },
-	    "facing=south,half=top,shape=straight": { "model": "basematerials:@@MODELSTRAIGHT@@", "x": 180, "y": 90, "uvlock": true },
-	    "facing=north,half=top,shape=straight": { "model": "basematerials:@@MODELSTRAIGHT@@", "x": 180, "y": 270, "uvlock": true },
-	    "facing=east,half=top,shape=outer_right":  { "model": "basematerials:@@MODELOUTER@@", "x": 180, "uvlock": true },
-	    "facing=west,half=top,shape=outer_right":  { "model": "basematerials:@@MODELOUTER@@", "x": 180, "y": 180, "uvlock": true },
-	    "facing=south,half=top,shape=outer_right": { "model": "basematerials:@@MODELOUTER@@", "x": 180, "y": 90, "uvlock": true },
-	    "facing=north,half=top,shape=outer_right": { "model": "basematerials:@@MODELOUTER@@", "x": 180, "y": 270, "uvlock": true },
-	    "facing=east,half=top,shape=outer_left":  { "model": "basematerials:@@MODELOUTER@@", "x": 180, "y": 90, "uvlock": true },
-	    "facing=west,half=top,shape=outer_left":  { "model": "basematerials:@@MODELOUTER@@", "x": 180, "y": 270, "uvlock": true },
-	    "facing=south,half=top,shape=outer_left": { "model": "basematerials:@@MODELOUTER@@", "x": 180, "y": 180, "uvlock": true },
-	    "facing=north,half=top,shape=outer_left": { "model": "basematerials:@@MODELOUTER@@", "x": 180, "uvlock": true },
-	    "facing=east,half=top,shape=inner_right":  { "model": "basematerials:@@MODELINNER@@", "x": 180, "uvlock": true },
-	    "facing=west,half=top,shape=inner_right":  { "model": "basematerials:@@MODELINNER@@", "x": 180, "y": 180, "uvlock": true },
-	    "facing=south,half=top,shape=inner_right": { "model": "basematerials:@@MODELINNER@@", "x": 180, "y": 90, "uvlock": true },
-	    "facing=north,half=top,shape=inner_right": { "model": "basematerials:@@MODELINNER@@", "x": 180, "y": 270, "uvlock": true },
-	    "facing=east,half=top,shape=inner_left":  { "model": "basematerials:@@MODELINNER@@", "x": 180, "y": 90, "uvlock": true },
-	    "facing=west,half=top,shape=inner_left":  { "model": "basematerials:@@MODELINNER@@", "x": 180, "y": 270, "uvlock": true },
-	    "facing=south,half=top,shape=inner_left": { "model": "basematerials:@@MODELINNER@@", "x": 180, "y": 180, "uvlock": true },
-	    "facing=north,half=top,shape=inner_left": { "model": "basematerials:@@MODELINNER@@", "x": 180, "uvlock": true }
+	    "facing=east,half=bottom,shape=straight":  { "model": "substratum:@@MODELSTRAIGHT@@" },
+	    "facing=west,half=bottom,shape=straight":  { "model": "substratum:@@MODELSTRAIGHT@@", "y": 180, "uvlock": true },
+	    "facing=south,half=bottom,shape=straight": { "model": "substratum:@@MODELSTRAIGHT@@", "y": 90, "uvlock": true },
+	    "facing=north,half=bottom,shape=straight": { "model": "substratum:@@MODELSTRAIGHT@@", "y": 270, "uvlock": true },
+	    "facing=east,half=bottom,shape=outer_right":  { "model": "substratum:@@MODELOUTER@@" },
+	    "facing=west,half=bottom,shape=outer_right":  { "model": "substratum:@@MODELOUTER@@", "y": 180, "uvlock": true },
+	    "facing=south,half=bottom,shape=outer_right": { "model": "substratum:@@MODELOUTER@@", "y": 90, "uvlock": true },
+	    "facing=north,half=bottom,shape=outer_right": { "model": "substratum:@@MODELOUTER@@", "y": 270, "uvlock": true },
+	    "facing=east,half=bottom,shape=outer_left":  { "model": "substratum:@@MODELOUTER@@", "y": 270, "uvlock": true },
+	    "facing=west,half=bottom,shape=outer_left":  { "model": "substratum:@@MODELOUTER@@", "y": 90, "uvlock": true },
+	    "facing=south,half=bottom,shape=outer_left": { "model": "substratum:@@MODELOUTER@@" },
+	    "facing=north,half=bottom,shape=outer_left": { "model": "substratum:@@MODELOUTER@@", "y": 180, "uvlock": true },
+	    "facing=east,half=bottom,shape=inner_right":  { "model": "substratum:@@MODELINNER@@" },
+	    "facing=west,half=bottom,shape=inner_right":  { "model": "substratum:@@MODELINNER@@", "y": 180, "uvlock": true },
+	    "facing=south,half=bottom,shape=inner_right": { "model": "substratum:@@MODELINNER@@", "y": 90, "uvlock": true },
+	    "facing=north,half=bottom,shape=inner_right": { "model": "substratum:@@MODELINNER@@", "y": 270, "uvlock": true },
+	    "facing=east,half=bottom,shape=inner_left":  { "model": "substratum:@@MODELINNER@@", "y": 270, "uvlock": true },
+	    "facing=west,half=bottom,shape=inner_left":  { "model": "substratum:@@MODELINNER@@", "y": 90, "uvlock": true },
+	    "facing=south,half=bottom,shape=inner_left": { "model": "substratum:@@MODELINNER@@" },
+	    "facing=north,half=bottom,shape=inner_left": { "model": "substratum:@@MODELINNER@@", "y": 180, "uvlock": true },
+	    "facing=east,half=top,shape=straight":  { "model": "substratum:@@MODELSTRAIGHT@@", "x": 180, "uvlock": true },
+	    "facing=west,half=top,shape=straight":  { "model": "substratum:@@MODELSTRAIGHT@@", "x": 180, "y": 180, "uvlock": true },
+	    "facing=south,half=top,shape=straight": { "model": "substratum:@@MODELSTRAIGHT@@", "x": 180, "y": 90, "uvlock": true },
+	    "facing=north,half=top,shape=straight": { "model": "substratum:@@MODELSTRAIGHT@@", "x": 180, "y": 270, "uvlock": true },
+	    "facing=east,half=top,shape=outer_right":  { "model": "substratum:@@MODELOUTER@@", "x": 180, "uvlock": true },
+	    "facing=west,half=top,shape=outer_right":  { "model": "substratum:@@MODELOUTER@@", "x": 180, "y": 180, "uvlock": true },
+	    "facing=south,half=top,shape=outer_right": { "model": "substratum:@@MODELOUTER@@", "x": 180, "y": 90, "uvlock": true },
+	    "facing=north,half=top,shape=outer_right": { "model": "substratum:@@MODELOUTER@@", "x": 180, "y": 270, "uvlock": true },
+	    "facing=east,half=top,shape=outer_left":  { "model": "substratum:@@MODELOUTER@@", "x": 180, "y": 90, "uvlock": true },
+	    "facing=west,half=top,shape=outer_left":  { "model": "substratum:@@MODELOUTER@@", "x": 180, "y": 270, "uvlock": true },
+	    "facing=south,half=top,shape=outer_left": { "model": "substratum:@@MODELOUTER@@", "x": 180, "y": 180, "uvlock": true },
+	    "facing=north,half=top,shape=outer_left": { "model": "substratum:@@MODELOUTER@@", "x": 180, "uvlock": true },
+	    "facing=east,half=top,shape=inner_right":  { "model": "substratum:@@MODELINNER@@", "x": 180, "uvlock": true },
+	    "facing=west,half=top,shape=inner_right":  { "model": "substratum:@@MODELINNER@@", "x": 180, "y": 180, "uvlock": true },
+	    "facing=south,half=top,shape=inner_right": { "model": "substratum:@@MODELINNER@@", "x": 180, "y": 90, "uvlock": true },
+	    "facing=north,half=top,shape=inner_right": { "model": "substratum:@@MODELINNER@@", "x": 180, "y": 270, "uvlock": true },
+	    "facing=east,half=top,shape=inner_left":  { "model": "substratum:@@MODELINNER@@", "x": 180, "y": 90, "uvlock": true },
+	    "facing=west,half=top,shape=inner_left":  { "model": "substratum:@@MODELINNER@@", "x": 180, "y": 270, "uvlock": true },
+	    "facing=south,half=top,shape=inner_left": { "model": "substratum:@@MODELINNER@@", "x": 180, "y": 180, "uvlock": true },
+	    "facing=north,half=top,shape=inner_left": { "model": "substratum:@@MODELINNER@@", "x": 180, "uvlock": true }
 	  }
 	}
 	EOF
@@ -140,15 +140,15 @@ do
 	  "parent": "minecraft:block/stairs",
 	  "textures":
 	  {
-	    "bottom": "basematerials:blocks/@@TEXTURE@@",
-	    "top": "basematerials:blocks/@@TEXTURE@@",
-	    "side": "basematerials:blocks/@@TEXTURE@@"
+	    "bottom": "substratum:blocks/@@TEXTURE@@",
+	    "top": "substratum:blocks/@@TEXTURE@@",
+	    "side": "substratum:blocks/@@TEXTURE@@"
 	  }
 	}
 	EOF
   ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e 's/basematerials:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/basematerials:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairsStraight"$slab".json"
+    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairsStraight"$slab".json"
 
   ( # Inner stairs
   cat <<- EOF
@@ -156,15 +156,15 @@ do
 	  "parent": "minecraft:block/inner_stairs",
 	  "textures":
 	  {
-	    "bottom": "basematerials:blocks/@@TEXTURE@@",
-	    "top": "basematerials:blocks/@@TEXTURE@@",
-	    "side": "basematerials:blocks/@@TEXTURE@@"
+	    "bottom": "substratum:blocks/@@TEXTURE@@",
+	    "top": "substratum:blocks/@@TEXTURE@@",
+	    "side": "substratum:blocks/@@TEXTURE@@"
 	  }
 	}
 	EOF
   ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e 's/basematerials:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/basematerials:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairsInner"$slab".json"
+    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairsInner"$slab".json"
 
   ( # Outer stairs
   cat <<- EOF
@@ -172,20 +172,20 @@ do
 	  "parent": "minecraft:block/outer_stairs",
 	  "textures":
 	  {
-	    "bottom": "basematerials:blocks/@@TEXTURE@@",
-	    "top": "basematerials:blocks/@@TEXTURE@@",
-	    "side": "basematerials:blocks/@@TEXTURE@@"
+	    "bottom": "substratum:blocks/@@TEXTURE@@",
+	    "top": "substratum:blocks/@@TEXTURE@@",
+	    "side": "substratum:blocks/@@TEXTURE@@"
 	  }
 	}
 	EOF
   ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e 's/basematerials:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/basematerials:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairsOuter"$slab".json"
+    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairsOuter"$slab".json"
 
   ( # Stairs item model
   cat <<- EOF
 	{
-	    "parent": "basematerials:block/@@MODEL@@",
+	    "parent": "substratum:block/@@MODEL@@",
 	    "display": {
 	        "gui": {
 	            "rotation": [ 0, 180, 0 ]
@@ -208,7 +208,7 @@ do
 	{
 	    "parent": "builtin/generated",
 	    "textures": {
-	        "layer0": "basematerials:items/@@TEXTURE@@"
+	        "layer0": "substratum:items/@@TEXTURE@@"
 	    },
 	    "display": {
 	        "thirdperson": {

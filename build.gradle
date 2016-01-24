@@ -25,8 +25,8 @@ def mc_version = "1.8.9"
 def build_number = System.getenv("DRONE_BUILD_NUMBER")
 
 version = mc_version + "-" + mod_version + ( build_number != null ?("-" + build_number): "")
-group = "exter.basematerials" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "BaseMaterials"
+group = "exter.substratum" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "Substratum"
 
 minecraft {
     version = "1.8.9-11.15.0.1699"

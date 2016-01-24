@@ -1,14 +1,14 @@
 [
 {
-  "modid" : "basematerials",
-  "name" : "BaseMaterials",
+  "modid" : "substratum",
+  "name" : "Substratum",
   "version" : "1.0.0.0",
   "credits" : "",
   "authors": [
     "EXTER"
   ],
   "description": "Base resources and crafting materials.",
-  "url" : "https://github.com/EXTER7/BaseMaterials",
+  "url" : "https://github.com/EXTER7/Substratum",
   "updateUrl" : "",
   "logoFile" : "",
   "parent" : "",

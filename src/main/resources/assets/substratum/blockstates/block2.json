@@ -1,0 +1,7 @@
+{
+  "variants":
+  { 
+    "metal=enderium": { "model": "substratum:blockEnderium"  }
+  }
+}
+

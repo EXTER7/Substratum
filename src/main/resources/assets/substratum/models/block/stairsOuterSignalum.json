@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures":
+  {
+    "bottom": "substratum:blocks/blockSignalum",
+    "top": "substratum:blocks/blockSignalum",
+    "side": "substratum:blocks/blockSignalum"
+  }
+}

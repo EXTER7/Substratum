@@ -1,0 +1,9 @@
+{
+   "parent": "minecraft:block/half_slab",
+   "textures":
+   {
+     "bottom": "substratum:blocks/blockPlatinum",
+     "top": "substratum:blocks/blockPlatinum",
+     "side": "substratum:blocks/blockPlatinum"
+  }
+}

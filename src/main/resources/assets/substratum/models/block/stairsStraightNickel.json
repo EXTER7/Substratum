@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures":
+  {
+    "bottom": "substratum:blocks/blockNickel",
+    "top": "substratum:blocks/blockNickel",
+    "side": "substratum:blocks/blockNickel"
+  }
+}

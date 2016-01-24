@@ -1,0 +1,22 @@
+{
+  "variants":
+  {
+    "half=top,metal=zinc": { "model": "substratum:blockZinc" },
+    "half=top,metal=brass": { "model": "substratum:blockBrass" },
+    "half=top,metal=silver": { "model": "substratum:blockSilver" },
+    "half=top,metal=steel": { "model": "substratum:blockSteel" },
+    "half=top,metal=lead": { "model": "substratum:blockLead" },
+    "half=top,metal=platinum": { "model": "substratum:blockPlatinum" },
+    "half=top,metal=cupronickel": { "model": "substratum:blockCupronickel"  },
+    "half=bottom,metal=signalum": { "model": "substratum:blockSignalum"  },
+    "half=bottom,metal=zinc": { "model": "substratum:blockZinc" },
+    "half=bottom,metal=brass": { "model": "substratum:blockBrass" },
+    "half=bottom,metal=silver": { "model": "substratum:blockSilver" },
+    "half=bottom,metal=steel": { "model": "substratum:blockSteel" },
+    "half=bottom,metal=lead": { "model": "substratum:blockLead" },
+    "half=bottom,metal=platinum": { "model": "substratum:blockPlatinum" },
+    "half=bottom,metal=cupronickel": { "model": "substratum:blockCupronickel"  },
+    "half=bottom,metal=signalum": { "model": "substratum:blockSignalum"  }
+  }
+}
+

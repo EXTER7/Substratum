@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures":
-  {
-    "bottom": "basematerials:blocks/blockCupronickel",
-    "top": "basematerials:blocks/blockCupronickel",
-    "side": "basematerials:blocks/blockCupronickel"
-  }
-}

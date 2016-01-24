@@ -1,0 +1,13 @@
+{
+ "variants":
+ { 
+   "ore=copper": { "model": "substratum:oreCopper" },
+   "ore=tin": { "model": "substratum:oreTin" },
+   "ore=nickel": { "model": "substratum:oreNickel" },
+   "ore=zinc": { "model": "substratum:oreZinc" },
+   "ore=silver": { "model": "substratum:oreSilver" },
+   "ore=lead": { "model": "substratum:oreLead" },
+   "ore=platinum": { "model": "substratum:orePlatinum" }
+  }
+}
+
