@@ -112,13 +112,16 @@ public class SubstratumRecipes
             mortar, new ItemStack(Items.ender_pearl)));
       }
       
-      for(EnumMaterial mat:EnumMaterialItem.INGOT.materials)
+      for(EnumMaterial mat:EnumMaterialItem.DUST.materials)
       {
-        if(SubstratumConfig.recipe_dusts_enable.get(mat))
+        if(SubstratumItems.getStack(EnumMaterialItem.INGOT,mat) != null)
         {
-          GameRegistry.addRecipe(new ShapelessOreRecipe(
-              SubstratumItems.getStack(EnumMaterialItem.DUST,mat),
-              mortar, "ingot" + mat.suffix));
+          if(SubstratumConfig.recipe_dusts_enable.get(mat))
+          {
+            GameRegistry.addRecipe(new ShapelessOreRecipe(
+                SubstratumItems.getStack(EnumMaterialItem.DUST,mat),
+                mortar, "ingot" + mat.suffix));
+          }
         }
       }
     }
@@ -211,7 +214,7 @@ public class SubstratumRecipes
 
 
     //Dust -> Ingot smelting recipes.
-    for(EnumMaterial mat:EnumMaterialItem.INGOT.materials)
+    for(EnumMaterial mat:EnumMaterialItem.DUST.materials)
     {
       ItemStack ingot = SubstratumItems.getStack(EnumMaterialItem.INGOT, mat);
       if(ingot != null)
