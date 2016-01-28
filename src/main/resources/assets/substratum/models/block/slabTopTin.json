@@ -4,6 +4,6 @@
    {
      "bottom": "substratum:blocks/blockTin",
      "top": "substratum:blocks/blockTin",
-     "side": "substratum:blocks/blockTin"
+     "side": "substratum:blocks/slabTin"
   }
 }

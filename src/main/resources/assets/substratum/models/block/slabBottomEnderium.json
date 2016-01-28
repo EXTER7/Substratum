@@ -4,6 +4,6 @@
    {
      "bottom": "substratum:blocks/blockEnderium",
      "top": "substratum:blocks/blockEnderium",
-     "side": "substratum:blocks/blockEnderium"
+     "side": "substratum:blocks/slabEnderium"
   }
 }

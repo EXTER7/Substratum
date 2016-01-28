@@ -4,6 +4,6 @@
    {
      "bottom": "substratum:blocks/blockInvar",
      "top": "substratum:blocks/blockInvar",
-     "side": "substratum:blocks/blockInvar"
+     "side": "substratum:blocks/slabInvar"
   }
 }

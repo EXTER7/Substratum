@@ -1,0 +1,8 @@
+{
+   "parent": "block/cube_column",
+   "textures":
+   {
+     "end": "substratum:blocks/blockSteel",
+     "side": "substratum:blocks/slabSteel"
+  }
+}

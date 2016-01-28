@@ -116,9 +116,28 @@ public enum EnumMaterialItem
   BUCKET_LIQUID("bucketLiquid", ImmutableList.of(
       EnumMaterial.REDSTONE,
       EnumMaterial.GLOWSTONE,
-      EnumMaterial.ENDERPEARL));
+      EnumMaterial.ENDERPEARL)),
 
-  
+  ROD("rod",ImmutableList.of(
+      EnumMaterial.IRON,
+      EnumMaterial.GOLD,
+      EnumMaterial.COPPER,
+      EnumMaterial.TIN,
+      EnumMaterial.BRONZE,
+      EnumMaterial.ELECTRUM,
+      EnumMaterial.INVAR,
+      EnumMaterial.NICKEL,
+      EnumMaterial.ZINC,
+      EnumMaterial.BRASS,
+      EnumMaterial.SILVER,
+      EnumMaterial.STEEL,
+      EnumMaterial.LEAD,
+      EnumMaterial.PLATINUM,
+      EnumMaterial.CUPRONICKEL,
+      EnumMaterial.SIGNALUM,
+      EnumMaterial.LUMIUM,
+      EnumMaterial.ENDERIUM));
+      
   public final ImmutableList<EnumMaterial> materials;
   public final String prefix;
 

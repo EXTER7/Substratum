@@ -1,22 +1,22 @@
 {
   "variants":
   {
-    "half=top,metal=iron": { "model": "minecraft:iron_block" },
-    "half=top,metal=gold": { "model": "minecraft:gold_block" },
-    "half=top,metal=copper": { "model": "substratum:blockCopper" },
-    "half=top,metal=tin": { "model": "substratum:blockTin" },
-    "half=top,metal=bronze": { "model": "substratum:blockBronze" },
-    "half=top,metal=electrum": { "model": "substratum:blockElectrum" },
-    "half=top,metal=invar": { "model": "substratum:blockInvar" },
-    "half=top,metal=nickel": { "model": "substratum:blockNickel" },
+    "half=top,metal=iron": { "model": "substratum:slabDoubleIron" },
+    "half=top,metal=gold": { "model": "substratum:slabDoubleGold" },
+    "half=top,metal=copper": { "model": "substratum:slabDoubleCopper" },
+    "half=top,metal=tin": { "model": "substratum:slabDoubleTin" },
+    "half=top,metal=bronze": { "model": "substratum:slabDoubleBronze" },
+    "half=top,metal=electrum": { "model": "substratum:slabDoubleElectrum" },
+    "half=top,metal=invar": { "model": "substratum:slabDoubleInvar" },
+    "half=top,metal=nickel": { "model": "substratum:slabDoubleNickel" },
     "half=bottom,metal=iron": { "model": "minecraft:iron_block" },
     "half=bottom,metal=gold": { "model": "minecraft:gold_block" },
-    "half=bottom,metal=copper": { "model": "substratum:blockCopper" },
-    "half=bottom,metal=tin": { "model": "substratum:blockTin" },
-    "half=bottom,metal=bronze": { "model": "substratum:blockBronze" },
-    "half=bottom,metal=electrum": { "model": "substratum:blockElectrum" },
-    "half=bottom,metal=invar": { "model": "substratum:blockInvar" },
-    "half=bottom,metal=nickel": { "model": "substratum:blockNickel" }
+    "half=bottom,metal=copper": { "model": "substratum:slabDoubleCopper" },
+    "half=bottom,metal=tin": { "model": "substratum:slabDoubleTin" },
+    "half=bottom,metal=bronze": { "model": "substratum:slabDoubleBronze" },
+    "half=bottom,metal=electrum": { "model": "substratum:slabDoubleElectrum" },
+    "half=bottom,metal=invar": { "model": "substratum:slabDoubleInvar" },
+    "half=bottom,metal=nickel": { "model": "substratum:slabDoubleNickel" }
   }
 }
 

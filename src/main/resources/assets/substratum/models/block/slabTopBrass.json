@@ -4,6 +4,6 @@
    {
      "bottom": "substratum:blocks/blockBrass",
      "top": "substratum:blocks/blockBrass",
-     "side": "substratum:blocks/blockBrass"
+     "side": "substratum:blocks/slabBrass"
   }
 }

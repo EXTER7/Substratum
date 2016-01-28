@@ -4,6 +4,6 @@
    {
      "bottom": "substratum:blocks/blockCupronickel",
      "top": "substratum:blocks/blockCupronickel",
-     "side": "substratum:blocks/blockCupronickel"
+     "side": "substratum:blocks/slabCupronickel"
   }
 }

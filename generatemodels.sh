@@ -44,11 +44,12 @@ do
 	   {
 	     "bottom": "substratum:blocks/@@TEXTURE@@",
 	     "top": "substratum:blocks/@@TEXTURE@@",
-	     "side": "substratum:blocks/@@TEXTURE@@"
+	     "side": "substratum:blocks/@@TEXTURESIDE@@"
 	  }
 	}
 	EOF
   ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
+    | sed -e "s/@@TEXTURESIDE@@/slab"$slab"/g" \
     | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
     | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slabBottom"$slab".json"
 
@@ -60,13 +61,30 @@ do
 	   {
 	     "bottom": "substratum:blocks/@@TEXTURE@@",
 	     "top": "substratum:blocks/@@TEXTURE@@",
-	     "side": "substratum:blocks/@@TEXTURE@@"
+	     "side": "substratum:blocks/@@TEXTURESIDE@@"
 	  }
 	}
 	EOF
   ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
+    | sed -e "s/@@TEXTURESIDE@@/slab"$slab"/g" \
     | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
     | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slabTop"$slab".json"
+  
+  ( # Double slab
+  cat <<- EOF
+	{
+	   "parent": "block/cube_column",
+	   "textures":
+	   {
+	     "end": "substratum:blocks/@@TEXTURE@@",
+	     "side": "substratum:blocks/@@TEXTURESIDE@@"
+	  }
+	}
+	EOF
+  ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
+    | sed -e "s/@@TEXTURESIDE@@/slab"$slab"/g" \
+    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slabDouble"$slab".json"
 
   ( # Slab item model
   cat <<- EOF

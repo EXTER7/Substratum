@@ -4,6 +4,6 @@
    {
      "bottom": "substratum:blocks/blockCopper",
      "top": "substratum:blocks/blockCopper",
-     "side": "substratum:blocks/blockCopper"
+     "side": "substratum:blocks/slabCopper"
   }
 }

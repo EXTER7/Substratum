@@ -4,6 +4,6 @@
    {
      "bottom": "substratum:blocks/blockLead",
      "top": "substratum:blocks/blockLead",
-     "side": "substratum:blocks/blockLead"
+     "side": "substratum:blocks/slabLead"
   }
 }

@@ -185,6 +185,25 @@ item.substratum.plateSignalum.name=Signalum Plate
 item.substratum.plateLumium.name=Lumium Plate
 item.substratum.plateEnderium.name=Enderium Plate
 
+item.substratum.rodIron.name=Iron Rod
+item.substratum.rodGold.name=Gold Rod
+item.substratum.rodCopper.name=Copper Rod
+item.substratum.rodTin.name=Tin Rod
+item.substratum.rodBronze.name=Bronze Rod
+item.substratum.rodElectrum.name=Electrum Rod
+item.substratum.rodInvar.name=Invar Rod
+item.substratum.rodNickel.name=Nickel Rod
+item.substratum.rodZinc.name=Zinc Rod
+item.substratum.rodBrass.name=Brass Rod
+item.substratum.rodSilver.name=Silver Rod
+item.substratum.rodSteel.name=Steel Rod
+item.substratum.rodLead.name=Lead Rod
+item.substratum.rodPlatinum.name=Platinum Rod
+item.substratum.rodCupronickel.name=Cupronickel Rod
+item.substratum.rodSignalum.name=Signalum Rod
+item.substratum.rodLumium.name=Lumium Rod
+item.substratum.rodEnderium.name=Enderium Rod
+
 item.substratum.bucketDustRedstone.name=Redstone Dust Bucket
 item.substratum.bucketDustGlowstone.name=Glowstone Dust Bucket
 item.substratum.bucketDustEnderpearl.name=Enderpearl Dust Bucket
