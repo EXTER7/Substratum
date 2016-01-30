@@ -353,6 +353,14 @@ public class SubstratumRecipes
                 'P', "plate" + mat.suffix,
                 'I', "ingot" + mat.suffix)); 
           }
+          if(SubstratumConfig.material_recipes.get(mat).ingots_from_gear)
+          {
+            ItemStack ingot = SubstratumItems.getStack(EnumMaterialItem.INGOT, mat, 4);
+            if(ingot != null)
+            {
+              GameRegistry.addSmelting(SubstratumItems.getStack(EnumMaterialItem.GEAR, mat), ingot, 0);
+            }
+          }
         }
       }
     }
@@ -392,6 +400,14 @@ public class SubstratumRecipes
             "   ",
             'I', "ingot" + mat.suffix)); 
       }
+      if(SubstratumConfig.material_recipes.get(mat).ingot_from_plate)
+      {
+        ItemStack ingot = SubstratumItems.getStack(EnumMaterialItem.INGOT,mat);
+        if(ingot != null)
+        {
+          GameRegistry.addSmelting(SubstratumItems.getStack(EnumMaterialItem.PLATE, mat), ingot, 0);
+        }
+      }
     }
     
     //Rod crafting recipes.
@@ -405,6 +421,13 @@ public class SubstratumRecipes
             "I  ",
             "I  ",
             'I', "ingot" + mat.suffix)); 
+      }
+      if(SubstratumItems.item_mortar != null && SubstratumConfig.material_recipes.get(mat).dust_from_rod)
+      {
+        ItemStack mortar = new ItemStack(SubstratumItems.item_mortar,1,OreDictionary.WILDCARD_VALUE);
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+            SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,mat,2),
+            mortar, SubstratumItems.getStack(EnumMaterialItem.ROD, mat)));
       }
     }
   }
