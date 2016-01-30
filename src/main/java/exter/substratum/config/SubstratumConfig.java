@@ -28,6 +28,83 @@ public class SubstratumConfig
     }
   }
   
+  static public class MaterialRecipeConfig
+  {
+    public final boolean dust_bucket;
+    public final boolean gear_crafting;
+    public final boolean plate_crafting;
+    public final boolean dust_from_ingot;
+    public final boolean rod_crafting;
+    
+    public final boolean ingot_from_plate;
+    public final boolean ingots_from_gear;
+    public final boolean ingot_from_dust;
+    public final boolean dust_from_rod;
+    
+    public MaterialRecipeConfig(Configuration config,EnumMaterial material)
+    {
+      String name = material.suffix.toLowerCase();
+      String category = "recipes." + name;
+      if(EnumMaterialItem.DUST.materials.contains(material) && material != EnumMaterial.SULFUR && material != EnumMaterial.NITER)
+      {
+        config.renameProperty(category, "dust", "dust_from_ingot");
+        dust_from_ingot = config.getBoolean("dust_from_ingot", category, true, "Enable/disable " + name + " dust mortar crafting recipe.");
+      } else
+      {
+        dust_from_ingot = false;
+      }
+
+      if(EnumMaterialItem.BUCKET_DUST.materials.contains(material))
+      {
+        config.renameProperty(category,"bucket","dust_bucket");
+        dust_bucket = config.getBoolean("dust_bucket", category, true, "Enable/disable " + name + " dust bucket recipes.");
+      } else
+      {
+        dust_bucket = false;
+      }
+
+      if(EnumMaterialItem.INGOT.materials.contains(material))
+      {
+        ingot_from_dust = config.getBoolean("ingot_from_dust", "recipes." + name, true, "Enable/disable " + name + " dust to ingot smelting recipe.");
+      } else
+      {
+        ingot_from_dust = false;
+      }
+      
+      if(EnumMaterialItem.PLATE.materials.contains(material))
+      {
+        config.renameProperty(category,"plate","plate_from_ingots");
+        plate_crafting = config.getBoolean("plate_from_ingots", "recipes." + name, true, "Enable/disable " + name + " plate crafting recipe.");
+        ingot_from_plate = config.getBoolean("ingot_from_plate", "recipes." + name, true, "Enable/disable " + name + " plate to ingot smelting recipe.");
+      } else
+      {
+        plate_crafting = false;
+        ingot_from_plate = false;
+      }
+      
+      if(EnumMaterialItem.GEAR.materials.contains(material))
+      {
+        config.renameProperty(category,"gear","gear_from_ingots");
+        gear_crafting = config.getBoolean("gear_from_ingots", "recipes." + name, true, "Enable/disable " + name + " gear crafting recipe.");
+        ingots_from_gear = config.getBoolean("ingots_from_gear", "recipes." + name, true, "Enable/disable " + name + " gear to ingot smelting recipe.");
+      } else
+      {
+        gear_crafting = false;
+        ingots_from_gear = false;
+      }
+      
+      if(EnumMaterialItem.ROD.materials.contains(material))
+      {
+        rod_crafting = config.getBoolean("rod_from_ingots", "recipes." + name, true, "Enable/disable " + name + " rod crafting recipe.");
+        dust_from_rod = config.getBoolean("dust_from_rod", "recipes." + name, true, "Enable/disable " + name + " rod to dusts mortar crafting recipe.");
+      } else
+      {
+        rod_crafting = false;
+        dust_from_rod = false;
+      }
+    }
+  }
+  
   public static WorldgenConfig worldgen_copper;
   public static WorldgenConfig worldgen_tin;
   public static WorldgenConfig worldgen_zinc;
@@ -39,23 +116,24 @@ public class SubstratumConfig
   public static WorldgenConfig worldgen_sulfur;
   public static WorldgenConfig worldgen_niter;
 
-  public static boolean recipe_bronze_enable;
-  public static boolean recipe_brass_enable;
-  public static boolean recipe_invar_enable;
-  public static boolean recipe_electrum_enable;
-  public static boolean recipe_cupronickel_enable;
+  public static boolean blend_bronze_enable;
+  public static boolean blend_brass_enable;
+  public static boolean blend_invar_enable;
+  public static boolean blend_electrum_enable;
+  public static boolean blend_cupronickel_enable;
 
-  public static boolean recipe_steel_enable;
-  public static boolean recipe_signalum_enable;
-  public static boolean recipe_lumium_enable;
-  public static boolean recipe_enderium_enable;
+  public static boolean blend_steel_enable;
+  public static boolean blend_signalum_enable;
+  public static boolean blend_lumium_enable;
+  public static boolean blend_enderium_enable;
 
-  public static boolean recipe_gunpowder_enable;
+  public static boolean blend_gunpowder_enable;
 
-  public static Map<EnumMaterial,Boolean> recipe_buckets_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
-  public static Map<EnumMaterial,Boolean> recipe_gears_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
-  public static Map<EnumMaterial,Boolean> recipe_plates_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
-  public static Map<EnumMaterial,Boolean> recipe_dusts_enable = new EnumMap<EnumMaterial,Boolean>(EnumMaterial.class);
+  public static boolean cheaper_plate_recipes;
+  public static boolean cheaper_rod_recipes;
+  public static boolean cheaper_gear_recipes;
+  
+  public static Map<EnumMaterial,MaterialRecipeConfig> material_recipes = new EnumMap<EnumMaterial,MaterialRecipeConfig>(EnumMaterial.class);
 
   public static int misc_mortar_uses;
   
@@ -72,46 +150,28 @@ public class SubstratumConfig
     worldgen_sulfur = new WorldgenConfig(config, "sulfur", 5, 123, 15, 20);
     worldgen_niter = new WorldgenConfig(config, "niter", 5, 123, 10, 15);
 
-    recipe_bronze_enable = config.getBoolean("blend", "recipes.bronze", true, "Enable/disable bronze dust blending recipe.");
-    recipe_brass_enable = config.getBoolean("blend", "recipes.brass", true, "Enable/disable brass dust blending recipe.");
-    recipe_invar_enable = config.getBoolean("blend", "recipes.invar", true, "Enable/disable invar dust blending recipe.");
-    recipe_electrum_enable = config.getBoolean("blend", "recipes.electrum", true, "Enable/disable electrum dust blending recipe.");
-    recipe_cupronickel_enable = config.getBoolean("blend", "recipes.cupronickel", true, "Enable/disable cupronickel dust blending recipe.");
+    blend_bronze_enable = config.getBoolean("blend", "recipes.bronze", true, "Enable/disable bronze dust blending recipe.");
+    blend_brass_enable = config.getBoolean("blend", "recipes.brass", true, "Enable/disable brass dust blending recipe.");
+    blend_invar_enable = config.getBoolean("blend", "recipes.invar", true, "Enable/disable invar dust blending recipe.");
+    blend_electrum_enable = config.getBoolean("blend", "recipes.electrum", true, "Enable/disable electrum dust blending recipe.");
+    blend_cupronickel_enable = config.getBoolean("blend", "recipes.cupronickel", true, "Enable/disable cupronickel dust blending recipe.");
 
-    recipe_steel_enable = config.getBoolean("blend", "recipes.steel", false, "Enable/disable steel dust blending recipe.");
-    recipe_signalum_enable = config.getBoolean("blend", "recipes.signalum", false, "Enable/disable signalum dust blending recipe.");
-    recipe_lumium_enable = config.getBoolean("blend", "recipes.lumium", false, "Enable/disable lumium dust blending recipe.");
-    recipe_enderium_enable = config.getBoolean("blend", "recipes.enderium", false, "Enable/disable enderium dust blending recipe.");
+    blend_steel_enable = config.getBoolean("blend", "recipes.steel", false, "Enable/disable steel dust blending recipe.");
+    blend_signalum_enable = config.getBoolean("blend", "recipes.signalum", false, "Enable/disable signalum dust blending recipe.");
+    blend_lumium_enable = config.getBoolean("blend", "recipes.lumium", false, "Enable/disable lumium dust blending recipe.");
+    blend_enderium_enable = config.getBoolean("blend", "recipes.enderium", false, "Enable/disable enderium dust blending recipe.");
 
-    recipe_gunpowder_enable = config.getBoolean("blend", "recipes.gunpowder", true, "Enable/disable gunpowder dust blending recipe.");
+    blend_gunpowder_enable = config.getBoolean("blend", "recipes.gunpowder", true, "Enable/disable gunpowder dust blending recipe.");
 
     misc_mortar_uses = config.getInt("mortar_uses", "misc", 20, 0, 1000, "How many uses the mortar has unti it breaks. Setting this to 0 disables the item.");
 
-    for(EnumMaterial mat:EnumMaterialItem.DUST.materials)
-    {
-      if(mat != EnumMaterial.SULFUR && mat != EnumMaterial.NITER)
-      {
-        String name = mat.suffix.toLowerCase();
-        recipe_dusts_enable.put(mat,config.getBoolean("dust", "recipes." + name, true, "Enable/disable " + name + " dust mortar recipe."));
-      }
-    }
+    cheaper_plate_recipes = config.getBoolean("cheaper_plate_recipes", "recipes.balance", false, "Require less materials to make plates.");
+    cheaper_rod_recipes = config.getBoolean("cheaper_rod_recipes", "recipes.balance", false, "Require less materials to make rods.");
+    cheaper_gear_recipes = config.getBoolean("cheaper_gear_recipes", "recipes.balance", false, "Require less materials to make gears.");
 
-    for(EnumMaterial mat:EnumMaterialItem.BUCKET_LIQUID.materials)
+    for(EnumMaterial mat:EnumMaterial.values())
     {
-      String name = mat.suffix.toLowerCase();
-      recipe_buckets_enable.put(mat,config.getBoolean("bucket", "recipes." + name, true, "Enable/disable " + name + " bucket recipe."));
-    }
-
-    for(EnumMaterial mat:EnumMaterialItem.GEAR.materials)
-    {
-      String name = mat.suffix.toLowerCase();
-      recipe_gears_enable.put(mat,config.getBoolean("gear", "recipes." + name, true, "Enable/disable " + name + " gear recipe."));
-    }
-    
-    for(EnumMaterial mat:EnumMaterialItem.PLATE.materials)
-    {
-      String name = mat.suffix.toLowerCase();
-      recipe_plates_enable.put(mat,config.getBoolean("plate", "recipes." + name, true, "Enable/disable " + name + " plate recipe."));
+      material_recipes.put(mat, new MaterialRecipeConfig(config,mat));
     }
   }
 }

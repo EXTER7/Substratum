@@ -67,6 +67,7 @@ public enum EnumMaterialItem
       EnumMaterial.LUMIUM,
       EnumMaterial.ENDERIUM)),
 
+  //1 gear = 4 ingots
   GEAR("gear",ImmutableList.of(
       EnumMaterial.STONE,
       EnumMaterial.IRON,
@@ -88,6 +89,7 @@ public enum EnumMaterialItem
       EnumMaterial.LUMIUM,
       EnumMaterial.ENDERIUM)),
 
+  //1 plate = 1 ingot
   PLATE("plate",ImmutableList.of(
       EnumMaterial.IRON,
       EnumMaterial.GOLD,
@@ -118,6 +120,7 @@ public enum EnumMaterialItem
       EnumMaterial.GLOWSTONE,
       EnumMaterial.ENDERPEARL)),
 
+  //2 rods = 1 ingot
   ROD("rod",ImmutableList.of(
       EnumMaterial.IRON,
       EnumMaterial.GOLD,
@@ -138,6 +141,7 @@ public enum EnumMaterialItem
       EnumMaterial.LUMIUM,
       EnumMaterial.ENDERIUM)),
   
+  //4 small dust = 1 dust
   DUST_SMALL("dustSmall",ImmutableList.of(
       EnumMaterial.COAL,
       EnumMaterial.IRON,

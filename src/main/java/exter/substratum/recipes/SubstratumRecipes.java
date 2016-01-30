@@ -25,7 +25,7 @@ public class SubstratumRecipes
 
   static public void init()
   {
-    if(SubstratumConfig.recipe_bronze_enable)
+    if(SubstratumConfig.blend_bronze_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.BRONZE,4),
@@ -42,7 +42,7 @@ public class SubstratumRecipes
           "dustSmallTin"));
     }
 
-    if(SubstratumConfig.recipe_brass_enable)
+    if(SubstratumConfig.blend_brass_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.BRASS,4),
@@ -59,7 +59,7 @@ public class SubstratumRecipes
           "dustSmallZinc"));
     }
 
-    if(SubstratumConfig.recipe_cupronickel_enable)
+    if(SubstratumConfig.blend_cupronickel_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.CUPRONICKEL,2),
@@ -72,7 +72,7 @@ public class SubstratumRecipes
           "dustSmallNickel"));
     }
 
-    if(SubstratumConfig.recipe_invar_enable)
+    if(SubstratumConfig.blend_invar_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.INVAR,3),
@@ -87,7 +87,7 @@ public class SubstratumRecipes
           "dustSmallNickel"));
     }
 
-    if(SubstratumConfig.recipe_electrum_enable)
+    if(SubstratumConfig.blend_electrum_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ELECTRUM,2),
@@ -114,28 +114,28 @@ public class SubstratumRecipes
 
       ItemStack mortar = new ItemStack(SubstratumItems.item_mortar,1,OreDictionary.WILDCARD_VALUE);
 
-      if(SubstratumConfig.recipe_dusts_enable.get(EnumMaterial.COAL))
+      if(SubstratumConfig.material_recipes.get(EnumMaterial.COAL).dust_from_ingot)
       {
         GameRegistry.addRecipe(new ShapelessOreRecipe(
             SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.COAL),
             mortar, new ItemStack(Items.coal,1,0)));
       }
 
-      if(SubstratumConfig.recipe_dusts_enable.get(EnumMaterial.CHARCOAL))
+      if(SubstratumConfig.material_recipes.get(EnumMaterial.CHARCOAL).dust_from_ingot)
       {
         GameRegistry.addRecipe(new ShapelessOreRecipe(
             SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.CHARCOAL),
             mortar, new ItemStack(Items.coal,1,1)));
       }
 
-      if(SubstratumConfig.recipe_dusts_enable.get(EnumMaterial.OBSIDIAN))
+      if(SubstratumConfig.material_recipes.get(EnumMaterial.OBSIDIAN).dust_from_ingot)
       {
         GameRegistry.addRecipe(new ShapelessOreRecipe(
             SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.OBSIDIAN,2),
             mortar, new ItemStack(Blocks.obsidian)));
       }
 
-      if(SubstratumConfig.recipe_dusts_enable.get(EnumMaterial.ENDERPEARL))
+      if(SubstratumConfig.material_recipes.get(EnumMaterial.ENDERPEARL).dust_from_ingot)
       {
         GameRegistry.addRecipe(new ShapelessOreRecipe(
             SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ENDERPEARL),
@@ -158,9 +158,10 @@ public class SubstratumRecipes
             "SS",
             'S', SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,mat));
 
+        //Ingot -> Dust
         if(SubstratumItems.getStack(EnumMaterialItem.INGOT,mat) != null)
         {
-          if(SubstratumConfig.recipe_dusts_enable.get(mat))
+          if(SubstratumConfig.material_recipes.get(mat).dust_from_ingot)
           {
             GameRegistry.addRecipe(new ShapelessOreRecipe(
                 SubstratumItems.getStack(EnumMaterialItem.DUST,mat),
@@ -170,8 +171,9 @@ public class SubstratumRecipes
       }
     }
 
+    //Dust -> Dust bucket
     ItemStack bucket = new ItemStack(Items.bucket);
-    if(SubstratumConfig.recipe_buckets_enable.get(EnumMaterial.REDSTONE))
+    if(SubstratumConfig.material_recipes.get(EnumMaterial.REDSTONE).dust_bucket)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,EnumMaterial.REDSTONE),
@@ -180,7 +182,7 @@ public class SubstratumRecipes
           "dustRedstone"));
     }
 
-    if(SubstratumConfig.recipe_buckets_enable.get(EnumMaterial.GLOWSTONE))
+    if(SubstratumConfig.material_recipes.get(EnumMaterial.GLOWSTONE).dust_bucket)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,EnumMaterial.GLOWSTONE),
@@ -191,7 +193,7 @@ public class SubstratumRecipes
           "dustGlowstone"));
     }
 
-    if(SubstratumConfig.recipe_buckets_enable.get(EnumMaterial.ENDERPEARL))
+    if(SubstratumConfig.material_recipes.get(EnumMaterial.ENDERPEARL).dust_bucket)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,EnumMaterial.ENDERPEARL),
@@ -204,7 +206,7 @@ public class SubstratumRecipes
 
     for(EnumMaterial mat:EnumMaterialItem.BUCKET_DUST.materials)
     {
-      if(SubstratumConfig.recipe_buckets_enable.get(mat))
+      if(SubstratumConfig.material_recipes.get(mat).dust_bucket)
       {
         GameRegistry.addSmelting(
             SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,mat),
@@ -213,7 +215,7 @@ public class SubstratumRecipes
       }
     }
 
-    if(SubstratumConfig.recipe_gunpowder_enable)
+    if(SubstratumConfig.blend_gunpowder_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           new ItemStack(Items.gunpowder,2),
@@ -223,7 +225,7 @@ public class SubstratumRecipes
           "dustCharcoal"));
     }
 
-    if(SubstratumConfig.recipe_signalum_enable)
+    if(SubstratumConfig.blend_signalum_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.SIGNALUM,4),
@@ -234,7 +236,7 @@ public class SubstratumRecipes
           "bucketLiquidRedstone"));
     }
 
-    if(SubstratumConfig.recipe_lumium_enable)
+    if(SubstratumConfig.blend_lumium_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.LUMIUM,4),
@@ -245,7 +247,7 @@ public class SubstratumRecipes
           "bucketLiquidGlowstone" ));
     }
 
-    if(SubstratumConfig.recipe_enderium_enable)
+    if(SubstratumConfig.blend_enderium_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ENDERIUM,2),
@@ -261,7 +263,7 @@ public class SubstratumRecipes
     for(EnumMaterial mat:EnumMaterialItem.DUST.materials)
     {
       ItemStack ingot = SubstratumItems.getStack(EnumMaterialItem.INGOT, mat);
-      if(ingot != null)
+      if(ingot != null && SubstratumConfig.material_recipes.get(mat).ingot_from_dust)
       {
         GameRegistry.addSmelting(
             SubstratumItems.getStack(EnumMaterialItem.DUST, mat),
@@ -319,7 +321,7 @@ public class SubstratumRecipes
     ItemStack stone = new ItemStack(Blocks.cobblestone);
     for(EnumMaterial mat:EnumMaterialItem.GEAR.materials)
     {
-      if(SubstratumConfig.recipe_gears_enable.get(mat))
+      if(SubstratumConfig.material_recipes.get(mat).gear_crafting)
       {
         if(mat == EnumMaterial.STONE)
         {
@@ -332,27 +334,76 @@ public class SubstratumRecipes
               'S', stick)); 
         } else
         {
-          GameRegistry.addRecipe(new ShapedOreRecipe(
-              SubstratumItems.getStack(EnumMaterialItem.GEAR, mat),
-              " I ",
-              "ISI",
-              " I ",
-              'I', "ingot" + mat.suffix,
-              'S', stick)); 
+          if(SubstratumConfig.cheaper_gear_recipes)
+          {
+            GameRegistry.addRecipe(new ShapedOreRecipe(
+                SubstratumItems.getStack(EnumMaterialItem.GEAR, mat),
+                " I ",
+                "ISI",
+                " I ",
+                'I', "ingot" + mat.suffix,
+                'S', stick)); 
+          } else
+          {
+            GameRegistry.addRecipe(new ShapedOreRecipe(
+                SubstratumItems.getStack(EnumMaterialItem.GEAR, mat),
+                " P ",
+                "PIP",
+                " P ",
+                'P', "plate" + mat.suffix,
+                'I', "ingot" + mat.suffix)); 
+          }
         }
       }
     }
+
+    //Slab crafting recipes.
+    for(Map.Entry<EnumMaterial, ItemStack> entry:SubstratumBlocks.slab_stacks.entrySet())
+    {
+      ItemStack slabs = entry.getValue().copy();
+      slabs.stackSize = 4;
+      GameRegistry.addRecipe(new ShapedOreRecipe(
+          slabs,
+          "BB",
+          'B', "block" + entry.getKey())); 
+    }
     
+    //Stairs crafting recipes.
+    for(Map.Entry<EnumMaterial, ItemStack> entry:SubstratumBlocks.stairs_stacks.entrySet())
+    {
+      ItemStack stairs = entry.getValue().copy();
+      stairs.stackSize = 4;
+      GameRegistry.addRecipe(new ShapedOreRecipe(
+          entry.getValue(),
+          " B",
+          "BB",
+          'B', "block" + entry.getKey())); 
+    }
+
     //Plate crafting recipes.
     for(EnumMaterial mat:EnumMaterialItem.PLATE.materials)
     {
-      if(SubstratumConfig.recipe_plates_enable.get(mat))
+      if(SubstratumConfig.material_recipes.get(mat).plate_crafting)
       {
         GameRegistry.addRecipe(new ShapedOreRecipe(
-            SubstratumItems.getStack(EnumMaterialItem.PLATE, mat, 3),
+            SubstratumItems.getStack(EnumMaterialItem.PLATE, mat, SubstratumConfig.cheaper_plate_recipes ? 3 : 2),
             "III",
             "   ",
             "   ",
+            'I', "ingot" + mat.suffix)); 
+      }
+    }
+    
+    //Rod crafting recipes.
+    for(EnumMaterial mat:EnumMaterialItem.ROD.materials)
+    {
+      if(SubstratumConfig.material_recipes.get(mat).rod_crafting)
+      {
+        GameRegistry.addRecipe(new ShapedOreRecipe(
+            SubstratumItems.getStack(EnumMaterialItem.ROD, mat, SubstratumConfig.cheaper_rod_recipes ? 6 : 4),
+            "I  ",
+            "I  ",
+            "I  ",
             'I', "ingot" + mat.suffix)); 
       }
     }
