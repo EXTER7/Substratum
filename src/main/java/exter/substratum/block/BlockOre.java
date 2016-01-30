@@ -21,19 +21,21 @@ public class BlockOre extends Block implements IBlockVariants
 
   public enum EnumVariant implements IStringSerializable
   {
-    COPPER(EnumMaterial.COPPER),
-    TIN(EnumMaterial.TIN),
-    NICKEL(EnumMaterial.NICKEL),
-    ZINC(EnumMaterial.ZINC),
-    SILVER(EnumMaterial.SILVER),
-    LEAD(EnumMaterial.LEAD),
-    PLATINUM(EnumMaterial.PLATINUM);
+    COPPER(EnumMaterial.COPPER,1),
+    TIN(EnumMaterial.TIN,1),
+    NICKEL(EnumMaterial.NICKEL,2),
+    ZINC(EnumMaterial.ZINC,1),
+    SILVER(EnumMaterial.SILVER,2),
+    LEAD(EnumMaterial.LEAD,2),
+    PLATINUM(EnumMaterial.PLATINUM,2);
     
     public final EnumMaterial material;
+    public final int harvest_level;
 
-    private EnumVariant(EnumMaterial material)
+    private EnumVariant(EnumMaterial material,int harvest_level)
     {
       this.material = material;
+      this.harvest_level = harvest_level;
     }
 
     @Override
@@ -59,7 +61,10 @@ public class BlockOre extends Block implements IBlockVariants
     setStepSound(Block.soundTypeStone);
     setUnlocalizedName("substratum.ore");
     setCreativeTab(TabMaterials.tab);
-    setHarvestLevel("pickaxe", 1);
+    for(EnumVariant variant:EnumVariant.values())
+    {
+      setHarvestLevel("pickaxe", variant.harvest_level, getDefaultState().withProperty(VARIANT, variant));
+    }
   }
 
   @Override
