@@ -136,7 +136,33 @@ public enum EnumMaterialItem
       EnumMaterial.CUPRONICKEL,
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
-      EnumMaterial.ENDERIUM));
+      EnumMaterial.ENDERIUM)),
+  
+  DUST_SMALL("dustSmall",ImmutableList.of(
+      EnumMaterial.COAL,
+      EnumMaterial.IRON,
+      EnumMaterial.GOLD,
+      EnumMaterial.COPPER,
+      EnumMaterial.TIN,
+      EnumMaterial.BRONZE,
+      EnumMaterial.ELECTRUM,
+      EnumMaterial.INVAR,
+      EnumMaterial.NICKEL,
+      EnumMaterial.ZINC,
+      EnumMaterial.BRASS,
+      EnumMaterial.SILVER,
+      EnumMaterial.STEEL,
+      EnumMaterial.LEAD,
+      EnumMaterial.PLATINUM,
+      EnumMaterial.CUPRONICKEL,
+      EnumMaterial.ENDERPEARL,
+      EnumMaterial.SIGNALUM,
+      EnumMaterial.LUMIUM,
+      EnumMaterial.ENDERIUM,
+      EnumMaterial.CHARCOAL,
+      EnumMaterial.OBSIDIAN,
+      EnumMaterial.SULFUR,
+      EnumMaterial.NITER));
       
   public final ImmutableList<EnumMaterial> materials;
   public final String prefix;

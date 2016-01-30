@@ -33,6 +33,13 @@ public class SubstratumRecipes
           "dustCopper", 
           "dustCopper", 
           "dustTin"));
+
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.BRONZE),
+          "dustSmallCopper", 
+          "dustSmallCopper", 
+          "dustSmallCopper", 
+          "dustSmallTin"));
     }
 
     if(SubstratumConfig.recipe_brass_enable)
@@ -43,6 +50,13 @@ public class SubstratumRecipes
           "dustCopper", 
           "dustCopper", 
           "dustZinc"));
+
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.BRASS),
+          "dustSmallCopper", 
+          "dustSmallCopper", 
+          "dustSmallCopper", 
+          "dustSmallZinc"));
     }
 
     if(SubstratumConfig.recipe_cupronickel_enable)
@@ -51,6 +65,11 @@ public class SubstratumRecipes
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.CUPRONICKEL,2),
           "dustCopper",
           "dustNickel"));
+
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,EnumMaterial.CUPRONICKEL,2),
+          "dustSmallCopper",
+          "dustSmallNickel"));
     }
 
     if(SubstratumConfig.recipe_invar_enable)
@@ -60,6 +79,12 @@ public class SubstratumRecipes
           "dustIron", 
           "dustIron", 
           "dustNickel"));
+      
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,EnumMaterial.INVAR,3),
+          "dustSmallIron", 
+          "dustSmallIron", 
+          "dustSmallNickel"));
     }
 
     if(SubstratumConfig.recipe_electrum_enable)
@@ -68,6 +93,11 @@ public class SubstratumRecipes
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ELECTRUM,2),
           "dustGold", 
           "dustSilver"));
+      
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,EnumMaterial.ELECTRUM,2),
+          "dustSmallGold", 
+          "dustSmallSilver"));
     }
     
     if(SubstratumItems.item_mortar != null)
@@ -114,6 +144,20 @@ public class SubstratumRecipes
       
       for(EnumMaterial mat:EnumMaterialItem.DUST.materials)
       {
+        //Dust -> Small dust
+        GameRegistry.addRecipe(new ShapedOreRecipe(
+            SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,mat,4),
+            "  ",
+            " D",
+            'D', "dust" + mat.suffix));
+        
+        //Small dust -> Dust
+        GameRegistry.addRecipe(
+            SubstratumItems.getStack(EnumMaterialItem.DUST,mat),
+            "SS",
+            "SS",
+            'S', SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,mat));
+
         if(SubstratumItems.getStack(EnumMaterialItem.INGOT,mat) != null)
         {
           if(SubstratumConfig.recipe_dusts_enable.get(mat))
