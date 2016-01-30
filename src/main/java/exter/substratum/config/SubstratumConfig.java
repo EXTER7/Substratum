@@ -41,14 +41,20 @@ public class SubstratumConfig
     public final boolean ingot_from_dust;
     public final boolean dust_from_rod;
     
+    static private boolean hasIngot(EnumMaterial material)
+    {
+      return EnumMaterialItem.INGOT.materials.contains(material) || material == EnumMaterial.IRON || material == EnumMaterial.GOLD;
+    }
+    
     public MaterialRecipeConfig(Configuration config,EnumMaterial material)
     {
       String name = material.suffix.toLowerCase();
       String category = "recipes." + name;
       if(EnumMaterialItem.DUST.materials.contains(material) && material != EnumMaterial.SULFUR && material != EnumMaterial.NITER)
       {
-        config.renameProperty(category, "dust", "dust_from_ingot");
-        dust_from_ingot = config.getBoolean("dust_from_ingot", category, true, "Enable/disable " + name + " dust mortar crafting recipe.");
+        String property = hasIngot(material) ? "dust_from_ingot" : "dust_from_item";
+        config.renameProperty(category, "dust", property);
+        dust_from_ingot = config.getBoolean(property, category, true, "Enable/disable " + name + " dust with mortar crafting recipe.");
       } else
       {
         dust_from_ingot = false;
@@ -63,7 +69,7 @@ public class SubstratumConfig
         dust_bucket = false;
       }
 
-      if(EnumMaterialItem.INGOT.materials.contains(material))
+      if(hasIngot(material))
       {
         ingot_from_dust = config.getBoolean("ingot_from_dust", "recipes." + name, true, "Enable/disable " + name + " dust to ingot smelting recipe.");
       } else
@@ -73,8 +79,8 @@ public class SubstratumConfig
       
       if(EnumMaterialItem.PLATE.materials.contains(material))
       {
-        config.renameProperty(category,"plate","plate_from_ingots");
-        plate_crafting = config.getBoolean("plate_from_ingots", "recipes." + name, true, "Enable/disable " + name + " plate crafting recipe.");
+        config.renameProperty(category,"plate","plate_crafting");
+        plate_crafting = config.getBoolean("plate_crafting", "recipes." + name, true, "Enable/disable " + name + " plate crafting recipe.");
         ingot_from_plate = config.getBoolean("ingot_from_plate", "recipes." + name, true, "Enable/disable " + name + " plate to ingot smelting recipe.");
       } else
       {
@@ -84,8 +90,8 @@ public class SubstratumConfig
       
       if(EnumMaterialItem.GEAR.materials.contains(material))
       {
-        config.renameProperty(category,"gear","gear_from_ingots");
-        gear_crafting = config.getBoolean("gear_from_ingots", "recipes." + name, true, "Enable/disable " + name + " gear crafting recipe.");
+        config.renameProperty(category,"gear","gear_crafting");
+        gear_crafting = config.getBoolean("gear_crafting", "recipes." + name, true, "Enable/disable " + name + " gear crafting recipe.");
         ingots_from_gear = config.getBoolean("ingots_from_gear", "recipes." + name, true, "Enable/disable " + name + " gear to ingot smelting recipe.");
       } else
       {
@@ -95,7 +101,7 @@ public class SubstratumConfig
       
       if(EnumMaterialItem.ROD.materials.contains(material))
       {
-        rod_crafting = config.getBoolean("rod_from_ingots", "recipes." + name, true, "Enable/disable " + name + " rod crafting recipe.");
+        rod_crafting = config.getBoolean("rod_crafting", "recipes." + name, true, "Enable/disable " + name + " rod crafting recipe.");
         dust_from_rod = config.getBoolean("dust_from_rod", "recipes." + name, true, "Enable/disable " + name + " rod to dusts mortar crafting recipe.");
       } else
       {
