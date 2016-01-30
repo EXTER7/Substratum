@@ -373,7 +373,7 @@ public class SubstratumRecipes
       GameRegistry.addRecipe(new ShapedOreRecipe(
           slabs,
           "BB",
-          'B', "block" + entry.getKey())); 
+          'B', "block" + entry.getKey().suffix)); 
     }
     
     //Stairs crafting recipes.
@@ -382,10 +382,10 @@ public class SubstratumRecipes
       ItemStack stairs = entry.getValue().copy();
       stairs.stackSize = 4;
       GameRegistry.addRecipe(new ShapedOreRecipe(
-          entry.getValue(),
+          stairs,
           " B",
           "BB",
-          'B', "block" + entry.getKey())); 
+          'B', "block" + entry.getKey().suffix)); 
     }
 
     //Plate crafting recipes.
