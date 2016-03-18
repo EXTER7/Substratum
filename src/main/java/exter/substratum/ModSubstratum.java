@@ -7,11 +7,15 @@ import exter.substratum.block.SubstratumBlocks;
 import exter.substratum.block.BlockDustOre;
 import exter.substratum.block.BlockOre;
 import exter.substratum.config.SubstratumConfig;
+import exter.substratum.fluid.SubstratumFluids;
+import exter.substratum.handler.SubstratumBucketHandler;
 import exter.substratum.item.SubstratumItems;
+import exter.substratum.material.EnumMaterialItem;
 import exter.substratum.proxy.CommonProxy;
 import exter.substratum.recipes.SubstratumRecipes;
 import exter.substratum.worldgen.SubstratumWorldGenerator;
 import exter.substratum.worldgen.WorldGenOre;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -27,7 +31,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
   modid = ModSubstratum.MODID,
   name = ModSubstratum.MODNAME,
   version = ModSubstratum.MODVERSION,
-  dependencies = "required-after:Forge@[12.16.0.1766,)"
+  dependencies = "required-after:Forge@[12.16.0.1767,)"
 )
 public class ModSubstratum
 {
@@ -48,8 +52,7 @@ public class ModSubstratum
   
   public static Logger log = LogManager.getLogger(MODNAME);
 
-  
-  
+ 
   @EventHandler
   public void preInit(FMLPreInitializationEvent event)
   {
@@ -59,8 +62,13 @@ public class ModSubstratum
     SubstratumConfig.load(config);
     SubstratumItems.registerItems(config);
     SubstratumBlocks.registerBlocks(config);
+    SubstratumFluids.registerFluids();
 
     SubstratumRecipes.preInit();
+
+    SubstratumBucketHandler bucket_handler = new SubstratumBucketHandler();
+    MinecraftForge.EVENT_BUS.register(bucket_handler);
+    SubstratumItems.item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setRightClickHandler(bucket_handler);
 
     config.save();
 

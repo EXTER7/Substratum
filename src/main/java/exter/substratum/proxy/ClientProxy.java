@@ -3,6 +3,7 @@ package exter.substratum.proxy;
 import java.util.Map;
 
 import exter.substratum.block.SubstratumBlocks;
+import exter.substratum.fluid.SubstratumFluids;
 import exter.substratum.block.BlockDustOre;
 import exter.substratum.block.BlockMetal;
 import exter.substratum.block.BlockMetalSlab;
@@ -15,9 +16,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fluids.BlockFluidBase;
+import net.minecraftforge.fluids.Fluid;
 
 public class ClientProxy extends CommonProxy
 {
@@ -36,7 +41,6 @@ public class ClientProxy extends CommonProxy
       return location;
     }    
   }
-  
   
   private void registerItemModel(Block block,String name,int meta)
   {
@@ -58,11 +62,22 @@ public class ClientProxy extends CommonProxy
     Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
     .register(item, new SimpleItemMeshDefinition(new ModelResourceLocation(name, "inventory")));
   }
+  
+  private void registerFluidModel(Fluid fluid,String name)
+  {
+    Block block = fluid.getBlock();
+    Item item = Item.getItemFromBlock(block);
+    ModelBakery.registerItemVariants(item);
+    ModelLoader.setCustomMeshDefinition( item, new SimpleItemMeshDefinition(new ModelResourceLocation("substratum:" + name)));
+    ModelLoader.setCustomStateMapper(block, (new StateMap.Builder()).ignore(BlockFluidBase.LEVEL).build());
+  }
 
   @Override
   public void preInit()
   {
-    
+    registerFluidModel(SubstratumFluids.liquid_redstone,"liquidRedstone");
+    registerFluidModel(SubstratumFluids.liquid_glowstone,"liquidGlowstone");
+    registerFluidModel(SubstratumFluids.liquid_enderpearl,"liquidEnderpearl");
   }
 
   @Override

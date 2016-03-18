@@ -7,16 +7,26 @@ import com.google.common.collect.ImmutableList;
 import exter.substratum.creativetab.TabMaterials;
 import exter.substratum.material.EnumMaterial;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMaterial extends Item
 {
+  public interface IRightClickHandler
+  {
+    ActionResult<ItemStack> onRightClick(ItemStack stack,ItemMaterial item,EnumMaterial material,World world, EntityPlayer player, EnumHand hand);
+  }
+
   public final ImmutableList<EnumMaterial> materials;
   public final String prefix;
 
+  private IRightClickHandler right_click = null;
 
   public ItemMaterial(String prefix,ImmutableList<EnumMaterial> materials)
   {
@@ -26,6 +36,11 @@ public class ItemMaterial extends Item
     setCreativeTab(TabMaterials.tab);
     setHasSubtypes(true);
     setUnlocalizedName("substratum." + prefix);
+  }
+  
+  public void setRightClickHandler(IRightClickHandler right_click)
+  {
+    this.right_click = right_click;
   }
   
   @Override
@@ -64,5 +79,17 @@ public class ItemMaterial extends Item
       return null;
     }
     return new ItemStack(this,amount,meta);
+  }
+  
+  @Override
+  public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand)
+  {
+    if(right_click != null)
+    {
+      return right_click.onRightClick(stack, this, materials.get(stack.getMetadata()), world, player, hand);
+    } else
+    {
+      return super.onItemRightClick(stack, world, player, hand);
+    }
   }
 }
