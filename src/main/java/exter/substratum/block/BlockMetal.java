@@ -101,7 +101,7 @@ public abstract class BlockMetal extends Block implements IBlockVariants
     setHardness(1.0F);
     setResistance(8.0F);
     setUnlocalizedName("substratum.block");
-    setStepSound(SoundType.METAL);
+    setSoundType(SoundType.METAL);
     setCreativeTab(TabMaterials.tab);
   }
   

@@ -27,13 +27,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
   modid = ModSubstratum.MODID,
   name = ModSubstratum.MODNAME,
   version = ModSubstratum.MODVERSION,
-  dependencies = "required-after:Forge@[11.15.1.1724,)"
+  dependencies = "required-after:Forge@[12.16.0.1766,)"
 )
 public class ModSubstratum
 {
   public static final String MODID = "substratum";
   public static final String MODNAME = "Substratum";
-  public static final String MODVERSION = "1.1.0.1";
+  public static final String MODVERSION = "1.2.0.0";
 
   @Instance(MODID)
   public static ModSubstratum instance;

@@ -110,7 +110,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
     setCreativeTab(TabMaterials.tab);
     setHardness(5.0F);
     setResistance(10.0F);
-    setStepSound(SoundType.METAL);
+    setSoundType(SoundType.METAL);
     setUnlocalizedName("substratum.slab" + (single != null?"Double":""));
     useNeighborBrightness = true;
   }

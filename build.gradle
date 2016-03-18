@@ -11,7 +11,6 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
-        maven { url "http://maven.modmuss50.me" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
@@ -19,7 +18,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-def mod_version = "1.1.0.1"
+def mod_version = "1.2.0.0"
 
 def mc_version = "1.9"
 
@@ -30,9 +29,9 @@ group = "exter.substratum" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "Substratum"
 
 minecraft {
-    version = "1.9-12.16.0.0-1.9"
+    version = "1.9-12.16.0.1766-1.9"
     runDir = "eclipse"
-    mappings = "snapshot_20160312"
+    mappings = "snapshot_20160318"
 }
 
 repositories {
@@ -40,7 +39,6 @@ repositories {
         name "DVS1 Maven FS'"
         url 'http://dvs1.progwml6.com/files/maven'
     }
-    maven { url "http://maven.modmuss50.me" }
 }
 
 dependencies {

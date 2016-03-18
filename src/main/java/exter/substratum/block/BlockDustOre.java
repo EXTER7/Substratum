@@ -58,7 +58,7 @@ public class BlockDustOre extends Block implements IBlockVariants
     super(Material.rock);
     setHardness(3.0F);
     setResistance(5.0F);
-    setStepSound(SoundType.STONE);
+    setSoundType(SoundType.STONE);
     setUnlocalizedName("substratum.ore");
     setCreativeTab(TabMaterials.tab);
     setHarvestLevel("pickaxe", 1);
