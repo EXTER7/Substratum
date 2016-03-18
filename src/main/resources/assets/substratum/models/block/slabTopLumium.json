@@ -1,9 +1,9 @@
 {
-   "parent": "minecraft:block/upper_slab",
-   "textures":
-   {
-     "bottom": "substratum:blocks/blockLumium",
-     "top": "substratum:blocks/blockLumium",
-     "side": "substratum:blocks/slabLumium"
+  "parent": "minecraft:block/upper_slab",
+  "textures":
+  {
+    "bottom": "substratum:blocks/blockLumium",
+    "top": "substratum:blocks/blockLumium",
+    "side": "substratum:blocks/slabLumium"
   }
 }

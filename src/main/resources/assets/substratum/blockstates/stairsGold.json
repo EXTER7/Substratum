@@ -1,5 +1,6 @@
 {
-  "variants": {
+  "variants":
+  {
     "facing=east,half=bottom,shape=straight":  { "model": "substratum:stairsStraightGold" },
     "facing=west,half=bottom,shape=straight":  { "model": "substratum:stairsStraightGold", "y": 180, "uvlock": true },
     "facing=south,half=bottom,shape=straight": { "model": "substratum:stairsStraightGold", "y": 90, "uvlock": true },

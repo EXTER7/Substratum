@@ -1,9 +1,9 @@
 {
-   "parent": "minecraft:block/upper_slab",
-   "textures":
-   {
-     "bottom": "minecraft:blocks/gold_block",
-     "top": "minecraft:blocks/gold_block",
-     "side": "substratum:blocks/slabGold"
+  "parent": "minecraft:block/upper_slab",
+  "textures":
+  {
+    "bottom": "minecraft:blocks/gold_block",
+    "top": "minecraft:blocks/gold_block",
+    "side": "substratum:blocks/slabGold"
   }
 }

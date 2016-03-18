@@ -1,9 +1,9 @@
 {
-   "parent": "minecraft:block/upper_slab",
-   "textures":
-   {
-     "bottom": "substratum:blocks/blockLead",
-     "top": "substratum:blocks/blockLead",
-     "side": "substratum:blocks/slabLead"
+  "parent": "minecraft:block/upper_slab",
+  "textures":
+  {
+    "bottom": "substratum:blocks/blockLead",
+    "top": "substratum:blocks/blockLead",
+    "side": "substratum:blocks/slabLead"
   }
 }

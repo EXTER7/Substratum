@@ -29,22 +29,10 @@ public class BlockSubstratumLiquid extends BlockFluidClassic
     super(fluid, Material.lava);
     setLightOpacity(0);
     setLightLevel(1.0f);
-    setUnlocalizedName(name);
+    setUnlocalizedName("substratum." + name);
     setCreativeTab(TabMaterials.tab);
   }
-  
-  @Override
-  public String getUnlocalizedName()
-  {
-    return stack.getUnlocalizedName();
-  }
-
-  @Override
-  public String getLocalizedName()
-  {
-    return stack.getLocalizedName();
-  }
-
+ 
   @Override
   public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face)
   {

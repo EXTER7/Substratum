@@ -1,9 +1,9 @@
 {
-   "parent": "minecraft:block/upper_slab",
-   "textures":
-   {
-     "bottom": "minecraft:blocks/iron_block",
-     "top": "minecraft:blocks/iron_block",
-     "side": "substratum:blocks/slabIron"
+  "parent": "minecraft:block/upper_slab",
+  "textures":
+  {
+    "bottom": "minecraft:blocks/iron_block",
+    "top": "minecraft:blocks/iron_block",
+    "side": "substratum:blocks/slabIron"
   }
 }

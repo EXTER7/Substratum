@@ -1,5 +1,6 @@
 {
-  "variants": {
+  "variants":
+  {
     "facing=east,half=bottom,shape=straight":  { "model": "substratum:stairsStraightLumium" },
     "facing=west,half=bottom,shape=straight":  { "model": "substratum:stairsStraightLumium", "y": 180, "uvlock": true },
     "facing=south,half=bottom,shape=straight": { "model": "substratum:stairsStraightLumium", "y": 90, "uvlock": true },

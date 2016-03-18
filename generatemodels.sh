@@ -21,14 +21,7 @@ do
   ( # Block item model
   cat <<- EOF
 	{
-	    "parent": "substratum:block/@@MODEL@@",
-	    "display": {
-	        "thirdperson": {
-	            "rotation": [ 10, -45, 170 ],
-	            "translation": [ 0, 1.5, -2.75 ],
-	            "scale": [ 0.375, 0.375, 0.375 ]
-	        }
-	    }
+	  "parent": "substratum:block/@@MODEL@@"
 	}
 	EOF
   ) | sed -e "s/@@MODEL@@/"$block"/g" > $modeldir"/item/"$block".json"
@@ -56,12 +49,12 @@ do
   ( # Top slab
   cat <<- EOF
 	{
-	   "parent": "minecraft:block/upper_slab",
-	   "textures":
-	   {
-	     "bottom": "substratum:blocks/@@TEXTURE@@",
-	     "top": "substratum:blocks/@@TEXTURE@@",
-	     "side": "substratum:blocks/@@TEXTURESIDE@@"
+	  "parent": "minecraft:block/upper_slab",
+	  "textures":
+	  {
+	    "bottom": "substratum:blocks/@@TEXTURE@@",
+	    "top": "substratum:blocks/@@TEXTURE@@",
+	    "side": "substratum:blocks/@@TEXTURESIDE@@"
 	  }
 	}
 	EOF
@@ -73,9 +66,9 @@ do
   ( # Double slab
   cat <<- EOF
 	{
-	   "parent": "block/cube_column",
-	   "textures":
-	   {
+	  "parent": "block/cube_column",
+	  "textures":
+	  {
 	     "end": "substratum:blocks/@@TEXTURE@@",
 	     "side": "substratum:blocks/@@TEXTURESIDE@@"
 	  }
@@ -89,14 +82,7 @@ do
   ( # Slab item model
   cat <<- EOF
 	{
-	    "parent": "substratum:block/@@MODEL@@",
-	    "display": {
-	        "thirdperson": {
-	            "rotation": [ 10, -45, 170 ],
-	            "translation": [ 0, 1.5, -2.75 ],
-	            "scale": [ 0.375, 0.375, 0.375 ]
-	        }
-	    }
+	  "parent": "substratum:block/@@MODEL@@"
 	}
 	EOF
   ) | sed -e "s/@@MODEL@@/slabBottom"$slab"/g" > $modeldir"/item/slab"$slab".json"
@@ -104,7 +90,8 @@ do
   ( # Stairs blockstate
   cat <<- EOF
 	{
-	  "variants": {
+	  "variants":
+	  {
 	    "facing=east,half=bottom,shape=straight":  { "model": "substratum:@@MODELSTRAIGHT@@" },
 	    "facing=west,half=bottom,shape=straight":  { "model": "substratum:@@MODELSTRAIGHT@@", "y": 180, "uvlock": true },
 	    "facing=south,half=bottom,shape=straight": { "model": "substratum:@@MODELSTRAIGHT@@", "y": 90, "uvlock": true },
@@ -203,14 +190,7 @@ do
   ( # Stairs item model
   cat <<- EOF
 	{
-	    "parent": "substratum:block/@@MODEL@@",
-	    "display": {
-	        "thirdperson": {
-	            "rotation": [ 10, -45, 170 ],
-	            "translation": [ 0, 1.5, -2.75 ],
-	            "scale": [ 0.375, 0.375, 0.375 ]
-	        }
-	    }
+	  "parent": "substratum:block/@@MODEL@@"
 	}
 	EOF
   ) | sed -e "s/@@MODEL@@/stairsStraight"$slab"/g" > $modeldir"/item/stairs"$slab".json"
@@ -221,21 +201,9 @@ do
   ( # Item model
   cat <<- EOF
 	{
-	    "parent": "builtin/generated",
+	    "parent": "item/generated",
 	    "textures": {
 	        "layer0": "substratum:items/@@TEXTURE@@"
-	    },
-	    "display": {
-	        "thirdperson": {
-	            "rotation": [ -90, 0, 0 ],
-	            "translation": [ 0, 1, -3 ],
-	            "scale": [ 0.55, 0.55, 0.55 ]
-	        },
-	        "firstperson": {
-	            "rotation": [ 0, -135, 25 ],
-	            "translation": [ 0, 4, 2 ],
-	            "scale": [ 1.7, 1.7, 1.7 ]
-	        }
 	    }
 	}
 	EOF

@@ -1,9 +1,9 @@
 {
-   "parent": "minecraft:block/upper_slab",
-   "textures":
-   {
-     "bottom": "substratum:blocks/blockEnderium",
-     "top": "substratum:blocks/blockEnderium",
-     "side": "substratum:blocks/slabEnderium"
+  "parent": "minecraft:block/upper_slab",
+  "textures":
+  {
+    "bottom": "substratum:blocks/blockEnderium",
+    "top": "substratum:blocks/blockEnderium",
+    "side": "substratum:blocks/slabEnderium"
   }
 }

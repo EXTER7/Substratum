@@ -23,7 +23,10 @@ public class SubstratumFluids
   {
     Fluid fluid = new Fluid(name,
         new ResourceLocation("substratum","blocks/" + name + "_still"),
-        new ResourceLocation("substratum","blocks/" + name + "_flow")).setTemperature(temperature).setLuminosity(luminosity);
+        new ResourceLocation("substratum","blocks/" + name + "_flow"))
+      .setTemperature(temperature)
+      .setLuminosity(luminosity)
+      .setUnlocalizedName("substratum." + name);
     FluidRegistry.registerFluid(fluid);
 
     Block liquid_block = new BlockSubstratumLiquid(fluid, name);

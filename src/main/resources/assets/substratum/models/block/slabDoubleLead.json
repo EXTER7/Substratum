@@ -1,7 +1,7 @@
 {
-   "parent": "block/cube_column",
-   "textures":
-   {
+  "parent": "block/cube_column",
+  "textures":
+  {
      "end": "substratum:blocks/blockLead",
      "side": "substratum:blocks/slabLead"
   }
