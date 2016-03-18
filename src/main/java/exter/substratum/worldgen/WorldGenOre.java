@@ -6,10 +6,11 @@ import java.util.Random;
 
 import exter.substratum.config.SubstratumConfig.WorldgenConfig;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.block.state.pattern.BlockHelper;
+import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 
@@ -52,10 +53,10 @@ public class WorldGenOre
     }
 
     block = state;
-    wgm = new WorldGenMinable(state, 7, BlockHelper.forBlock(nether?Blocks.netherrack:Blocks.stone));
+    wgm = new WorldGenMinable(state, 7, BlockMatcher.forBlock(nether?Blocks.netherrack:Blocks.stone));
   }
 
-  private void generateOre(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
+  private void generateOre(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
   {
     int i;
     int clusters = random.nextInt(max_clusters - min_clusters + 1) + min_clusters;
@@ -69,7 +70,7 @@ public class WorldGenOre
     }
   }
   
-  static public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
+  static public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
   {
     for(WorldGenOre wgo:ores)
     {

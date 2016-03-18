@@ -205,9 +205,6 @@ do
 	{
 	    "parent": "substratum:block/@@MODEL@@",
 	    "display": {
-	        "gui": {
-	            "rotation": [ 0, 180, 0 ]
-            },
 	        "thirdperson": {
 	            "rotation": [ 10, -45, 170 ],
 	            "translation": [ 0, 1.5, -2.75 ],

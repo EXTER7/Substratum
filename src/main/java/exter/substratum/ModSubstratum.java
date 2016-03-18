@@ -10,7 +10,7 @@ import exter.substratum.config.SubstratumConfig;
 import exter.substratum.item.SubstratumItems;
 import exter.substratum.proxy.CommonProxy;
 import exter.substratum.recipes.SubstratumRecipes;
-import exter.substratum.worldgen.BMWorldGenerator;
+import exter.substratum.worldgen.SubstratumWorldGenerator;
 import exter.substratum.worldgen.WorldGenOre;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -85,7 +85,7 @@ public class ModSubstratum
     WorldGenOre.registerOre(SubstratumConfig.worldgen_sulfur, SubstratumBlocks.block_ore_dust.asState(BlockDustOre.EnumVariant.SULFUR), true);
     WorldGenOre.registerOre(SubstratumConfig.worldgen_niter, SubstratumBlocks.block_ore_dust.asState(BlockDustOre.EnumVariant.NITER), true);
 
-    GameRegistry.registerWorldGenerator(new BMWorldGenerator(),0);
+    GameRegistry.registerWorldGenerator(new SubstratumWorldGenerator(),0);
 
     proxy.init();
   }

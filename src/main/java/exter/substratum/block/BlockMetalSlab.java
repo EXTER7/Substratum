@@ -1,26 +1,30 @@
 package exter.substratum.block;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+
+import com.google.common.base.Optional;
 
 import exter.substratum.creativetab.TabMaterials;
 import exter.substratum.material.EnumMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyHelper;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -60,30 +64,36 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
   
   private class PropertyVariant extends PropertyHelper<Variant>
   {
-    private List<Variant> variants;
+    private Map<String,Variant> variants;
     
     public PropertyVariant(Variant[] variants)
     {
       super("metal",Variant.class);
       int i = 0;
-      this.variants = new ArrayList<Variant>();
+      this.variants = new HashMap<String,Variant>();
       for (Variant v : variants)
       {
         v.id = i++;
-        this.variants.add(v);
+        this.variants.put(v.getName(),v);
       }
     }
 
     @Override
     public Collection<Variant> getAllowedValues()
     {
-      return variants;
+      return variants.values();
     }
 
     @Override
     public String getName(Variant value)
     {
       return value.getName();
+    }
+
+    @Override
+    public Optional<Variant> parseValue(String value)
+    {
+      return Optional.fromNullable(variants.get(value));
     }
   }
 
@@ -100,7 +110,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
     setCreativeTab(TabMaterials.tab);
     setHardness(5.0F);
     setResistance(10.0F);
-    setStepSound(Block.soundTypeMetal);
+    setStepSound(SoundType.METAL);
     setUnlocalizedName("substratum.slab" + (single != null?"Double":""));
     useNeighborBrightness = true;
   }
@@ -126,15 +136,10 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
 
   @SideOnly(Side.CLIENT)
   @Override
-  public final Item getItem(World world, BlockPos pos)
+  public final ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
   {
-    if(single != null)
-    {
-      return Item.getItemFromBlock(single);
-    } else
-    {
-      return Item.getItemFromBlock(this);
-    }
+    int amount = (single == null)?1:2;
+    return new ItemStack(getItemDropped(state,null,0),amount,damageDropped(state));
   }
 
   @SuppressWarnings("unchecked")
@@ -148,26 +153,6 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
       {
         items.add(new ItemStack(item, 1, v.id));
       }
-    }
-  }
-
-  @SideOnly(Side.CLIENT)
-  public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side)
-  {
-    if(isDouble())
-    {
-      return super.shouldSideBeRendered(worldIn, pos, side);
-    } else if(side != EnumFacing.UP && side != EnumFacing.DOWN && !super.shouldSideBeRendered(worldIn, pos, side))
-    {
-      return false;
-    } else
-    {
-      BlockPos blockpos1 = pos.offset(side.getOpposite());
-      IBlockState iblockstate = worldIn.getBlockState(pos);
-      IBlockState iblockstate1 = worldIn.getBlockState(blockpos1);
-      boolean flag = isSlab(iblockstate.getBlock()) && iblockstate.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP;
-      boolean flag1 = isSlab(iblockstate1.getBlock()) && iblockstate1.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP;
-      return flag1 ? (side == EnumFacing.DOWN ? true : (side == EnumFacing.UP && super.shouldSideBeRendered(worldIn, pos, side) ? true : !isSlab(iblockstate.getBlock()) || !flag)) : (side == EnumFacing.UP ? true : (side == EnumFacing.DOWN && super.shouldSideBeRendered(worldIn, pos, side) ? true : !isSlab(iblockstate.getBlock()) || flag));
     }
   }
 
@@ -210,15 +195,15 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
   }
 
   @Override
-  public Object getVariant(ItemStack stack)
+  public Comparable<?> getTypeForItem(ItemStack stack)
   {
     return getVariants()[stack.getMetadata()];
   }
   
   @Override
-  protected BlockState createBlockState()
+  protected BlockStateContainer createBlockState()
   {
-    return new BlockState(this, new IProperty[] { HALF, getVariantProperty() });
+    return new BlockStateContainer(this, new IProperty[] { HALF, getVariantProperty() });
   }
 
   @Override

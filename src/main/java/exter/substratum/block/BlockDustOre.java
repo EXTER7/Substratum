@@ -8,9 +8,10 @@ import exter.substratum.item.SubstratumItems;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -57,7 +58,7 @@ public class BlockDustOre extends Block implements IBlockVariants
     super(Material.rock);
     setHardness(3.0F);
     setResistance(5.0F);
-    setStepSound(Block.soundTypeStone);
+    setStepSound(SoundType.STONE);
     setUnlocalizedName("substratum.ore");
     setCreativeTab(TabMaterials.tab);
     setHarvestLevel("pickaxe", 1);
@@ -65,9 +66,9 @@ public class BlockDustOre extends Block implements IBlockVariants
   
 
   @Override
-  protected BlockState createBlockState()
+  protected BlockStateContainer createBlockState()
   {
-    return new BlockState(this, VARIANT);
+    return new BlockStateContainer(this, VARIANT);
   }
 
   @Override

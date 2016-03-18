@@ -5,9 +5,10 @@ import java.util.List;
 import exter.substratum.creativetab.TabMaterials;
 import exter.substratum.material.EnumMaterial;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -58,7 +59,7 @@ public class BlockOre extends Block implements IBlockVariants
     super(Material.rock);
     setHardness(3.0F);
     setResistance(5.0F);
-    setStepSound(Block.soundTypeStone);
+    setStepSound(SoundType.STONE);
     setUnlocalizedName("substratum.ore");
     setCreativeTab(TabMaterials.tab);
     for(EnumVariant variant:EnumVariant.values())
@@ -68,9 +69,9 @@ public class BlockOre extends Block implements IBlockVariants
   }
 
   @Override
-  protected BlockState createBlockState()
+  protected BlockStateContainer createBlockState()
   {
-    return new BlockState(this, VARIANT);
+    return new BlockStateContainer(this, VARIANT);
   }
 
   @Override

@@ -1,17 +1,21 @@
 package exter.substratum.block;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.google.common.base.Optional;
 
 import exter.substratum.creativetab.TabMaterials;
 import exter.substratum.material.EnumMaterial;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyHelper;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -53,30 +57,36 @@ public abstract class BlockMetal extends Block implements IBlockVariants
   
   private class PropertyVariant extends PropertyHelper<Variant>
   {
-    private List<Variant> variants;
+    private Map<String,Variant> variants;
     
     public PropertyVariant(Variant[] variants)
     {
       super("metal",Variant.class);
       int i = 0;
-      this.variants = new ArrayList<Variant>();
+      this.variants = new HashMap<String,Variant>();
       for (Variant v : variants)
       {
         v.id = i++;
-        this.variants.add(v);
+        this.variants.put(v.getName(),v);
       }
     }
     
     @Override
     public Collection<Variant> getAllowedValues()
     {
-      return variants;
+      return variants.values();
     }
 
     @Override
     public String getName(Variant value)
     {
       return value.getName();
+    }
+
+    @Override
+    public Optional<Variant> parseValue(String value)
+    {
+      return Optional.fromNullable(variants.get(value));
     }
   }
 
@@ -91,18 +101,18 @@ public abstract class BlockMetal extends Block implements IBlockVariants
     setHardness(1.0F);
     setResistance(8.0F);
     setUnlocalizedName("substratum.block");
-    setStepSound(Block.soundTypeMetal);
+    setStepSound(SoundType.METAL);
     setCreativeTab(TabMaterials.tab);
   }
   
   @Override
-  protected BlockState createBlockState()
+  protected BlockStateContainer createBlockState()
   {
     if(property_variant == null)
     {
       property_variant = new PropertyVariant(getVariants());
     }
-    return new BlockState(this, property_variant );
+    return new BlockStateContainer(this, property_variant );
   }
 
   public IBlockState getVariantState(Variant var)
