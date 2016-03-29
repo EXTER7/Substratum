@@ -368,24 +368,30 @@ public class SubstratumRecipes
     //Slab crafting recipes.
     for(Map.Entry<EnumMaterial, ItemStack> entry:SubstratumBlocks.slab_stacks.entrySet())
     {
-      ItemStack slabs = entry.getValue().copy();
-      slabs.stackSize = 4;
-      GameRegistry.addRecipe(new ShapedOreRecipe(
-          slabs,
-          "BB",
-          'B', "block" + entry.getKey().suffix)); 
+      if(SubstratumConfig.material_recipes.get(entry.getKey()).slab_from_blocks)
+      {
+        ItemStack slabs = entry.getValue().copy();
+        slabs.stackSize = 4;
+        GameRegistry.addRecipe(new ShapedOreRecipe(
+            slabs,
+            "BB",
+            'B', "block" + entry.getKey().suffix));
+      }
     }
     
     //Stairs crafting recipes.
     for(Map.Entry<EnumMaterial, ItemStack> entry:SubstratumBlocks.stairs_stacks.entrySet())
     {
-      ItemStack stairs = entry.getValue().copy();
-      stairs.stackSize = 4;
-      GameRegistry.addRecipe(new ShapedOreRecipe(
-          stairs,
-          " B",
-          "BB",
-          'B', "block" + entry.getKey().suffix)); 
+      if(SubstratumConfig.material_recipes.get(entry.getKey()).stairs_from_blocks)
+      {
+        ItemStack stairs = entry.getValue().copy();
+        stairs.stackSize = 4;
+        GameRegistry.addRecipe(new ShapedOreRecipe(
+            stairs,
+            " B",
+            "BB",
+            'B', "block" + entry.getKey().suffix)); 
+      }
     }
 
     //Plate crafting recipes.

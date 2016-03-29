@@ -31,7 +31,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
   modid = ModSubstratum.MODID,
   name = ModSubstratum.MODNAME,
   version = ModSubstratum.MODVERSION,
-  dependencies = "required-after:Forge@[12.16.0.1767,)"
+  dependencies = "required-after:Forge@[12.16.0.1813,)"
 )
 public class ModSubstratum
 {
@@ -59,9 +59,9 @@ public class ModSubstratum
     Configuration config = new Configuration(event.getSuggestedConfigurationFile());
     config.load();
 
+    SubstratumBlocks.registerBlocks();
     SubstratumConfig.load(config);
     SubstratumItems.registerItems(config);
-    SubstratumBlocks.registerBlocks(config);
     SubstratumFluids.registerFluids();
 
     SubstratumRecipes.preInit();

@@ -13,7 +13,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -96,7 +95,7 @@ public class SubstratumBlocks
   public static final Map<EnumMaterial,ItemStack> stairs_stacks = new EnumMap<EnumMaterial,ItemStack>(EnumMaterial.class);
 
   
-  static private void registerHalfSlabs(Configuration config)
+  static private void registerHalfSlabs()
   {
     int i;
     block_slab = new BlockMetalSlab[3];
@@ -140,7 +139,7 @@ public class SubstratumBlocks
     OreDictionary.registerOre("stairs" + material.suffix, item);
   }
   
-  static public void registerBlocks(Configuration config)
+  static public void registerBlocks()
   {
     int i;
     block_metal = new BlockMetal[2];
@@ -179,7 +178,7 @@ public class SubstratumBlocks
       OreDictionary.registerOre("ore" + ore.material.suffix, item);
     }
 
-    registerHalfSlabs(config);
+    registerHalfSlabs();
     
     registerStairs(EnumMaterial.IRON,Blocks.iron_block.getDefaultState());
     registerStairs(EnumMaterial.GOLD,Blocks.gold_block.getDefaultState());

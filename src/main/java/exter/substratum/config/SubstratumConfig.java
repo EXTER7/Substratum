@@ -3,6 +3,7 @@ package exter.substratum.config;
 import java.util.EnumMap;
 import java.util.Map;
 
+import exter.substratum.block.SubstratumBlocks;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraftforge.common.config.Configuration;
@@ -40,6 +41,9 @@ public class SubstratumConfig
     public final boolean ingots_from_gear;
     public final boolean ingot_from_dust;
     public final boolean dust_from_rod;
+    public final boolean slab_from_blocks;
+    public final boolean stairs_from_blocks;
+    
     
     static private boolean hasIngot(EnumMaterial material)
     {
@@ -53,7 +57,6 @@ public class SubstratumConfig
       if(EnumMaterialItem.DUST.materials.contains(material) && material != EnumMaterial.SULFUR && material != EnumMaterial.NITER)
       {
         String property = hasIngot(material) ? "dust_from_ingot" : "dust_from_item";
-        config.renameProperty(category, "dust", property);
         dust_from_ingot = config.getBoolean(property, category, true, "Enable/disable " + name + " dust with mortar crafting recipe.");
       } else
       {
@@ -62,7 +65,6 @@ public class SubstratumConfig
 
       if(EnumMaterialItem.BUCKET_DUST.materials.contains(material))
       {
-        config.renameProperty(category,"bucket","dust_bucket");
         dust_bucket = config.getBoolean("dust_bucket", category, true, "Enable/disable " + name + " dust bucket recipes.");
       } else
       {
@@ -79,7 +81,6 @@ public class SubstratumConfig
       
       if(EnumMaterialItem.PLATE.materials.contains(material))
       {
-        config.renameProperty(category,"plate","plate_crafting");
         plate_crafting = config.getBoolean("plate_crafting", "recipes." + name, true, "Enable/disable " + name + " plate crafting recipe.");
         ingot_from_plate = config.getBoolean("ingot_from_plate", "recipes." + name, true, "Enable/disable " + name + " plate to ingot smelting recipe.");
       } else
@@ -90,7 +91,6 @@ public class SubstratumConfig
       
       if(EnumMaterialItem.GEAR.materials.contains(material))
       {
-        config.renameProperty(category,"gear","gear_crafting");
         gear_crafting = config.getBoolean("gear_crafting", "recipes." + name, true, "Enable/disable " + name + " gear crafting recipe.");
         ingots_from_gear = config.getBoolean("ingots_from_gear", "recipes." + name, true, "Enable/disable " + name + " gear to ingot smelting recipe.");
       } else
@@ -108,7 +108,25 @@ public class SubstratumConfig
         rod_crafting = false;
         dust_from_rod = false;
       }
+
+      if(SubstratumBlocks.slab_stacks.containsKey(material))
+      {
+        slab_from_blocks = config.getBoolean("slab_from_blocks", "recipes." + name, true, "Enable/disable " + name + " slab crafting recipe.");
+      } else
+      {
+        slab_from_blocks = false;
+      }
+
+      if(SubstratumBlocks.stairs_stacks.containsKey(material))
+      {
+        stairs_from_blocks = config.getBoolean("stairs_from_blocks", "recipes." + name, true, "Enable/disable " + name + " stairs crafting recipe.");
+      } else
+      {
+        stairs_from_blocks = false;
+      }
     }
+    
+
   }
   
   public static WorldgenConfig worldgen_copper;
