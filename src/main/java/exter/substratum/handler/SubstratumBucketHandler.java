@@ -65,6 +65,10 @@ public class SubstratumBucketHandler implements IRightClickHandler
 
   private ItemStack fillBucket(World world, RayTraceResult rt)
   {
+    if(rt == null)
+    {
+      return null;
+    }
     BlockPos pos = rt.getBlockPos();
     IBlockState state = world.getBlockState(pos);
 
