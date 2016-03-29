@@ -14,9 +14,13 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -121,13 +125,21 @@ public class BlockDustOre extends Block implements IBlockVariants
     return SubstratumItems.item_materials.get(EnumMaterialItem.DUST).getMaterialMeta(state.getValue(VARIANT).material);
   }
   
+  @Override
   public int quantityDroppedWithBonus(int fortune, Random random)
   {
     return this.quantityDropped(random) + random.nextInt(fortune + 1);
   }
 
+  @Override
   public int quantityDropped(Random random)
   {
     return 2 + random.nextInt(2);
+  }
+  
+  @Override
+  public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
+  {
+    return asItemStack(state.getValue(VARIANT));
   }
 }
