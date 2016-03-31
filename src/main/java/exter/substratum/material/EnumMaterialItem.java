@@ -166,7 +166,11 @@ public enum EnumMaterialItem
       EnumMaterial.CHARCOAL,
       EnumMaterial.OBSIDIAN,
       EnumMaterial.SULFUR,
-      EnumMaterial.NITER));
+      EnumMaterial.NITER,
+      EnumMaterial.GUNPOWDER,
+      EnumMaterial.BLAZE,
+      EnumMaterial.REDSTONE,
+      EnumMaterial.GLOWSTONE));
       
   public final ImmutableList<EnumMaterial> materials;
   public final String prefix;

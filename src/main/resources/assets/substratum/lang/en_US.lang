@@ -152,6 +152,10 @@ item.substratum.dustSmallEnderium.name=Small Pile of Enderium Dust
 item.substratum.dustSmallSulfur.name=Small Pile of Sulfur
 item.substratum.dustSmallNiter.name=Small Pile of Niter
 item.substratum.dustSmallObsidian.name=Small Pile of Obsidian Dust
+item.substratum.dustSmallGunpowder.name=Small Pile of Gunpowder
+item.substratum.dustSmallBlaze.name=Small Pile of Blaze Powder
+item.substratum.dustSmallRedstone.name=Small Pile of Redstone Dust
+item.substratum.dustSmallGlowstone.name=Small Pile of Glowstone Dust
 
 item.substratum.nuggetCopper.name=Copper Nugget
 item.substratum.nuggetTin.name=Tin Nugget

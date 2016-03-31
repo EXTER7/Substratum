@@ -142,7 +142,7 @@ public class SubstratumRecipes
             mortar, new ItemStack(Items.ender_pearl)));
       }
       
-      for(EnumMaterial mat:EnumMaterialItem.DUST.materials)
+      for(EnumMaterial mat:EnumMaterialItem.DUST_SMALL.materials)
       {
         //Dust -> Small dust
         GameRegistry.addRecipe(new ShapedOreRecipe(
@@ -157,7 +157,10 @@ public class SubstratumRecipes
             "SS",
             "SS",
             'S', SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,mat));
-
+      }
+      
+      for(EnumMaterial mat:EnumMaterialItem.DUST.materials)
+      {
         //Ingot -> Dust
         if(SubstratumItems.getStack(EnumMaterialItem.INGOT,mat) != null)
         {
@@ -223,6 +226,13 @@ public class SubstratumRecipes
           "dustNiter", 
           "dustSulfur", 
           "dustCharcoal"));
+
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,EnumMaterial.GUNPOWDER,2),
+          "dustSmallNiter", 
+          "dustSmallNiter", 
+          "dustSmallSulfur", 
+          "dustSmallCharcoal"));
     }
 
     if(SubstratumConfig.blend_signalum_enable)

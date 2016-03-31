@@ -1,6 +1,7 @@
 package exter.substratum.item;
 
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 
 import exter.substratum.config.SubstratumConfig;
@@ -14,10 +15,56 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class SubstratumItems
 {
+  static private class MaterialItem
+  {
+    public final EnumMaterialItem item;
+    public final EnumMaterial material;
+
+    public MaterialItem(EnumMaterialItem item, EnumMaterial material)
+    {
+      this.item = item;
+      this.material = material;
+    }
+    
+    @Override
+    public int hashCode()
+    {
+      return item.ordinal() * 256 + material.ordinal();
+    }
+    
+    @Override
+    public boolean equals(Object obj)
+    {
+      if(this == obj)
+      {
+        return true;
+      }
+      if(obj == null)
+      {
+        return false;
+      }
+      if(getClass() != obj.getClass())
+      {
+        return false;
+      }
+      MaterialItem other = (MaterialItem) obj;
+      if(item != other.item)
+      {
+        return false;
+      }
+      if(material != other.material)
+      {
+        return false;
+      }
+      return true;
+    }
+  }
 
   static public Map<EnumMaterialItem,ItemMaterial> item_materials = new EnumMap<EnumMaterialItem,ItemMaterial>(EnumMaterialItem.class);
 
   static public ItemMortar item_mortar = null;
+  
+  static private Map<MaterialItem,ItemStack> vanilla_items;
   
   static public void registerItems(Configuration config)
   {
@@ -39,6 +86,17 @@ public class SubstratumItems
       item_mortar = new ItemMortar(SubstratumConfig.misc_mortar_uses);
       GameRegistry.registerItem(item_mortar, "mortar");
     }
+    
+    OreDictionary.registerOre("dustGunpowder", new ItemStack(Items.gunpowder));
+    OreDictionary.registerOre("dustBlaze", new ItemStack(Items.blaze_powder));
+    vanilla_items = new HashMap<MaterialItem,ItemStack>();
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.INGOT, EnumMaterial.IRON), new ItemStack(Items.iron_ingot));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.INGOT, EnumMaterial.GOLD), new ItemStack(Items.gold_ingot));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.NUGGET, EnumMaterial.GOLD), new ItemStack(Items.gold_nugget));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.REDSTONE), new ItemStack(Items.redstone));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GLOWSTONE), new ItemStack(Items.glowstone_dust));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GUNPOWDER), new ItemStack(Items.gunpowder));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.BLAZE), new ItemStack(Items.blaze_powder));
   }
 
 
@@ -61,20 +119,12 @@ public class SubstratumItems
   {
     if(vanilla)
     {
-      if(item == EnumMaterialItem.INGOT)
+      ItemStack stack = vanilla_items.get(new MaterialItem(item, material));
+      if(stack != null)
       {
-        if(material == EnumMaterial.IRON)
-        {
-          return new ItemStack(Items.iron_ingot, amount);
-        }
-        if(material == EnumMaterial.GOLD)
-        {
-          return new ItemStack(Items.gold_ingot, amount);
-        }
-      }
-      if(item == EnumMaterialItem.NUGGET && material == EnumMaterial.GOLD)
-      {
-        return new ItemStack(Items.gold_nugget, amount);
+        stack = stack.copy();
+        stack.stackSize = amount;
+        return stack;
       }
     }
     return item_materials.get(item).getStack(material, amount);

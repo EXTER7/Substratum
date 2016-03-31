@@ -29,7 +29,8 @@ public enum EnumMaterial
   SULFUR("Sulfur"),
   NITER("Niter"),
   GUNPOWDER("Gunpowder"),
-  OBSIDIAN("Obsidian");
+  OBSIDIAN("Obsidian"),
+  BLAZE("Blaze");
   
   public final String suffix;
   
