@@ -80,6 +80,7 @@ public class SubstratumItems
     }
     item_materials.get(EnumMaterialItem.BUCKET_DUST).setContainerItem(Items.bucket).setMaxStackSize(1);
     item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setContainerItem(Items.bucket).setMaxStackSize(1);
+    item_materials.get(EnumMaterialItem.BOTTLE_LIQUID).setContainerItem(Items.glass_bottle);
     
     if(SubstratumConfig.misc_mortar_uses > 0)
     {

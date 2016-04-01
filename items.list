@@ -99,6 +99,9 @@ bucketDustRedstone
 bucketLiquidEnderpearl
 bucketLiquidGlowstone
 bucketLiquidRedstone
+bottleLiquidEnderpearl
+bottleLiquidGlowstone
+bottleLiquidRedstone
 rodBrass
 rodBronze
 rodCopper

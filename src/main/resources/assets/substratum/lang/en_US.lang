@@ -241,6 +241,10 @@ item.substratum.bucketLiquidRedstone.name=Liquid Redstone Bucket
 item.substratum.bucketLiquidGlowstone.name=Liquid Glowstone Bucket
 item.substratum.bucketLiquidEnderpearl.name=Liquid Ender Pearl Bucket
 
+item.substratum.bottleLiquidRedstone.name=Liquid Redstone Bottle
+item.substratum.bottleLiquidGlowstone.name=Liquid Glowstone Bottle
+item.substratum.bottleLiquidEnderpearl.name=Liquid Ender Pearl Bottle
+
 fluid.substratum.liquidRedstone=Liquid Redstone
 fluid.substratum.liquidGlowstone=Liquid Glowstone
 fluid.substratum.liquidEnderpearl=Liquid Ender Pearl

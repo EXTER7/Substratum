@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @SuppressWarnings("deprecation")
@@ -43,9 +44,12 @@ public class SubstratumFluids
     liquid_glowstone = register( "liquidGlowstone", 1100, 15);
     liquid_enderpearl = register( "liquidEnderpearl", 1400, 2);
     ItemStack bucket = new ItemStack(Items.bucket);
+    ItemStack bottle = new ItemStack(Items.glass_bottle);
     FluidContainerRegistry.registerFluidContainer(liquid_redstone, SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.REDSTONE), bucket);
     FluidContainerRegistry.registerFluidContainer(liquid_glowstone, SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.GLOWSTONE), bucket);
     FluidContainerRegistry.registerFluidContainer(liquid_enderpearl, SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.ENDERPEARL), bucket);
-
+    FluidContainerRegistry.registerFluidContainer(new FluidStack(liquid_redstone, FluidContainerRegistry.BUCKET_VOLUME / 4), SubstratumItems.getStack(EnumMaterialItem.BOTTLE_LIQUID, EnumMaterial.REDSTONE), bottle);
+    FluidContainerRegistry.registerFluidContainer(new FluidStack(liquid_glowstone, FluidContainerRegistry.BUCKET_VOLUME / 4), SubstratumItems.getStack(EnumMaterialItem.BOTTLE_LIQUID, EnumMaterial.GLOWSTONE), bottle);
+    FluidContainerRegistry.registerFluidContainer(new FluidStack(liquid_enderpearl, FluidContainerRegistry.BUCKET_VOLUME / 4), SubstratumItems.getStack(EnumMaterialItem.BOTTLE_LIQUID, EnumMaterial.ENDERPEARL), bottle);
   }
 }

@@ -207,14 +207,33 @@ public class SubstratumRecipes
           "dustEnderpearl"));
     }
 
+    ItemStack bottle = new ItemStack(Items.glass_bottle);
     for(EnumMaterial mat:EnumMaterialItem.BUCKET_DUST.materials)
     {
       if(SubstratumConfig.material_recipes.get(mat).dust_bucket)
       {
+        ItemStack liquid = SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID,mat);
+        ItemStack liquid_bottle = SubstratumItems.getStack(EnumMaterialItem.BOTTLE_LIQUID,mat);
         GameRegistry.addSmelting(
             SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,mat),
-            SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID,mat),
+            liquid,
             0);
+        
+        GameRegistry.addShapelessRecipe(
+            SubstratumItems.getStack(EnumMaterialItem.BOTTLE_LIQUID,mat,4),
+            liquid,
+            bottle, 
+            bottle, 
+            bottle, 
+            bottle);
+
+        GameRegistry.addShapelessRecipe(
+            SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID,mat),
+            bucket,
+            liquid_bottle, 
+            liquid_bottle, 
+            liquid_bottle, 
+            liquid_bottle);
       }
     }
 
@@ -244,6 +263,14 @@ public class SubstratumRecipes
           "dustCopper", 
           "dustSilver",
           "bucketLiquidRedstone"));
+      
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.SIGNALUM),
+          "dustSmallCopper", 
+          "dustSmallCopper", 
+          "dustSmallCopper", 
+          "dustSmallSilver",
+          "bottleLiquidRedstone"));
     }
 
     if(SubstratumConfig.blend_lumium_enable)
@@ -255,6 +282,14 @@ public class SubstratumRecipes
           "dustTin", 
           "dustSilver",
           "bucketLiquidGlowstone" ));
+
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.LUMIUM),
+          "dustSmallTin", 
+          "dustSmallTin", 
+          "dustSmallTin", 
+          "dustSmallSilver",
+          "bottleLiquidGlowstone" ));
     }
 
     if(SubstratumConfig.blend_enderium_enable)
@@ -266,7 +301,25 @@ public class SubstratumRecipes
           "dustTin", 
           "dustPlatinum",
           "bucketLiquidEnderpearl" ));
-    }
+
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,EnumMaterial.ENDERIUM,2),
+          "dustSmallTin", 
+          "dustSmallTin", 
+          "dustSmallTin", 
+          "dustSmallPlatinum",
+          "bottleLiquidEnderpearl" ));
+
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ENDERIUM),
+          "dustTin", 
+          "dustSmallTin", 
+          "dustSmallTin", 
+          "dustSmallPlatinum",
+          "dustSmallPlatinum",
+          "bottleLiquidEnderpearl",
+          "bottleLiquidEnderpearl" ));
+  }
 
 
     //Dust -> Ingot smelting recipes.

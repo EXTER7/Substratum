@@ -120,6 +120,12 @@ public enum EnumMaterialItem
       EnumMaterial.GLOWSTONE,
       EnumMaterial.ENDERPEARL)),
 
+  //4 bottles = 1 bucket
+  BOTTLE_LIQUID("bottleLiquid", ImmutableList.of(
+      EnumMaterial.REDSTONE,
+      EnumMaterial.GLOWSTONE,
+      EnumMaterial.ENDERPEARL)),
+
   //2 rods = 1 ingot
   ROD("rod",ImmutableList.of(
       EnumMaterial.IRON,
