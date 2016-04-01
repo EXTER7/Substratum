@@ -37,7 +37,7 @@ public class ModSubstratum
 {
   public static final String MODID = "substratum";
   public static final String MODNAME = "Substratum";
-  public static final String MODVERSION = "1.2.0.0";
+  public static final String MODVERSION = "1.3.0.0";
 
   @Instance(MODID)
   public static ModSubstratum instance;
