@@ -103,7 +103,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
   public abstract Variant[] getVariants();
   
   
-  public BlockMetalSlab(BlockSlab single)
+  public BlockMetalSlab(BlockSlab single,String name)
   {
     super(Material.iron);
     this.single = single;
@@ -112,6 +112,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
     setResistance(10.0F);
     setSoundType(SoundType.METAL);
     setUnlocalizedName("substratum.slab" + (single != null?"Double":""));
+    setRegistryName(name);
     useNeighborBrightness = true;
   }
   

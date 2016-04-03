@@ -72,7 +72,7 @@ public class SubstratumItems
     {
       ItemMaterial item = new ItemMaterial(matitem.prefix,matitem.materials);
       item_materials.put(matitem, item);
-      GameRegistry.registerItem(item, matitem.prefix);
+      GameRegistry.register(item);
       for(EnumMaterial mat:matitem.materials)
       {
         OreDictionary.registerOre(matitem.prefix + mat.suffix, item.getStack(mat));
@@ -85,7 +85,7 @@ public class SubstratumItems
     if(SubstratumConfig.misc_mortar_uses > 0)
     {
       item_mortar = new ItemMortar(SubstratumConfig.misc_mortar_uses);
-      GameRegistry.registerItem(item_mortar, "mortar");
+      GameRegistry.register(item_mortar);
     }
     
     OreDictionary.registerOre("dustGunpowder", new ItemStack(Items.gunpowder));

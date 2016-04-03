@@ -95,12 +95,13 @@ public abstract class BlockMetal extends Block implements IBlockVariants
 
   public abstract Variant[] getVariants();
   
-  public BlockMetal()
+  public BlockMetal(String name)
   {
     super( Material.iron );
     setHardness(1.0F);
     setResistance(8.0F);
     setUnlocalizedName("substratum.block");
+    setRegistryName(name);
     setSoundType(SoundType.METAL);
     setCreativeTab(TabMaterials.tab);
   }

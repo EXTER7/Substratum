@@ -15,6 +15,7 @@ public class ItemMortar extends Item
     setCreativeTab(TabMaterials.tab);
     setMaxDamage(uses - 1);
     setMaxStackSize(1);
+    setRegistryName("mortar");
     MinecraftForge.EVENT_BUS.register(this); 
   }
   

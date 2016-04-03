@@ -62,6 +62,7 @@ public class BlockOre extends Block implements IBlockVariants
     setSoundType(SoundType.STONE);
     setUnlocalizedName("substratum.ore");
     setCreativeTab(TabMaterials.tab);
+    setRegistryName("ore");
     for(EnumVariant variant:EnumVariant.values())
     {
       setHarvestLevel("pickaxe", variant.harvest_level, getDefaultState().withProperty(VARIANT, variant));

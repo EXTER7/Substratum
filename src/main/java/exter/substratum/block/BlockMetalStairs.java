@@ -18,6 +18,7 @@ public class BlockMetalStairs extends BlockStairs
     this.material = material;
     setCreativeTab(TabMaterials.tab);
     setUnlocalizedName("substratum.stairs" + material.suffix);
+    setRegistryName("stairs" + material.suffix);
     useNeighborBrightness = true;
   }
 

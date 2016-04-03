@@ -36,6 +36,7 @@ public class ItemMaterial extends Item
     setCreativeTab(TabMaterials.tab);
     setHasSubtypes(true);
     setUnlocalizedName("substratum." + prefix);
+    setRegistryName(prefix);
   }
   
   public void setRightClickHandler(IRightClickHandler right_click)

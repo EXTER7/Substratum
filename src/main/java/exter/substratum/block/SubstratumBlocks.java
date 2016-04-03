@@ -3,15 +3,15 @@ package exter.substratum.block;
 import java.util.EnumMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.tuple.ImmutablePair;
-
 import exter.substratum.item.ItemBlockMulti;
-import exter.substratum.item.ItemBlockSlab;
 import exter.substratum.material.EnumMaterial;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -94,32 +94,51 @@ public class SubstratumBlocks
   //All stairs mapped by the metal name.
   public static final Map<EnumMaterial,ItemStack> stairs_stacks = new EnumMap<EnumMaterial,ItemStack>(EnumMaterial.class);
 
-  
+
+  static private void register(Block block)
+  {
+    GameRegistry.register(block);
+    GameRegistry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+   
+  }
+
+  static private <T extends Block & IBlockVariants>void registerMulti(T block)
+  {
+    GameRegistry.register(block);
+    GameRegistry.register(new ItemBlockMulti(block).setRegistryName(block.getRegistryName()));
+  }
+
+  static private void registerSlab(BlockSlab block,BlockSlab slabdouble)
+  {
+    GameRegistry.register(block);
+    GameRegistry.register(new ItemSlab(block,block,slabdouble).setRegistryName(block.getRegistryName()));   
+  }
+
   static private void registerHalfSlabs()
   {
     int i;
     block_slab = new BlockMetalSlab[3];
-    block_slab[0] = new BlockMetalSlab(null) { @Override public Variant[] getVariants() { return SLAB1_METALS; } };
-    block_slab[1] = new BlockMetalSlab(null) { @Override public Variant[] getVariants() { return SLAB2_METALS; } };
-    block_slab[2] = new BlockMetalSlab(null) { @Override public Variant[] getVariants() { return SLAB3_METALS; } };
+    block_slab[0] = new BlockMetalSlab(null,"slab1") { @Override public Variant[] getVariants() { return SLAB1_METALS; } };
+    block_slab[1] = new BlockMetalSlab(null,"slab2") { @Override public Variant[] getVariants() { return SLAB2_METALS; } };
+    block_slab[2] = new BlockMetalSlab(null,"slab3") { @Override public Variant[] getVariants() { return SLAB3_METALS; } };
 
     block_slabdouble = new BlockMetalSlab[3];
-    block_slabdouble[0] = new BlockMetalSlab(block_slab[0]) {
+    block_slabdouble[0] = new BlockMetalSlab(block_slab[0],"slabDouble1") {
       @Override public Variant[] getVariants() { return SLAB1_METALS; }
       @Override public IProperty<BlockMetalSlab.Variant> getVariantProperty() { return block_slab[0].getVariantProperty(); } };
-    block_slabdouble[1] = new BlockMetalSlab(block_slab[1]) {
+    block_slabdouble[1] = new BlockMetalSlab(block_slab[1],"slabDouble2") {
       @Override public Variant[] getVariants() { return SLAB2_METALS; }
       @Override public IProperty<BlockMetalSlab.Variant> getVariantProperty() { return block_slab[1].getVariantProperty(); } };
-    block_slabdouble[2] = new BlockMetalSlab(block_slab[2]) {
+    block_slabdouble[2] = new BlockMetalSlab(block_slab[2],"slabDouble3") {
       @Override public Variant[] getVariants() { return SLAB3_METALS; }
       @Override public IProperty<BlockMetalSlab.Variant> getVariantProperty() { return block_slab[2].getVariantProperty(); } };
 
     for(i = 0; i < block_slab.length; i++)
     {
       BlockSlab slab = block_slab[i];
-      ImmutablePair<BlockSlab,Object> slabdouble = new ImmutablePair<BlockSlab,Object>(block_slabdouble[i],null);
-      GameRegistry.registerBlock(slab, ItemBlockSlab.class, "slab" + (i + 1), slabdouble);
-      GameRegistry.registerBlock(slabdouble.left, ItemBlockSlab.class, "slabDouble" + (i + 1), slabdouble);
+      BlockSlab slabdouble = block_slabdouble[i];
+      registerSlab(slab, slabdouble);
+      registerSlab(slabdouble, slabdouble);
       for(BlockMetalSlab.Variant v:block_slab[i].getVariants())
       {
         IBlockState state = block_slab[i].getBottomVariant(v);
@@ -133,7 +152,7 @@ public class SubstratumBlocks
   static private void registerStairs(EnumMaterial material,IBlockState model_state)
   {
     BlockMetalStairs block = new BlockMetalStairs(model_state,material);
-    GameRegistry.registerBlock(block, "stairs" + material.suffix);
+    register(block);
     ItemStack item = new ItemStack(block);
     stairs_stacks.put(material,item);
     OreDictionary.registerOre("stairs" + material.suffix, item);
@@ -143,15 +162,15 @@ public class SubstratumBlocks
   {
     int i;
     block_metal = new BlockMetal[2];
-    block_metal[0] = new BlockMetal() { public Variant[] getVariants() { return BLOCK1_METALS; } };
-    block_metal[1] = new BlockMetal() { public Variant[] getVariants() { return BLOCK2_METALS; } };
+    block_metal[0] = new BlockMetal("blockMetal1") { public Variant[] getVariants() { return BLOCK1_METALS; } };
+    block_metal[1] = new BlockMetal("blockMetal2") { public Variant[] getVariants() { return BLOCK2_METALS; } };
     block_ore = new BlockOre();
     block_ore_dust = new BlockDustOre();
 
     for(i = 0; i < block_metal.length; i++)
     {
       
-      GameRegistry.registerBlock(block_metal[i], ItemBlockMulti.class, "blockMetal" + (i + 1));
+      registerMulti(block_metal[i]);
       for(BlockMetal.Variant v:block_metal[i].getVariants())
       {
         IBlockState state = block_metal[i].getVariantState(v);
@@ -162,7 +181,7 @@ public class SubstratumBlocks
       }
     }
 
-    GameRegistry.registerBlock(block_ore, ItemBlockMulti.class, "ore");
+    registerMulti(block_ore);
     for(BlockOre.EnumVariant ore:BlockOre.EnumVariant.values())
     {
       ItemStack item = block_ore.asItemStack(ore);
@@ -170,7 +189,7 @@ public class SubstratumBlocks
       OreDictionary.registerOre("ore" + ore.material.suffix, item);
     }
 
-    GameRegistry.registerBlock(block_ore_dust, ItemBlockMulti.class, "oreDust");
+    registerMulti(block_ore_dust);
     for(BlockDustOre.EnumVariant ore:BlockDustOre.EnumVariant.values())
     {
       ItemStack item = block_ore_dust.asItemStack(ore);
