@@ -108,9 +108,9 @@ public class SubstratumRecipes
           "  T",
           " F ",
           " S ",
-          'F', new ItemStack(Items.flint),
-          'T', new ItemStack(Items.stick),
-          'S', new ItemStack(Blocks.stone)); 
+          'F', new ItemStack(Items.FLINT),
+          'T', new ItemStack(Items.STICK),
+          'S', new ItemStack(Blocks.STONE)); 
 
       ItemStack mortar = new ItemStack(SubstratumItems.item_mortar,1,OreDictionary.WILDCARD_VALUE);
 
@@ -118,28 +118,28 @@ public class SubstratumRecipes
       {
         GameRegistry.addRecipe(new ShapelessOreRecipe(
             SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.COAL),
-            mortar, new ItemStack(Items.coal,1,0)));
+            mortar, new ItemStack(Items.COAL,1,0)));
       }
 
       if(SubstratumConfig.material_recipes.get(EnumMaterial.CHARCOAL).dust_from_ingot)
       {
         GameRegistry.addRecipe(new ShapelessOreRecipe(
             SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.CHARCOAL),
-            mortar, new ItemStack(Items.coal,1,1)));
+            mortar, new ItemStack(Items.COAL,1,1)));
       }
 
       if(SubstratumConfig.material_recipes.get(EnumMaterial.OBSIDIAN).dust_from_ingot)
       {
         GameRegistry.addRecipe(new ShapelessOreRecipe(
             SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.OBSIDIAN,2),
-            mortar, new ItemStack(Blocks.obsidian)));
+            mortar, new ItemStack(Blocks.OBSIDIAN)));
       }
 
       if(SubstratumConfig.material_recipes.get(EnumMaterial.ENDERPEARL).dust_from_ingot)
       {
         GameRegistry.addRecipe(new ShapelessOreRecipe(
             SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ENDERPEARL),
-            mortar, new ItemStack(Items.ender_pearl)));
+            mortar, new ItemStack(Items.ENDER_PEARL)));
       }
       
       for(EnumMaterial mat:EnumMaterialItem.DUST_SMALL.materials)
@@ -175,7 +175,7 @@ public class SubstratumRecipes
     }
 
     //Dust -> Dust bucket
-    ItemStack bucket = new ItemStack(Items.bucket);
+    ItemStack bucket = new ItemStack(Items.BUCKET);
     if(SubstratumConfig.material_recipes.get(EnumMaterial.REDSTONE).dust_bucket)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
@@ -207,7 +207,7 @@ public class SubstratumRecipes
           "dustEnderpearl"));
     }
 
-    ItemStack bottle = new ItemStack(Items.glass_bottle);
+    ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE);
     for(EnumMaterial mat:EnumMaterialItem.BUCKET_DUST.materials)
     {
       if(SubstratumConfig.material_recipes.get(mat).dust_bucket)
@@ -240,7 +240,7 @@ public class SubstratumRecipes
     if(SubstratumConfig.blend_gunpowder_enable)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          new ItemStack(Items.gunpowder,2),
+          new ItemStack(Items.GUNPOWDER,2),
           "dustNiter", 
           "dustNiter", 
           "dustSulfur", 
@@ -380,8 +380,8 @@ public class SubstratumRecipes
     }
     
     //Gear crafting recipes.
-    ItemStack stick = new ItemStack(Items.stick);
-    ItemStack stone = new ItemStack(Blocks.cobblestone);
+    ItemStack stick = new ItemStack(Items.STICK);
+    ItemStack stone = new ItemStack(Blocks.COBBLESTONE);
     for(EnumMaterial mat:EnumMaterialItem.GEAR.materials)
     {
       if(SubstratumConfig.material_recipes.get(mat).gear_crafting)

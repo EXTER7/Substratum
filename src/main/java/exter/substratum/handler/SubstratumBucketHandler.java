@@ -124,7 +124,7 @@ public class SubstratumBucketHandler implements IRightClickHandler
         world.destroyBlock(pos, true);
       }
 
-      SoundEvent soundevent = SoundEvents.item_bucket_empty_lava;
+      SoundEvent soundevent = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
       world.playSound(player, pos, soundevent, SoundCategory.BLOCKS, 1.0F, 1.0F);
       world.setBlockState(pos, liquids.get(material).getBlock().getDefaultState(), 11);
 
@@ -161,7 +161,7 @@ public class SubstratumBucketHandler implements IRightClickHandler
         } else if(tryPlaceContainedLiquid(material, player, world, replace_pos))
         {
           player.addStat(StatList.getObjectUseStats(item));
-          return !player.capabilities.isCreativeMode ? new ActionResult<ItemStack>(EnumActionResult.SUCCESS, new ItemStack(Items.bucket)) : new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+          return !player.capabilities.isCreativeMode ? new ActionResult<ItemStack>(EnumActionResult.SUCCESS, new ItemStack(Items.BUCKET)) : new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
         } else
         {
           return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);

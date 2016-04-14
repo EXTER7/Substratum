@@ -105,7 +105,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
   
   public BlockMetalSlab(BlockSlab single,String name)
   {
-    super(Material.iron);
+    super(Material.IRON);
     this.single = single;
     setCreativeTab(TabMaterials.tab);
     setHardness(5.0F);

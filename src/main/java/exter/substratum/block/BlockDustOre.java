@@ -59,7 +59,7 @@ public class BlockDustOre extends Block implements IBlockVariants
 
   public BlockDustOre()
   {
-    super(Material.rock);
+    super(Material.ROCK);
     setHardness(3.0F);
     setResistance(5.0F);
     setSoundType(SoundType.STONE);

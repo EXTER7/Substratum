@@ -43,8 +43,8 @@ public class SubstratumFluids
     liquid_redstone = register( "liquidRedstone", 800, 4);
     liquid_glowstone = register( "liquidGlowstone", 1100, 15);
     liquid_enderpearl = register( "liquidEnderpearl", 1400, 2);
-    ItemStack bucket = new ItemStack(Items.bucket);
-    ItemStack bottle = new ItemStack(Items.glass_bottle);
+    ItemStack bucket = new ItemStack(Items.BUCKET);
+    ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE);
     FluidContainerRegistry.registerFluidContainer(liquid_redstone, SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.REDSTONE), bucket);
     FluidContainerRegistry.registerFluidContainer(liquid_glowstone, SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.GLOWSTONE), bucket);
     FluidContainerRegistry.registerFluidContainer(liquid_enderpearl, SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.ENDERPEARL), bucket);

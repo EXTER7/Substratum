@@ -53,7 +53,7 @@ public class WorldGenOre
     }
 
     block = state;
-    wgm = new WorldGenMinable(state, 7, BlockMatcher.forBlock(nether?Blocks.netherrack:Blocks.stone));
+    wgm = new WorldGenMinable(state, 7, BlockMatcher.forBlock(nether?Blocks.NETHERRACK:Blocks.STONE));
   }
 
   private void generateOre(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)

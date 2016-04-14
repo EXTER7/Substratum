@@ -199,7 +199,7 @@ public class SubstratumBlocks
 
     registerHalfSlabs();
     
-    registerStairs(EnumMaterial.IRON,Blocks.iron_block.getDefaultState());
-    registerStairs(EnumMaterial.GOLD,Blocks.gold_block.getDefaultState());
+    registerStairs(EnumMaterial.IRON,Blocks.IRON_BLOCK.getDefaultState());
+    registerStairs(EnumMaterial.GOLD,Blocks.GOLD_BLOCK.getDefaultState());
   }
 }

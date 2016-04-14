@@ -26,7 +26,7 @@ public class BlockSubstratumLiquid extends BlockFluidClassic
 
   public BlockSubstratumLiquid(Fluid fluid, String name)
   {
-    super(fluid, Material.lava);
+    super(fluid, Material.LAVA);
     setLightOpacity(0);
     setLightLevel(1.0f);
     setUnlocalizedName("substratum." + name);
@@ -57,7 +57,7 @@ public class BlockSubstratumLiquid extends BlockFluidClassic
     double dy;
     double dz;
 
-    if(world.getBlockState(pos.add(0,1,0)).getMaterial() == Material.air && !world.getBlockState(pos.add(0,1,0)).isOpaqueCube())
+    if(world.getBlockState(pos.add(0,1,0)).getMaterial() == Material.AIR && !world.getBlockState(pos.add(0,1,0)).isOpaqueCube())
     {
       if(rand.nextInt(100) == 0)
       {
@@ -65,12 +65,12 @@ public class BlockSubstratumLiquid extends BlockFluidClassic
         dy = (double) pos.getY() + state.getBoundingBox(world, pos).maxY;
         dz = (double) ((float) pos.getZ() + rand.nextFloat());
         world.spawnParticle(EnumParticleTypes.LAVA, dx, dy, dz, 0.0D, 0.0D, 0.0D);
-        world.playSound(dx, dy, dz, SoundEvents.block_lava_pop, SoundCategory.BLOCKS, 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
+        world.playSound(dx, dy, dz, SoundEvents.BLOCK_LAVA_POP, SoundCategory.BLOCKS, 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
       }
 
       if(rand.nextInt(200) == 0)
       {
-        world.playSound((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), SoundEvents.block_lava_ambient, SoundCategory.BLOCKS, 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
+        world.playSound((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), SoundEvents.BLOCK_LAVA_AMBIENT, SoundCategory.BLOCKS, 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
       }
     }
 

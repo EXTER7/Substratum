@@ -97,7 +97,7 @@ public abstract class BlockMetal extends Block implements IBlockVariants
   
   public BlockMetal(String name)
   {
-    super( Material.iron );
+    super( Material.IRON );
     setHardness(1.0F);
     setResistance(8.0F);
     setUnlocalizedName("substratum.block");

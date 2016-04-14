@@ -78,9 +78,9 @@ public class SubstratumItems
         OreDictionary.registerOre(matitem.prefix + mat.suffix, item.getStack(mat));
       }
     }
-    item_materials.get(EnumMaterialItem.BUCKET_DUST).setContainerItem(Items.bucket).setMaxStackSize(1);
-    item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setContainerItem(Items.bucket).setMaxStackSize(1);
-    item_materials.get(EnumMaterialItem.BOTTLE_LIQUID).setContainerItem(Items.glass_bottle);
+    item_materials.get(EnumMaterialItem.BUCKET_DUST).setContainerItem(Items.BUCKET).setMaxStackSize(1);
+    item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setContainerItem(Items.BUCKET).setMaxStackSize(1);
+    item_materials.get(EnumMaterialItem.BOTTLE_LIQUID).setContainerItem(Items.GLASS_BOTTLE);
     
     if(SubstratumConfig.misc_mortar_uses > 0)
     {
@@ -88,16 +88,16 @@ public class SubstratumItems
       GameRegistry.register(item_mortar);
     }
     
-    OreDictionary.registerOre("dustGunpowder", new ItemStack(Items.gunpowder));
-    OreDictionary.registerOre("dustBlaze", new ItemStack(Items.blaze_powder));
+    OreDictionary.registerOre("dustGunpowder", new ItemStack(Items.GUNPOWDER));
+    OreDictionary.registerOre("dustBlaze", new ItemStack(Items.BLAZE_POWDER));
     vanilla_items = new HashMap<MaterialItem,ItemStack>();
-    vanilla_items.put(new MaterialItem(EnumMaterialItem.INGOT, EnumMaterial.IRON), new ItemStack(Items.iron_ingot));
-    vanilla_items.put(new MaterialItem(EnumMaterialItem.INGOT, EnumMaterial.GOLD), new ItemStack(Items.gold_ingot));
-    vanilla_items.put(new MaterialItem(EnumMaterialItem.NUGGET, EnumMaterial.GOLD), new ItemStack(Items.gold_nugget));
-    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.REDSTONE), new ItemStack(Items.redstone));
-    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GLOWSTONE), new ItemStack(Items.glowstone_dust));
-    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GUNPOWDER), new ItemStack(Items.gunpowder));
-    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.BLAZE), new ItemStack(Items.blaze_powder));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.INGOT, EnumMaterial.IRON), new ItemStack(Items.IRON_INGOT));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.INGOT, EnumMaterial.GOLD), new ItemStack(Items.GOLD_INGOT));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.NUGGET, EnumMaterial.GOLD), new ItemStack(Items.GOLD_NUGGET));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.REDSTONE), new ItemStack(Items.REDSTONE));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GLOWSTONE), new ItemStack(Items.GLOWSTONE_DUST));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GUNPOWDER), new ItemStack(Items.GUNPOWDER));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.BLAZE), new ItemStack(Items.BLAZE_POWDER));
   }
 
 
