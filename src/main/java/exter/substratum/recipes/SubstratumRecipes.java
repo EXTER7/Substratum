@@ -67,6 +67,13 @@ public class SubstratumRecipes
           "dustNickel"));
 
       GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.CUPRONICKEL),
+          "dustCopper",
+          "dustCopper",
+          "dustNickel",
+          "dustNickel"));
+
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,EnumMaterial.CUPRONICKEL,2),
           "dustSmallCopper",
           "dustSmallNickel"));
@@ -93,13 +100,39 @@ public class SubstratumRecipes
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ELECTRUM,2),
           "dustGold", 
           "dustSilver"));
-      
+
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ELECTRUM),
+          "dustSmallGold", 
+          "dustSmallGold", 
+          "dustSmallSilver",
+          "dustSmallSilver"));
+
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,EnumMaterial.ELECTRUM,2),
           "dustSmallGold", 
           "dustSmallSilver"));
     }
-    
+
+    if(SubstratumConfig.blend_steel_enable)
+    {
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.STEEL),
+          "dustCoal", 
+          "dustCoal", 
+          "dustCoal", 
+          "dustCoal", 
+          "dustIron"));
+
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,EnumMaterial.STEEL),
+          "dustSmallCoal", 
+          "dustSmallCoal", 
+          "dustSmallCoal", 
+          "dustSmallCoal", 
+          "dustSmallIron"));
+    }
+
     if(SubstratumItems.item_mortar != null)
     {
       
