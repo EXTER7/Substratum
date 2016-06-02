@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import exter.substratum.config.SubstratumConfig;
+import exter.substratum.material.EnumDyePowderColor;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.init.Items;
@@ -64,6 +65,9 @@ public class SubstratumItems
 
   static public ItemMortar item_mortar = null;
   
+  static public ItemDyePowder item_dye_powder = null;
+  static public ItemDyePowderSmall item_dye_powder_small = null;
+  
   static private Map<MaterialItem,ItemStack> vanilla_items;
   
   static public void registerItems(Configuration config)
@@ -86,6 +90,23 @@ public class SubstratumItems
     {
       item_mortar = new ItemMortar(SubstratumConfig.misc_mortar_uses);
       GameRegistry.register(item_mortar);
+    }
+    
+    if(SubstratumConfig.dye_enabled)
+    {
+      item_dye_powder = new ItemDyePowder();
+      item_dye_powder_small = new ItemDyePowderSmall();
+      
+      GameRegistry.register(item_dye_powder);
+      GameRegistry.register(item_dye_powder_small);
+      
+      for(EnumDyePowderColor color:EnumDyePowderColor.values())
+      {
+        OreDictionary.registerOre(color.oredict, item_dye_powder.getStack(color));
+        OreDictionary.registerOre(color.oredict_small, item_dye_powder_small.getStack(color));
+        OreDictionary.registerOre(color.oredict_dust, item_dye_powder.getStack(color));
+        OreDictionary.registerOre(color.oredict_dust_small, item_dye_powder_small.getStack(color));
+      }
     }
     
     OreDictionary.registerOre("dustGunpowder", new ItemStack(Items.GUNPOWDER));

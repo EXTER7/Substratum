@@ -31,7 +31,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
   modid = ModSubstratum.MODID,
   name = ModSubstratum.MODNAME,
   version = ModSubstratum.MODVERSION,
-  dependencies = "required-after:Forge@[12.17.0.1922,)"
+  dependencies = "required-after:Forge@[12.17.0.1939,)"
 )
 public class ModSubstratum
 {
@@ -64,7 +64,6 @@ public class ModSubstratum
     SubstratumItems.registerItems(config);
     SubstratumFluids.registerFluids();
 
-    SubstratumRecipes.preInit();
 
     SubstratumBucketHandler bucket_handler = new SubstratumBucketHandler();
     MinecraftForge.EVENT_BUS.register(bucket_handler);
@@ -101,7 +100,6 @@ public class ModSubstratum
   @EventHandler
   public void postInit(FMLPostInitializationEvent event)
   {
-    SubstratumRecipes.postInit();
     proxy.postInit();
   }
 }

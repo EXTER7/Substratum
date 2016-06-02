@@ -30,7 +30,11 @@ public class ItemMortar extends Item
       if(is != null && is.getItem() == this && is.getItemDamage() < getMaxDamage())
       {
         is.stackSize++;
-        is.setItemDamage(is.getItemDamage() + 1);
+        // Don't damage when crafting dye powders.
+        if(event.crafting != null && event.crafting.getItem() != SubstratumItems.item_dye_powder)
+        {
+          is.setItemDamage(is.getItemDamage() + 1);
+        }
       }
     }
   }

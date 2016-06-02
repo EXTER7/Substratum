@@ -5,6 +5,7 @@ import java.util.Map;
 import exter.substratum.block.SubstratumBlocks;
 import exter.substratum.config.SubstratumConfig;
 import exter.substratum.item.SubstratumItems;
+import exter.substratum.material.EnumDyePowderColor;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.init.Blocks;
@@ -18,11 +19,6 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class SubstratumRecipes
 {
-  static public void preInit()
-  {
-
-  }
-
   static public void init()
   {
     if(SubstratumConfig.blend_bronze_enable)
@@ -175,22 +171,6 @@ public class SubstratumRecipes
             mortar, new ItemStack(Items.ENDER_PEARL)));
       }
       
-      for(EnumMaterial mat:EnumMaterialItem.DUST_SMALL.materials)
-      {
-        //Dust -> Small dust
-        GameRegistry.addRecipe(new ShapedOreRecipe(
-            SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,mat,4),
-            "  ",
-            " D",
-            'D', "dust" + mat.suffix));
-        
-        //Small dust -> Dust
-        GameRegistry.addRecipe(
-            SubstratumItems.getStack(EnumMaterialItem.DUST,mat),
-            "SS",
-            "SS",
-            'S', SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,mat));
-      }
       
       for(EnumMaterial mat:EnumMaterialItem.DUST.materials)
       {
@@ -205,6 +185,146 @@ public class SubstratumRecipes
           }
         }
       }
+
+      //Dye -> Dye powder
+      if(SubstratumConfig.dye_enabled)
+      {
+        for(EnumDyePowderColor color:EnumDyePowderColor.values())
+        {
+          GameRegistry.addRecipe(new ShapelessOreRecipe(
+                SubstratumItems.item_dye_powder.getStack(color),
+                mortar, color.oredict));
+        }
+      }
+    }
+
+    for(EnumMaterial mat:EnumMaterialItem.DUST_SMALL.materials)
+    {
+      //Dust -> Small dust
+      GameRegistry.addRecipe(new ShapedOreRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,mat,4),
+          "  ",
+          " D",
+          'D', "dust" + mat.suffix));
+      
+      //Small dust -> Dust
+      GameRegistry.addRecipe(
+          SubstratumItems.getStack(EnumMaterialItem.DUST,mat),
+          "SS",
+          "SS",
+          'S', SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,mat));
+    }
+
+    if(SubstratumConfig.dye_enabled)
+    {
+      for(EnumDyePowderColor color:EnumDyePowderColor.values())
+      {
+        //Dye powder -> Small dye powder
+        GameRegistry.addRecipe(
+            SubstratumItems.item_dye_powder_small.getStack(color,4),
+            "  ",
+            " D",
+            'D', SubstratumItems.item_dye_powder.getStack(color));
+      
+        //Small dye powder -> Dye powder
+        GameRegistry.addRecipe(
+            SubstratumItems.item_dye_powder.getStack(color),
+            "SS",
+            "SS",
+            'S', SubstratumItems.item_dye_powder_small.getStack(color));
+        
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+            new ItemStack(Blocks.STAINED_GLASS,2,color.dye.getMetadata()),
+            color.oredict_small,
+            Blocks.GLASS,
+            Blocks.GLASS));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+            new ItemStack(Blocks.STAINED_HARDENED_CLAY,2,color.dye.getMetadata()),
+            color.oredict_small,
+            Blocks.HARDENED_CLAY,
+            Blocks.HARDENED_CLAY));
+        
+        GameRegistry.addRecipe(new ShapelessOreRecipe(
+            new ItemStack(Blocks.STAINED_GLASS_PANE,5,color.dye.getMetadata()),
+            color.oredict_small,
+            Blocks.GLASS_PANE,
+            Blocks.GLASS_PANE,
+            Blocks.GLASS_PANE,
+            Blocks.GLASS_PANE,
+            Blocks.GLASS_PANE));
+      }
+      
+      //Small dye powder mixing
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.LIGHT_GRAY,2),
+          "dustSmallDyeWhite",
+          "dustSmallDyeGray"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.LIGHT_GRAY,3),
+          "dustSmallDyeBlack",
+          "dustSmallDyeWhite",
+          "dustSmallDyeWhite"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.GRAY,2),
+          "dustSmallDyeBlack",
+          "dustSmallDyeWhite"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.ORANGE,2),
+          "dustSmallDyeRed",
+          "dustSmallDyeYellow"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.LIME,2),
+          "dustSmallDyeGreen",
+          "dustSmallDyeWhite"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.LIGHT_BLUE,2),
+          "dustSmallDyeBlue",
+          "dustSmallDyeWhite"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.PINK,2),
+          "dustSmallDyeRed",
+          "dustSmallDyeWhite"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.CYAN,2),
+          "dustSmallDyeGreen",
+          "dustSmallDyeBlue"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.PURPLE,2),
+          "dustSmallDyeRed",
+          "dustSmallDyeBlue"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.MAGENTA,2),
+          "dustSmallDyePink",
+          "dustSmallDyePurple"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.MAGENTA,4),
+          "dustSmallDyeWhite",
+          "dustSmallDyeRed",
+          "dustSmallDyeRed",
+          "dustSmallDyeBlue"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.MAGENTA,3),
+          "dustSmallDyePink",
+          "dustSmallDyeRed",
+          "dustSmallDyeBlue"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.BROWN,3),
+          "dustSmallDyeBlack",
+          "dustSmallDyeRed",
+          "dustSmallDyeYellow"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder_small.getStack(EnumDyePowderColor.BROWN,2),
+          "dustSmallDyeBlack",
+          "dustSmallDyeOrange"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder.getStack(EnumDyePowderColor.BROWN,3),
+          "dustDyeBlack",
+          "dustDyeRed",
+          "dustDyeYellow"));
+      GameRegistry.addRecipe(new ShapelessOreRecipe(
+          SubstratumItems.item_dye_powder.getStack(EnumDyePowderColor.BROWN,2),
+          "dustDyeBlack",
+          "dustDyeOrange"));
     }
 
     //Dust -> Dust bucket
@@ -352,7 +472,7 @@ public class SubstratumRecipes
           "dustSmallPlatinum",
           "bottleLiquidEnderpearl",
           "bottleLiquidEnderpearl" ));
-  }
+    }
 
 
     //Dust -> Ingot smelting recipes.
@@ -532,10 +652,5 @@ public class SubstratumRecipes
             mortar, SubstratumItems.getStack(EnumMaterialItem.ROD, mat)));
       }
     }
-  }
-  
-  static public void postInit()
-  {
-    
   }
 }

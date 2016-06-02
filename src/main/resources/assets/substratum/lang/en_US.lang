@@ -245,6 +245,41 @@ item.substratum.bottleLiquidRedstone.name=Liquid Redstone Bottle
 item.substratum.bottleLiquidGlowstone.name=Liquid Glowstone Bottle
 item.substratum.bottleLiquidEnderpearl.name=Liquid Ender Pearl Bottle
 
+item.substratum.dyeBlack.name=Black Dye Powder
+item.substratum.dyeRed.name=Red Dye Powder
+item.substratum.dyeGreen.name=Green Dye Powder
+item.substratum.dyeBrown.name=Brown Dye Powder
+item.substratum.dyeBlue.name=Blue Dye Powder
+item.substratum.dyePurple.name=Purple Dye Powder
+item.substratum.dyeCyan.name=Cyan Dye Powder
+item.substratum.dyeLightGray.name=Light Gray Dye Powder
+item.substratum.dyeGray.name=Gray Dye Powder
+item.substratum.dyePink.name=Pink Dye Powder
+item.substratum.dyeLime.name=Lime Dye Powder
+item.substratum.dyeYellow.name=Yellow Dye Powder
+item.substratum.dyeLightBlue.name=Light Blue Dye Powder
+item.substratum.dyeMagenta.name=Magenta Dye Powder
+item.substratum.dyeOrange.name=Orange Dye Powder
+item.substratum.dyeWhite.name=White Dye Powder
+
+item.substratum.dyeSmallBlack.name=Small Pile of Black Dye Powder
+item.substratum.dyeSmallRed.name=Small Pile of Red Dye Powder
+item.substratum.dyeSmallGreen.name=Small Pile of Green Dye Powder
+item.substratum.dyeSmallBrown.name=Small Pile of Brown Dye Powder
+item.substratum.dyeSmallBlue.name=Small Pile of Blue Dye Powder
+item.substratum.dyeSmallPurple.name=Small Pile of Purple Dye Powder
+item.substratum.dyeSmallCyan.name=Small Pile of Cyan Dye Powder
+item.substratum.dyeSmallLightGray.name=Small Pile of Light Gray Dye Powder
+item.substratum.dyeSmallGray.name=Small Pile of Gray Dye Powder
+item.substratum.dyeSmallPink.name=Small Pile of Pink Dye Powder
+item.substratum.dyeSmallLime.name=Small Pile of Lime Dye Powder
+item.substratum.dyeSmallYellow.name=Small Pile of Yellow Dye Powder
+item.substratum.dyeSmallLightBlue.name=Small Pile of Light Blue Dye Powder
+item.substratum.dyeSmallMagenta.name=Small Pile of Magenta Dye Powder
+item.substratum.dyeSmallOrange.name=Small Pile of Orange Dye Powder
+item.substratum.dyeSmallWhite.name=Small Pile of White Dye Powder
+
+
 fluid.substratum.liquidRedstone=Liquid Redstone
 fluid.substratum.liquidGlowstone=Liquid Glowstone
 fluid.substratum.liquidEnderpearl=Liquid Ender Pearl

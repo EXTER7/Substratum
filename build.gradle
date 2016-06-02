@@ -29,7 +29,7 @@ group = "exter.substratum" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "Substratum"
 
 minecraft {
-    version = "1.9.4-12.17.0.1922-1.9.4"
+    version = "1.9.4-12.17.0.1939"
     runDir = "eclipse"
     mappings = "snapshot_20160519"
 }

@@ -3,12 +3,14 @@ package exter.substratum.proxy;
 import java.util.Map;
 
 import exter.substratum.block.SubstratumBlocks;
+import exter.substratum.config.SubstratumConfig;
 import exter.substratum.fluid.SubstratumFluids;
 import exter.substratum.block.BlockDustOre;
 import exter.substratum.block.BlockMetal;
 import exter.substratum.block.BlockMetalSlab;
 import exter.substratum.block.BlockOre;
 import exter.substratum.item.SubstratumItems;
+import exter.substratum.material.EnumDyePowderColor;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.block.Block;
@@ -128,7 +130,16 @@ public class ClientProxy extends CommonProxy
         }
       }
     }
-    
+
+    if(SubstratumConfig.dye_enabled)
+    {
+      for(EnumDyePowderColor color:EnumDyePowderColor.values())
+      {
+        registerItemModel(SubstratumItems.item_dye_powder,color.oredict, color.ordinal());
+        registerItemModel(SubstratumItems.item_dye_powder_small,color.oredict_small, color.ordinal());
+      }
+    }
+
     registerItemModel(SubstratumItems.item_mortar,"mortar");
   }
   

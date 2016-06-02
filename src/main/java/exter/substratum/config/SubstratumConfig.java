@@ -25,7 +25,7 @@ public class SubstratumConfig
       this.min_y = config.getInt("minY", "worldgen." + ore, min_y, 0, 256, "Lowest Y level the ore is generated.");
       this.max_y = config.getInt("maxY", "worldgen." + ore, max_y, 0, 256, "Highest Y level the ore is generated.");
       this.min_clusters = config.getInt("min_clusters", "worldgen." + ore, min_clusters, 1, 100, "Minimum amount of ore clusters per chunk.");
-      this.max_clusters = config.getInt("max_clusters", "worldgen." + ore, max_clusters, 1, 100, "Maximum amount pf ore clusters per chunk.");
+      this.max_clusters = config.getInt("max_clusters", "worldgen." + ore, max_clusters, 1, 100, "Maximum amount of ore clusters per chunk.");
     }
   }
   
@@ -125,8 +125,6 @@ public class SubstratumConfig
         stairs_from_blocks = false;
       }
     }
-    
-
   }
   
   public static WorldgenConfig worldgen_copper;
@@ -160,7 +158,9 @@ public class SubstratumConfig
   public static Map<EnumMaterial,MaterialRecipeConfig> material_recipes = new EnumMap<EnumMaterial,MaterialRecipeConfig>(EnumMaterial.class);
 
   public static int misc_mortar_uses;
-  
+
+  public static boolean dye_enabled;
+
   static public void load(Configuration config)
   {
     worldgen_copper = new WorldgenConfig(config, "copper", 20, 80, 10, 20);
@@ -188,6 +188,7 @@ public class SubstratumConfig
     blend_gunpowder_enable = config.getBoolean("blend", "recipes.gunpowder", true, "Enable/disable gunpowder dust blending recipe.");
 
     misc_mortar_uses = config.getInt("mortar_uses", "misc", 20, 0, 1000, "How many uses the mortar has unti it breaks. Setting this to 0 disables the item.");
+    dye_enabled = config.getBoolean("enabled", "dyes", true, "Enable/disable dye powders.");
 
     cheaper_plate_recipes = config.getBoolean("cheaper_plate_recipes", "recipes.balance", false, "Require less materials to make plates.");
     cheaper_rod_recipes = config.getBoolean("cheaper_rod_recipes", "recipes.balance", false, "Require less materials to make rods.");
