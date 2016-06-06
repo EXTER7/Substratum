@@ -82,6 +82,19 @@ public class SubstratumItems
         OreDictionary.registerOre(matitem.prefix + mat.suffix, item.getStack(mat));
       }
     }
+    for(ItemMaterial matitem:item_materials.values())
+    {
+      ItemStack stack = matitem.getStack(EnumMaterial.ALUMINIUM);
+      if(stack != null)
+      {
+        OreDictionary.registerOre(matitem.prefix + "Aluminum", stack);
+      }
+      stack = matitem.getStack(EnumMaterial.CHROMIUM);
+      if(stack != null)
+      {
+        OreDictionary.registerOre(matitem.prefix + "Chromium", stack);
+      }
+    }
     item_materials.get(EnumMaterialItem.BUCKET_DUST).setContainerItem(Items.BUCKET).setMaxStackSize(1);
     item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setContainerItem(Items.BUCKET).setMaxStackSize(1);
     item_materials.get(EnumMaterialItem.BOTTLE_LIQUID).setContainerItem(Items.GLASS_BOTTLE);
@@ -108,7 +121,6 @@ public class SubstratumItems
         OreDictionary.registerOre(color.oredict_dust_small, item_dye_powder_small.getStack(color));
       }
     }
-    
     OreDictionary.registerOre("dustGunpowder", new ItemStack(Items.GUNPOWDER));
     OreDictionary.registerOre("dustBlaze", new ItemStack(Items.BLAZE_POWDER));
     vanilla_items = new HashMap<MaterialItem,ItemStack>();
