@@ -30,7 +30,9 @@ public enum EnumMaterial
   NITER("Niter"),
   GUNPOWDER("Gunpowder"),
   OBSIDIAN("Obsidian"),
-  BLAZE("Blaze");
+  BLAZE("Blaze"),
+  ALUMINA("Alumina"),
+  ALUMINIUM("Aluminium");
   
   public final String suffix;
   

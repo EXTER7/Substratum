@@ -129,6 +129,14 @@ public class SubstratumRecipes
           "dustSmallIron"));
     }
 
+    
+    if(SubstratumConfig.alumina_ingot_smelting)
+    {
+      GameRegistry.addSmelting(
+          SubstratumItems.getStack(EnumMaterialItem.INGOT,EnumMaterial.ALUMINA),
+          SubstratumItems.getStack(EnumMaterialItem.INGOT,EnumMaterial.ALUMINIUM),0);
+    }
+
     if(SubstratumItems.item_mortar != null)
     {
       

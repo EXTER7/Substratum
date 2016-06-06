@@ -16,6 +16,7 @@ tile.substratum.blockCupronickel.name=Block of Cupronickel
 tile.substratum.blockSignalum.name=Block of Signalum
 tile.substratum.blockLumium.name=Block of Lumium
 tile.substratum.blockEnderium.name=Block of Enderium
+tile.substratum.blockAluminium.name=Block of Aluminium
 
 tile.substratum.oreCopper.name=Copper Ore
 tile.substratum.oreTin.name=Tin Ore
@@ -26,6 +27,7 @@ tile.substratum.oreLead.name=Lead Ore
 tile.substratum.orePlatinum.name=Platinum Ore
 tile.substratum.oreSulfur.name=Sulfur Ore
 tile.substratum.oreNiter.name=Niter Ore
+tile.substratum.oreAlumina.name=Alumina Ore
 
 tile.substratum.slabIron.name=Iron Slab
 tile.substratum.slabGold.name=Gold Slab
@@ -45,6 +47,7 @@ tile.substratum.slabCupronickel.name=Cupronickel Slab
 tile.substratum.slabSignalum.name=Signalum Slab
 tile.substratum.slabLumium.name=Lumium Slab
 tile.substratum.slabEnderium.name=Enderium Slab
+tile.substratum.slabAluminium.name=Aluminium Slab
 
 tile.substratum.slabDoubleIron.name=Double Iron Slab
 tile.substratum.slabDoubleGold.name=Double Gold Slab
@@ -64,6 +67,7 @@ tile.substratum.slabDoubleCupronickel.name=Double Cupronickel Slab
 tile.substratum.slabDoubleSignalum.name=Double Signalum Slab
 tile.substratum.slabDoubleLumium.name=Double Lumium Slab
 tile.substratum.slabDoubleEnderium.name=Double Enderium Slab
+tile.substratum.slabDoubleAluminium.name=Double Aluminium Slab
 
 tile.substratum.stairsIron.name=Iron Stairs
 tile.substratum.stairsGold.name=Gold Stairs
@@ -83,6 +87,7 @@ tile.substratum.stairsCupronickel.name=Cupronickel Stairs
 tile.substratum.stairsSignalum.name=Signalum Stairs
 tile.substratum.stairsLumium.name=Lumium Stairs
 tile.substratum.stairsEnderium.name=Enderium Stairs
+tile.substratum.stairsAluminium.name=Aluminium Stairs
 
 item.substratum.mortar.name=Mortar
   
@@ -102,6 +107,8 @@ item.substratum.ingotCupronickel.name=Cupronickel Ingot
 item.substratum.ingotSignalum.name=Signalum Ingot
 item.substratum.ingotLumium.name=Lumium Ingot
 item.substratum.ingotEnderium.name=Enderium Ingot
+item.substratum.ingotAlumina.name=Alumina Ingot
+item.substratum.ingotAluminium.name=Aluminium Ingot
 
 item.substratum.dustCopper.name=Copper Dust
 item.substratum.dustTin.name=Tin Dust
@@ -127,6 +134,8 @@ item.substratum.dustEnderium.name=Enderium Dust
 item.substratum.dustSulfur.name=Sulfur
 item.substratum.dustNiter.name=Niter
 item.substratum.dustObsidian.name=Obsidian Dust
+item.substratum.dustAlumina.name=Alumina Dust
+item.substratum.dustAluminium.name=Aluminium Dust
 
 item.substratum.dustSmallCopper.name=Small Pile of Copper Dust
 item.substratum.dustSmallTin.name=Small Pile of Tin Dust
@@ -156,6 +165,8 @@ item.substratum.dustSmallGunpowder.name=Small Pile of Gunpowder
 item.substratum.dustSmallBlaze.name=Small Pile of Blaze Powder
 item.substratum.dustSmallRedstone.name=Small Pile of Redstone Dust
 item.substratum.dustSmallGlowstone.name=Small Pile of Glowstone Dust
+item.substratum.dustSmallAlumina.name=Small Pile of Alumina Dust
+item.substratum.dustSmallAluminium.name=Small Pile of Aluminium Dust
 
 item.substratum.nuggetCopper.name=Copper Nugget
 item.substratum.nuggetTin.name=Tin Nugget
@@ -174,6 +185,8 @@ item.substratum.nuggetIron.name=Iron Nugget
 item.substratum.nuggetSignalum.name=Signalum Nugget
 item.substratum.nuggetLumium.name=Lumium Nugget
 item.substratum.nuggetEnderium.name=Enderium Nugget
+item.substratum.nuggetAlumina.name=Alumina Nugget
+item.substratum.nuggetAluminium.name=Aluminium Nugget
 
 item.substratum.gearStone.name=Stone Gear
 item.substratum.gearIron.name=Iron Gear
@@ -194,6 +207,7 @@ item.substratum.gearCupronickel.name=Cupronickel Gear
 item.substratum.gearSignalum.name=Signalum Gear
 item.substratum.gearLumium.name=Lumium Gear
 item.substratum.gearEnderium.name=Enderium Gear
+item.substratum.gearAluminium.name=Aluminium Gear
 
 item.substratum.plateIron.name=Iron Plate
 item.substratum.plateGold.name=Gold Plate
@@ -213,6 +227,7 @@ item.substratum.plateCupronickel.name=Cupronickel Plate
 item.substratum.plateSignalum.name=Signalum Plate
 item.substratum.plateLumium.name=Lumium Plate
 item.substratum.plateEnderium.name=Enderium Plate
+item.substratum.plateAluminium.name=Aluminium Plate
 
 item.substratum.rodIron.name=Iron Rod
 item.substratum.rodGold.name=Gold Rod
@@ -232,6 +247,7 @@ item.substratum.rodCupronickel.name=Cupronickel Rod
 item.substratum.rodSignalum.name=Signalum Rod
 item.substratum.rodLumium.name=Lumium Rod
 item.substratum.rodEnderium.name=Enderium Rod
+item.substratum.rodAluminium.name=Aluminium Rod
 
 item.substratum.bucketDustRedstone.name=Redstone Dust Bucket
 item.substratum.bucketDustGlowstone.name=Glowstone Dust Bucket

@@ -134,6 +134,7 @@ public class SubstratumConfig
   public static WorldgenConfig worldgen_silver;
   public static WorldgenConfig worldgen_lead;
   public static WorldgenConfig worldgen_platinum;
+  public static WorldgenConfig worldgen_alumina;
 
   public static WorldgenConfig worldgen_sulfur;
   public static WorldgenConfig worldgen_niter;
@@ -150,6 +151,8 @@ public class SubstratumConfig
   public static boolean blend_enderium_enable;
 
   public static boolean blend_gunpowder_enable;
+  
+  public static boolean alumina_ingot_smelting;
 
   public static boolean cheaper_plate_recipes;
   public static boolean cheaper_rod_recipes;
@@ -170,6 +173,7 @@ public class SubstratumConfig
     worldgen_silver = new WorldgenConfig(config, "silver", 8, 30, 3, 4);
     worldgen_lead = new WorldgenConfig(config, "lead", 8, 48, 5, 6);
     worldgen_platinum = new WorldgenConfig(config, "platinum", 2, 12, 0, 1);
+    worldgen_alumina = new WorldgenConfig(config, "alumina", 16, 32, 2, 5);
     
     worldgen_sulfur = new WorldgenConfig(config, "sulfur", 5, 123, 15, 20);
     worldgen_niter = new WorldgenConfig(config, "niter", 5, 123, 10, 15);
@@ -187,6 +191,8 @@ public class SubstratumConfig
 
     blend_gunpowder_enable = config.getBoolean("blend", "recipes.gunpowder", true, "Enable/disable gunpowder dust blending recipe.");
 
+    alumina_ingot_smelting = config.getBoolean("ingot_from_alumina", "recipes.aluminium", true, "Enable/disable alumina ingot to aluminium ingot smelting.");
+    
     misc_mortar_uses = config.getInt("mortar_uses", "misc", 20, 0, 1000, "How many uses the mortar has unti it breaks. Setting this to 0 disables the item.");
     dye_enabled = config.getBoolean("enabled", "dyes", true, "Enable/disable dye powders.");
 

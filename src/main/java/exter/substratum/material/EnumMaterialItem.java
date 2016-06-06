@@ -20,7 +20,9 @@ public enum EnumMaterialItem
       EnumMaterial.CUPRONICKEL,
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
-      EnumMaterial.ENDERIUM)),
+      EnumMaterial.ENDERIUM,
+      EnumMaterial.ALUMINA,
+      EnumMaterial.ALUMINIUM)),
   
   DUST("dust",ImmutableList.of(
       EnumMaterial.COAL,
@@ -46,7 +48,9 @@ public enum EnumMaterialItem
       EnumMaterial.CHARCOAL,
       EnumMaterial.OBSIDIAN,
       EnumMaterial.SULFUR,
-      EnumMaterial.NITER)),
+      EnumMaterial.NITER,
+      EnumMaterial.ALUMINA,
+      EnumMaterial.ALUMINIUM)),
   
   NUGGET("nugget",ImmutableList.of(
       EnumMaterial.IRON,
@@ -65,7 +69,9 @@ public enum EnumMaterialItem
       EnumMaterial.CUPRONICKEL,
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
-      EnumMaterial.ENDERIUM)),
+      EnumMaterial.ENDERIUM,
+      EnumMaterial.ALUMINA,
+      EnumMaterial.ALUMINIUM)),
 
   //1 gear = 4 ingots
   GEAR("gear",ImmutableList.of(
@@ -87,7 +93,8 @@ public enum EnumMaterialItem
       EnumMaterial.CUPRONICKEL,
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
-      EnumMaterial.ENDERIUM)),
+      EnumMaterial.ENDERIUM,
+      EnumMaterial.ALUMINIUM)),
 
   //1 plate = 1 ingot
   PLATE("plate",ImmutableList.of(
@@ -108,7 +115,8 @@ public enum EnumMaterialItem
       EnumMaterial.CUPRONICKEL,
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
-      EnumMaterial.ENDERIUM)),  
+      EnumMaterial.ENDERIUM,
+      EnumMaterial.ALUMINIUM)),  
   
   BUCKET_DUST("bucketDust", ImmutableList.of(
       EnumMaterial.REDSTONE,
@@ -145,7 +153,8 @@ public enum EnumMaterialItem
       EnumMaterial.CUPRONICKEL,
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
-      EnumMaterial.ENDERIUM)),
+      EnumMaterial.ENDERIUM,
+      EnumMaterial.ALUMINIUM)),
   
   //4 small dust = 1 dust
   DUST_SMALL("dustSmall",ImmutableList.of(
@@ -176,7 +185,9 @@ public enum EnumMaterialItem
       EnumMaterial.GUNPOWDER,
       EnumMaterial.BLAZE,
       EnumMaterial.REDSTONE,
-      EnumMaterial.GLOWSTONE));
+      EnumMaterial.GLOWSTONE,
+      EnumMaterial.ALUMINA,
+      EnumMaterial.ALUMINIUM));
       
   public final ImmutableList<EnumMaterial> materials;
   public final String prefix;

@@ -89,6 +89,8 @@ public class ModSubstratum
     WorldGenOre.registerOre(SubstratumConfig.worldgen_silver, SubstratumBlocks.block_ore.asState(BlockOre.EnumVariant.SILVER), false);
     WorldGenOre.registerOre(SubstratumConfig.worldgen_lead, SubstratumBlocks.block_ore.asState(BlockOre.EnumVariant.LEAD), false);
     WorldGenOre.registerOre(SubstratumConfig.worldgen_platinum, SubstratumBlocks.block_ore.asState(BlockOre.EnumVariant.PLATINUM), false);
+    WorldGenOre.registerOre(SubstratumConfig.worldgen_alumina, SubstratumBlocks.block_ore.asState(BlockOre.EnumVariant.ALUMINA), false);
+
     WorldGenOre.registerOre(SubstratumConfig.worldgen_sulfur, SubstratumBlocks.block_ore_dust.asState(BlockDustOre.EnumVariant.SULFUR), true);
     WorldGenOre.registerOre(SubstratumConfig.worldgen_niter, SubstratumBlocks.block_ore_dust.asState(BlockDustOre.EnumVariant.NITER), true);
 

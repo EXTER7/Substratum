@@ -1,7 +1,8 @@
 {
   "variants":
   { 
-    "metal=enderium": { "model": "substratum:blockEnderium"  }
+    "metal=enderium": { "model": "substratum:blockEnderium"  },
+    "metal=aluminium": { "model": "substratum:blockAluminium"  }
   }
 }
 
