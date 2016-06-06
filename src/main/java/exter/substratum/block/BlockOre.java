@@ -29,7 +29,8 @@ public class BlockOre extends Block implements IBlockVariants
     SILVER(EnumMaterial.SILVER,2),
     LEAD(EnumMaterial.LEAD,2),
     PLATINUM(EnumMaterial.PLATINUM,2),
-    ALUMINA(EnumMaterial.ALUMINA,1);
+    ALUMINA(EnumMaterial.ALUMINA,2),
+    CHROMIUM(EnumMaterial.CHROMIUM,2);
     
     public final EnumMaterial material;
     public final int harvest_level;

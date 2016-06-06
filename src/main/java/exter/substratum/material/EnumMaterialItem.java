@@ -22,7 +22,8 @@ public enum EnumMaterialItem
       EnumMaterial.LUMIUM,
       EnumMaterial.ENDERIUM,
       EnumMaterial.ALUMINA,
-      EnumMaterial.ALUMINIUM)),
+      EnumMaterial.ALUMINIUM,
+      EnumMaterial.CHROMIUM)),
   
   DUST("dust",ImmutableList.of(
       EnumMaterial.COAL,
@@ -50,7 +51,8 @@ public enum EnumMaterialItem
       EnumMaterial.SULFUR,
       EnumMaterial.NITER,
       EnumMaterial.ALUMINA,
-      EnumMaterial.ALUMINIUM)),
+      EnumMaterial.ALUMINIUM,
+      EnumMaterial.CHROMIUM)),
   
   NUGGET("nugget",ImmutableList.of(
       EnumMaterial.IRON,
@@ -71,7 +73,8 @@ public enum EnumMaterialItem
       EnumMaterial.LUMIUM,
       EnumMaterial.ENDERIUM,
       EnumMaterial.ALUMINA,
-      EnumMaterial.ALUMINIUM)),
+      EnumMaterial.ALUMINIUM,
+      EnumMaterial.CHROMIUM)),
 
   //1 gear = 4 ingots
   GEAR("gear",ImmutableList.of(
@@ -94,7 +97,8 @@ public enum EnumMaterialItem
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
       EnumMaterial.ENDERIUM,
-      EnumMaterial.ALUMINIUM)),
+      EnumMaterial.ALUMINIUM,
+      EnumMaterial.CHROMIUM)),
 
   //1 plate = 1 ingot
   PLATE("plate",ImmutableList.of(
@@ -116,7 +120,8 @@ public enum EnumMaterialItem
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
       EnumMaterial.ENDERIUM,
-      EnumMaterial.ALUMINIUM)),  
+      EnumMaterial.ALUMINIUM,
+      EnumMaterial.CHROMIUM)),  
   
   BUCKET_DUST("bucketDust", ImmutableList.of(
       EnumMaterial.REDSTONE,
@@ -154,7 +159,8 @@ public enum EnumMaterialItem
       EnumMaterial.SIGNALUM,
       EnumMaterial.LUMIUM,
       EnumMaterial.ENDERIUM,
-      EnumMaterial.ALUMINIUM)),
+      EnumMaterial.ALUMINIUM,
+      EnumMaterial.CHROMIUM)),
   
   //4 small dust = 1 dust
   DUST_SMALL("dustSmall",ImmutableList.of(
@@ -187,7 +193,8 @@ public enum EnumMaterialItem
       EnumMaterial.REDSTONE,
       EnumMaterial.GLOWSTONE,
       EnumMaterial.ALUMINA,
-      EnumMaterial.ALUMINIUM));
+      EnumMaterial.ALUMINIUM,
+      EnumMaterial.CHROMIUM));
       
   public final ImmutableList<EnumMaterial> materials;
   public final String prefix;

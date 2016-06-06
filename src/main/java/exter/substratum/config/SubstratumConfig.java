@@ -135,6 +135,7 @@ public class SubstratumConfig
   public static WorldgenConfig worldgen_lead;
   public static WorldgenConfig worldgen_platinum;
   public static WorldgenConfig worldgen_alumina;
+  public static WorldgenConfig worldgen_chromium;
 
   public static WorldgenConfig worldgen_sulfur;
   public static WorldgenConfig worldgen_niter;
@@ -174,6 +175,7 @@ public class SubstratumConfig
     worldgen_lead = new WorldgenConfig(config, "lead", 8, 48, 5, 6);
     worldgen_platinum = new WorldgenConfig(config, "platinum", 2, 12, 0, 1);
     worldgen_alumina = new WorldgenConfig(config, "alumina", 16, 32, 2, 5);
+    worldgen_chromium = new WorldgenConfig(config, "chromium", 8, 24, 2, 3);
     
     worldgen_sulfur = new WorldgenConfig(config, "sulfur", 5, 123, 15, 20);
     worldgen_niter = new WorldgenConfig(config, "niter", 5, 123, 10, 15);

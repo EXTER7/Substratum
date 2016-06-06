@@ -8,6 +8,7 @@ orePlatinum
 oreSulfur
 oreNiter
 oreAlumina
+oreChrome
 blockBrass
 blockBronze
 blockCopper
@@ -25,4 +26,5 @@ blockSignalum
 blockLumium
 blockEnderium
 blockAluminium
+blockChrome
 

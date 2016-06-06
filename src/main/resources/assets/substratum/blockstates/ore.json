@@ -8,7 +8,8 @@
    "ore=silver": { "model": "substratum:oreSilver" },
    "ore=lead": { "model": "substratum:oreLead" },
    "ore=platinum": { "model": "substratum:orePlatinum" },
-   "ore=alumina": { "model": "substratum:oreAlumina" }
+   "ore=alumina": { "model": "substratum:oreAlumina" },
+   "ore=chrome": { "model": "substratum:oreChrome" }
   }
 }
 

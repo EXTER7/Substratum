@@ -1,0 +1,9 @@
+{
+   "parent": "minecraft:block/half_slab",
+   "textures":
+   {
+     "bottom": "substratum:blocks/blockChrome",
+     "top": "substratum:blocks/blockChrome",
+     "side": "substratum:blocks/slabChrome"
+  }
+}

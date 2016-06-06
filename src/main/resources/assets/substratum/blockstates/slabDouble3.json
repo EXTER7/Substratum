@@ -4,9 +4,11 @@
     "half=top,metal=lumium": { "model": "substratum:slabDoubleLumium"  },
     "half=top,metal=enderium": { "model": "substratum:slabDoubleEnderium"  },
     "half=top,metal=aluminium": { "model": "substratum:slabDoubleAluminium"  },
+    "half=top,metal=chrome": { "model": "substratum:slabDoubleChrome"  },
     "half=bottom,metal=lumium": { "model": "substratum:slabDoubleLumium"  },
     "half=bottom,metal=enderium": { "model": "substratum:slabDoubleEnderium"  },
-    "half=bottom,metal=aluminium": { "model": "substratum:slabDoubleAluminium"  }
+    "half=bottom,metal=aluminium": { "model": "substratum:slabDoubleAluminium"  },
+    "half=bottom,metal=chrome": { "model": "substratum:slabDoubleChrome"  }
   }
 }
 

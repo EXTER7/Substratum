@@ -17,6 +17,7 @@ ingotLumium
 ingotEnderium
 ingotAluminium
 ingotAlumina
+ingotChrome
 dustCharcoal
 dustCoal
 dustBrass
@@ -43,6 +44,7 @@ dustNiter
 dustObsidian
 dustAluminium
 dustAlumina
+dustChrome
 nuggetBrass
 nuggetBronze
 nuggetCopper
@@ -62,6 +64,7 @@ nuggetLumium
 nuggetEnderium
 nuggetAluminium
 nuggetAlumina
+nuggetChrome
 gearBrass
 gearBronze
 gearCopper
@@ -82,6 +85,7 @@ gearStone
 gearTin
 gearZinc
 gearAluminium
+gearChrome
 plateBrass
 plateBronze
 plateCopper
@@ -101,6 +105,7 @@ plateSteel
 plateTin
 plateZinc
 plateAluminium
+plateChrome
 bucketDustEnderpearl
 bucketDustGlowstone
 bucketDustRedstone
@@ -129,6 +134,7 @@ rodSignalum
 rodLumium
 rodEnderium
 rodAluminium
+rodChrome
 dustSmallCharcoal
 dustSmallCoal
 dustSmallBrass
@@ -159,6 +165,7 @@ dustSmallRedstone
 dustSmallGlowstone
 dustSmallAluminium
 dustSmallAlumina
+dustSmallChrome
 dyeBlack
 dyeBlue
 dyeBrown
