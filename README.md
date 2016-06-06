@@ -1,2 +1,2 @@
-# BaseMaterials
-Minecraft mod that adds ores and metal for other mods or modpacks to use 
+# Substratum
+Minecraft mod that adds ores and basic components for other mods or modpacks to use. 
