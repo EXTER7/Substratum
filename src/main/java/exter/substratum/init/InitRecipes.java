@@ -43,7 +43,7 @@ public class InitRecipes
   static public void init()
   {
     InitBlendRecipes.init();
-    InitToolRecipes.init();
+    InitEquipmentRecipes.init();
     
     if(SubstratumConfig.alumina_ingot_smelting)
     {

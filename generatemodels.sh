@@ -210,6 +210,20 @@ do
   ) | sed -e "s/@@TEXTURE@@/"$item"/g" > $modeldir"/item/"$item".json"
 done
 
+for item in $(cat "tools.list")
+do
+  ( # Item model
+  cat <<- EOF
+	{
+	    "parent": "item/handheld",
+	    "textures": {
+	        "layer0": "substratum:items/@@TEXTURE@@"
+	    }
+	}
+	EOF
+  ) | sed -e "s/@@TEXTURE@@/"$item"/g" > $modeldir"/item/"$item".json"
+done
+
 for fluid in $(cat "fluids.list")
 do
   ( # Fluid model

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import exter.substratum.config.SubstratumConfig;
 import exter.substratum.config.SubstratumConfig.MaterialRecipeConfig;
+import exter.substratum.item.equipment.ItemArmorSubstratum;
 import exter.substratum.item.equipment.ItemAxeSubstratum;
 import exter.substratum.item.equipment.ItemHoeSubstratum;
 import exter.substratum.item.equipment.ItemPickaxeSubstratum;
@@ -16,12 +17,8 @@ import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialEquipment;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemAxe;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemSpade;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -88,6 +85,11 @@ public class SubstratumItems
   static public Map<EnumMaterial,ItemShovelSubstratum> shovels = new EnumMap<EnumMaterial,ItemShovelSubstratum>(EnumMaterial.class);
   static public Map<EnumMaterial,ItemHoeSubstratum> hoes = new EnumMap<EnumMaterial,ItemHoeSubstratum>(EnumMaterial.class);
   static public Map<EnumMaterial,ItemSwordSubstratum> swords = new EnumMap<EnumMaterial,ItemSwordSubstratum>(EnumMaterial.class);
+  
+  static public Map<EnumMaterial,ItemArmorSubstratum> helmets = new EnumMap<EnumMaterial,ItemArmorSubstratum>(EnumMaterial.class);
+  static public Map<EnumMaterial,ItemArmorSubstratum> chestplates = new EnumMap<EnumMaterial,ItemArmorSubstratum>(EnumMaterial.class);
+  static public Map<EnumMaterial,ItemArmorSubstratum> leggings = new EnumMap<EnumMaterial,ItemArmorSubstratum>(EnumMaterial.class);
+  static public Map<EnumMaterial,ItemArmorSubstratum> boots = new EnumMap<EnumMaterial,ItemArmorSubstratum>(EnumMaterial.class);
   
   static public void registerItems(Configuration config)
   {
@@ -190,6 +192,35 @@ public class SubstratumItems
         GameRegistry.register(item);
         swords.put(equipment.material, item);
         OreDictionary.registerOre("sword", new ItemStack(item,1,0));
+      }
+
+      if(mat_config.armor_helmet)
+      {
+        ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.HEAD);
+        GameRegistry.register(item);
+        helmets.put(equipment.material, item);
+        OreDictionary.registerOre("helmet", new ItemStack(item,1,0));
+      }
+      if(mat_config.armor_chestplate)
+      {
+        ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.CHEST);
+        GameRegistry.register(item);
+        chestplates.put(equipment.material, item);
+        OreDictionary.registerOre("chestplate", new ItemStack(item,1,0));
+      }
+      if(mat_config.armor_leggings)
+      {
+        ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.LEGS);
+        GameRegistry.register(item);
+        leggings.put(equipment.material, item);
+        OreDictionary.registerOre("leggings", new ItemStack(item,1,0));
+      }
+      if(mat_config.armor_boots)
+      {
+        ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.FEET);
+        GameRegistry.register(item);
+        boots.put(equipment.material, item);
+        OreDictionary.registerOre("boots", new ItemStack(item,1,0));
       }
     }
   }

@@ -10,6 +10,11 @@ import exter.substratum.block.BlockMetal;
 import exter.substratum.block.BlockMetalSlab;
 import exter.substratum.block.BlockOre;
 import exter.substratum.item.SubstratumItems;
+import exter.substratum.item.equipment.ItemAxeSubstratum;
+import exter.substratum.item.equipment.ItemHoeSubstratum;
+import exter.substratum.item.equipment.ItemPickaxeSubstratum;
+import exter.substratum.item.equipment.ItemShovelSubstratum;
+import exter.substratum.item.equipment.ItemSwordSubstratum;
 import exter.substratum.material.EnumDyePowderColor;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
@@ -20,7 +25,9 @@ import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.BlockFluidBase;
@@ -81,11 +88,18 @@ public class ClientProxy extends CommonProxy
     registerFluidModel(SubstratumFluids.liquid_glowstone,"liquidGlowstone");
     registerFluidModel(SubstratumFluids.liquid_enderpearl,"liquidEnderpearl");
   }
+  
+  private void registerEquipment(Map<EnumMaterial,? extends Item> map,String prefix)
+  {
+    for(Map.Entry<EnumMaterial,? extends Item> e:map.entrySet())
+    {
+      registerItemModel(e.getValue(),prefix + e.getKey().suffix);
+    }
+  }
 
   @Override
   public void init()
-  {
-   
+  {   
     for(BlockOre.EnumVariant ore:BlockOre.EnumVariant.values())
     {
       registerItemModel(SubstratumBlocks.block_ore,"ore" + ore.material.suffix, ore.ordinal());
@@ -144,6 +158,17 @@ public class ClientProxy extends CommonProxy
     {
       registerItemModel(SubstratumItems.item_mortar,"mortar");
     }
+
+    registerEquipment(SubstratumItems.pickaxes,"pickaxe");
+    registerEquipment(SubstratumItems.axes,"axe");
+    registerEquipment(SubstratumItems.shovels,"shovel");
+    registerEquipment(SubstratumItems.hoes,"hoe");
+    registerEquipment(SubstratumItems.swords,"sword");
+
+    registerEquipment(SubstratumItems.helmets,"helmet");
+    registerEquipment(SubstratumItems.chestplates,"chestplate");
+    registerEquipment(SubstratumItems.leggings,"leggings");
+    registerEquipment(SubstratumItems.boots,"boots");
   }
   
 
