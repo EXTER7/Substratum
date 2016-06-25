@@ -140,7 +140,10 @@ public class ClientProxy extends CommonProxy
       }
     }
 
-    registerItemModel(SubstratumItems.item_mortar,"mortar");
+    if(SubstratumItems.item_mortar != null)
+    {
+      registerItemModel(SubstratumItems.item_mortar,"mortar");
+    }
   }
   
 
