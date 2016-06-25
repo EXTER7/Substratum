@@ -9,10 +9,10 @@ import exter.substratum.block.BlockOre;
 import exter.substratum.config.SubstratumConfig;
 import exter.substratum.fluid.SubstratumFluids;
 import exter.substratum.handler.SubstratumBucketHandler;
+import exter.substratum.init.InitRecipes;
 import exter.substratum.item.SubstratumItems;
 import exter.substratum.material.EnumMaterialItem;
 import exter.substratum.proxy.CommonProxy;
-import exter.substratum.recipes.SubstratumRecipes;
 import exter.substratum.worldgen.SubstratumWorldGenerator;
 import exter.substratum.worldgen.WorldGenOre;
 import net.minecraftforge.common.MinecraftForge;
@@ -78,7 +78,7 @@ public class ModSubstratum
   @EventHandler
   public void load(FMLInitializationEvent event)
   {
-    SubstratumRecipes.init();
+    InitRecipes.init();
 
     WorldGenOre.registerOre(SubstratumConfig.worldgen_copper, SubstratumBlocks.block_ore.asState(BlockOre.EnumVariant.COPPER), false);
     WorldGenOre.registerOre(SubstratumConfig.worldgen_tin, SubstratumBlocks.block_ore.asState(BlockOre.EnumVariant.TIN), false);
