@@ -5,11 +5,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import exter.substratum.config.SubstratumConfig;
+import exter.substratum.config.SubstratumConfig.MaterialRecipeConfig;
+import exter.substratum.item.equipment.ItemAxeSubstratum;
+import exter.substratum.item.equipment.ItemHoeSubstratum;
+import exter.substratum.item.equipment.ItemPickaxeSubstratum;
+import exter.substratum.item.equipment.ItemShovelSubstratum;
+import exter.substratum.item.equipment.ItemSwordSubstratum;
 import exter.substratum.material.EnumDyePowderColor;
 import exter.substratum.material.EnumMaterial;
+import exter.substratum.material.EnumMaterialEquipment;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -69,6 +81,13 @@ public class SubstratumItems
   static public ItemDyePowderSmall item_dye_powder_small = null;
   
   static private Map<MaterialItem,ItemStack> vanilla_items;
+  
+  
+  static public Map<EnumMaterial,ItemPickaxeSubstratum> pickaxes = new EnumMap<EnumMaterial,ItemPickaxeSubstratum>(EnumMaterial.class);
+  static public Map<EnumMaterial,ItemAxeSubstratum> axes = new EnumMap<EnumMaterial,ItemAxeSubstratum>(EnumMaterial.class);
+  static public Map<EnumMaterial,ItemShovelSubstratum> shovels = new EnumMap<EnumMaterial,ItemShovelSubstratum>(EnumMaterial.class);
+  static public Map<EnumMaterial,ItemHoeSubstratum> hoes = new EnumMap<EnumMaterial,ItemHoeSubstratum>(EnumMaterial.class);
+  static public Map<EnumMaterial,ItemSwordSubstratum> swords = new EnumMap<EnumMaterial,ItemSwordSubstratum>(EnumMaterial.class);
   
   static public void registerItems(Configuration config)
   {
@@ -131,6 +150,48 @@ public class SubstratumItems
     vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GLOWSTONE), new ItemStack(Items.GLOWSTONE_DUST));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GUNPOWDER), new ItemStack(Items.GUNPOWDER));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.BLAZE), new ItemStack(Items.BLAZE_POWDER));
+  
+
+    for(EnumMaterialEquipment equipment:EnumMaterialEquipment.values())
+    {
+      equipment.tool.setRepairItem(getStack(EnumMaterialItem.INGOT,equipment.material));
+      MaterialRecipeConfig mat_config = SubstratumConfig.material_recipes.get(equipment.material);
+      if(mat_config.tool_pickaxe)
+      {
+        ItemPickaxeSubstratum item = new ItemPickaxeSubstratum(equipment);
+        GameRegistry.register(item);
+        pickaxes.put(equipment.material, item);
+        OreDictionary.registerOre("pickaxe", new ItemStack(item,1,0));
+      }
+      if(mat_config.tool_axe)
+      {
+        ItemAxeSubstratum item = new ItemAxeSubstratum(equipment);
+        GameRegistry.register(item);
+        axes.put(equipment.material, item);
+        OreDictionary.registerOre("axe", new ItemStack(item,1,0));
+      }
+      if(mat_config.tool_shovel)
+      {
+        ItemShovelSubstratum item = new ItemShovelSubstratum(equipment);
+        GameRegistry.register(item);
+        shovels.put(equipment.material, item);
+        OreDictionary.registerOre("shovel", new ItemStack(item,1,0));
+      }
+      if(mat_config.tool_hoe)
+      {
+        ItemHoeSubstratum item = new ItemHoeSubstratum(equipment);
+        GameRegistry.register(item);
+        hoes.put(equipment.material, item);
+        OreDictionary.registerOre("hoe", new ItemStack(item,1,0));
+      }
+      if(mat_config.tool_sword)
+      {
+        ItemSwordSubstratum item = new ItemSwordSubstratum(equipment);
+        GameRegistry.register(item);
+        swords.put(equipment.material, item);
+        OreDictionary.registerOre("sword", new ItemStack(item,1,0));
+      }
+    }
   }
 
 
