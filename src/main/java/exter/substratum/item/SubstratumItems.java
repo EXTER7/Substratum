@@ -21,7 +21,6 @@ import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -120,10 +119,8 @@ public class SubstratumItems
         OreDictionary.registerOre(matitem.prefix + "Chromium", stack);
       }
     }
-    BucketSpecialHandler bucket_handler = new BucketSpecialHandler();
-    MinecraftForge.EVENT_BUS.register(bucket_handler);
     item_materials.get(EnumMaterialItem.BUCKET_DUST).setContainerItem(Items.BUCKET).setMaxStackSize(1);
-    item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setSpecialHandler(bucket_handler).setContainerItem(Items.BUCKET).setMaxStackSize(1);
+    item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setSpecialHandler(new BucketSpecialHandler()).setContainerItem(Items.BUCKET).setMaxStackSize(1);
     item_materials.get(EnumMaterialItem.BOTTLE_LIQUID).setSpecialHandler(new FluidSpecialHandler(Fluid.BUCKET_VOLUME / 4)).setContainerItem(Items.GLASS_BOTTLE);
     SubstratumItems.item_materials.get(EnumMaterialItem.BUCKET_LIQUID);
     

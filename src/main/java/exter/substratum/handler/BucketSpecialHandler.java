@@ -9,6 +9,7 @@ import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
@@ -34,6 +36,7 @@ public class BucketSpecialHandler extends FluidSpecialHandler
   public BucketSpecialHandler()
   {
     super(Fluid.BUCKET_VOLUME);
+    MinecraftForge.EVENT_BUS.register(this);
   }
 
   @SubscribeEvent
@@ -84,9 +87,9 @@ public class BucketSpecialHandler extends FluidSpecialHandler
     float ly = MathHelper.sin(-pitch * 0.017453292F);
     float lz = MathHelper.cos(-yaw * 0.017453292F - (float) Math.PI) * spitch;
     double range = 5.0D;
-    if(player instanceof net.minecraft.entity.player.EntityPlayerMP)
+    if(player instanceof EntityPlayerMP)
     {
-      range = ((net.minecraft.entity.player.EntityPlayerMP) player).interactionManager.getBlockReachDistance();
+      range = ((EntityPlayerMP) player).interactionManager.getBlockReachDistance();
     }
     Vec3d vec3d1 = vec3d.addVector((double) lx * range, (double) ly * range, (double) lz * range);
     return world.rayTraceBlocks(vec3d, vec3d1, false, true, false);
@@ -112,7 +115,6 @@ public class BucketSpecialHandler extends FluidSpecialHandler
       SoundEvent soundevent = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
       world.playSound(player, pos, soundevent, SoundCategory.BLOCKS, 1.0F, 1.0F);
       world.setBlockState(pos, SubstratumFluids.material_fluids.get(material).getBlock().getDefaultState(), 11);
-
       return true;
     }
   }
@@ -134,7 +136,7 @@ public class BucketSpecialHandler extends FluidSpecialHandler
 
       if(!world.isBlockModifiable(player, pos))
       {
-        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+        return ActionResult.newResult(EnumActionResult.FAIL, stack);
       } else
       {
         boolean replaceable = world.getBlockState(pos).getBlock().isReplaceable(world, pos);
@@ -142,11 +144,11 @@ public class BucketSpecialHandler extends FluidSpecialHandler
 
         if(!player.canPlayerEdit(replace_pos, raytraceresult.sideHit, stack))
         {
-          return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+          return ActionResult.newResult(EnumActionResult.FAIL, stack);
         } else if(tryPlaceContainedLiquid(material, player, world, replace_pos))
         {
           player.addStat(StatList.getObjectUseStats(item));
-          return !player.capabilities.isCreativeMode ? new ActionResult<ItemStack>(EnumActionResult.SUCCESS, new ItemStack(Items.BUCKET)) : new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+          return !player.capabilities.isCreativeMode ? ActionResult.newResult(EnumActionResult.SUCCESS, new ItemStack(Items.BUCKET)) : ActionResult.newResult(EnumActionResult.SUCCESS, stack);
         } else
         {
           return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
