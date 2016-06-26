@@ -8,7 +8,7 @@ import exter.substratum.block.BlockDustOre;
 import exter.substratum.block.BlockOre;
 import exter.substratum.config.SubstratumConfig;
 import exter.substratum.fluid.SubstratumFluids;
-import exter.substratum.handler.SubstratumBucketHandler;
+import exter.substratum.handler.BucketSpecialHandler;
 import exter.substratum.init.InitRecipes;
 import exter.substratum.item.SubstratumItems;
 import exter.substratum.material.EnumMaterialItem;
@@ -31,7 +31,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
   modid = ModSubstratum.MODID,
   name = ModSubstratum.MODNAME,
   version = ModSubstratum.MODVERSION,
-  dependencies = "required-after:Forge@[12.17.0.1939,)"
+  dependencies = "required-after:Forge@[12.17.0.1976,)"
 )
 public class ModSubstratum
 {
@@ -65,9 +65,7 @@ public class ModSubstratum
     SubstratumFluids.registerFluids();
 
 
-    SubstratumBucketHandler bucket_handler = new SubstratumBucketHandler();
-    MinecraftForge.EVENT_BUS.register(bucket_handler);
-    SubstratumItems.item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setRightClickHandler(bucket_handler);
+
 
     config.save();
 

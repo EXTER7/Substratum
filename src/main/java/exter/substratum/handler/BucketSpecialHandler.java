@@ -1,13 +1,9 @@
 package exter.substratum.handler;
 
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
-
 import exter.substratum.block.BlockSubstratumLiquid;
+import exter.substratum.fluid.FluidSubstratum;
 import exter.substratum.fluid.SubstratumFluids;
 import exter.substratum.item.ItemMaterial;
-import exter.substratum.item.ItemMaterial.IRightClickHandler;
 import exter.substratum.item.SubstratumItems;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
@@ -33,22 +29,11 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class SubstratumBucketHandler implements IRightClickHandler
+public class BucketSpecialHandler extends FluidSpecialHandler
 {
-  private final Map<String, ItemStack> buckets;
-  private final Map<EnumMaterial, Fluid> liquids;
-
-  public SubstratumBucketHandler()
+  public BucketSpecialHandler()
   {
-    buckets = new HashMap<String, ItemStack>();
-    buckets.put(SubstratumFluids.liquid_redstone.getName(), SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.REDSTONE));
-    buckets.put(SubstratumFluids.liquid_glowstone.getName(), SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.GLOWSTONE));
-    buckets.put(SubstratumFluids.liquid_enderpearl.getName(), SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.ENDERPEARL));
-
-    liquids = new EnumMap<EnumMaterial, Fluid>(EnumMaterial.class);
-    liquids.put(EnumMaterial.REDSTONE, SubstratumFluids.liquid_redstone);
-    liquids.put(EnumMaterial.GLOWSTONE, SubstratumFluids.liquid_glowstone);
-    liquids.put(EnumMaterial.ENDERPEARL, SubstratumFluids.liquid_enderpearl);    
+    super(Fluid.BUCKET_VOLUME);
   }
 
   @SubscribeEvent
@@ -75,11 +60,11 @@ public class SubstratumBucketHandler implements IRightClickHandler
     if(state.getBlock() instanceof BlockSubstratumLiquid)
     {
       BlockSubstratumLiquid block = (BlockSubstratumLiquid) state.getBlock();
-      ItemStack bucket = buckets.get(block.getFluid().getName());
+      ItemStack bucket = SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, ((FluidSubstratum)block.getFluid()).material);
       if(bucket != null && block.isSourceBlock(world, pos))
       {
         world.setBlockToAir(pos);
-        return bucket.copy();
+        return bucket;
       }
     }
     return null;
@@ -126,7 +111,7 @@ public class SubstratumBucketHandler implements IRightClickHandler
 
       SoundEvent soundevent = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
       world.playSound(player, pos, soundevent, SoundCategory.BLOCKS, 1.0F, 1.0F);
-      world.setBlockState(pos, liquids.get(material).getBlock().getDefaultState(), 11);
+      world.setBlockState(pos, SubstratumFluids.material_fluids.get(material).getBlock().getDefaultState(), 11);
 
       return true;
     }
