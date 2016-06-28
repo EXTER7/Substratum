@@ -81,11 +81,18 @@ public class ClientProxy extends CommonProxy
     registerFluidModel(SubstratumFluids.liquid_glowstone,"liquidGlowstone");
     registerFluidModel(SubstratumFluids.liquid_enderpearl,"liquidEnderpearl");
   }
+  
+  private void registerEquipment(Map<EnumMaterial,? extends Item> map,String prefix)
+  {
+    for(Map.Entry<EnumMaterial,? extends Item> e:map.entrySet())
+    {
+      registerItemModel(e.getValue(),prefix + e.getKey().suffix);
+    }
+  }
 
   @Override
   public void init()
-  {
-   
+  {   
     for(BlockOre.EnumVariant ore:BlockOre.EnumVariant.values())
     {
       registerItemModel(SubstratumBlocks.block_ore,"ore" + ore.material.suffix, ore.ordinal());
@@ -144,6 +151,17 @@ public class ClientProxy extends CommonProxy
     {
       registerItemModel(SubstratumItems.item_mortar,"mortar");
     }
+
+    registerEquipment(SubstratumItems.pickaxes,"pickaxe");
+    registerEquipment(SubstratumItems.axes,"axe");
+    registerEquipment(SubstratumItems.shovels,"shovel");
+    registerEquipment(SubstratumItems.hoes,"hoe");
+    registerEquipment(SubstratumItems.swords,"sword");
+
+    registerEquipment(SubstratumItems.helmets,"helmet");
+    registerEquipment(SubstratumItems.chestplates,"chestplate");
+    registerEquipment(SubstratumItems.leggings,"leggings");
+    registerEquipment(SubstratumItems.boots,"boots");
   }
   
 

@@ -99,7 +99,7 @@ public class SubstratumBlocks
   public static final Map<EnumMaterial,ItemStack> stairs_stacks = new EnumMap<EnumMaterial,ItemStack>(EnumMaterial.class);
 
 
-  static private void register(Block block)
+  static public void register(Block block)
   {
     GameRegistry.register(block);
     GameRegistry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));

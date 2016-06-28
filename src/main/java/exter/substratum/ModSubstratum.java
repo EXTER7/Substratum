@@ -8,14 +8,11 @@ import exter.substratum.block.BlockDustOre;
 import exter.substratum.block.BlockOre;
 import exter.substratum.config.SubstratumConfig;
 import exter.substratum.fluid.SubstratumFluids;
-import exter.substratum.handler.SubstratumBucketHandler;
+import exter.substratum.init.InitRecipes;
 import exter.substratum.item.SubstratumItems;
-import exter.substratum.material.EnumMaterialItem;
 import exter.substratum.proxy.CommonProxy;
-import exter.substratum.recipes.SubstratumRecipes;
 import exter.substratum.worldgen.SubstratumWorldGenerator;
 import exter.substratum.worldgen.WorldGenOre;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -37,7 +34,7 @@ public class ModSubstratum
 {
   public static final String MODID = "substratum";
   public static final String MODNAME = "Substratum";
-  public static final String MODVERSION = "1.4.0.1";
+  public static final String MODVERSION = "1.5.0.1";
 
   @Instance(MODID)
   public static ModSubstratum instance;
@@ -65,9 +62,7 @@ public class ModSubstratum
     SubstratumFluids.registerFluids();
 
 
-    SubstratumBucketHandler bucket_handler = new SubstratumBucketHandler();
-    MinecraftForge.EVENT_BUS.register(bucket_handler);
-    SubstratumItems.item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setRightClickHandler(bucket_handler);
+
 
     config.save();
 
@@ -78,7 +73,7 @@ public class ModSubstratum
   @EventHandler
   public void load(FMLInitializationEvent event)
   {
-    SubstratumRecipes.init();
+    InitRecipes.init();
 
     WorldGenOre.registerOre(SubstratumConfig.worldgen_copper, SubstratumBlocks.block_ore.asState(BlockOre.EnumVariant.COPPER), false);
     WorldGenOre.registerOre(SubstratumConfig.worldgen_tin, SubstratumBlocks.block_ore.asState(BlockOre.EnumVariant.TIN), false);

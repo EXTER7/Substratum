@@ -1,18 +1,15 @@
 package exter.substratum.handler;
 
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
-
 import exter.substratum.block.BlockSubstratumLiquid;
+import exter.substratum.fluid.FluidSubstratum;
 import exter.substratum.fluid.SubstratumFluids;
 import exter.substratum.item.ItemMaterial;
-import exter.substratum.item.ItemMaterial.IRightClickHandler;
 import exter.substratum.item.SubstratumItems;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -28,27 +25,18 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class SubstratumBucketHandler implements IRightClickHandler
+public class BucketSpecialHandler extends FluidSpecialHandler
 {
-  private final Map<String, ItemStack> buckets;
-  private final Map<EnumMaterial, Fluid> liquids;
-
-  public SubstratumBucketHandler()
+  public BucketSpecialHandler()
   {
-    buckets = new HashMap<String, ItemStack>();
-    buckets.put(SubstratumFluids.liquid_redstone.getName(), SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.REDSTONE));
-    buckets.put(SubstratumFluids.liquid_glowstone.getName(), SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.GLOWSTONE));
-    buckets.put(SubstratumFluids.liquid_enderpearl.getName(), SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, EnumMaterial.ENDERPEARL));
-
-    liquids = new EnumMap<EnumMaterial, Fluid>(EnumMaterial.class);
-    liquids.put(EnumMaterial.REDSTONE, SubstratumFluids.liquid_redstone);
-    liquids.put(EnumMaterial.GLOWSTONE, SubstratumFluids.liquid_glowstone);
-    liquids.put(EnumMaterial.ENDERPEARL, SubstratumFluids.liquid_enderpearl);    
+    super(Fluid.BUCKET_VOLUME);
+    MinecraftForge.EVENT_BUS.register(this);
   }
 
   @SubscribeEvent
@@ -75,11 +63,11 @@ public class SubstratumBucketHandler implements IRightClickHandler
     if(state.getBlock() instanceof BlockSubstratumLiquid)
     {
       BlockSubstratumLiquid block = (BlockSubstratumLiquid) state.getBlock();
-      ItemStack bucket = buckets.get(block.getFluid().getName());
+      ItemStack bucket = SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, ((FluidSubstratum)block.getFluid()).material);
       if(bucket != null && block.isSourceBlock(world, pos))
       {
         world.setBlockToAir(pos);
-        return bucket.copy();
+        return bucket;
       }
     }
     return null;
@@ -99,9 +87,9 @@ public class SubstratumBucketHandler implements IRightClickHandler
     float ly = MathHelper.sin(-pitch * 0.017453292F);
     float lz = MathHelper.cos(-yaw * 0.017453292F - (float) Math.PI) * spitch;
     double range = 5.0D;
-    if(player instanceof net.minecraft.entity.player.EntityPlayerMP)
+    if(player instanceof EntityPlayerMP)
     {
-      range = ((net.minecraft.entity.player.EntityPlayerMP) player).interactionManager.getBlockReachDistance();
+      range = ((EntityPlayerMP) player).interactionManager.getBlockReachDistance();
     }
     Vec3d vec3d1 = vec3d.addVector((double) lx * range, (double) ly * range, (double) lz * range);
     return world.rayTraceBlocks(vec3d, vec3d1, false, true, false);
@@ -126,8 +114,7 @@ public class SubstratumBucketHandler implements IRightClickHandler
 
       SoundEvent soundevent = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
       world.playSound(player, pos, soundevent, SoundCategory.BLOCKS, 1.0F, 1.0F);
-      world.setBlockState(pos, liquids.get(material).getBlock().getDefaultState(), 11);
-
+      world.setBlockState(pos, SubstratumFluids.material_fluids.get(material).getBlock().getDefaultState(), 11);
       return true;
     }
   }
@@ -149,7 +136,7 @@ public class SubstratumBucketHandler implements IRightClickHandler
 
       if(!world.isBlockModifiable(player, pos))
       {
-        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+        return ActionResult.newResult(EnumActionResult.FAIL, stack);
       } else
       {
         boolean replaceable = world.getBlockState(pos).getBlock().isReplaceable(world, pos);
@@ -157,11 +144,11 @@ public class SubstratumBucketHandler implements IRightClickHandler
 
         if(!player.canPlayerEdit(replace_pos, raytraceresult.sideHit, stack))
         {
-          return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+          return ActionResult.newResult(EnumActionResult.FAIL, stack);
         } else if(tryPlaceContainedLiquid(material, player, world, replace_pos))
         {
           player.addStat(StatList.getObjectUseStats(item));
-          return !player.capabilities.isCreativeMode ? new ActionResult<ItemStack>(EnumActionResult.SUCCESS, new ItemStack(Items.BUCKET)) : new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+          return !player.capabilities.isCreativeMode ? ActionResult.newResult(EnumActionResult.SUCCESS, new ItemStack(Items.BUCKET)) : ActionResult.newResult(EnumActionResult.SUCCESS, stack);
         } else
         {
           return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);

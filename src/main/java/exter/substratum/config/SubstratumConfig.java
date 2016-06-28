@@ -2,9 +2,11 @@ package exter.substratum.config;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Set;
 
 import exter.substratum.block.SubstratumBlocks;
 import exter.substratum.material.EnumMaterial;
+import exter.substratum.material.EnumMaterialEquipment;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraftforge.common.config.Configuration;
 
@@ -44,6 +46,18 @@ public class SubstratumConfig
     public final boolean slab_from_blocks;
     public final boolean stairs_from_blocks;
     
+    
+    public final boolean tool_pickaxe;
+    public final boolean tool_axe;
+    public final boolean tool_shovel;
+    public final boolean tool_hoe;
+    public final boolean tool_sword;
+
+    public final boolean armor_helmet;
+    public final boolean armor_chestplate;
+    public final boolean armor_leggings;
+    public final boolean armor_boots;
+
     
     static private boolean hasIngot(EnumMaterial material)
     {
@@ -123,6 +137,34 @@ public class SubstratumConfig
       } else
       {
         stairs_from_blocks = false;
+      }
+
+      Set<EnumMaterial> equipment_materials = EnumMaterialEquipment.getMaterials();
+      
+      if(equipment_materials.contains(material))
+      {
+        tool_pickaxe = config.getBoolean("pickaxe", "equipment." + name, true, "Enable/disable " + name + " pickaxe.");
+        tool_axe = config.getBoolean("axe", "equipment." + name, true, "Enable/disable " + name + " axe.");
+        tool_shovel = config.getBoolean("shovel", "equipment." + name, true, "Enable/disable " + name + " shovel.");
+        tool_hoe = config.getBoolean("hoe", "equipment." + name, true, "Enable/disable " + name + " hoe.");
+        tool_sword = config.getBoolean("sword", "equipment." + name, true, "Enable/disable " + name + " sword.");
+
+        armor_helmet = config.getBoolean("helmet", "equipment." + name, true, "Enable/disable " + name + " helmet.");
+        armor_chestplate = config.getBoolean("chestplate", "equipment." + name, true, "Enable/disable " + name + " chestplate.");
+        armor_leggings = config.getBoolean("leggings", "equipment." + name, true, "Enable/disable " + name + " leggings.");
+        armor_boots = config.getBoolean("boots", "equipment." + name, true, "Enable/disable " + name + " boots.");
+      } else
+      {
+        tool_pickaxe = false;
+        tool_axe = false;
+        tool_shovel = false;
+        tool_hoe = false;
+        tool_sword = false;
+
+        armor_helmet = false;
+        armor_chestplate = false;
+        armor_leggings = false;
+        armor_boots = false;
       }
     }
   }

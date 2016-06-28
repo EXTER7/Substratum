@@ -307,6 +307,44 @@ item.substratum.dyeSmallMagenta.name=Small Pile of Magenta Dye Powder
 item.substratum.dyeSmallOrange.name=Small Pile of Orange Dye Powder
 item.substratum.dyeSmallWhite.name=Small Pile of White Dye Powder
 
+item.substratum.pickaxeBronze.name=Bronze Pickaxe
+item.substratum.pickaxeCopper.name=Copper Pickaxe
+item.substratum.pickaxeSilver.name=Silver Pickaxe
+item.substratum.pickaxeSteel.name=Steel Pickaxe
+item.substratum.axeBronze.name=Bronze Axe
+item.substratum.axeCopper.name=Copper Axe
+item.substratum.axeSilver.name=Silver Axe
+item.substratum.axeSteel.name=Steel Axe
+item.substratum.shovelBronze.name=Bronze Shovel
+item.substratum.shovelCopper.name=Copper Shovel
+item.substratum.shovelSilver.name=Silver Shovel
+item.substratum.shovelSteel.name=Steel Shovel
+item.substratum.hoeBronze.name=Bronze Hoe
+item.substratum.hoeCopper.name=Copper Hoe
+item.substratum.hoeSilver.name=Silver Hoe
+item.substratum.hoeSteel.name=Steel Hoe
+item.substratum.swordBronze.name=Bronze Sword
+item.substratum.swordCopper.name=Copper Sword
+item.substratum.swordSilver.name=Silver Sword
+item.substratum.swordSteel.name=Steel Sword
+
+item.substratum.helmetBronze.name=Bronze Helmet
+item.substratum.helmetCopper.name=Copper Helmet
+item.substratum.helmetSilver.name=Silver Helmet
+item.substratum.helmetSteel.name=Steel Helmet
+item.substratum.chestplateBronze.name=Bronze Chestplate
+item.substratum.chestplateCopper.name=Copper Chestplate
+item.substratum.chestplateSilver.name=Silver Chestplate
+item.substratum.chestplateSteel.name=Steel Chestplate
+item.substratum.leggingsBronze.name=Bronze Leggings
+item.substratum.leggingsCopper.name=Copper Leggings
+item.substratum.leggingsSilver.name=Silver Leggings
+item.substratum.leggingsSteel.name=Steel Leggings
+item.substratum.bootsBronze.name=Bronze Boots
+item.substratum.bootsCopper.name=Copper Boots
+item.substratum.bootsSilver.name=Silver Boots
+item.substratum.bootsSteel.name=Steel Boots
+
 
 fluid.substratum.liquidRedstone=Liquid Redstone
 fluid.substratum.liquidGlowstone=Liquid Glowstone
