@@ -183,7 +183,7 @@ class InitBlendRecipes
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ENDERIUM,2),
           "dustTin", 
           "dustTin", 
-          "dustTin", 
+          "dustSilver",
           "dustPlatinum",
           "bucketLiquidEnderpearl" ));
 
@@ -191,15 +191,15 @@ class InitBlendRecipes
           SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,EnumMaterial.ENDERIUM,2),
           "dustSmallTin", 
           "dustSmallTin", 
-          "dustSmallTin", 
+          "dustSmallSilver",
           "dustSmallPlatinum",
           "bottleLiquidEnderpearl" ));
 
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ENDERIUM),
           "dustTin", 
-          "dustSmallTin", 
-          "dustSmallTin", 
+          "dustSmallSilver", 
+          "dustSmallSilver", 
           "dustSmallPlatinum",
           "dustSmallPlatinum",
           "bottleLiquidEnderpearl",
