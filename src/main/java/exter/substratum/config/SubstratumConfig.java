@@ -79,7 +79,7 @@ public class SubstratumConfig
 
       if(EnumMaterialItem.BUCKET_DUST.materials.contains(material))
       {
-        dust_bucket = config.getBoolean("dust_bucket", category, true, "Enable/disable " + name + " dust bucket recipes.");
+        dust_bucket = config.getBoolean("dust_bucket", category, false, "Enable/disable " + name + " dust bucket recipes.");
       } else
       {
         dust_bucket = false;
@@ -229,9 +229,9 @@ public class SubstratumConfig
     blend_cupronickel_enable = config.getBoolean("blend", "recipes.cupronickel", true, "Enable/disable cupronickel dust blending recipe.");
 
     blend_steel_enable = config.getBoolean("blend", "recipes.steel", false, "Enable/disable steel dust blending recipe.");
-    blend_signalum_enable = config.getBoolean("blend", "recipes.signalum", false, "Enable/disable signalum dust blending recipe.");
-    blend_lumium_enable = config.getBoolean("blend", "recipes.lumium", false, "Enable/disable lumium dust blending recipe.");
-    blend_enderium_enable = config.getBoolean("blend", "recipes.enderium", false, "Enable/disable enderium dust blending recipe.");
+    blend_signalum_enable = config.getBoolean("blend", "recipes.signalum", true, "Enable/disable signalum dust blending recipe.");
+    blend_lumium_enable = config.getBoolean("blend", "recipes.lumium", true, "Enable/disable lumium dust blending recipe.");
+    blend_enderium_enable = config.getBoolean("blend", "recipes.enderium", true, "Enable/disable enderium dust blending recipe.");
 
     blend_gunpowder_enable = config.getBoolean("blend", "recipes.gunpowder", true, "Enable/disable gunpowder dust blending recipe.");
 

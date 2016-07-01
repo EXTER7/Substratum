@@ -228,17 +228,21 @@ public class InitRecipes
     }
 
     ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE);
-    for(EnumMaterial mat:EnumMaterialItem.BUCKET_DUST.materials)
+    for(EnumMaterial mat:EnumMaterialItem.BUCKET_LIQUID.materials)
     {
-      if(SubstratumConfig.material_recipes.get(mat).dust_bucket)
+      ItemStack liquid = SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID,mat);
+      ItemStack liquid_bottle = SubstratumItems.getStack(EnumMaterialItem.BOTTLE_LIQUID,mat);
+      ItemStack dust = SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,mat);
+      if(dust != null && SubstratumConfig.material_recipes.get(mat).dust_bucket)
       {
-        ItemStack liquid = SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID,mat);
-        ItemStack liquid_bottle = SubstratumItems.getStack(EnumMaterialItem.BOTTLE_LIQUID,mat);
         GameRegistry.addSmelting(
-            SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,mat),
+            dust,
             liquid,
             0);
+      }
         
+      if(liquid_bottle != null)
+      {
         GameRegistry.addShapelessRecipe(
             SubstratumItems.getStack(EnumMaterialItem.BOTTLE_LIQUID,mat,4),
             liquid,
