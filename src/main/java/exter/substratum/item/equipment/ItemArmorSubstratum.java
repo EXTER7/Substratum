@@ -1,19 +1,32 @@
 package exter.substratum.item.equipment;
 
+import java.util.List;
+
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialEquipment;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemArmorSubstratum extends ItemArmor
 {
   EnumMaterial material;
+  boolean old;
 
   public ItemArmorSubstratum(EnumMaterialEquipment equipment, EntityEquipmentSlot slot)
   {
+    this(equipment,slot,false);
+  }
+  
+  public ItemArmorSubstratum(EnumMaterialEquipment equipment, EntityEquipmentSlot slot,boolean old)
+  {
     super(equipment.armor, 0, slot);
+    this.old = old;
     material = equipment.material;
     switch(slot)
     {
@@ -27,7 +40,7 @@ public class ItemArmorSubstratum extends ItemArmor
         break;
       case LEGS:
         setUnlocalizedName("substratum.leggings" + material.suffix);
-        setRegistryName("chestplate.leggings" + material.suffix);
+        setRegistryName((old?"chestplate.leggings":"leggings") + material.suffix);
         break;
       case FEET:
         setUnlocalizedName("substratum.boots" + material.suffix);
@@ -47,5 +60,14 @@ public class ItemArmorSubstratum extends ItemArmor
     }
     return "substratum:textures/models/armor" + material.suffix + "1.png";
   }
-
+  
+  @Override
+  @SideOnly(Side.CLIENT)
+  public void getSubItems(Item item, CreativeTabs tabs, List<ItemStack> list)
+  {
+    if(!old) //Hide old leggings from creative list.
+    {
+      super.getSubItems(item, tabs, list);
+    }
+  }
 }
