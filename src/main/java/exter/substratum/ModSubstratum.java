@@ -13,16 +13,12 @@ import exter.substratum.item.SubstratumItems;
 import exter.substratum.proxy.CommonProxy;
 import exter.substratum.worldgen.SubstratumWorldGenerator;
 import exter.substratum.worldgen.WorldGenOre;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLMissingMappingsEvent;
-import net.minecraftforge.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -38,7 +34,7 @@ public class ModSubstratum
 {
   public static final String MODID = "substratum";
   public static final String MODNAME = "Substratum";
-  public static final String MODVERSION = "1.6.0.0";
+  public static final String MODVERSION = "1.6.0.1";
 
   @Instance(MODID)
   public static ModSubstratum instance;
