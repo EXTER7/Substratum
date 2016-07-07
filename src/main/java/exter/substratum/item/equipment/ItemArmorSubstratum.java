@@ -49,7 +49,13 @@ public class ItemArmorSubstratum extends ItemArmor
       default:
         break;      
     }
+    if(old)
+    {
+      super.setNoRepair();
+    }
   }
+  
+  
   
   @Override
   public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
