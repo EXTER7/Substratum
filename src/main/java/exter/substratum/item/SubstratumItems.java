@@ -216,9 +216,7 @@ public class SubstratumItems
       if(mat_config.armor_leggings)
       {
         ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.LEGS);
-        GameRegistry.register(item);
-        ItemArmorSubstratum item_old = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.LEGS,true);
-        GameRegistry.register(item_old); // Old version to preserve world compatibility.
+        GameRegistry.register(item);        
         leggings.put(equipment.material, item);
         OreDictionary.registerOre("leggings" + equipment.material.suffix, new ItemStack(item,1,0));
       }
