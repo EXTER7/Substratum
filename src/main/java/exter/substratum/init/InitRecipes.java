@@ -59,11 +59,11 @@ public class InitRecipes
     InitBlendRecipes.init();
     InitEquipmentRecipes.init();
     
-    if(SubstratumConfig.alumina_ingot_smelting)
+    if(SubstratumConfig.alumina_nugget_smelting)
     {
       GameRegistry.addSmelting(
-          SubstratumItems.getStack(EnumMaterialItem.INGOT,EnumMaterial.ALUMINA),
-          SubstratumItems.getStack(EnumMaterialItem.INGOT,EnumMaterial.ALUMINIUM),0);
+          SubstratumItems.getStack(EnumMaterialItem.NUGGET,EnumMaterial.ALUMINA),
+          SubstratumItems.getStack(EnumMaterialItem.NUGGET,EnumMaterial.ALUMINIUM),0);
     }
 
     if(SubstratumItems.item_mortar != null)

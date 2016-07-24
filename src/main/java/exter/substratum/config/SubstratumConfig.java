@@ -196,7 +196,7 @@ public class SubstratumConfig
 
   public static boolean blend_gunpowder_enable;
   
-  public static boolean alumina_ingot_smelting;
+  public static boolean alumina_nugget_smelting;
 
   public static boolean cheaper_plate_recipes;
   public static boolean cheaper_rod_recipes;
@@ -236,7 +236,8 @@ public class SubstratumConfig
 
     blend_gunpowder_enable = config.getBoolean("blend", "recipes.gunpowder", true, "Enable/disable gunpowder dust blending recipe.");
 
-    alumina_ingot_smelting = config.getBoolean("ingot_from_alumina", "recipes.aluminium", true, "Enable/disable alumina ingot to aluminium ingot smelting.");
+    config.renameProperty("recipes.aluminium", "ingot_from_alumina", "nugget_from_alumina");
+    alumina_nugget_smelting = config.getBoolean("nugget_from_alumina", "recipes.aluminium", true, "Enable/disable alumina nugget to aluminium nugget smelting.");
     
     misc_mortar_uses = config.getInt("mortar_uses", "misc", 20, 0, 1000, "How many uses the mortar has unti it breaks. Setting this to 0 disables the item.");
     dye_enabled = config.getBoolean("enabled", "dyes", true, "Enable/disable dye powders.");
