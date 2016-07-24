@@ -40,6 +40,20 @@ public class InitRecipes
         ing_oredict));
   }
   
+  @SuppressWarnings("deprecation")
+  static private void initLegacy()
+  {
+    GameRegistry.addShapelessRecipe(
+        SubstratumItems.getStack(EnumMaterialItem.DUST, EnumMaterial.REDSTONE,10),
+        SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST, EnumMaterial.REDSTONE));
+    GameRegistry.addShapelessRecipe(
+        SubstratumItems.getStack(EnumMaterialItem.DUST, EnumMaterial.GLOWSTONE,4),
+        SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST, EnumMaterial.GLOWSTONE));
+    GameRegistry.addShapelessRecipe(
+        SubstratumItems.getStack(EnumMaterialItem.DUST, EnumMaterial.ENDERPEARL,4),
+        SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST, EnumMaterial.ENDERPEARL));
+  }
+  
   static public void init()
   {
     InitBlendRecipes.init();
@@ -194,58 +208,57 @@ public class InitRecipes
       addDyeMix(EnumDyePowderColor.BROWN, "Black", "Orange");
     }
 
-    //Dust -> Dust bucket
     ItemStack bucket = new ItemStack(Items.BUCKET);
-    if(SubstratumConfig.material_recipes.get(EnumMaterial.REDSTONE).dust_bucket)
+    ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE);
+
+    //Dust -> Dust bucket
+    if(SubstratumConfig.material_recipes.get(EnumMaterial.REDSTONE).dust_bottle)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,EnumMaterial.REDSTONE),
-          bucket,
-          "blockRedstone", 
-          "dustRedstone"));
+          SubstratumItems.getStack(EnumMaterialItem.BOTTLE_DUST,EnumMaterial.REDSTONE),
+          bottle,
+          "dustRedstone", 
+          "dustRedstone", 
+          "dustSmallRedstone", 
+          "dustSmallRedstone"));
     }
 
-    if(SubstratumConfig.material_recipes.get(EnumMaterial.GLOWSTONE).dust_bucket)
+    if(SubstratumConfig.material_recipes.get(EnumMaterial.GLOWSTONE).dust_bottle)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,EnumMaterial.GLOWSTONE),
-          bucket,
-          "dustGlowstone", 
-          "dustGlowstone", 
-          "dustGlowstone", 
+          SubstratumItems.getStack(EnumMaterialItem.BOTTLE_DUST,EnumMaterial.GLOWSTONE),
+          bottle,
           "dustGlowstone"));
     }
 
-    if(SubstratumConfig.material_recipes.get(EnumMaterial.ENDERPEARL).dust_bucket)
+    if(SubstratumConfig.material_recipes.get(EnumMaterial.ENDERPEARL).dust_bottle)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
-          SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,EnumMaterial.ENDERPEARL),
-          bucket,
-          "dustEnderpearl", 
-          "dustEnderpearl", 
-          "dustEnderpearl", 
+          SubstratumItems.getStack(EnumMaterialItem.BOTTLE_DUST,EnumMaterial.ENDERPEARL),
+          bottle,
           "dustEnderpearl"));
     }
+    
 
-    ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE);
+
     for(EnumMaterial mat:EnumMaterialItem.BUCKET_LIQUID.materials)
     {
-      ItemStack liquid = SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID,mat);
+      ItemStack liquid_bucket = SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID,mat);
       ItemStack liquid_bottle = SubstratumItems.getStack(EnumMaterialItem.BOTTLE_LIQUID,mat);
-      ItemStack dust = SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST,mat);
-      if(dust != null && SubstratumConfig.material_recipes.get(mat).dust_bucket)
+      ItemStack dust_bottle = SubstratumItems.getStack(EnumMaterialItem.BOTTLE_DUST,mat);
+      if(dust_bottle != null && SubstratumConfig.material_recipes.get(mat).dust_bottle)
       {
         GameRegistry.addSmelting(
-            dust,
-            liquid,
+            dust_bottle,
+            liquid_bottle,
             0);
       }
-        
+
       if(liquid_bottle != null)
       {
         GameRegistry.addShapelessRecipe(
             SubstratumItems.getStack(EnumMaterialItem.BOTTLE_LIQUID,mat,4),
-            liquid,
+            liquid_bucket,
             bottle, 
             bottle, 
             bottle, 
@@ -438,5 +451,7 @@ public class InitRecipes
             mortar, SubstratumItems.getStack(EnumMaterialItem.ROD, mat)));
       }
     }
+    
+    initLegacy();
   }
 }

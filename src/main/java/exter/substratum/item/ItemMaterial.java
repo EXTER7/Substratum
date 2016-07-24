@@ -2,10 +2,9 @@ package exter.substratum.item;
 
 import java.util.List;
 
-import com.google.common.collect.ImmutableList;
-
 import exter.substratum.creativetab.TabMaterials;
 import exter.substratum.material.EnumMaterial;
+import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -26,20 +25,18 @@ public class ItemMaterial extends Item
     ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt);
   }
 
-  public final ImmutableList<EnumMaterial> materials;
-  public final String prefix;
-
+  public final EnumMaterialItem item;
+  
   private ISpecialHandler special = null;
 
-  public ItemMaterial(String prefix,ImmutableList<EnumMaterial> materials)
+  public ItemMaterial(EnumMaterialItem material_item)
   {
     super();
-    this.materials = materials;
-    this.prefix = prefix;
+    this.item = material_item;
     setCreativeTab(TabMaterials.tab);
     setHasSubtypes(true);
-    setUnlocalizedName("substratum." + prefix);
-    setRegistryName(prefix);
+    setUnlocalizedName("substratum." + material_item.prefix);
+    setRegistryName(material_item.prefix);
   }
   
   public ItemMaterial setSpecialHandler(ISpecialHandler special)
@@ -51,15 +48,20 @@ public class ItemMaterial extends Item
   @Override
   public String getUnlocalizedName(ItemStack itemstack)
   {
-    return getUnlocalizedName() + materials.get(itemstack.getMetadata()).suffix;
+    return getUnlocalizedName() + item.materials.get(itemstack.getMetadata()).suffix;
   }
 
+  @SuppressWarnings("deprecation")
   @Override
   @SideOnly(Side.CLIENT)
   public void getSubItems(Item item, CreativeTabs tabs, List<ItemStack> list)
   {
+    if(this.item == EnumMaterialItem.BUCKET_DUST)
+    {
+      return;
+    }
     int i;
-    for(i = 0; i < materials.size(); i++)
+    for(i = 0; i < this.item.materials.size(); i++)
     {
       ItemStack itemstack = new ItemStack(this, 1, i);
       list.add(itemstack);
@@ -68,7 +70,7 @@ public class ItemMaterial extends Item
   
   public int getMaterialMeta(EnumMaterial material)
   {
-    return materials.indexOf(material);
+    return item.materials.indexOf(material);
   }
 
   public ItemStack getStack(EnumMaterial material)
@@ -91,7 +93,7 @@ public class ItemMaterial extends Item
   {
     if(special != null)
     {
-      return special.onRightClick(stack, this, materials.get(stack.getMetadata()), world, player, hand);
+      return special.onRightClick(stack, this, item.materials.get(stack.getMetadata()), world, player, hand);
     } else
     {
       return super.onItemRightClick(stack, world, player, hand);

@@ -261,9 +261,13 @@ item.substratum.rodEnderium.name=Enderium Rod
 item.substratum.rodAluminium.name=Aluminium Rod
 item.substratum.rodChrome.name=Chromium Rod
 
-item.substratum.bucketDustRedstone.name=Redstone Dust Bucket
-item.substratum.bucketDustGlowstone.name=Glowstone Dust Bucket
-item.substratum.bucketDustEnderpearl.name=Ender Pearl Dust Bucket
+item.substratum.bucketDustRedstone.name=Redstone Dust Bucket (Deprecated)
+item.substratum.bucketDustGlowstone.name=Glowstone Dust Bucket (Deprecated)
+item.substratum.bucketDustEnderpearl.name=Ender Pearl Dust Bucket (Deprecated)
+
+item.substratum.bottleDustRedstone.name=Redstone Dust Bottle
+item.substratum.bottleDustGlowstone.name=Glowstone Dust Bottle
+item.substratum.bottleDustEnderpearl.name=Ender Pearl Dust Bottle
 
 item.substratum.bucketLiquidRedstone.name=Liquid Redstone Bucket
 item.substratum.bucketLiquidGlowstone.name=Liquid Glowstone Bucket

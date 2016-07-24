@@ -33,7 +33,7 @@ public class SubstratumConfig
   
   static public class MaterialRecipeConfig
   {
-    public final boolean dust_bucket;
+    public final boolean dust_bottle;
     public final boolean gear_crafting;
     public final boolean plate_crafting;
     public final boolean dust_from_ingot;
@@ -77,12 +77,13 @@ public class SubstratumConfig
         dust_from_ingot = false;
       }
 
-      if(EnumMaterialItem.BUCKET_DUST.materials.contains(material))
+      if(EnumMaterialItem.BOTTLE_DUST.materials.contains(material))
       {
-        dust_bucket = config.getBoolean("dust_bucket", category, false, "Enable/disable " + name + " dust bucket recipes.");
+        config.renameProperty(category, "dust_bucket", "dust_bottle");
+        dust_bottle = config.getBoolean("dust_bottle", category, false, "Enable/disable " + name + " dust bottle recipes.");
       } else
       {
-        dust_bucket = false;
+        dust_bottle = false;
       }
 
       if(hasIngot(material))

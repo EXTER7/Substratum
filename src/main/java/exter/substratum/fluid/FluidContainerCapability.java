@@ -44,7 +44,7 @@ public class FluidContainerCapability implements ICapabilityProvider, IFluidHand
   private Fluid getFluid()
   {
     return SubstratumFluids.material_fluids.get(
-            ((ItemMaterial)item.getItem()).materials.get(item.getMetadata()));
+            ((ItemMaterial)item.getItem()).item.materials.get(item.getMetadata()));
   }
 
   @Override

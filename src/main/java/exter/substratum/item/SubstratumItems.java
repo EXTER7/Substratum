@@ -94,11 +94,12 @@ public class SubstratumItems
   static public Map<EnumMaterial,ItemArmorSubstratum> leggings = new EnumMap<EnumMaterial,ItemArmorSubstratum>(EnumMaterial.class);
   static public Map<EnumMaterial,ItemArmorSubstratum> boots = new EnumMap<EnumMaterial,ItemArmorSubstratum>(EnumMaterial.class);
   
+  @SuppressWarnings("deprecation")
   static public void registerItems(Configuration config)
   {
     for(EnumMaterialItem matitem:EnumMaterialItem.values())
     {
-      ItemMaterial item = new ItemMaterial(matitem.prefix,matitem.materials);
+      ItemMaterial item = new ItemMaterial(matitem);
       item_materials.put(matitem, item);
       GameRegistry.register(item);
       for(EnumMaterial mat:matitem.materials)
@@ -111,15 +112,16 @@ public class SubstratumItems
       ItemStack stack = matitem.getStack(EnumMaterial.ALUMINIUM);
       if(stack != null)
       {
-        OreDictionary.registerOre(matitem.prefix + "Aluminum", stack);
+        OreDictionary.registerOre(matitem.item.prefix + "Aluminum", stack);
       }
       stack = matitem.getStack(EnumMaterial.CHROMIUM);
       if(stack != null)
       {
-        OreDictionary.registerOre(matitem.prefix + "Chromium", stack);
+        OreDictionary.registerOre(matitem.item.prefix + "Chromium", stack);
       }
     }
     item_materials.get(EnumMaterialItem.BUCKET_DUST).setContainerItem(Items.BUCKET).setMaxStackSize(1);
+    item_materials.get(EnumMaterialItem.BOTTLE_DUST).setContainerItem(Items.GLASS_BOTTLE);
     item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setSpecialHandler(new BucketSpecialHandler()).setContainerItem(Items.BUCKET).setMaxStackSize(1);
     item_materials.get(EnumMaterialItem.BOTTLE_LIQUID).setSpecialHandler(new FluidSpecialHandler(Fluid.BUCKET_VOLUME / 4)).setContainerItem(Items.GLASS_BOTTLE);
     SubstratumItems.item_materials.get(EnumMaterialItem.BUCKET_LIQUID);
