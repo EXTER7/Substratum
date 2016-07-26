@@ -30,7 +30,7 @@ public class WorldGenOre
   private WorldGenMinable wgm;
   
   
-  private WorldGenOre(int min,int max,int min_clusters, int max_clusters,IBlockState state, boolean nether)
+  private WorldGenOre(int min,int max,int min_frequency, int max_frequency, int cluster_size,IBlockState state, boolean nether)
   {
     if(min < max)
     {
@@ -42,18 +42,19 @@ public class WorldGenOre
       this.max = min;
     }
 
-    if(min_clusters < max_clusters)
+    if(min_frequency < max_frequency)
     {
-      this.min_clusters = min_clusters;
-      this.max_clusters = max_clusters;
+      this.min_clusters = (int)Math.round((double)(min_frequency * (this.max - this.min)) / 1000.0);
+      this.max_clusters = (int)Math.round((double)(max_frequency * (this.max - this.min)) / 1000.0);
+      
     } else
     {
-      this.min_clusters = max_clusters;
-      this.max_clusters = min_clusters;
+      this.min_clusters = (int)Math.round((double)(max_frequency * (this.max - this.min)) / 1000.0);
+      this.max_clusters = (int)Math.round((double)(min_frequency * (this.max - this.min)) / 1000.0);
     }
 
     block = state;
-    wgm = new WorldGenMinable(state, 7, BlockMatcher.forBlock(nether?Blocks.NETHERRACK:Blocks.STONE));
+    wgm = new WorldGenMinable(state, cluster_size, BlockMatcher.forBlock(nether?Blocks.NETHERRACK:Blocks.STONE));
   }
 
   private void generateOre(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
@@ -82,7 +83,7 @@ public class WorldGenOre
   {
     if(config.enabled)
     {
-      ores.add(new WorldGenOre(config.min_y, config.max_y, config.min_clusters, config.max_clusters, state, nether));
+      ores.add(new WorldGenOre(config.min_y, config.max_y, config.min_frequency, config.max_frequency, config.cluster_size, state, nether));
     }
   }
 }

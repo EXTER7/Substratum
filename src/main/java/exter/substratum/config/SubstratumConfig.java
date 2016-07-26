@@ -18,16 +18,35 @@ public class SubstratumConfig
     public final boolean enabled;
     public final int min_y;
     public final int max_y;
-    public final int min_clusters;
-    public final int max_clusters;
+    public final int min_frequency;
+    public final int max_frequency;
+    public final int cluster_size;
 
-    public WorldgenConfig(Configuration config, String ore, int min_y, int max_y, int min_clusters, int max_clusters)
+    public WorldgenConfig(Configuration config, String ore, int min_y, int max_y, int min_frequency, int max_frequency, int cluster_size)
     {
+      String category = "worldgen." + ore;
       this.enabled = config.getBoolean("enabled", "worldgen." + ore, true, "Enable/disable worldgen for this ore.");
-      this.min_y = config.getInt("minY", "worldgen." + ore, min_y, 0, 256, "Lowest Y level the ore is generated.");
-      this.max_y = config.getInt("maxY", "worldgen." + ore, max_y, 0, 256, "Highest Y level the ore is generated.");
-      this.min_clusters = config.getInt("min_clusters", "worldgen." + ore, min_clusters, 1, 100, "Minimum amount of ore clusters per chunk.");
-      this.max_clusters = config.getInt("max_clusters", "worldgen." + ore, max_clusters, 1, 100, "Maximum amount of ore clusters per chunk.");
+      this.min_y = config.getInt("minY", category, min_y, 0, 256, "Lowest Y level the ore is generated.");
+      this.max_y = config.getInt("maxY", category, max_y, 0, 256, "Highest Y level the ore is generated.");
+
+      int minfreq = min_frequency;
+      int maxfreq = max_frequency;
+      
+      if(config.hasKey(category, "min_clusters") && config.hasKey(category, "max_clusters"))
+      {
+        // Convert old cluster config to frequency config
+        int minc = config.get(category, "min_clusters", min_frequency).getInt();
+        int maxc = config.get(category, "max_clusters", max_frequency).getInt();
+        minfreq =  (int)Math.round((double)(minc * 1000) / (double)Math.abs(this.max_y - this.min_y));
+        maxfreq =  (int)Math.round((double)(maxc * 1000) / (double)Math.abs(this.max_y - this.min_y));
+      }
+      config.getCategory(category).remove("min_clusters");
+      config.getCategory(category).remove("max_clusters");
+      
+      this.min_frequency = config.getInt("min_frequency", category, minfreq, 1, 10000, "Minimum ore frequency.");
+      this.max_frequency = config.getInt("max_frequency", category, maxfreq, 1, 10000, "Maximum ore frequency.");
+      
+      this.cluster_size = config.getInt("cluster_size", category, cluster_size, 1, 100, "Size of ore cluster.");
     }
   }
   
@@ -210,18 +229,18 @@ public class SubstratumConfig
 
   static public void load(Configuration config)
   {
-    worldgen_copper = new WorldgenConfig(config, "copper", 20, 80, 10, 20);
-    worldgen_tin = new WorldgenConfig(config, "tin", 20, 52, 6, 12);
-    worldgen_zinc = new WorldgenConfig(config, "zinc", 8, 48, 5, 7);
-    worldgen_nickel = new WorldgenConfig(config, "nickel", 8, 36, 3, 6);
-    worldgen_silver = new WorldgenConfig(config, "silver", 8, 30, 3, 4);
-    worldgen_lead = new WorldgenConfig(config, "lead", 8, 48, 5, 6);
-    worldgen_platinum = new WorldgenConfig(config, "platinum", 2, 12, 0, 1);
-    worldgen_alumina = new WorldgenConfig(config, "alumina", 16, 32, 2, 5);
-    worldgen_chromium = new WorldgenConfig(config, "chromium", 8, 24, 2, 3);
+    worldgen_copper = new WorldgenConfig(config, "copper", 20, 80, 167, 333, 7);    
+    worldgen_tin = new WorldgenConfig(config, "tin", 20, 52, 188, 375, 7);
+    worldgen_zinc = new WorldgenConfig(config, "zinc", 8, 48, 175, 175, 7);    
+    worldgen_nickel = new WorldgenConfig(config, "nickel", 8, 36, 107, 214, 7);
+    worldgen_silver = new WorldgenConfig(config, "silver", 8, 30, 136, 182, 7);
+    worldgen_lead = new WorldgenConfig(config, "lead", 8, 48, 125, 150, 7);
+    worldgen_platinum = new WorldgenConfig(config, "platinum", 2, 12, 100, 150, 3);
+    worldgen_alumina = new WorldgenConfig(config, "alumina", 16, 32, 125, 312, 7);
+    worldgen_chromium = new WorldgenConfig(config, "chromium", 8, 24, 100, 150, 5);
     
-    worldgen_sulfur = new WorldgenConfig(config, "sulfur", 5, 123, 15, 20);
-    worldgen_niter = new WorldgenConfig(config, "niter", 5, 123, 10, 15);
+    worldgen_sulfur = new WorldgenConfig(config, "sulfur", 5, 123, 127, 169, 7);
+    worldgen_niter = new WorldgenConfig(config, "niter", 5, 123, 85, 127, 7);
 
     blend_bronze_enable = config.getBoolean("blend", "recipes.bronze", true, "Enable/disable bronze dust blending recipe.");
     blend_brass_enable = config.getBoolean("blend", "recipes.brass", true, "Enable/disable brass dust blending recipe.");
