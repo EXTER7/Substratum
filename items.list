@@ -207,6 +207,7 @@ helmetSteel
 helmetSignalum
 helmetLumium
 helmetEnderium
+helmetAluminium
 chestplateBronze
 chestplateCopper
 chestplateSilver
@@ -216,6 +217,7 @@ chestplateSteel
 chestplateSignalum
 chestplateLumium
 chestplateEnderium
+chestplateAluminium
 leggingsBronze
 leggingsCopper
 leggingsSilver
@@ -225,6 +227,7 @@ leggingsSteel
 leggingsSignalum
 leggingsLumium
 leggingsEnderium
+leggingsAluminium
 bootsBronze
 bootsCopper
 bootsSilver
@@ -234,4 +237,4 @@ bootsSteel
 bootsSignalum
 bootsLumium
 bootsEnderium
-
+bootsAluminium
