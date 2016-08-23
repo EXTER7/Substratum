@@ -189,6 +189,13 @@ public class SubstratumConfig
     }
   }
   
+  static public enum AluminiumRecipe
+  {
+    NONE,
+    NORMAL,
+    CHEAP
+  }
+  
   public static WorldgenConfig worldgen_copper;
   public static WorldgenConfig worldgen_tin;
   public static WorldgenConfig worldgen_zinc;
@@ -215,11 +222,12 @@ public class SubstratumConfig
 
   public static boolean blend_gunpowder_enable;
   
-  public static boolean alumina_nugget_smelting;
 
   public static boolean cheaper_plate_recipes;
   public static boolean cheaper_rod_recipes;
   public static boolean cheaper_gear_recipes;
+  
+  public static AluminiumRecipe aluminium_recipe;
   
   public static Map<EnumMaterial,MaterialRecipeConfig> material_recipes = new EnumMap<EnumMaterial,MaterialRecipeConfig>(EnumMaterial.class);
 
@@ -256,7 +264,13 @@ public class SubstratumConfig
     blend_gunpowder_enable = config.getBoolean("blend", "recipes.gunpowder", true, "Enable/disable gunpowder dust blending recipe.");
 
     config.renameProperty("recipes.aluminium", "ingot_from_alumina", "nugget_from_alumina");
-    alumina_nugget_smelting = config.getBoolean("nugget_from_alumina", "recipes.aluminium", true, "Enable/disable alumina nugget to aluminium nugget smelting.");
+    boolean alumina_nugget_smelting = config.getBoolean("nugget_from_alumina", "recipes.aluminium", true, "");
+    config.getCategory("recipes.aluminium").remove("nugget_from_alumina");
+    
+    aluminium_recipe = AluminiumRecipe.values()[config.getInt("recipe_from_alumina", "recipes.aluminium", alumina_nugget_smelting?1:0,0,2, "Recipe for making aluminium from alumina:\n"
+        + "0 = No recipe (aluminium cannot be made without another mod adding a way to make it).\n"
+        + "1 = Normal recipe (1 alumina dust/ore -> 3 aluminium nuggets in a furnace).\n"
+        + "2 = Cheaper recipe (1 alumina dust/ore -> 1 aluminium ingot in a furnace).\n")];
     
     misc_mortar_uses = config.getInt("mortar_uses", "misc", 20, 0, 1000, "How many uses the mortar has unti it breaks. Setting this to 0 disables the item.");
     dye_enabled = config.getBoolean("enabled", "dyes", true, "Enable/disable dye powders.");

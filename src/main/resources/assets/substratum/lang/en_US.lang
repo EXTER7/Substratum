@@ -112,7 +112,7 @@ item.substratum.ingotCupronickel.name=Cupronickel Ingot
 item.substratum.ingotSignalum.name=Signalum Ingot
 item.substratum.ingotLumium.name=Lumium Ingot
 item.substratum.ingotEnderium.name=Enderium Ingot
-item.substratum.ingotAlumina.name=Alumina Ingot
+item.substratum.ingotAlumina.name=Alumina Ingot (Deprecated)
 item.substratum.ingotAluminium.name=Aluminium Ingot
 item.substratum.ingotChrome.name=Chromium Ingot
 
@@ -193,7 +193,7 @@ item.substratum.nuggetIron.name=Iron Nugget
 item.substratum.nuggetSignalum.name=Signalum Nugget
 item.substratum.nuggetLumium.name=Lumium Nugget
 item.substratum.nuggetEnderium.name=Enderium Nugget
-item.substratum.nuggetAlumina.name=Alumina Nugget
+item.substratum.nuggetAlumina.name=Alumina Nugget (Deprecated)
 item.substratum.nuggetAluminium.name=Aluminium Nugget
 item.substratum.nuggetChrome.name=Chromium Nugget
 
@@ -260,10 +260,6 @@ item.substratum.rodLumium.name=Lumium Rod
 item.substratum.rodEnderium.name=Enderium Rod
 item.substratum.rodAluminium.name=Aluminium Rod
 item.substratum.rodChrome.name=Chromium Rod
-
-item.substratum.bucketDustRedstone.name=Redstone Dust Bucket (Deprecated)
-item.substratum.bucketDustGlowstone.name=Glowstone Dust Bucket (Deprecated)
-item.substratum.bucketDustEnderpearl.name=Ender Pearl Dust Bucket (Deprecated)
 
 item.substratum.bottleDustRedstone.name=Redstone Dust Bottle
 item.substratum.bottleDustGlowstone.name=Glowstone Dust Bottle

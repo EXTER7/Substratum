@@ -58,8 +58,11 @@ public class ItemMaterial extends Item
     int i;
     for(i = 0; i < this.item.materials.size(); i++)
     {
-      ItemStack itemstack = new ItemStack(this, 1, i);
-      list.add(itemstack);
+      if(!this.item.deprecated.contains(this.item.materials.get(i)))
+      {
+        ItemStack itemstack = new ItemStack(this, 1, i);
+        list.add(itemstack);
+      }
     }
   }
   

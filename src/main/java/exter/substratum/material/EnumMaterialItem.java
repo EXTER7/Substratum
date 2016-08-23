@@ -23,7 +23,9 @@ public enum EnumMaterialItem
       EnumMaterial.ENDERIUM,
       EnumMaterial.ALUMINA,
       EnumMaterial.ALUMINIUM,
-      EnumMaterial.CHROMIUM)),
+      EnumMaterial.CHROMIUM),
+      //Deprecated
+      ImmutableList.of(EnumMaterial.ALUMINA)),
   
   DUST("dust",ImmutableList.of(
       EnumMaterial.COAL,
@@ -74,7 +76,9 @@ public enum EnumMaterialItem
       EnumMaterial.ENDERIUM,
       EnumMaterial.ALUMINA,
       EnumMaterial.ALUMINIUM,
-      EnumMaterial.CHROMIUM)),
+      EnumMaterial.CHROMIUM),
+      //Deprecated
+      ImmutableList.of(EnumMaterial.ALUMINA)),
 
   //1 gear = 4 ingots
   GEAR("gear",ImmutableList.of(
@@ -198,10 +202,19 @@ public enum EnumMaterialItem
       
   public final ImmutableList<EnumMaterial> materials;
   public final String prefix;
+  public final ImmutableList<EnumMaterial> deprecated;
 
+  EnumMaterialItem(String prefix, ImmutableList<EnumMaterial> materials, ImmutableList<EnumMaterial> deprecated)
+  {
+    this.materials = materials;
+    this.prefix = prefix;
+    this.deprecated = deprecated;
+    
+  }
   EnumMaterialItem(String prefix, ImmutableList<EnumMaterial> materials)
   {
     this.materials = materials;
     this.prefix = prefix;
+    this.deprecated = ImmutableList.of();
   }
 }

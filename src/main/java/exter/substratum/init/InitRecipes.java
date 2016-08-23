@@ -2,6 +2,7 @@ package exter.substratum.init;
 
 import java.util.Map;
 
+import exter.substratum.block.BlockOre;
 import exter.substratum.block.SubstratumBlocks;
 import exter.substratum.config.SubstratumConfig;
 import exter.substratum.item.SubstratumItems;
@@ -42,7 +43,9 @@ public class InitRecipes
   
   static private void initLegacy()
   {
-    
+    GameRegistry.addSmelting(
+        SubstratumItems.getStack(EnumMaterialItem.INGOT,EnumMaterial.ALUMINA),
+        SubstratumItems.getStack(EnumMaterialItem.INGOT,EnumMaterial.ALUMINIUM),0);
   }
   
   static public void init()
@@ -50,11 +53,26 @@ public class InitRecipes
     InitBlendRecipes.init();
     InitEquipmentRecipes.init();
     
-    if(SubstratumConfig.alumina_nugget_smelting)
+    switch(SubstratumConfig.aluminium_recipe)
     {
-      GameRegistry.addSmelting(
-          SubstratumItems.getStack(EnumMaterialItem.NUGGET,EnumMaterial.ALUMINA),
-          SubstratumItems.getStack(EnumMaterialItem.NUGGET,EnumMaterial.ALUMINIUM),0);
+      case NONE:
+        break;
+      case NORMAL:
+        GameRegistry.addSmelting(
+            SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ALUMINA),
+            SubstratumItems.getStack(EnumMaterialItem.NUGGET,EnumMaterial.ALUMINIUM,3),0);
+        GameRegistry.addSmelting(
+            SubstratumBlocks.block_ore.asItemStack(BlockOre.EnumVariant.ALUMINA),
+            SubstratumItems.getStack(EnumMaterialItem.NUGGET,EnumMaterial.ALUMINIUM,3),0);
+        break;
+      case CHEAP:
+        GameRegistry.addSmelting(
+            SubstratumBlocks.block_ore.asItemStack(BlockOre.EnumVariant.ALUMINA),
+            SubstratumItems.getStack(EnumMaterialItem.INGOT,EnumMaterial.ALUMINIUM),0);
+        GameRegistry.addSmelting(
+            SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.ALUMINA),
+            SubstratumItems.getStack(EnumMaterialItem.INGOT,EnumMaterial.ALUMINIUM),0);
+        break;
     }
 
     if(SubstratumItems.item_mortar != null)
@@ -202,7 +220,8 @@ public class InitRecipes
     ItemStack bucket = new ItemStack(Items.BUCKET);
     ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE);
 
-    //Dust -> Dust bucket
+    //Dust -> Dust bottle
+    
     if(SubstratumConfig.material_recipes.get(EnumMaterial.REDSTONE).dust_bottle)
     {
       GameRegistry.addRecipe(new ShapelessOreRecipe(
