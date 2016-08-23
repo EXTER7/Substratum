@@ -123,12 +123,6 @@ public enum EnumMaterialItem
       EnumMaterial.ALUMINIUM,
       EnumMaterial.CHROMIUM)),  
   
-  @Deprecated
-  BUCKET_DUST("bucketDust", ImmutableList.of(
-      EnumMaterial.REDSTONE,
-      EnumMaterial.GLOWSTONE,
-      EnumMaterial.ENDERPEARL)),
-
   BOTTLE_DUST("bottleDust", ImmutableList.of(
       EnumMaterial.REDSTONE,
       EnumMaterial.GLOWSTONE,

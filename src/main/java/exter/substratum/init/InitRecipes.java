@@ -40,18 +40,9 @@ public class InitRecipes
         ing_oredict));
   }
   
-  @SuppressWarnings("deprecation")
   static private void initLegacy()
   {
-    GameRegistry.addShapelessRecipe(
-        SubstratumItems.getStack(EnumMaterialItem.DUST, EnumMaterial.REDSTONE,10),
-        SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST, EnumMaterial.REDSTONE));
-    GameRegistry.addShapelessRecipe(
-        SubstratumItems.getStack(EnumMaterialItem.DUST, EnumMaterial.GLOWSTONE,4),
-        SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST, EnumMaterial.GLOWSTONE));
-    GameRegistry.addShapelessRecipe(
-        SubstratumItems.getStack(EnumMaterialItem.DUST, EnumMaterial.ENDERPEARL,4),
-        SubstratumItems.getStack(EnumMaterialItem.BUCKET_DUST, EnumMaterial.ENDERPEARL));
+    
   }
   
   static public void init()

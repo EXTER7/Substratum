@@ -51,15 +51,10 @@ public class ItemMaterial extends Item
     return getUnlocalizedName() + item.materials.get(itemstack.getMetadata()).suffix;
   }
 
-  @SuppressWarnings("deprecation")
   @Override
   @SideOnly(Side.CLIENT)
   public void getSubItems(Item item, CreativeTabs tabs, List<ItemStack> list)
   {
-    if(this.item == EnumMaterialItem.BUCKET_DUST)
-    {
-      return;
-    }
     int i;
     for(i = 0; i < this.item.materials.size(); i++)
     {

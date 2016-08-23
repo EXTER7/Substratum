@@ -94,7 +94,6 @@ public class SubstratumItems
   static public Map<EnumMaterial,ItemArmorSubstratum> leggings = new EnumMap<EnumMaterial,ItemArmorSubstratum>(EnumMaterial.class);
   static public Map<EnumMaterial,ItemArmorSubstratum> boots = new EnumMap<EnumMaterial,ItemArmorSubstratum>(EnumMaterial.class);
   
-  @SuppressWarnings("deprecation")
   static public void registerItems(Configuration config)
   {
     for(EnumMaterialItem matitem:EnumMaterialItem.values())
@@ -120,7 +119,6 @@ public class SubstratumItems
         OreDictionary.registerOre(matitem.item.prefix + "Chromium", stack);
       }
     }
-    item_materials.get(EnumMaterialItem.BUCKET_DUST).setContainerItem(Items.BUCKET).setMaxStackSize(1);
     item_materials.get(EnumMaterialItem.BOTTLE_DUST).setContainerItem(Items.GLASS_BOTTLE);
     item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setSpecialHandler(new BucketSpecialHandler()).setContainerItem(Items.BUCKET).setMaxStackSize(1);
     item_materials.get(EnumMaterialItem.BOTTLE_LIQUID).setSpecialHandler(new FluidSpecialHandler(Fluid.BUCKET_VOLUME / 4)).setContainerItem(Items.GLASS_BOTTLE);
