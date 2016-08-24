@@ -17,6 +17,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+@SuppressWarnings("deprecation")
 public class SubstratumFluids
 {
   static public FluidSubstratum liquid_redstone;
@@ -43,7 +44,6 @@ public class SubstratumFluids
     return fluid;
   }
   
-  @SuppressWarnings("deprecation")
   static public void registerFluids()
   {
     liquid_redstone = register(EnumMaterial.REDSTONE, "liquidRedstone", 800, 4);
