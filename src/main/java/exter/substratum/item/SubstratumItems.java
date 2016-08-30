@@ -104,24 +104,10 @@ public class SubstratumItems
       for(EnumMaterial mat:matitem.materials)
       {
         OreDictionary.registerOre(matitem.prefix + mat.suffix, item.getStack(mat));
-      }
-    }
-    for(ItemMaterial matitem:item_materials.values())
-    {
-      ItemStack stack = matitem.getStack(EnumMaterial.ALUMINIUM);
-      if(stack != null)
-      {
-        OreDictionary.registerOre(matitem.item.prefix + "Aluminum", stack);
-      }
-      stack = matitem.getStack(EnumMaterial.CHROMIUM);
-      if(stack != null)
-      {
-        OreDictionary.registerOre(matitem.item.prefix + "Chromium", stack);
-      }
-      stack = matitem.getStack(EnumMaterial.CUPRONICKEL);
-      if(stack != null)
-      {
-        OreDictionary.registerOre(matitem.item.prefix + "Constantan", stack);
+        if(mat.suffix_alias != null)
+        {
+          OreDictionary.registerOre(matitem.prefix + mat.suffix_alias, item.getStack(mat));
+        }
       }
     }
     item_materials.get(EnumMaterialItem.BOTTLE_DUST).setContainerItem(Items.GLASS_BOTTLE);

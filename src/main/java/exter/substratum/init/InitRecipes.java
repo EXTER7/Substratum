@@ -128,6 +128,12 @@ public class InitRecipes
             GameRegistry.addRecipe(new ShapelessOreRecipe(
                 SubstratumItems.getStack(EnumMaterialItem.DUST,mat),
                 mortar, "ingot" + mat.suffix));
+            if(mat.suffix_alias != null)
+            {
+              GameRegistry.addRecipe(new ShapelessOreRecipe(
+                  SubstratumItems.getStack(EnumMaterialItem.DUST,mat),
+                  mortar, "ingot" + mat.suffix_alias));
+            }
           }
         }
       }
@@ -368,6 +374,16 @@ public class InitRecipes
                 " I ",
                 'I', "ingot" + mat.suffix,
                 'S', stick)); 
+            if(mat.suffix_alias != null)
+            {
+              GameRegistry.addRecipe(new ShapedOreRecipe(
+                  SubstratumItems.getStack(EnumMaterialItem.GEAR, mat),
+                  " I ",
+                  "ISI",
+                  " I ",
+                  'I', "ingot" + mat.suffix_alias,
+                  'S', stick)); 
+            }
           } else
           {
             GameRegistry.addRecipe(new ShapedOreRecipe(
@@ -377,6 +393,16 @@ public class InitRecipes
                 " P ",
                 'P', "plate" + mat.suffix,
                 'I', "ingot" + mat.suffix)); 
+            if(mat.suffix_alias != null)
+            {
+              GameRegistry.addRecipe(new ShapedOreRecipe(
+                  SubstratumItems.getStack(EnumMaterialItem.GEAR, mat),
+                  " P ",
+                  "PIP",
+                  " P ",
+                  'P', "plate" + mat.suffix_alias,
+                  'I', "ingot" + mat.suffix_alias)); 
+            }
           }
           if(SubstratumConfig.material_recipes.get(mat).ingots_from_gear)
           {
@@ -430,6 +456,15 @@ public class InitRecipes
             "   ",
             "   ",
             'I', "ingot" + mat.suffix)); 
+        if(mat.suffix_alias != null)
+        {
+          GameRegistry.addRecipe(new ShapedOreRecipe(
+              SubstratumItems.getStack(EnumMaterialItem.PLATE, mat, SubstratumConfig.cheaper_plate_recipes ? 3 : 2),
+              "III",
+              "   ",
+              "   ",
+              'I', "ingot" + mat.suffix_alias)); 
+        }
       }
       if(SubstratumConfig.material_recipes.get(mat).ingot_from_plate)
       {
@@ -452,6 +487,15 @@ public class InitRecipes
             "I  ",
             "I  ",
             'I', "ingot" + mat.suffix)); 
+        if(mat.suffix_alias != null)
+        {
+          GameRegistry.addRecipe(new ShapedOreRecipe(
+              SubstratumItems.getStack(EnumMaterialItem.ROD, mat, SubstratumConfig.cheaper_rod_recipes ? 6 : 4),
+              "I  ",
+              "I  ",
+              "I  ",
+              'I', "ingot" + mat.suffix_alias)); 
+        }
       }
       if(SubstratumItems.item_mortar != null && SubstratumConfig.material_recipes.get(mat).dust_from_rod)
       {

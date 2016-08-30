@@ -19,7 +19,7 @@ public enum EnumMaterial
   STEEL("Steel"),
   LEAD("Lead"),
   PLATINUM("Platinum"),
-  CUPRONICKEL("Cupronickel"),
+  CUPRONICKEL("Cupronickel", "Constantan"),
   REDSTONE("Redstone"),
   GLOWSTONE("Glowstone"),
   ENDERPEARL("Enderpearl"),
@@ -32,13 +32,22 @@ public enum EnumMaterial
   OBSIDIAN("Obsidian"),
   BLAZE("Blaze"),
   ALUMINA("Alumina"),
-  ALUMINIUM("Aluminium"),
-  CHROMIUM("Chrome");
+  ALUMINIUM("Aluminium", "Aluminum"),
+  CHROMIUM("Chrome", "Chromium");
   
   public final String suffix;
+
+  public final String suffix_alias;
   
   EnumMaterial(String suffix)
   {
     this.suffix = suffix;
+    this.suffix_alias = null;
+  }
+
+  EnumMaterial(String suffix, String suffix_alias)
+  {
+    this.suffix = suffix;
+    this.suffix_alias = suffix_alias;
   }
 }
