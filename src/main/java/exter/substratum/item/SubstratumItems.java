@@ -118,6 +118,11 @@ public class SubstratumItems
       {
         OreDictionary.registerOre(matitem.item.prefix + "Chromium", stack);
       }
+      stack = matitem.getStack(EnumMaterial.CUPRONICKEL);
+      if(stack != null)
+      {
+        OreDictionary.registerOre(matitem.item.prefix + "Constantan", stack);
+      }
     }
     item_materials.get(EnumMaterialItem.BOTTLE_DUST).setContainerItem(Items.GLASS_BOTTLE);
     item_materials.get(EnumMaterialItem.BUCKET_LIQUID).setSpecialHandler(new BucketSpecialHandler()).setContainerItem(Items.BUCKET).setMaxStackSize(1);
