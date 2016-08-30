@@ -56,10 +56,10 @@ class InitBlendRecipes
 
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.CUPRONICKEL),
-          "dustCopper",
-          "dustCopper",
-          "dustNickel",
-          "dustNickel"));
+          "dustSmallCopper",
+          "dustSmallCopper",
+          "dustSmallNickel",
+          "dustSmallNickel"));
 
       GameRegistry.addRecipe(new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST_SMALL,EnumMaterial.CUPRONICKEL,2),
