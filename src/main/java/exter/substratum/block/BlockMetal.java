@@ -61,7 +61,7 @@ public abstract class BlockMetal extends Block implements IBlockVariants
     
     public PropertyVariant(Variant[] variants)
     {
-      super("metal",Variant.class);
+      super("variant",Variant.class);
       int i = 0;
       this.variants = new HashMap<String,Variant>();
       for (Variant v : variants)
@@ -140,10 +140,9 @@ public abstract class BlockMetal extends Block implements IBlockVariants
     return getMetaFromState(state);
   }
     
-  @SuppressWarnings("unchecked")
   @Override
   @SideOnly(Side.CLIENT)
-  public void getSubBlocks(Item item, CreativeTabs tab, @SuppressWarnings("rawtypes") List list)
+  public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list)
   {
     for(Variant v:getVariants())
     {

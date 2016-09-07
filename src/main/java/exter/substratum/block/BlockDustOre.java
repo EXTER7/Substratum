@@ -54,7 +54,7 @@ public class BlockDustOre extends Block implements IBlockVariants
     }
   }
 
-  public static final PropertyEnum<EnumVariant> VARIANT = PropertyEnum.create("ore", EnumVariant.class);
+  public static final PropertyEnum<EnumVariant> VARIANT = PropertyEnum.create("variant", EnumVariant.class);
 
 
   public BlockDustOre()

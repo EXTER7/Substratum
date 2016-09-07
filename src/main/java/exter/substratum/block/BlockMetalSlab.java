@@ -143,10 +143,9 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
     return new ItemStack(getItemDropped(state,null,0),amount,damageDropped(state));
   }
 
-  @SuppressWarnings("unchecked")
   @SideOnly(Side.CLIENT)
   @Override
-  public void getSubBlocks(Item item, CreativeTabs tabs, @SuppressWarnings("rawtypes") List items)
+  public void getSubBlocks(Item item, CreativeTabs tabs, List<ItemStack> items)
   {
     if(!isDouble())
     {
