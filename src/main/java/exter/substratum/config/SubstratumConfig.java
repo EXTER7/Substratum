@@ -99,7 +99,7 @@ public class SubstratumConfig
       if(EnumMaterialItem.BOTTLE_DUST.materials.contains(material))
       {
         config.renameProperty(category, "dust_bucket", "dust_bottle");
-        dust_bottle = config.getBoolean("dust_bottle", category, false, "Enable/disable " + name + " dust bottle recipes.");
+        dust_bottle = config.getBoolean("dust_bottle", category, true, "Enable/disable " + name + " dust bottle recipes.");
       } else
       {
         dust_bottle = false;
