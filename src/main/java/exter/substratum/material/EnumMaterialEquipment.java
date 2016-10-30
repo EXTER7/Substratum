@@ -31,7 +31,7 @@ public enum EnumMaterialEquipment
       EnumHelper.addArmorMaterial("SUBSTRATUM_ELECTRUM", "electrum", 6, new int[]{1, 3, 5, 2}, 35, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F),
       6.0F, -3.0F),
   ALUMINIUM(EnumMaterial.ALUMINIUM,
-      EnumHelper.addToolMaterial("SUBSTRATUM_ALUMINIUM", 2, 220, 10.0F, 1.8F, 14),
+      EnumHelper.addToolMaterial("SUBSTRATUM_ALUMINIUM", 2, 220, 12.0F, 1.8F, 14),
       EnumHelper.addArmorMaterial("SUBSTRATUM_ALUMINIUM", "aluminium", 13, new int[]{2, 4, 5, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
       8.0F, -2.8F),
   STEEL(EnumMaterial.STEEL,
@@ -48,7 +48,7 @@ public enum EnumMaterialEquipment
       7.0F, -3.0F),
   ENDERIUM(EnumMaterial.ENDERIUM,
       EnumHelper.addToolMaterial("SUBSTRATUM_ENDERIUM", 3, 1000, 10.0F, 4.0F, 20),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_ENDERIUM", "enderium", 35, new int[]{3, 6, 8, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F),
+      EnumHelper.addArmorMaterial("SUBSTRATUM_ENDERIUM", "enderium", 40, new int[]{4, 7, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F),
       8.0F, -3.0F);
   
   
