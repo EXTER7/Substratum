@@ -149,6 +149,10 @@ public class SubstratumBlocks
         ItemStack item = new ItemStack(block_slab[i],1,block_slab[i].getMetaFromState(state));
         slab_stacks.put(v.material, item);
         OreDictionary.registerOre("slab" + v.material.suffix, item);
+        if(v.material.suffix_alias != null)
+        {
+          OreDictionary.registerOre("slab" + v.material.suffix_alias, item);
+        }
       }
     }
   }
@@ -160,6 +164,10 @@ public class SubstratumBlocks
     ItemStack item = new ItemStack(block);
     stairs_stacks.put(material,item);
     OreDictionary.registerOre("stairs" + material.suffix, item);
+    if(material.suffix_alias != null)
+    {
+      OreDictionary.registerOre("stairs" + material.suffix_alias, item);
+    }
   }
   
   static public void registerBlocks()
@@ -181,6 +189,10 @@ public class SubstratumBlocks
         ItemStack item = new ItemStack(block_metal[i],1,block_metal[i].getMetaFromState(state));
         block_stacks.put(v.material, item);
         OreDictionary.registerOre("block" + v.material.suffix, item);
+        if(v.material.suffix_alias != null)
+        {
+          OreDictionary.registerOre("block" + v.material.suffix_alias, item);
+        }
         registerStairs(v.material,state);
       }
     }
@@ -191,6 +203,10 @@ public class SubstratumBlocks
       ItemStack item = block_ore.asItemStack(ore);
       ore_stacks.put(ore.material, item);
       OreDictionary.registerOre("ore" + ore.material.suffix, item);
+      if(ore.material.suffix_alias != null)
+      {
+        OreDictionary.registerOre("ore" + ore.material.suffix_alias, item);
+      }
     }
 
     registerMulti(block_ore_dust);
@@ -199,6 +215,10 @@ public class SubstratumBlocks
       ItemStack item = block_ore_dust.asItemStack(ore);
       ore_stacks.put(ore.material, item);
       OreDictionary.registerOre("ore" + ore.material.suffix, item);
+      if(ore.material.suffix_alias != null)
+      {
+        OreDictionary.registerOre("ore" + ore.material.suffix_alias, item);
+      }
     }
 
     registerHalfSlabs();
