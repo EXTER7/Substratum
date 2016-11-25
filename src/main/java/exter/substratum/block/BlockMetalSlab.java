@@ -111,7 +111,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
     setHardness(5.0F);
     setResistance(10.0F);
     setSoundType(SoundType.METAL);
-    setUnlocalizedName("substratum.slab" + (single != null?"Double":""));
+    setUnlocalizedName("substratum.slab" + (single != null?"_double":""));
     setRegistryName(name);
     useNeighborBrightness = true;
   }
@@ -175,7 +175,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
   @Override
   public String getUnlocalizedName(int meta)
   {
-    return getUnlocalizedName() + getStateFromMeta(meta).getValue(getVariantProperty()).material.suffix;
+    return String.format("%s_%s",getUnlocalizedName(),getStateFromMeta(meta).getValue(getVariantProperty()).material.suffix_lc);
   }
 
   @Override

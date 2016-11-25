@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/upper_slab",
+  "textures":
+  {
+    "bottom": "substratum:blocks/block_brass",
+    "top": "substratum:blocks/block_brass",
+    "side": "substratum:blocks/slab_brass"
+  }
+}

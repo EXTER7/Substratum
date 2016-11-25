@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/upper_slab",
+  "textures":
+  {
+    "bottom": "substratum:blocks/block_signalum",
+    "top": "substratum:blocks/block_signalum",
+    "side": "substratum:blocks/slab_signalum"
+  }
+}

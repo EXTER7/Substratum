@@ -4,12 +4,12 @@ public class ItemDyePowderSmall extends ItemDyePowder
 {
   public ItemDyePowderSmall()
   {
-    setUnlocalizedName("substratum.dyeSmall");
+    setUnlocalizedName("substratum.dye_small");
   }
 
   @Override
   protected String getName()
   {
-    return "dyeSmall";
+    return "dye_small";
   }
 }

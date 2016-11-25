@@ -41,10 +41,10 @@ do
 	  }
 	}
 	EOF
-  ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e "s/@@TEXTURESIDE@@/slab"$slab"/g" \
-    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slabBottom"$slab".json"
+  ) | sed -e "s/@@TEXTURE@@/block_"$slab"/g" \
+    | sed -e "s/@@TEXTURESIDE@@/slab_"$slab"/g" \
+    | sed -e 's/substratum:blocks\/block_iron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/block_gold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slab_bottom_"$slab".json"
 
   ( # Top slab
   cat <<- EOF
@@ -58,10 +58,10 @@ do
 	  }
 	}
 	EOF
-  ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e "s/@@TEXTURESIDE@@/slab"$slab"/g" \
-    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slabTop"$slab".json"
+  ) | sed -e "s/@@TEXTURE@@/block_"$slab"/g" \
+    | sed -e "s/@@TEXTURESIDE@@/slab_"$slab"/g" \
+    | sed -e 's/substratum:blocks\/block_iron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/block_gold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slab_top_"$slab".json"
   
   ( # Double slab
   cat <<- EOF
@@ -74,10 +74,10 @@ do
 	  }
 	}
 	EOF
-  ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e "s/@@TEXTURESIDE@@/slab"$slab"/g" \
-    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slabDouble"$slab".json"
+  ) | sed -e "s/@@TEXTURE@@/block_"$slab"/g" \
+    | sed -e "s/@@TEXTURESIDE@@/slab_"$slab"/g" \
+    | sed -e 's/substratum:blocks\/block_iron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/block_gold/minecraft:blocks\/gold_block/g' > $modeldir"/block/slab_double_"$slab".json"
 
   ( # Slab item model
   cat <<- EOF
@@ -85,7 +85,7 @@ do
 	  "parent": "substratum:block/@@MODEL@@"
 	}
 	EOF
-  ) | sed -e "s/@@MODEL@@/slabBottom"$slab"/g" > $modeldir"/item/slab"$slab".json"
+  ) | sed -e "s/@@MODEL@@/slab_bottom_"$slab"/g" > $modeldir"/item/slab_"$slab".json"
 
   ( # Stairs blockstate
   cat <<- EOF
@@ -135,9 +135,9 @@ do
 	  }
 	}
 	EOF
-  ) | sed -e "s/@@MODELSTRAIGHT@@/stairsStraight"$slab"/g" \
-    | sed -e "s/@@MODELINNER@@/stairsInner"$slab"/g" \
-    | sed -e "s/@@MODELOUTER@@/stairsOuter"$slab"/g" > $blockstatedir"/stairs"$slab".json"
+  ) | sed -e "s/@@MODELSTRAIGHT@@/stairs_straight_"$slab"/g" \
+    | sed -e "s/@@MODELINNER@@/stairs_inner_"$slab"/g" \
+    | sed -e "s/@@MODELOUTER@@/stairs_outer_"$slab"/g" > $blockstatedir"/stairs_"$slab".json"
 
   ( # Straight stairs
   cat <<- EOF
@@ -151,9 +151,9 @@ do
 	  }
 	}
 	EOF
-  ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairsStraight"$slab".json"
+  ) | sed -e "s/@@TEXTURE@@/block_"$slab"/g" \
+    | sed -e 's/substratum:blocks\/block_iron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/block_gold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairs_straight_"$slab".json"
 
   ( # Inner stairs
   cat <<- EOF
@@ -167,9 +167,9 @@ do
 	  }
 	}
 	EOF
-  ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairsInner"$slab".json"
+  ) | sed -e "s/@@TEXTURE@@/block_"$slab"/g" \
+    | sed -e 's/substratum:blocks\/block_iron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/block_gold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairs_inner_"$slab".json"
 
   ( # Outer stairs
   cat <<- EOF
@@ -183,9 +183,9 @@ do
 	  }
 	}
 	EOF
-  ) | sed -e "s/@@TEXTURE@@/block"$slab"/g" \
-    | sed -e 's/substratum:blocks\/blockIron/minecraft:blocks\/iron_block/g' \
-    | sed -e 's/substratum:blocks\/blockGold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairsOuter"$slab".json"
+  ) | sed -e "s/@@TEXTURE@@/block_"$slab"/g" \
+    | sed -e 's/substratum:blocks\/block_iron/minecraft:blocks\/iron_block/g' \
+    | sed -e 's/substratum:blocks\/block_gold/minecraft:blocks\/gold_block/g' > $modeldir"/block/stairs_outer_"$slab".json"
 
   ( # Stairs item model
   cat <<- EOF
@@ -193,7 +193,7 @@ do
 	  "parent": "substratum:block/@@MODEL@@"
 	}
 	EOF
-  ) | sed -e "s/@@MODEL@@/stairsStraight"$slab"/g" > $modeldir"/item/stairs"$slab".json"
+  ) | sed -e "s/@@MODEL@@/stairs_straight_"$slab"/g" > $modeldir"/item/stairs_"$slab".json"
 done
 
 for item in $(cat "items.list")
@@ -240,6 +240,6 @@ do
 	  }
 	}
 	EOF
-  ) | sed -e "s/@@FLUID@@/"$(echo $fluid | tr '[A-Z]' '[a-z]')"/g" > $blockstatedir"/"$fluid".json"
+  ) | sed -e "s/@@FLUID@@/"liquid$(echo $fluid | tr '[A-Z]' '[a-z]')"/g" > $blockstatedir"/"liquid_$(echo $fluid | tr '[A-Z]' '[a-z]')".json"
 done
 

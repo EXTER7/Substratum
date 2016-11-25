@@ -1,5 +1,7 @@
 package exter.substratum.material;
 
+import exter.substratum.util.SubstratumUtils;
+
 public enum EnumMaterial
 {
   STONE("Stone"),
@@ -38,16 +40,20 @@ public enum EnumMaterial
   public final String suffix;
 
   public final String suffix_alias;
-  
+
+  public final String suffix_lc;
+
   EnumMaterial(String suffix)
   {
     this.suffix = suffix;
     this.suffix_alias = null;
+    this.suffix_lc = SubstratumUtils.convertToRegistryName(suffix);
   }
 
   EnumMaterial(String suffix, String suffix_alias)
   {
     this.suffix = suffix;
     this.suffix_alias = suffix_alias;
+    this.suffix_lc = SubstratumUtils.convertToRegistryName(suffix);
   }
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures":
-  {
-     "end": "substratum:blocks/blockInvar",
-     "side": "substratum:blocks/slabInvar"
-  }
-}

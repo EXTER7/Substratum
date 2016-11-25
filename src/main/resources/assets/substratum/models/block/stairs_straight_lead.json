@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures":
+  {
+    "bottom": "substratum:blocks/block_lead",
+    "top": "substratum:blocks/block_lead",
+    "side": "substratum:blocks/block_lead"
+  }
+}

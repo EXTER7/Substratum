@@ -8,6 +8,7 @@ import exter.substratum.block.SubstratumBlocks;
 import exter.substratum.item.SubstratumItems;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
+import exter.substratum.util.SubstratumUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -29,8 +30,8 @@ public class SubstratumFluids
   static private FluidSubstratum register(EnumMaterial material,String name,int temperature,int luminosity)
   {
     FluidSubstratum fluid = new FluidSubstratum(material, name,
-        new ResourceLocation("substratum","blocks/" + name + "_still"),
-        new ResourceLocation("substratum","blocks/" + name + "_flow"),
+        new ResourceLocation("substratum","blocks/" + SubstratumUtils.convertToRegistryName(name) + "_still"),
+        new ResourceLocation("substratum","blocks/" + SubstratumUtils.convertToRegistryName(name) + "_flow"),
         temperature, luminosity);
     FluidRegistry.registerFluid(fluid);
 

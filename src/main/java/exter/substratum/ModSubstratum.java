@@ -61,9 +61,6 @@ public class ModSubstratum
     SubstratumItems.registerItems(config);
     SubstratumFluids.registerFluids();
 
-
-
-
     config.save();
 
     proxy.preInit();

@@ -122,18 +122,18 @@ public class SubstratumBlocks
   {
     int i;
     block_slab = new BlockMetalSlab[3];
-    block_slab[0] = new BlockMetalSlab(null,"slab1") { @Override public Variant[] getVariants() { return SLAB1_METALS; } };
-    block_slab[1] = new BlockMetalSlab(null,"slab2") { @Override public Variant[] getVariants() { return SLAB2_METALS; } };
-    block_slab[2] = new BlockMetalSlab(null,"slab3") { @Override public Variant[] getVariants() { return SLAB3_METALS; } };
+    block_slab[0] = new BlockMetalSlab(null,"slab_1") { @Override public Variant[] getVariants() { return SLAB1_METALS; } };
+    block_slab[1] = new BlockMetalSlab(null,"slab_2") { @Override public Variant[] getVariants() { return SLAB2_METALS; } };
+    block_slab[2] = new BlockMetalSlab(null,"slab_3") { @Override public Variant[] getVariants() { return SLAB3_METALS; } };
 
     block_slabdouble = new BlockMetalSlab[3];
-    block_slabdouble[0] = new BlockMetalSlab(block_slab[0],"slabDouble1") {
+    block_slabdouble[0] = new BlockMetalSlab(block_slab[0],"slab_double_1") {
       @Override public Variant[] getVariants() { return SLAB1_METALS; }
       @Override public IProperty<BlockMetalSlab.Variant> getVariantProperty() { return block_slab[0].getVariantProperty(); } };
-    block_slabdouble[1] = new BlockMetalSlab(block_slab[1],"slabDouble2") {
+    block_slabdouble[1] = new BlockMetalSlab(block_slab[1],"slab_double_2") {
       @Override public Variant[] getVariants() { return SLAB2_METALS; }
       @Override public IProperty<BlockMetalSlab.Variant> getVariantProperty() { return block_slab[1].getVariantProperty(); } };
-    block_slabdouble[2] = new BlockMetalSlab(block_slab[2],"slabDouble3") {
+    block_slabdouble[2] = new BlockMetalSlab(block_slab[2],"slab_double_3") {
       @Override public Variant[] getVariants() { return SLAB3_METALS; }
       @Override public IProperty<BlockMetalSlab.Variant> getVariantProperty() { return block_slab[2].getVariantProperty(); } };
 
@@ -174,8 +174,8 @@ public class SubstratumBlocks
   {
     int i;
     block_metal = new BlockMetal[2];
-    block_metal[0] = new BlockMetal("blockMetal1") { public Variant[] getVariants() { return BLOCK1_METALS; } };
-    block_metal[1] = new BlockMetal("blockMetal2") { public Variant[] getVariants() { return BLOCK2_METALS; } };
+    block_metal[0] = new BlockMetal("block_metal_1") { public Variant[] getVariants() { return BLOCK1_METALS; } };
+    block_metal[1] = new BlockMetal("block_metal_2") { public Variant[] getVariants() { return BLOCK2_METALS; } };
     block_ore = new BlockOre();
     block_ore_dust = new BlockDustOre();
 

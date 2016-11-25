@@ -39,7 +39,7 @@ public abstract class BlockMetal extends Block implements IBlockVariants
     @Override
     public String getName()
     {
-      return material.suffix.toLowerCase();
+      return material.suffix_lc;
     }
 
     @Override
@@ -153,6 +153,6 @@ public abstract class BlockMetal extends Block implements IBlockVariants
   @Override
   public String getUnlocalizedName(int meta)
   {
-    return getUnlocalizedName() + getStateFromMeta(meta).getValue(property_variant).material.suffix;
+    return String.format("%s_%s", getUnlocalizedName(), getStateFromMeta(meta).getValue(property_variant).material.suffix_lc);
   }
 }

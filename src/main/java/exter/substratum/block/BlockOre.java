@@ -119,6 +119,6 @@ public class BlockOre extends Block implements IBlockVariants
   @Override
   public String getUnlocalizedName(int meta)
   {
-    return getUnlocalizedName() + getStateFromMeta(meta).getValue(VARIANT).material.suffix;
+    return String.format("%s_%s", getUnlocalizedName(), getStateFromMeta(meta).getValue(VARIANT).material.suffix_lc);
   }
 }

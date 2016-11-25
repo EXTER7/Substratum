@@ -1,0 +1,5 @@
+ore=@@MATERIAL@@ Ore
+block=Block of @@MATERIAL@@
+slab=@@MATERIAL@@ Slab:slab
+slab_double=Double @@MATERIAL@@ Slab:slab
+stairs=@@MATERIAL@@ Stairs:slab

@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures":
-  {
-     "end": "substratum:blocks/blockElectrum",
-     "side": "substratum:blocks/slabElectrum"
-  }
-}

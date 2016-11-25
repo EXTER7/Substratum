@@ -64,7 +64,7 @@ public class BlockDustOre extends Block implements IBlockVariants
     setResistance(5.0F);
     setSoundType(SoundType.STONE);
     setUnlocalizedName("substratum.ore");
-    setRegistryName("oreDust");
+    setRegistryName("ore_dust");
     setCreativeTab(TabMaterials.tab);
     setHarvestLevel("pickaxe", 1);
   }
@@ -112,7 +112,7 @@ public class BlockDustOre extends Block implements IBlockVariants
   @Override
   public String getUnlocalizedName(int meta)
   {
-    return getUnlocalizedName() + getStateFromMeta(meta).getValue(VARIANT).material.suffix;
+    return String.format("%s_%s", getUnlocalizedName(), getStateFromMeta(meta).getValue(VARIANT).material.suffix_lc);
   }
   
   public Item getItemDropped(IBlockState state, Random rand, int fortune)

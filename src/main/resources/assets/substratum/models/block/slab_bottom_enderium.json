@@ -1,0 +1,9 @@
+{
+   "parent": "minecraft:block/half_slab",
+   "textures":
+   {
+     "bottom": "substratum:blocks/block_enderium",
+     "top": "substratum:blocks/block_enderium",
+     "side": "substratum:blocks/slab_enderium"
+  }
+}

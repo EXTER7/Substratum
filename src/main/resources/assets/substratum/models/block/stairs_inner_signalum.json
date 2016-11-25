@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures":
+  {
+    "bottom": "substratum:blocks/block_signalum",
+    "top": "substratum:blocks/block_signalum",
+    "side": "substratum:blocks/block_signalum"
+  }
+}

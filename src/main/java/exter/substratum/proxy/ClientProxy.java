@@ -77,16 +77,16 @@ public class ClientProxy extends CommonProxy
   @Override
   public void preInit()
   {
-    registerFluidModel(SubstratumFluids.liquid_redstone,"liquidRedstone");
-    registerFluidModel(SubstratumFluids.liquid_glowstone,"liquidGlowstone");
-    registerFluidModel(SubstratumFluids.liquid_enderpearl,"liquidEnderpearl");
+    registerFluidModel(SubstratumFluids.liquid_redstone,"liquid_redstone");
+    registerFluidModel(SubstratumFluids.liquid_glowstone,"liquid_glowstone");
+    registerFluidModel(SubstratumFluids.liquid_enderpearl,"liquid_enderpearl");
   }
   
   private void registerEquipment(Map<EnumMaterial,? extends Item> map,String prefix)
   {
     for(Map.Entry<EnumMaterial,? extends Item> e:map.entrySet())
     {
-      registerItemModel(e.getValue(),prefix + e.getKey().suffix);
+      registerItemModel(e.getValue(),String.format("%s_%s", prefix, e.getKey().suffix_lc));
     }
   }
 
@@ -95,19 +95,19 @@ public class ClientProxy extends CommonProxy
   {   
     for(BlockOre.EnumVariant ore:BlockOre.EnumVariant.values())
     {
-      registerItemModel(SubstratumBlocks.block_ore,"ore" + ore.material.suffix, ore.ordinal());
+      registerItemModel(SubstratumBlocks.block_ore,"ore_" + ore.material.suffix_lc, ore.ordinal());
     }
 
     for(BlockDustOre.EnumVariant ore:BlockDustOre.EnumVariant.values())
     {
-      registerItemModel(SubstratumBlocks.block_ore_dust,"ore" + ore.material.suffix, ore.ordinal());
+      registerItemModel(SubstratumBlocks.block_ore_dust,"ore_" + ore.material.suffix_lc, ore.ordinal());
     }
 
     for(BlockMetal block:SubstratumBlocks.block_metal)
     {
       for(BlockMetal.Variant v:block.getVariants())
       {
-        registerItemModel(block,"block" + v.material.suffix, v.id);
+        registerItemModel(block,"block_" + v.material.suffix_lc, v.id);
       }
     }
 
@@ -115,14 +115,14 @@ public class ClientProxy extends CommonProxy
     {
       for(BlockMetalSlab.Variant v:block.getVariants())
       {
-        registerItemModel(block,"slab" + v.material.suffix, block.getBottomVariantMeta(v));
+        registerItemModel(block,"slab_" + v.material.suffix_lc, block.getBottomVariantMeta(v));
       }
     }
 
     for(Map.Entry<EnumMaterial, ItemStack> e:SubstratumBlocks.stairs_stacks.entrySet())
     {
       ItemStack item = e.getValue();
-      registerItemModel(item.getItem(),"stairs" + e.getKey().suffix,item.getMetadata());
+      registerItemModel(item.getItem(),"stairs_" + e.getKey().suffix_lc,item.getMetadata());
     }
 
 
@@ -133,7 +133,7 @@ public class ClientProxy extends CommonProxy
         ItemStack item = SubstratumItems.getStack(matitem, material, false);
         if(item != null)
         {
-          registerItemModel(item.getItem(),matitem.prefix + material.suffix, item.getMetadata());
+          registerItemModel(item.getItem(),String.format("%s_%s", matitem.prefix_lc,material.suffix_lc), item.getMetadata());
         }
       }
     }
@@ -142,8 +142,8 @@ public class ClientProxy extends CommonProxy
     {
       for(EnumDyePowderColor color:EnumDyePowderColor.values())
       {
-        registerItemModel(SubstratumItems.item_dye_powder,color.oredict, color.ordinal());
-        registerItemModel(SubstratumItems.item_dye_powder_small,color.oredict_small, color.ordinal());
+        registerItemModel(SubstratumItems.item_dye_powder,"dye_" + color.name_lc, color.ordinal());
+        registerItemModel(SubstratumItems.item_dye_powder_small,"dye_small_" + color.name_lc, color.ordinal());
       }
     }
 

@@ -1,0 +1,9 @@
+{
+   "parent": "minecraft:block/half_slab",
+   "textures":
+   {
+     "bottom": "substratum:blocks/block_cupronickel",
+     "top": "substratum:blocks/block_cupronickel",
+     "side": "substratum:blocks/slab_cupronickel"
+  }
+}

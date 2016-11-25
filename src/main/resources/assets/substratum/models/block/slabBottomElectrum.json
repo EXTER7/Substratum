@@ -1,9 +1,0 @@
-{
-   "parent": "minecraft:block/half_slab",
-   "textures":
-   {
-     "bottom": "substratum:blocks/blockElectrum",
-     "top": "substratum:blocks/blockElectrum",
-     "side": "substratum:blocks/slabElectrum"
-  }
-}

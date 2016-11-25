@@ -2,6 +2,8 @@ package exter.substratum.material;
 
 import com.google.common.collect.ImmutableList;
 
+import exter.substratum.util.SubstratumUtils;
+
 public enum EnumMaterialItem
 {
   INGOT("ingot",ImmutableList.of(
@@ -202,19 +204,21 @@ public enum EnumMaterialItem
       
   public final ImmutableList<EnumMaterial> materials;
   public final String prefix;
+  public final String prefix_lc;
   public final ImmutableList<EnumMaterial> deprecated;
 
   EnumMaterialItem(String prefix, ImmutableList<EnumMaterial> materials, ImmutableList<EnumMaterial> deprecated)
   {
     this.materials = materials;
     this.prefix = prefix;
+    this.prefix_lc = SubstratumUtils.convertToRegistryName(prefix);
     this.deprecated = deprecated;
-    
   }
   EnumMaterialItem(String prefix, ImmutableList<EnumMaterial> materials)
   {
     this.materials = materials;
     this.prefix = prefix;
+    this.prefix_lc = SubstratumUtils.convertToRegistryName(prefix);
     this.deprecated = ImmutableList.of();
   }
 }

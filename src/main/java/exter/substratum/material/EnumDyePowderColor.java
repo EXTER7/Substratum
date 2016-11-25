@@ -1,5 +1,6 @@
 package exter.substratum.material;
 
+import exter.substratum.util.SubstratumUtils;
 import net.minecraft.item.EnumDyeColor;
 
 public enum EnumDyePowderColor
@@ -26,6 +27,7 @@ public enum EnumDyePowderColor
   public final String oredict_small;
   public final String oredict_dust;
   public final String oredict_dust_small;
+  public final String name_lc;
   public final EnumDyeColor dye;
   
   EnumDyePowderColor(String name,EnumDyeColor dye)
@@ -36,5 +38,6 @@ public enum EnumDyePowderColor
     this.oredict_dust = "dustDye" + name;
     this.oredict_dust_small = "dustSmallDye" + name;
     this.dye = dye;
+    this.name_lc = SubstratumUtils.convertToRegistryName(name);
   }
 }

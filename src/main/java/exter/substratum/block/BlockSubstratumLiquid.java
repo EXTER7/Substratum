@@ -4,6 +4,7 @@ import java.util.Random;
 
 import exter.substratum.creativetab.TabMaterials;
 import exter.substratum.fluid.FluidSubstratum;
+import exter.substratum.util.SubstratumUtils;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -29,8 +30,8 @@ public class BlockSubstratumLiquid extends BlockFluidClassic
     super(fluid, Material.LAVA);
     setLightOpacity(0);
     setLightLevel(1.0f);
-    setUnlocalizedName("substratum." + name);
-    setRegistryName(name);
+    setUnlocalizedName("substratum." + SubstratumUtils.convertToRegistryName(name));
+    setRegistryName(SubstratumUtils.convertToRegistryName(name));
     setCreativeTab(TabMaterials.tab);
   }
  
