@@ -43,10 +43,8 @@ public class ItemArmorSubstratum extends ItemArmor
   @Override
   public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
   {
-    if(armorType == EntityEquipmentSlot.LEGS)
-    {
-      return "substratum:textures/models/armor" + material.suffix + "2.png";
-    }
-    return "substratum:textures/models/armor" + material.suffix + "1.png";
+    return String.format("substratum:textures/models/armor_%s_%s.png",
+        material.suffix_lc,
+        armorType == EntityEquipmentSlot.LEGS?"2":"1");
   }
 }
