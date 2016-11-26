@@ -103,11 +103,7 @@ public class SubstratumItems
       GameRegistry.register(item);
       for(EnumMaterial mat:matitem.materials)
       {
-        OreDictionary.registerOre(matitem.prefix + mat.suffix, item.getStack(mat));
-        if(mat.suffix_alias != null)
-        {
-          OreDictionary.registerOre(matitem.prefix + mat.suffix_alias, item.getStack(mat));
-        }
+        mat.registerItemInOreDictionary(item.getStack(mat), matitem.prefix);
       }
     }
     item_materials.get(EnumMaterialItem.BOTTLE_DUST).setContainerItem(Items.GLASS_BOTTLE);
@@ -159,35 +155,35 @@ public class SubstratumItems
         ItemPickaxeSubstratum item = new ItemPickaxeSubstratum(equipment);
         GameRegistry.register(item);
         pickaxes.put(equipment.material, item);
-        OreDictionary.registerOre("pickaxe" + equipment.material.suffix, new ItemStack(item,1,0));
+        equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "pickaxe");
       }
       if(mat_config.tool_axe)
       {
         ItemAxeSubstratum item = new ItemAxeSubstratum(equipment);
         GameRegistry.register(item);
         axes.put(equipment.material, item);
-        OreDictionary.registerOre("axe" + equipment.material.suffix, new ItemStack(item,1,0));
+        equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "axe");
       }
       if(mat_config.tool_shovel)
       {
         ItemShovelSubstratum item = new ItemShovelSubstratum(equipment);
         GameRegistry.register(item);
         shovels.put(equipment.material, item);
-        OreDictionary.registerOre("shovel" + equipment.material.suffix, new ItemStack(item,1,0));
+        equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "shovel");
       }
       if(mat_config.tool_hoe)
       {
         ItemHoeSubstratum item = new ItemHoeSubstratum(equipment);
         GameRegistry.register(item);
         hoes.put(equipment.material, item);
-        OreDictionary.registerOre("hoe" + equipment.material.suffix, new ItemStack(item,1,0));
+        equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "hoe");
       }
       if(mat_config.tool_sword)
       {
         ItemSwordSubstratum item = new ItemSwordSubstratum(equipment);
         GameRegistry.register(item);
         swords.put(equipment.material, item);
-        OreDictionary.registerOre("sword" + equipment.material.suffix, new ItemStack(item,1,0));
+        equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "sword");
       }
 
       if(mat_config.armor_helmet)
@@ -195,28 +191,28 @@ public class SubstratumItems
         ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.HEAD);
         GameRegistry.register(item);
         helmets.put(equipment.material, item);
-        OreDictionary.registerOre("helmet" + equipment.material.suffix, new ItemStack(item,1,0));
+        equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "helmet");
       }
       if(mat_config.armor_chestplate)
       {
         ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.CHEST);
         GameRegistry.register(item);
         chestplates.put(equipment.material, item);
-        OreDictionary.registerOre("chestplate" + equipment.material.suffix, new ItemStack(item,1,0));
+        equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "chestplate");
       }
       if(mat_config.armor_leggings)
       {
         ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.LEGS);
         GameRegistry.register(item);        
         leggings.put(equipment.material, item);
-        OreDictionary.registerOre("leggings" + equipment.material.suffix, new ItemStack(item,1,0));
+        equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "leggings");
       }
       if(mat_config.armor_boots)
       {
         ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.FEET);
         GameRegistry.register(item);
         boots.put(equipment.material, item);
-        OreDictionary.registerOre("boots" + equipment.material.suffix, new ItemStack(item,1,0));
+        equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "boots");
       }
     }
   }
@@ -239,6 +235,10 @@ public class SubstratumItems
 
   static public ItemStack getStack(EnumMaterialItem item, EnumMaterial material,int amount, boolean vanilla)
   {
+    if(material == EnumMaterial.NULL)
+    {
+      return null;
+    }
     if(vanilla)
     {
       ItemStack stack = vanilla_items.get(new MaterialItem(item, material));

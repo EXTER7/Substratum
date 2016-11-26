@@ -1,9 +1,12 @@
 package exter.substratum.material;
 
 import exter.substratum.util.SubstratumUtils;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public enum EnumMaterial
 {
+  NULL(null),
   STONE("Stone"),
   COAL("Coal"),
   CHARCOAL("Charcoal"),
@@ -42,6 +45,18 @@ public enum EnumMaterial
   public final String suffix_alias;
 
   public final String suffix_lc;
+  
+  public void registerItemInOreDictionary(ItemStack item,String prefix)
+  {
+    if(suffix != null)
+    {
+      OreDictionary.registerOre(prefix + suffix, item);
+    }
+    if(suffix_alias != null)
+    {
+      OreDictionary.registerOre(prefix + suffix_alias, item);
+    }
+  }
 
   EnumMaterial(String suffix)
   {

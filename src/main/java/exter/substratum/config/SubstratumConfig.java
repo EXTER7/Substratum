@@ -85,7 +85,7 @@ public class SubstratumConfig
     
     public MaterialRecipeConfig(Configuration config,EnumMaterial material)
     {
-      String name = material.suffix.toLowerCase();
+      String name = material.suffix_lc;
       String category = "recipes." + name;
       if(EnumMaterialItem.DUST.materials.contains(material) && material != EnumMaterial.SULFUR && material != EnumMaterial.NITER)
       {
@@ -281,7 +281,10 @@ public class SubstratumConfig
 
     for(EnumMaterial mat:EnumMaterial.values())
     {
-      material_recipes.put(mat, new MaterialRecipeConfig(config,mat));
+      if(mat != EnumMaterial.NULL)
+      {
+        material_recipes.put(mat, new MaterialRecipeConfig(config,mat));
+      }
     }
   }
 }

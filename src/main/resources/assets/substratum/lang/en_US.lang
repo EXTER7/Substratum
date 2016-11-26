@@ -108,7 +108,6 @@ item.substratum.ingot_cupronickel.name=Cupronickel Ingot
 item.substratum.ingot_signalum.name=Signalum Ingot
 item.substratum.ingot_lumium.name=Lumium Ingot
 item.substratum.ingot_enderium.name=Enderium Ingot
-item.substratum.ingot_alumina.name=Alumina Ingot
 item.substratum.ingot_aluminium.name=Aluminium Ingot
 item.substratum.ingot_chrome.name=Chromium Ingot
 
@@ -183,7 +182,6 @@ item.substratum.nugget_cupronickel.name=Cupronickel Nugget
 item.substratum.nugget_signalum.name=Signalum Nugget
 item.substratum.nugget_lumium.name=Lumium Nugget
 item.substratum.nugget_enderium.name=Enderium Nugget
-item.substratum.nugget_alumina.name=Alumina Nugget
 item.substratum.nugget_aluminium.name=Aluminium Nugget
 item.substratum.nugget_chrome.name=Chromium Nugget
 

@@ -58,7 +58,7 @@ public class ItemMaterial extends Item
     int i;
     for(i = 0; i < this.item.materials.size(); i++)
     {
-      if(!this.item.deprecated.contains(this.item.materials.get(i)))
+      if(this.item.materials.get(i) != EnumMaterial.NULL)
       {
         ItemStack itemstack = new ItemStack(this, 1, i);
         list.add(itemstack);

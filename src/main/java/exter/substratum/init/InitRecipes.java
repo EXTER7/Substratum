@@ -41,13 +41,6 @@ public class InitRecipes
         ing_oredict));
   }
   
-  static private void initLegacy()
-  {
-    GameRegistry.addSmelting(
-        SubstratumItems.getStack(EnumMaterialItem.INGOT,EnumMaterial.ALUMINA),
-        SubstratumItems.getStack(EnumMaterialItem.INGOT,EnumMaterial.ALUMINIUM),0);
-  }
-  
   static public void init()
   {
     InitBlendRecipes.init();
@@ -307,15 +300,19 @@ public class InitRecipes
     for(EnumMaterial mat:EnumMaterialItem.NUGGET.materials)
     {
       ItemStack ingot = SubstratumItems.getStack(EnumMaterialItem.INGOT, mat);
-      GameRegistry.addShapelessRecipe(
-          SubstratumItems.getStack(EnumMaterialItem.NUGGET, mat, 9),
-          ingot);
-      GameRegistry.addRecipe(
-          ingot,
-          "NNN",
-          "NNN",
-          "NNN",
-          'N', SubstratumItems.getStack(EnumMaterialItem.NUGGET, mat)); 
+      ItemStack nuggets = SubstratumItems.getStack(EnumMaterialItem.NUGGET, mat, 9);
+      if(nuggets != null && ingot != null)
+      {
+        GameRegistry.addShapelessRecipe(
+            nuggets,
+            ingot);
+        GameRegistry.addRecipe(
+            ingot,
+            "NNN",
+            "NNN",
+            "NNN",
+            'N', SubstratumItems.getStack(EnumMaterialItem.NUGGET, mat)); 
+      }
     }
 
     //Block <-> Ingot crafting recipes.
@@ -323,15 +320,19 @@ public class InitRecipes
     {
       ItemStack block = entry.getValue();
       EnumMaterial mat = entry.getKey(); 
-      GameRegistry.addShapelessRecipe(
-          SubstratumItems.getStack(EnumMaterialItem.INGOT, mat, 9),
-          block);
-      GameRegistry.addRecipe(
-          block,
-          "III",
-          "III",
-          "III",
-          'I', SubstratumItems.getStack(EnumMaterialItem.INGOT, mat)); 
+      ItemStack ingots = SubstratumItems.getStack(EnumMaterialItem.INGOT, mat, 9);
+      if(ingots != null && block != null)
+      {
+        GameRegistry.addShapelessRecipe(
+            ingots,
+            block);
+        GameRegistry.addRecipe(
+            block,
+            "III",
+            "III",
+            "III",
+            'I', SubstratumItems.getStack(EnumMaterialItem.INGOT, mat)); 
+      }
     }
 
     //Ore -> ingot furnace recipes
@@ -505,7 +506,5 @@ public class InitRecipes
             mortar, SubstratumItems.getStack(EnumMaterialItem.ROD, mat)));
       }
     }
-    
-    initLegacy();
   }
 }
