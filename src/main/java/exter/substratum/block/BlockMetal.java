@@ -2,7 +2,6 @@ package exter.substratum.block;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.google.common.base.Optional;
@@ -21,6 +20,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.NonNullList;
 
 
 public abstract class BlockMetal extends Block implements IBlockVariants
@@ -142,7 +142,7 @@ public abstract class BlockMetal extends Block implements IBlockVariants
     
   @Override
   @SideOnly(Side.CLIENT)
-  public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> list)
+  public void getSubBlocks(Item item, CreativeTabs tab, NonNullList<ItemStack> list)
   {
     for(Variant v:getVariants())
     {

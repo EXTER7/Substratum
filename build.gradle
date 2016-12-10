@@ -20,7 +20,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 def mod_version = "1.8.2.1"
 
-def mc_version = "1.10.2"
+def mc_version = "1.11"
 
 def build_number = System.getenv("DRONE_BUILD_NUMBER")
 
@@ -29,9 +29,9 @@ group = "exter.substratum" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "Substratum"
 
 minecraft {
-    version = "12.18.1.2073"
+    version = "1.11-13.19.1.2189"
     runDir = "eclipse"
-    mappings = "snapshot_20160803"
+    mappings = "snapshot_20161111"
 }
 
 repositories {

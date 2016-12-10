@@ -1,13 +1,11 @@
 package exter.substratum.item;
 
-import java.util.List;
-
-
 import exter.substratum.creativetab.TabMaterials;
 import exter.substratum.material.EnumDyePowderColor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -34,7 +32,7 @@ public class ItemDyePowder extends Item
 
   @Override
   @SideOnly(Side.CLIENT)
-  public void getSubItems(Item item, CreativeTabs tabs, List<ItemStack> list)
+  public void getSubItems(Item item, CreativeTabs tabs, NonNullList<ItemStack> list)
   {
     for(EnumDyePowderColor dye:EnumDyePowderColor.values())
     {

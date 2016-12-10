@@ -1,21 +1,21 @@
 {
   "variants":
   { 
-    "variant=copper": { "model": "substratum:blockCopper" },
-    "variant=tin": { "model": "substratum:blockTin" },
-    "variant=nickel": { "model": "substratum:blockNickel" },
-    "variant=zinc": { "model": "substratum:blockZinc" },
-    "variant=silver": { "model": "substratum:blockSilver" },
-    "variant=lead": { "model": "substratum:blockLead" },
-    "variant=bronze": { "model": "substratum:blockBronze" },
-    "variant=electrum": { "model": "substratum:blockElectrum" },
-    "variant=invar": { "model": "substratum:blockInvar" },
-    "variant=brass": { "model": "substratum:blockBrass" },
-    "variant=steel": { "model": "substratum:blockSteel" },
-    "variant=platinum": { "model": "substratum:blockPlatinum" },
-    "variant=cupronickel": { "model": "substratum:blockCupronickel"  },
-    "variant=signalum": { "model": "substratum:blockSignalum"  },
-    "variant=lumium": { "model": "substratum:blockLumium"  }
+    "variant=copper": { "model": "substratum:block_copper" },
+    "variant=tin": { "model": "substratum:block_tin" },
+    "variant=nickel": { "model": "substratum:block_nickel" },
+    "variant=zinc": { "model": "substratum:block_zinc" },
+    "variant=silver": { "model": "substratum:block_silver" },
+    "variant=lead": { "model": "substratum:block_lead" },
+    "variant=bronze": { "model": "substratum:block_bronze" },
+    "variant=electrum": { "model": "substratum:block_electrum" },
+    "variant=invar": { "model": "substratum:block_invar" },
+    "variant=brass": { "model": "substratum:block_brass" },
+    "variant=steel": { "model": "substratum:block_steel" },
+    "variant=platinum": { "model": "substratum:block_platinum" },
+    "variant=cupronickel": { "model": "substratum:block_cupronickel"  },
+    "variant=signalum": { "model": "substratum:block_signalum"  },
+    "variant=lumium": { "model": "substratum:block_lumium"  }
   }
 }
 

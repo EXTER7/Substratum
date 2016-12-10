@@ -11,10 +11,10 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.FluidTankProperties;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
-public class FluidContainerCapability implements ICapabilityProvider, IFluidHandler
+public class FluidContainerCapability implements ICapabilityProvider, IFluidHandlerItem
 {
   private final ItemStack item;
   private final int amount;
@@ -64,7 +64,7 @@ public class FluidContainerCapability implements ICapabilityProvider, IFluidHand
   public FluidStack drain(FluidStack resource, boolean doDrain)
   {
     Fluid fluid = getFluid();
-    if(item.stackSize != 1 || resource == null || resource.amount < amount || !resource.getFluid().getName().equals(fluid.getName()))
+    if(item.func_190916_E/*getStackSize*/() != 1 || resource == null || resource.amount < amount || !resource.getFluid().getName().equals(fluid.getName()))
     {
       return null;
     }
@@ -81,7 +81,7 @@ public class FluidContainerCapability implements ICapabilityProvider, IFluidHand
   public FluidStack drain(int maxDrain, boolean doDrain)
   {
     Fluid fluid = getFluid();
-    if(item.stackSize != 1 || maxDrain < amount)
+    if(item.func_190916_E/*getStackSize*/() != 1 || maxDrain < amount)
     {
       return null;
     }
@@ -91,5 +91,11 @@ public class FluidContainerCapability implements ICapabilityProvider, IFluidHand
       item.deserializeNBT(new ItemStack(item.getItem().getContainerItem()).serializeNBT());
     }
     return new FluidStack(fluid,amount);
+  }
+
+  @Override
+  public ItemStack getContainer()
+  {
+    return item.getItem().getContainerItem(item);
   }
 }

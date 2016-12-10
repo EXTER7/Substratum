@@ -2,7 +2,6 @@ package exter.substratum.block;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -23,6 +22,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -145,7 +145,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
 
   @SideOnly(Side.CLIENT)
   @Override
-  public void getSubBlocks(Item item, CreativeTabs tabs, List<ItemStack> items)
+  public void getSubBlocks(Item item, CreativeTabs tabs, NonNullList<ItemStack> items)
   {
     if(!isDouble())
     {

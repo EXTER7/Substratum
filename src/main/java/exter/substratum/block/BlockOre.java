@@ -1,7 +1,5 @@
 package exter.substratum.block;
 
-import java.util.List;
-
 import exter.substratum.creativetab.TabMaterials;
 import exter.substratum.material.EnumMaterial;
 import net.minecraft.block.Block;
@@ -14,6 +12,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -44,7 +43,7 @@ public class BlockOre extends Block implements IBlockVariants
     @Override
     public String getName()
     {
-      return material.suffix.toLowerCase();
+      return material.suffix_lc;
     }
 
     @Override
@@ -95,10 +94,9 @@ public class BlockOre extends Block implements IBlockVariants
     return getMetaFromState(state);
   }
   
-  @SuppressWarnings("unchecked")
   @Override
   @SideOnly(Side.CLIENT)
-  public void getSubBlocks(Item item, CreativeTabs tab, @SuppressWarnings("rawtypes") List list)
+  public void getSubBlocks(Item item, CreativeTabs tab, NonNullList<ItemStack> list)
   {
     for(EnumVariant ore:EnumVariant.values())
     {

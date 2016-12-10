@@ -1,6 +1,5 @@
 package exter.substratum.block;
 
-import java.util.List;
 import java.util.Random;
 
 import exter.substratum.creativetab.TabMaterials;
@@ -18,6 +17,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -88,10 +88,9 @@ public class BlockDustOre extends Block implements IBlockVariants
     return state.getValue(VARIANT).ordinal();
   }
 
-  @SuppressWarnings("unchecked")
   @Override
   @SideOnly(Side.CLIENT)
-  public void getSubBlocks(Item item, CreativeTabs tab, @SuppressWarnings("rawtypes") List list)
+  public void getSubBlocks(Item item, CreativeTabs tab, NonNullList<ItemStack> list)
   {
     for(EnumVariant ore:EnumVariant.values())
     {

@@ -1,7 +1,5 @@
 package exter.substratum.item;
 
-import java.util.List;
-
 import exter.substratum.creativetab.TabMaterials;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
@@ -12,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.relauncher.Side;
@@ -53,7 +52,7 @@ public class ItemMaterial extends Item
 
   @Override
   @SideOnly(Side.CLIENT)
-  public void getSubItems(Item item, CreativeTabs tabs, List<ItemStack> list)
+  public void getSubItems(Item item, CreativeTabs tabs, NonNullList<ItemStack> list)
   {
     int i;
     for(i = 0; i < this.item.materials.size(); i++)
@@ -87,14 +86,15 @@ public class ItemMaterial extends Item
   }
   
   @Override
-  public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand)
+  public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
   {
+    ItemStack stack = player.getHeldItem(hand);
     if(special != null)
     {
       return special.onRightClick(stack, this, item.materials.get(stack.getMetadata()), world, player, hand);
     } else
     {
-      return super.onItemRightClick(stack, world, player, hand);
+      return super.onItemRightClick(world, player, hand);
     }
   }
   

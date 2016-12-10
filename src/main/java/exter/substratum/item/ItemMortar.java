@@ -19,6 +19,7 @@ public class ItemMortar extends Item
     MinecraftForge.EVENT_BUS.register(this); 
   }
   
+  @SuppressWarnings("deprecation")
   @SubscribeEvent
   public void onCrafting(PlayerEvent.ItemCraftedEvent event)
   {
@@ -29,7 +30,7 @@ public class ItemMortar extends Item
       ItemStack is = event.craftMatrix.getStackInSlot(i);
       if(is != null && is.getItem() == this && is.getItemDamage() < getMaxDamage())
       {
-        is.stackSize++;
+        is.func_190917_f/*incrementStackSize*/(1);
         // Don't damage when crafting dye powders.
         if(event.crafting != null && event.crafting.getItem() != SubstratumItems.item_dye_powder)
         {

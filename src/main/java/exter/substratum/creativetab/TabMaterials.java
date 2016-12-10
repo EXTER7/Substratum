@@ -4,7 +4,6 @@ import exter.substratum.item.SubstratumItems;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class TabMaterials extends CreativeTabs
@@ -23,8 +22,8 @@ public class TabMaterials extends CreativeTabs
   }
 
   @Override
-  public Item getTabIconItem()
+  public ItemStack getTabIconItem()
   {
-    return null;
+    return getIconItemStack();
   }
 }
