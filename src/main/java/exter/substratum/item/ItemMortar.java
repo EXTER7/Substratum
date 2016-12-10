@@ -30,7 +30,7 @@ public class ItemMortar extends Item
       ItemStack is = event.craftMatrix.getStackInSlot(i);
       if(is != null && is.getItem() == this && is.getItemDamage() < getMaxDamage())
       {
-        is.func_190917_f/*incrementStackSize*/(1);
+        is.grow(1);
         // Don't damage when crafting dye powders.
         if(event.crafting != null && event.crafting.getItem() != SubstratumItems.item_dye_powder)
         {

@@ -64,7 +64,7 @@ public class FluidContainerCapability implements ICapabilityProvider, IFluidHand
   public FluidStack drain(FluidStack resource, boolean doDrain)
   {
     Fluid fluid = getFluid();
-    if(item.func_190916_E/*getStackSize*/() != 1 || resource == null || resource.amount < amount || !resource.getFluid().getName().equals(fluid.getName()))
+    if(item.getCount() != 1 || resource == null || resource.amount < amount || !resource.getFluid().getName().equals(fluid.getName()))
     {
       return null;
     }
@@ -81,7 +81,7 @@ public class FluidContainerCapability implements ICapabilityProvider, IFluidHand
   public FluidStack drain(int maxDrain, boolean doDrain)
   {
     Fluid fluid = getFluid();
-    if(item.func_190916_E/*getStackSize*/() != 1 || maxDrain < amount)
+    if(item.getCount() != 1 || maxDrain < amount)
     {
       return null;
     }

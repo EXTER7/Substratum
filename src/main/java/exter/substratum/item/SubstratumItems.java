@@ -245,7 +245,7 @@ public class SubstratumItems
       if(stack != null)
       {
         stack = stack.copy();
-        stack.func_190920_e/*setStackSize*/(amount);
+        stack.setCount(amount);
         return stack;
       }
     }

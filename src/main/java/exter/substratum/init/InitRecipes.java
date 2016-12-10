@@ -423,7 +423,7 @@ public class InitRecipes
       if(SubstratumConfig.material_recipes.get(entry.getKey()).slab_from_blocks)
       {
         ItemStack slabs = entry.getValue().copy();
-        slabs.func_190920_e/*setStackSize*/(4);
+        slabs.setCount(4);
         GameRegistry.addRecipe(new ShapedOreRecipe(
             slabs,
             "BB",
@@ -437,7 +437,7 @@ public class InitRecipes
       if(SubstratumConfig.material_recipes.get(entry.getKey()).stairs_from_blocks)
       {
         ItemStack stairs = entry.getValue().copy();
-        stairs.func_190920_e/*setStackSize*/(4);
+        stairs.setCount(4);
         GameRegistry.addRecipe(new ShapedOreRecipe(
             stairs,
             " B",

@@ -119,7 +119,7 @@ public class BlockSubstratumLiquid extends BlockFluidClassic
     {
       if(!(entity instanceof EntityItem))
       {
-        entity.attackEntityFrom(DamageSource.lava, 3);
+        entity.attackEntityFrom(DamageSource.LAVA, 3);
       }
       entity.setFire(15);
     }
