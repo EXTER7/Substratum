@@ -43,7 +43,7 @@ public class BucketSpecialHandler extends FluidSpecialHandler
   public void onBucketFill(FillBucketEvent event)
   {
     ItemStack result = fillBucket(event.getWorld(), event.getTarget());
-    if(result == null)
+    if(result.isEmpty())
     {
       return;
     }
@@ -55,7 +55,7 @@ public class BucketSpecialHandler extends FluidSpecialHandler
   {
     if(rt == null)
     {
-      return null;
+      return ItemStack.EMPTY;
     }
     BlockPos pos = rt.getBlockPos();
     IBlockState state = world.getBlockState(pos);
@@ -64,13 +64,13 @@ public class BucketSpecialHandler extends FluidSpecialHandler
     {
       BlockSubstratumLiquid block = (BlockSubstratumLiquid) state.getBlock();
       ItemStack bucket = SubstratumItems.getStack(EnumMaterialItem.BUCKET_LIQUID, ((FluidSubstratum)block.getFluid()).material);
-      if(bucket != null && block.isSourceBlock(world, pos))
+      if(!bucket.isEmpty() && block.isSourceBlock(world, pos))
       {
         world.setBlockToAir(pos);
         return bucket;
       }
     }
-    return null;
+    return ItemStack.EMPTY;
   }
 
   protected RayTraceResult getMovingObjectPositionFromPlayer(World world, EntityPlayer player)
