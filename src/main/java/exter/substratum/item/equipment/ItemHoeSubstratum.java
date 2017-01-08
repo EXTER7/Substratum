@@ -8,7 +8,7 @@ public class ItemHoeSubstratum extends ItemHoe
   public ItemHoeSubstratum(EnumMaterialEquipment equipment)
   {
     super(equipment.tool);
-    setUnlocalizedName("substratum.hoe" + equipment.material.suffix);
-    setRegistryName("hoe" + equipment.material.suffix);
+    setUnlocalizedName("substratum.hoe_" + equipment.material.suffix_lc);
+    setRegistryName("hoe_" + equipment.material.suffix_lc);
   }
 }

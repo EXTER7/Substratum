@@ -18,20 +18,20 @@ public class ItemArmorSubstratum extends ItemArmor
     switch(slot)
     {
       case HEAD:
-        setUnlocalizedName("substratum.helmet" + material.suffix);
-        setRegistryName("helmet" + material.suffix);
+        setUnlocalizedName("substratum.helmet_" + material.suffix_lc);
+        setRegistryName("helmet_" + material.suffix);
         break;
       case CHEST:
-        setUnlocalizedName("substratum.chestplate" + material.suffix);
-        setRegistryName("chestplate" + material.suffix);
+        setUnlocalizedName("substratum.chestplate_" + material.suffix_lc);
+        setRegistryName("chestplate_" + material.suffix_lc);
         break;
       case LEGS:
-        setUnlocalizedName("substratum.leggings" + material.suffix);
-        setRegistryName("leggings" + material.suffix);
+        setUnlocalizedName("substratum.leggings_" + material.suffix_lc);
+        setRegistryName("leggings_" + material.suffix_lc);
         break;
       case FEET:
-        setUnlocalizedName("substratum.boots" + material.suffix);
-        setRegistryName("boots" + material.suffix);
+        setUnlocalizedName("substratum.boots_" + material.suffix_lc);
+        setRegistryName("boots_" + material.suffix_lc);
         break;
       default:
         break;      

@@ -8,7 +8,7 @@ public class ItemPickaxeSubstratum extends ItemPickaxe
   public ItemPickaxeSubstratum(EnumMaterialEquipment equipment)
   {
     super(equipment.tool);
-    setUnlocalizedName("substratum.pickaxe" + equipment.material.suffix);
-    setRegistryName("pickaxe" + equipment.material.suffix);
+    setUnlocalizedName("substratum.pickaxe_" + equipment.material.suffix_lc);
+    setRegistryName("pickaxe_" + equipment.material.suffix_lc);
   }
 }

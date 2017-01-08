@@ -8,7 +8,7 @@ public class ItemShovelSubstratum extends ItemSpade
   public ItemShovelSubstratum(EnumMaterialEquipment equipment)
   {
     super(equipment.tool);
-    setUnlocalizedName("substratum.shovel" + equipment.material.suffix);
-    setRegistryName("shovel" + equipment.material.suffix);
+    setUnlocalizedName("substratum.shovel_" + equipment.material.suffix_lc);
+    setRegistryName("shovel_" + equipment.material.suffix_lc);
   }
 }

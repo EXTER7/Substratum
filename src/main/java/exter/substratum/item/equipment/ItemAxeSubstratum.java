@@ -8,7 +8,7 @@ public class ItemAxeSubstratum extends ItemAxe
   public ItemAxeSubstratum(EnumMaterialEquipment equipment)
   {
     super(equipment.tool,equipment.axe_damage,equipment.axe_speed);
-    setUnlocalizedName("substratum.axe" + equipment.material.suffix);
-    setRegistryName("axe" + equipment.material.suffix);
+    setUnlocalizedName("substratum.axe_" + equipment.material.suffix_lc);
+    setRegistryName("axe_" + equipment.material.suffix_lc);
   }
 }
