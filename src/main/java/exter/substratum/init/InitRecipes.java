@@ -314,6 +314,12 @@ public class InitRecipes
             'N', SubstratumItems.getStack(EnumMaterialItem.NUGGET, mat)); 
       }
     }
+    
+    // Conversion recipe from old Iron Nugget to new vanilla Iron Nugget TODO: Remove in later versions
+    GameRegistry.addShapelessRecipe(
+        new ItemStack(Items.field_191525_da/*IRON_NUGGET*/),
+        new ItemStack(SubstratumItems.item_materials.get(EnumMaterialItem.NUGGET),1,
+            EnumMaterialItem.NUGGET.materials.indexOf(EnumMaterial.IRON)));
 
     //Block <-> Ingot crafting recipes.
     for(Map.Entry<EnumMaterial, ItemStack> entry:SubstratumBlocks.block_stacks.entrySet())

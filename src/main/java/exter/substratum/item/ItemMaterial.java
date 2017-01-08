@@ -57,6 +57,12 @@ public class ItemMaterial extends Item
     int i;
     for(i = 0; i < this.item.materials.size(); i++)
     {
+      // Deprecate Iron Nugget TODO: Remove in later versions
+      if(this.item == EnumMaterialItem.NUGGET && this.item.materials.get(i) == EnumMaterial.IRON)
+      {
+        continue;
+      }
+
       if(this.item.materials.get(i) != EnumMaterial.NULL)
       {
         ItemStack itemstack = new ItemStack(this, 1, i);

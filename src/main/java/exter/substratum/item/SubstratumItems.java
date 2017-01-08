@@ -140,6 +140,7 @@ public class SubstratumItems
     vanilla_items.put(new MaterialItem(EnumMaterialItem.INGOT, EnumMaterial.IRON), new ItemStack(Items.IRON_INGOT));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.INGOT, EnumMaterial.GOLD), new ItemStack(Items.GOLD_INGOT));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.NUGGET, EnumMaterial.GOLD), new ItemStack(Items.GOLD_NUGGET));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.NUGGET, EnumMaterial.IRON), new ItemStack(Items.field_191525_da/*IRON_NUGGET*/));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.REDSTONE), new ItemStack(Items.REDSTONE));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GLOWSTONE), new ItemStack(Items.GLOWSTONE_DUST));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GUNPOWDER), new ItemStack(Items.GUNPOWDER));
@@ -249,6 +250,13 @@ public class SubstratumItems
         return stack;
       }
     }
+
+    // Deprecate Iron Nugget TODO: Remove in later versions
+    if(item == EnumMaterialItem.NUGGET && material == EnumMaterial.IRON)
+    {
+      return null;
+    }
+
     return item_materials.get(item).getStack(material, amount);
   }
 }
