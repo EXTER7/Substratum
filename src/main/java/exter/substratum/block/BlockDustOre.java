@@ -143,4 +143,11 @@ public class BlockDustOre extends Block implements IBlockVariants
   {
     return asItemStack(state.getValue(VARIANT));
   }
+
+  @Override
+  @Deprecated
+  public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+  {
+      return asItemStack(state.getValue(VARIANT));
+  }
 }
