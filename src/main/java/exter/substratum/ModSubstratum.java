@@ -37,7 +37,7 @@ import net.minecraftforge.fml.common.registry.IForgeRegistry;
   modid = ModSubstratum.MODID,
   name = ModSubstratum.MODNAME,
   version = ModSubstratum.MODVERSION,
-  dependencies = "required-after:forge@[13.20.0.2206,)"
+  dependencies = "required-after:forge@[13.20.0.2252,)"
 )
 public class ModSubstratum
 {
