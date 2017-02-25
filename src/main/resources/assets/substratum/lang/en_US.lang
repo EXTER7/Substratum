@@ -9,6 +9,8 @@ tile.substratum.ore_lead.name=Lead Ore
 tile.substratum.ore_platinum.name=Platinum Ore
 tile.substratum.ore_alumina.name=Alumina Ore
 tile.substratum.ore_chrome.name=Chromium Ore
+tile.substratum.ore_sulfur.name=Sulfur Ore
+tile.substratum.ore_niter.name=Niter Ore
 
 tile.substratum.block_copper.name=Block of Copper
 tile.substratum.block_tin.name=Block of Tin
@@ -136,6 +138,8 @@ item.substratum.dust_enderpearl.name=Ender Pearl Dust
 item.substratum.dust_obsidian.name=Obsidian Dust
 item.substratum.dust_coal.name=Coal Dust
 item.substratum.dust_charcoal.name=Charcoal Dust
+item.substratum.dust_sulfur.name=Sulfur Dust
+item.substratum.dust_niter.name=Niter Dust
 
 item.substratum.dust_small_iron.name=Small Pile of Iron Dust
 item.substratum.dust_small_gold.name=Small Pile of Gold Dust
@@ -164,6 +168,8 @@ item.substratum.dust_small_enderpearl.name=Small Pile of Ender Pearl Dust
 item.substratum.dust_small_obsidian.name=Small Pile of Obsidian Dust
 item.substratum.dust_small_coal.name=Small Pile of Coal Dust
 item.substratum.dust_small_charcoal.name=Small Pile of Charcoal Dust
+item.substratum.dust_small_sulfur.name=Small Pile of Sulfur Dust
+item.substratum.dust_small_niter.name=Small Pile of Niter Dust
 
 item.substratum.nugget_iron.name=Iron Nugget
 item.substratum.nugget_copper.name=Copper Nugget
