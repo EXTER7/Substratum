@@ -1,8 +1,8 @@
 {
  "variants":
  { 
-   "variant=sulfur": { "model": "substratum:oreSulfur" },
-   "variant=niter": { "model": "substratum:oreNiter" }
+   "variant=sulfur": { "model": "substratum:ore_sulfur" },
+   "variant=niter": { "model": "substratum:ore_niter" }
   }
 }
 
