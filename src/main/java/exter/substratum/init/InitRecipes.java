@@ -78,14 +78,14 @@ public class InitRecipes
     if(SubstratumItems.item_mortar != null)
     {
       
-      GameRegistry.addRecipe(
+      GameRegistry.addRecipe(new ShapedOreRecipe(
           new ItemStack(SubstratumItems.item_mortar),
           "  T",
           " F ",
           " S ",
           'F', new ItemStack(Items.FLINT),
-          'T', new ItemStack(Items.STICK),
-          'S', new ItemStack(Blocks.STONE)); 
+          'T', "stickWood",
+          'S', "stone")); 
 
       ItemStack mortar = new ItemStack(SubstratumItems.item_mortar,1,OreDictionary.WILDCARD_VALUE);
 
@@ -348,8 +348,6 @@ public class InitRecipes
     }
     
     //Gear crafting recipes.
-    ItemStack stick = new ItemStack(Items.STICK);
-    ItemStack stone = new ItemStack(Blocks.COBBLESTONE);
     for(EnumMaterial mat:EnumMaterialItem.GEAR.materials)
     {
       if(SubstratumConfig.material_recipes.get(mat).gear_crafting)
@@ -361,8 +359,8 @@ public class InitRecipes
               " I ",
               "ISI",
               " I ",
-              'I', stone,
-              'S', stick)); 
+              'I', "cobblestone",
+              'S', "stickWood")); 
         } else
         {
           if(SubstratumConfig.cheaper_gear_recipes)
@@ -373,7 +371,7 @@ public class InitRecipes
                 "ISI",
                 " I ",
                 'I', "ingot" + mat.suffix,
-                'S', stick)); 
+                'S', "stickWood")); 
             if(mat.suffix_alias != null)
             {
               GameRegistry.addRecipe(new ShapedOreRecipe(
@@ -382,7 +380,7 @@ public class InitRecipes
                   "ISI",
                   " I ",
                   'I', "ingot" + mat.suffix_alias,
-                  'S', stick)); 
+                  'S', "stickWood")); 
             }
           } else
           {

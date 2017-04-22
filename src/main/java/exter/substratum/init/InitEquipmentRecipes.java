@@ -10,7 +10,6 @@ import exter.substratum.item.equipment.ItemPickaxeSubstratum;
 import exter.substratum.item.equipment.ItemShovelSubstratum;
 import exter.substratum.item.equipment.ItemSwordSubstratum;
 import exter.substratum.material.EnumMaterial;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -19,7 +18,6 @@ class InitEquipmentRecipes
 {
   static void init()
   {
-    ItemStack stick = new ItemStack(Items.STICK);
 
     for(Entry<EnumMaterial, ItemPickaxeSubstratum> tool:SubstratumItems.pickaxes.entrySet())
     {
@@ -27,7 +25,7 @@ class InitEquipmentRecipes
           "III",
           " S ",
           " S ",
-          'S',stick,
+          'S',"stickWood",
           'I',"ingot" + tool.getKey().suffix));
     }
     
@@ -37,13 +35,13 @@ class InitEquipmentRecipes
           "II",
           "IS",
           " S",
-          'S',stick,
+          'S',"stickWood",
           'I',"ingot" + tool.getKey().suffix));
       GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(tool.getValue()),
           "II",
           "SI",
           "S ",
-          'S',stick,
+          'S',"stickWood",
           'I',"ingot" + tool.getKey().suffix));
     }
     
@@ -53,7 +51,7 @@ class InitEquipmentRecipes
           "I",
           "S",
           "S",
-          'S',stick,
+          'S',"stickWood",
           'I',"ingot" + tool.getKey().suffix));
     }
     
@@ -63,13 +61,13 @@ class InitEquipmentRecipes
           "II",
           " S",
           " S",
-          'S',stick,
+          'S',"stickWood",
           'I',"ingot" + tool.getKey().suffix));
       GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(tool.getValue()),
           "II",
           "S ",
           "S ",
-          'S',stick,
+          'S',"stickWood",
           'I',"ingot" + tool.getKey().suffix));
     }
     
@@ -79,7 +77,7 @@ class InitEquipmentRecipes
           "I",
           "I",
           "S",
-          'S',stick,
+          'S',"stickWood",
           'I',"ingot" + tool.getKey().suffix));
     }
 
