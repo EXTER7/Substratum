@@ -32,7 +32,7 @@ public class ItemDyePowder extends Item
 
   @Override
   @SideOnly(Side.CLIENT)
-  public void getSubItems(Item item, CreativeTabs tabs, NonNullList<ItemStack> list)
+  public void getSubItems(CreativeTabs tabs, NonNullList<ItemStack> list)
   {
     for(EnumDyePowderColor dye:EnumDyePowderColor.values())
     {

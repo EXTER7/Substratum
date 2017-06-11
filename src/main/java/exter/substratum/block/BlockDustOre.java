@@ -90,11 +90,11 @@ public class BlockDustOre extends Block implements IBlockVariants
 
   @Override
   @SideOnly(Side.CLIENT)
-  public void getSubBlocks(Item item, CreativeTabs tab, NonNullList<ItemStack> list)
+  public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
   {
     for(EnumVariant ore:EnumVariant.values())
     {
-      list.add(new ItemStack(item, 1, ore.ordinal()));
+      list.add(new ItemStack(this, 1, ore.ordinal()));
     }
   }
   

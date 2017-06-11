@@ -52,7 +52,7 @@ public class ItemMaterial extends Item
 
   @Override
   @SideOnly(Side.CLIENT)
-  public void getSubItems(Item item, CreativeTabs tabs, NonNullList<ItemStack> list)
+  public void getSubItems(CreativeTabs tabs, NonNullList<ItemStack> list)
   {
     int i;
     for(i = 0; i < this.item.materials.size(); i++)

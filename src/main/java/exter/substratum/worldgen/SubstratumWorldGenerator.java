@@ -3,8 +3,8 @@ package exter.substratum.worldgen;
 import java.util.Random;
 
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class SubstratumWorldGenerator implements IWorldGenerator

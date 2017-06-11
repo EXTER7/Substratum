@@ -6,6 +6,7 @@ import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -15,7 +16,8 @@ class InitBlendRecipes
   {
     if(SubstratumConfig.blend_bronze_enable)
     {
-      GameRegistry.addRecipe(new ShapelessOreRecipe(
+      GameRegistry.addRecipe(
+          new ShapelessOreRecipe(
           SubstratumItems.getStack(EnumMaterialItem.DUST,EnumMaterial.BRONZE,4),
           "dustCopper", 
           "dustCopper", 

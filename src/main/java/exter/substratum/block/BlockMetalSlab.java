@@ -145,13 +145,13 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
 
   @SideOnly(Side.CLIENT)
   @Override
-  public void getSubBlocks(Item item, CreativeTabs tabs, NonNullList<ItemStack> items)
+  public void getSubBlocks(CreativeTabs tabs, NonNullList<ItemStack> items)
   {
     if(!isDouble())
     {
       for(Variant v:getVariants())
       {
-        items.add(new ItemStack(item, 1, v.id));
+        items.add(new ItemStack(this, 1, v.id));
       }
     }
   }

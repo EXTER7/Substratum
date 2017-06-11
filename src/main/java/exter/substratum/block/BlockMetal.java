@@ -17,7 +17,6 @@ import net.minecraft.block.properties.PropertyHelper;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
@@ -142,11 +141,11 @@ public abstract class BlockMetal extends Block implements IBlockVariants
     
   @Override
   @SideOnly(Side.CLIENT)
-  public void getSubBlocks(Item item, CreativeTabs tab, NonNullList<ItemStack> list)
+  public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
   {
     for(Variant v:getVariants())
     {
-      list.add(new ItemStack(item, 1, v.id));
+      list.add(new ItemStack(this, 1, v.id));
     }
   }
   
