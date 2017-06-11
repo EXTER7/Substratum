@@ -18,3 +18,7 @@
 
 *.launch
 *.hprof
+
+__pycache__
+*.pyc
+
