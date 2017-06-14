@@ -29,7 +29,7 @@ group = "exter.substratum" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "Substratum"
 
 minecraft {
-    version = "1.12-14.21.0.2321"
+    version = "1.12-14.21.0.2322"
     runDir = "eclipse"
     mappings = "snapshot_20170611"
 }
@@ -41,6 +41,33 @@ repositories {
     }
 }
 
+sourceSets {
+  resgen {
+    java {
+      compileClasspath += main.output + main.compileClasspath
+      runtimeClasspath += main.output + main.runtimeClasspath
+      srcDir file('src/resgen/java')
+    }
+  }
+}
+
+configurations {
+    resgenCompile.extendsFrom mainCompile
+    resgenRuntime.extendsFrom mainRuntime
+}
+        
+task generateResources(type:JavaExec){
+    main = "exter.substratum.resgen.SubstratumResourceGenerator"
+    classpath = project.sourceSets.resgen.runtimeClasspath
+}
+
+eclipse {
+  classpath {
+    plusConfigurations.add configurations.resgenCompile
+    plusConfigurations.add configurations.resgenRuntime
+  }
+}
+    
 dependencies {
 
 }
