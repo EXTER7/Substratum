@@ -32,23 +32,23 @@ public class SubstratumUtils
     return null;
   }
   
-  static public String convertToRegistryName(String str)
+
+  static public String convertToOreDictionaryName(String str,boolean suffix)
   {
     if(str == null)
     {
       return null;
     }
     StringBuilder builder = new StringBuilder();
-    for(int i = 0; i < str.length(); i++)
+    char c = str.charAt(0);
+    builder.append(suffix?Character.toUpperCase(c):c);
+    for(int i = 1; i < str.length(); i++)
     {
-      char c = str.charAt(i);
-      if(Character.isUpperCase(c))
+      c = str.charAt(i);
+      if(c == '_')
       {
-        if(i > 0)
-        {
-          builder.append('_');
-        }
-        builder.append(Character.toLowerCase(c));
+        c = str.charAt(++i);
+        builder.append(Character.toUpperCase(c));
       } else
       {
         builder.append(c);

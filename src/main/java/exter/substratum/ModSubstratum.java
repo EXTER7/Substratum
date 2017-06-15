@@ -1,8 +1,5 @@
 package exter.substratum;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,34 +13,28 @@ import exter.substratum.item.SubstratumItems;
 import exter.substratum.proxy.CommonProxy;
 import exter.substratum.worldgen.SubstratumWorldGenerator;
 import exter.substratum.worldgen.WorldGenOre;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLMissingMappingsEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
 
 @Mod(
   modid = ModSubstratum.MODID,
   name = ModSubstratum.MODNAME,
   version = ModSubstratum.MODVERSION,
-  dependencies = "required-after:forge@[13.20.0.2252,)"
+  dependencies = "required-after:forge@[14.21.0.2322,)"
 )
 public class ModSubstratum
 {
   public static final String MODID = "substratum";
   public static final String MODNAME = "Substratum";
-  public static final String MODVERSION = "1.9.2.0";
+  public static final String MODVERSION = "2.0.0.0";
 
   @Instance(MODID)
   public static ModSubstratum instance;
@@ -97,47 +88,6 @@ public class ModSubstratum
     GameRegistry.registerWorldGenerator(new SubstratumWorldGenerator(),0);
 
     proxy.init();
-  }
-
-  // Remap old registry names in 1.10 worlds to the new names.
-  @EventHandler
-  public void remap(FMLMissingMappingsEvent event)
-  {
-    Map<String,String> registry_map = new HashMap<String,String>();
-    IForgeRegistry<Item> item_registry = GameRegistry.findRegistry(Item.class);
-    IForgeRegistry<Block> block_registry = GameRegistry.findRegistry(Block.class);
-    
-    for(Map.Entry<ResourceLocation,Item> entry:GameRegistry.findRegistry(Item.class).getEntries())
-    {
-      if(entry.getKey().getResourceDomain().equals(MODID))
-      {
-        String name = entry.getKey().getResourcePath();
-        registry_map.put(name.replaceAll("_", ""), name);
-      }
-    }
-
-    for(MissingMapping map:event.get())
-    {
-      String name = map.resourceLocation.getResourcePath();
-      String new_name = registry_map.get(name);
-      if(new_name != null)
-      {
-        switch(map.type)
-        {
-          case BLOCK:
-            map.remap(block_registry.getValue(new ResourceLocation(MODID,new_name)));
-            break;
-          case ITEM:
-            map.remap(item_registry.getValue(new ResourceLocation(MODID,new_name)));
-            break;
-          default:
-            break;
-        }
-      } else
-      {
-        map.warn();
-      }
-    }
   }
 
   @EventHandler

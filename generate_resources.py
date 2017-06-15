@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 
-import os.path
 import json
 
 from materials import *
 from items import *
 
-texuredir="src/main/resources/assets/substratum/textures"
-modeldir="src/main/resources/assets/substratum/models"
-blockstatedir="src/main/resources/assets/substratum/blockstates"
+assets_dir     = os.path.join("src","main","resources","assets","substratum")
+model_dir      = os.path.join(assets_dir, "models")
+recipe_dir     = os.path.join(assets_dir, "recipes")
+blockstate_dir = os.path.join(assets_dir, "blockstates")
+enus_lang      = os.path.join(assets_dir, "lang", "en_US.lang")
 
 def output_json(filename,obj):
   f = open(filename, "w")
@@ -22,12 +23,12 @@ def block_model(model):
 	    "all": "substratum:blocks/" + model
 	  }
 	}
-  output_json(modeldir + "/block/" + model + ".json", model_json)
+  output_json(os.path.join(model_dir, "block", model + ".json"), model_json)
 
   model_json = {
 	  "parent": "substratum:block/" + model
 	}
-  output_json(modeldir + "/item/" + model + ".json", model_json)
+  output_json(os.path.join(model_dir, "item", model + ".json"), model_json)
 
 def slab_model(material):
   texture = "substratum:blocks/block_" + material
@@ -44,7 +45,7 @@ def slab_model(material):
 	     "side": "substratum:blocks/" + texture_side
 	  }
 	}
-  output_json(modeldir + "/block/slab_bottom_" + material + ".json", model_json)
+  output_json(os.path.join(model_dir, "block" , "slab_bottom_" + material + ".json"), model_json)
 
 
   # Top slab
@@ -56,7 +57,7 @@ def slab_model(material):
 	     "side": "substratum:blocks/" + texture_side
 	  }
 	}
-  output_json(modeldir + "/block/slab_top_" + material + ".json", model_json)
+  output_json(os.path.join(model_dir, "block" , "slab_top_" + material + ".json"), model_json)
   
   # Double slab
   model_json = {
@@ -67,12 +68,12 @@ def slab_model(material):
 	  }
 	}
 
-  output_json(modeldir + "/block/slab_double_" + material +".json", model_json)
+  output_json(os.path.join(model_dir, "block" , "slab_double_" + material +".json"), model_json)
 
   model_json = {
 	  "parent": "substratum:block/slab_bottom_" + material
 	}
-  output_json(modeldir + "/item/slab_" + material +".json", model_json)
+  output_json(os.path.join(model_dir, "item" , "slab_" + material +".json"), model_json)
 
 
 def stairs_model(material):
@@ -121,7 +122,7 @@ def stairs_model(material):
 	    "facing=north,half=top,shape=inner_left": { "model": "substratum:stairs_inner_" + material, "x": 180, "uvlock": True }
 	  }
 	}
-  output_json(blockstatedir + "/stairs_" + material + ".json", model_json)
+  output_json(os.path.join(blockstate_dir, "stairs_" + material + ".json"), model_json)
 
   texture = "substratum:blocks/block_" + material
   texture = texture.replace("substratum:blocks/block_iron","minecraft:blocks/iron_block")
@@ -137,33 +138,33 @@ def stairs_model(material):
 	    "side": "substratum:blocks/" + texture
 	  }
 	}
-  output_json(modeldir + "/block/stairs_straight_" + material + ".json", model_json)
+  output_json(os.path.join(model_dir, "block" , "stairs_straight_" + material + ".json"), model_json)
 
   model_json = {
 	  "parent": "minecraft:block/inner_stairs",
 	  "textures": {
-	    "bottom": "substratum:blocks/@@TEXTURE@@",
-	    "top": "substratum:blocks/@@TEXTURE@@",
-	    "side": "substratum:blocks/@@TEXTURE@@"
+	    "bottom": "substratum:blocks/" + texture,
+	    "top": "substratum:blocks/" + texture,
+	    "side": "substratum:blocks/" + texture
 	  }
 	}
-  output_json(modeldir + "/block/stairs_inner_" + material + ".json", model_json)
+  output_json(os.path.join(model_dir, "block" , "stairs_inner_" + material + ".json"), model_json)
 
   model_json = {
 	  "parent": "minecraft:block/outer_stairs",
 	  "textures": {
-	    "bottom": "substratum:blocks/@@TEXTURE@@",
-	    "top": "substratum:blocks/@@TEXTURE@@",
-	    "side": "substratum:blocks/@@TEXTURE@@"
+	    "bottom": "substratum:blocks/" + texture,
+	    "top": "substratum:blocks/" + texture,
+	    "side": "substratum:blocks/" + texture
 	  }
 	}
-  output_json(modeldir + "/block/stairs_outer_" + material + ".json", model_json)
+  output_json(os.path.join(model_dir, "block" , "stairs_outer_" + material + ".json"), model_json)
 
   # Stairs item model
   model_json = {
 	  "parent": "substratum:block/stairs_straight_" + material
 	}
-  output_json(modeldir + "/item/stairs_" + material + ".json", model_json)
+  output_json(os.path.join(model_dir, "item" , "stairs_" + material + ".json"), model_json)
 
 def liquid_model(material):
   json_model = {
@@ -175,7 +176,7 @@ def liquid_model(material):
 	    }
 	  }
 	}
-  output_json(blockstatedir + "/liquid_" + material + ".json", model_json)
+  output_json(os.path.join(blockstate_dir, "liquid_" + material + ".json"), model_json)
 
 
 def item_model(parent,texture):
@@ -185,46 +186,126 @@ def item_model(parent,texture):
 	        "layer0": "substratum:items/" + texture
 	    }
 	}
-  output_json(modeldir + "/item/" + texture + ".json", model_json)
+  output_json(os.path.join(model_dir, "item", texture + ".json"), model_json)
 
 
-enus_lang = "src/main/resources/assets/substratum/lang/en_US.lang"
+
+def item_ingredient(item_name):
+  return {"item": str(item_name)}
+
+def ore_ingredient(ore_name):
+  return {"ore": str(ore_name)}
+
+def shapeless_recipe(name,ingredients,result,count=1):
+  recipe_json = {
+    "type": "crafting_shapeless",
+    "ingredients": ingredients,
+    "result": {
+        "item": "substratum:" + result,
+        "count": int(count)
+    }
+  }
+  output_json(os.path.join(recipe_dir, name + ".json"), recipe_json)
+
+
+def shaped_recipe(name,pattern,ingredients,result,count=1,data=-1):
+  recipe_json = {
+    "type": "crafting_shaped",
+    "pattern": pattern,
+    "key": ingredients,
+    "result": {
+      "item": result,
+      "count": int(count)
+    }
+  }
+  if int(data) >= 0:
+    recipe_json["result"]["data"] = int(data)
+  output_json(os.path.join(recipe_dir, name + ".json"), recipe_json)
+
+
 
 lang = open(enus_lang, "w")
 lang.write("item_group.substratum=Substratum\n")
 lang.write("\n")
 
 for mat in MATERIALS:
-  if os.path.isfile(texuredir + "/blocks/ore_" + mat.name + ".png"):
+  if "ore" in mat.items:
     block_model("ore_" + mat.name)
-    lang.write("tile.substratum.ore_" + mat.name + "="+ mat.local_name + " Ore\n")
 
-  if os.path.isfile(texuredir + "/blocks/block_" + mat.name + ".png"):
+  if "block" in mat.items:
     block_model("block_" + mat.name)
     stairs_model(mat.name)
-    lang.write("tile.substratum.block_" + mat.name + "=Block of "+ mat.local_name + "\n")
-    lang.write("tile.substratum.stairs_" + mat.name + "="+ mat.local_name + " Stairs\n")
 
-  if os.path.isfile(texuredir + "/blocks/slab_" + mat.name + ".png"):
+  if "slab" in mat.items:
     slab_model(mat.name)
-    lang.write("tile.substratum.slab_" + mat.name + "="+ mat.local_name + " Slab\n")
-    lang.write("tile.substratum.slab_double_" + mat.name + "=Double"+ mat.local_name + " Slab\n")
 
-  if os.path.isfile(texuredir + "/blocks/liquid_" + mat.name + ".png"):
+  if "liquid" in mat.items:
     liquid_model(mat.name)
-    lang.write("fluid.substratum.liquid_" + mat.name + "=Liquid "+ mat.local_name + "\n")
 
-  for itype in ITEM_TYPES:
-    if os.path.isfile(texuredir + "/items/" + itype.name + "_" + mat.name + ".png"):
+  for i in mat.items:
+    itype = ITEM_TYPES_DICT[i]
+    name = itype.name + "_" + mat.name
+    if itype.regtype == Registry.ITEM:
       if itype.tool:
-        item_model("item/handheld",itype.name + "_" + mat.name)
+        item_model("item/handheld",name)
       else:
-        item_model("item/generated",itype.name + "_" + mat.name)
-      lang.write("item.substratum." + itype.name + "_" + mat.name + "=" + itype.local_name % mat.local_name + "\n")
+        item_model("item/generated",name)
+    if itype.name in mat.special_loc:
+      localized = mat.special_loc[itype.name]
+    else:
+      localized = name + "=" + itype.local_name % mat.local_name
+    lang.write(itype.regtype.value + ".substratum." + localized + "\n")
 
+  if "dust" in mat.items and ("ingot" in mat.items or "ingot" in mat.vanilla_items):
+    dust = "substratum:" + ITEM_TYPES_DICT["dust"].name + "_" + mat.name
+    ingot = ITEM_TYPES_DICT["ingot"].od_prefix + mat.od_suffix
+    shapeless_recipe("ingot_dust_" + mat.name,\
+                     [ore_ingredient(ingot),item_ingredient("mortar")],\
+                     dust)
+  if "dust" in mat.items and ("dust_small" in mat.items or "dust_small" in mat.vanilla_items):
+    dust = "substratum:" + ITEM_TYPES_DICT["dust"].name + "_" + mat.name
+    dust_small = "substratum:" + ITEM_TYPES_DICT["dust_small"].name + "_" + mat.name
+    shaped_recipe("dust_small_split_" + mat.name,\
+                  ["D  ",\
+                   "   ",\
+                   "   " ],
+                  {'D': item_ingredient(dust)},\
+                  dust_small, 4)
+    shapeless_recipe("dust_small_combine_" + mat.name,\
+                     [item_ingredient(dust_small),\
+                      item_ingredient(dust_small),\
+                      item_ingredient(dust_small),\
+                      item_ingredient(dust_small)],\
+                     dust, 1)
 
-lang.write("item.substratum.dust_small_gunpowder=Small Pile of Gunpowder\n")
-lang.write("item.substratum.dust_small_blaze=Small Pile of Blaze Powder\n")
+  if "block" in mat.items and "ingot" in mat.items:
+    block = "substratum:" + ITEM_TYPES_DICT["block"].name + "_" + mat.name
+    ingot = "substratum:" + ITEM_TYPES_DICT["ingot"].name + "_" + mat.name
+    shaped_recipe("block_combine_" + mat.name,\
+                  ["III",\
+                   "III",\
+                   "III" ],
+                  {'I': item_ingredient(ingot)},\
+                  block)
+    shapeless_recipe("block_split_" + mat.name,\
+                     [item_ingredient(block)],\
+                     ingot, 9)
+
+  if "ingot" in mat.items and "nugget" in mat.items:
+    ingot = "substratum:" + ITEM_TYPES_DICT["ingot"].name + "_" + mat.name
+    nugget = "substratum:" + ITEM_TYPES_DICT["nugget"].name + "_" + mat.name
+    shaped_recipe("ingot_combine_" + mat.name,\
+                  ["NNN",\
+                   "NNN",\
+                   "NNN" ],
+                  {'N': item_ingredient(nugget)},\
+                  ingot)
+    shapeless_recipe("ingot_split_" + mat.name,\
+                     [item_ingredient(ingot)],\
+                     nugget, 9)
+
+  lang.write("\n")
+
 lang.write("\n")
 lang.write("item.substratum.mortar=Mortar\n")
 

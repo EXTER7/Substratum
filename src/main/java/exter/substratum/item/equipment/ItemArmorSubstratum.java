@@ -18,20 +18,20 @@ public class ItemArmorSubstratum extends ItemArmor
     switch(slot)
     {
       case HEAD:
-        setUnlocalizedName("substratum.helmet_" + material.suffix_lc);
-        setRegistryName("helmet_" + material.suffix);
+        setUnlocalizedName("substratum.helmet_" + material.name);
+        setRegistryName("helmet_" + material.name);
         break;
       case CHEST:
-        setUnlocalizedName("substratum.chestplate_" + material.suffix_lc);
-        setRegistryName("chestplate_" + material.suffix_lc);
+        setUnlocalizedName("substratum.chestplate_" + material.name);
+        setRegistryName("chestplate_" + material.name);
         break;
       case LEGS:
-        setUnlocalizedName("substratum.leggings_" + material.suffix_lc);
-        setRegistryName("leggings_" + material.suffix_lc);
+        setUnlocalizedName("substratum.leggings_" + material.name);
+        setRegistryName("leggings_" + material.name);
         break;
       case FEET:
-        setUnlocalizedName("substratum.boots_" + material.suffix_lc);
-        setRegistryName("boots_" + material.suffix_lc);
+        setUnlocalizedName("substratum.boots_" + material.name);
+        setRegistryName("boots_" + material.name);
         break;
       default:
         break;      
@@ -44,7 +44,7 @@ public class ItemArmorSubstratum extends ItemArmor
   public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
   {
     return String.format("substratum:textures/models/armor_%s_%s.png",
-        material.suffix_lc,
+        material.name,
         armorType == EntityEquipmentSlot.LEGS?"2":"1");
   }
 }

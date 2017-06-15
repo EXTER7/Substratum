@@ -1,7 +1,30 @@
+
+import os.path
+from items import *
+
+def _od_suffix(name):
+  result = name[0].upper()
+  upper = False
+  for c in name[1:]:
+    if c == '_':
+      upper = True
+    elif upper:
+      result = result + c.upper()
+    upper = False
+  return result
+
+
 class Material:
   def __init__(self,name,local_name):
     self.name = name
     self.local_name = local_name
+    self.od_suffix = _od_suffix(name)
+    self.items = []
+    self.vanilla_items = []
+    self.special_loc = {}
+    for itype in ITEM_TYPES:
+      if os.path.isfile(itype.texture % name):
+        self.items.append(itype.name)
 
 
 
@@ -33,6 +56,8 @@ MATERIALS = [
   Material("obsidian", "Obsidian"),
   Material("coal", "Coal"),
   Material("charcoal", "Charcoal"),
+  Material("gunpowder", "Gunpowder"),
+  Material("blaze", "Blaze"),
   Material("black", "Black"),
   Material("red", "Red"),
   Material("green", "Green"),
@@ -52,4 +77,16 @@ MATERIALS = [
   Material("sulfur", "Sulfur"),
   Material("niter", "Niter")
 ]
+
+MATERIALS_DICT = {}
+for mat in MATERIALS:
+  MATERIALS_DICT[mat.name] = mat
+
+MATERIALS_DICT["iron"].vanilla_items = ["ingot", "nugget", "block"]
+MATERIALS_DICT["gold"].vanilla_items = ["ingot", "nugget", "block"]
+MATERIALS_DICT["redstone"].vanilla_items = ["dust"]
+MATERIALS_DICT["glowstone"].vanilla_items = ["dust"]
+
+MATERIALS_DICT["gunpowder"].special_loc = {"dust_small": "Small Pile of Gunpowder"}
+MATERIALS_DICT["blaze"].special_loc = {"dust_small": "Small Pile of Blaze Powder"}
 

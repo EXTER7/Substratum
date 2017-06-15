@@ -103,7 +103,7 @@ public class SubstratumItems
       GameRegistry.register(item);
       for(EnumMaterial mat:matitem.materials)
       {
-        mat.registerItemInOreDictionary(item.getStack(mat), matitem.prefix);
+        mat.registerItemInOreDictionary(item.getStack(mat), matitem.ore_prefix);
       }
     }
     item_materials.get(EnumMaterialItem.BOTTLE_DUST).setContainerItem(Items.GLASS_BOTTLE);

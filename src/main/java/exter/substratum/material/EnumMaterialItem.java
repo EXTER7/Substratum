@@ -199,13 +199,13 @@ public enum EnumMaterialItem
       EnumMaterial.CHROMIUM));
       
   public final ImmutableList<EnumMaterial> materials;
-  public final String prefix;
-  public final String prefix_lc;
+  public final String name;
+  public final String ore_prefix;
 
-  EnumMaterialItem(String prefix, ImmutableList<EnumMaterial> materials)
+  EnumMaterialItem(String name, ImmutableList<EnumMaterial> materials)
   {
     this.materials = materials;
-    this.prefix = prefix;
-    this.prefix_lc = SubstratumUtils.convertToRegistryName(prefix);
+    this.name = name;
+    this.ore_prefix = SubstratumUtils.convertToOreDictionaryName(name, false);
   }
 }

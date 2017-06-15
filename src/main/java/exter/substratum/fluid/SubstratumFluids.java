@@ -23,8 +23,8 @@ public class SubstratumFluids
   static private FluidSubstratum register(EnumMaterial material,String name,int temperature,int luminosity)
   {
     FluidSubstratum fluid = new FluidSubstratum(material, name,
-        new ResourceLocation("substratum","blocks/" + SubstratumUtils.convertToRegistryName(name) + "_still"),
-        new ResourceLocation("substratum","blocks/" + SubstratumUtils.convertToRegistryName(name) + "_flow"),
+        new ResourceLocation("substratum","blocks/" + name + "_still"),
+        new ResourceLocation("substratum","blocks/" + name + "_flow"),
         temperature, luminosity);
     FluidRegistry.registerFluid(fluid);
 
@@ -40,8 +40,8 @@ public class SubstratumFluids
   
   static public void registerFluids()
   {
-    liquid_redstone = register(EnumMaterial.REDSTONE, "liquidRedstone", 800, 4);
-    liquid_glowstone = register(EnumMaterial.GLOWSTONE, "liquidGlowstone", 1100, 15);
-    liquid_enderpearl = register(EnumMaterial.ENDERPEARL, "liquidEnderpearl", 1400, 2);
+    liquid_redstone = register(EnumMaterial.REDSTONE, "liquid_redstone", 800, 4);
+    liquid_glowstone = register(EnumMaterial.GLOWSTONE, "liquid_glowstone", 1100, 15);
+    liquid_enderpearl = register(EnumMaterial.ENDERPEARL, "liquid_enderpearl", 1400, 2);
   }
 }

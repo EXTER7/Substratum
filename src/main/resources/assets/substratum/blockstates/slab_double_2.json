@@ -1,22 +1,52 @@
 {
-  "variants":
-  {
-    "half=top,metal=zinc": { "model": "substratum:slab_double_zinc" },
-    "half=top,metal=brass": { "model": "substratum:slab_double_brass" },
-    "half=top,metal=silver": { "model": "substratum:slab_double_silver" },
-    "half=top,metal=steel": { "model": "substratum:slab_double_steel" },
-    "half=top,metal=lead": { "model": "substratum:slab_double_lead" },
-    "half=top,metal=platinum": { "model": "substratum:slab_double_platinum" },
-    "half=top,metal=cupronickel": { "model": "substratum:slab_double_cupronickel"  },
-    "half=bottom,metal=signalum": { "model": "substratum:slab_double_signalum"  },
-    "half=bottom,metal=zinc": { "model": "substratum:slab_double_zinc" },
-    "half=bottom,metal=brass": { "model": "substratum:slab_double_brass" },
-    "half=bottom,metal=silver": { "model": "substratum:slab_double_silver" },
-    "half=bottom,metal=steel": { "model": "substratum:slab_double_steel" },
-    "half=bottom,metal=lead": { "model": "substratum:slab_double_lead" },
-    "half=bottom,metal=platinum": { "model": "substratum:slab_double_platinum" },
-    "half=bottom,metal=cupronickel": { "model": "substratum:slab_double_cupronickel"  },
-    "half=bottom,metal=signalum": { "model": "substratum:slab_double_signalum"  }
+  "variants": {
+    "half=top,variant=zinc": {
+      "model": "substratum:slab_double_zinc"
+    },
+    "half=bottom,variant=zinc": {
+      "model": "substratum:slab_double_zinc"
+    },
+    "half=top,variant=brass": {
+      "model": "substratum:slab_double_brass"
+    },
+    "half=bottom,variant=brass": {
+      "model": "substratum:slab_double_brass"
+    },
+    "half=top,variant=silver": {
+      "model": "substratum:slab_double_silver"
+    },
+    "half=bottom,variant=silver": {
+      "model": "substratum:slab_double_silver"
+    },
+    "half=top,variant=steel": {
+      "model": "substratum:slab_double_steel"
+    },
+    "half=bottom,variant=steel": {
+      "model": "substratum:slab_double_steel"
+    },
+    "half=top,variant=lead": {
+      "model": "substratum:slab_double_lead"
+    },
+    "half=bottom,variant=lead": {
+      "model": "substratum:slab_double_lead"
+    },
+    "half=top,variant=platinum": {
+      "model": "substratum:slab_double_platinum"
+    },
+    "half=bottom,variant=platinum": {
+      "model": "substratum:slab_double_platinum"
+    },
+    "half=top,variant=cupronickel": {
+      "model": "substratum:slab_double_cupronickel"
+    },
+    "half=bottom,variant=cupronickel": {
+      "model": "substratum:slab_double_cupronickel"
+    },
+    "half=top,variant=signalum": {
+      "model": "substratum:slab_double_signalum"
+    },
+    "half=bottom,variant=signalum": {
+      "model": "substratum:slab_double_signalum"
+    }
   }
 }
-

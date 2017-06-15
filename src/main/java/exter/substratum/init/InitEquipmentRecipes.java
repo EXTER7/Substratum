@@ -1,34 +1,22 @@
 package exter.substratum.init;
 
-import java.util.Map.Entry;
-
-import exter.substratum.item.SubstratumItems;
-import exter.substratum.item.equipment.ItemArmorSubstratum;
-import exter.substratum.item.equipment.ItemAxeSubstratum;
-import exter.substratum.item.equipment.ItemHoeSubstratum;
-import exter.substratum.item.equipment.ItemPickaxeSubstratum;
-import exter.substratum.item.equipment.ItemShovelSubstratum;
-import exter.substratum.item.equipment.ItemSwordSubstratum;
 import exter.substratum.material.EnumMaterial;
-import exter.substratum.material.EnumMaterialItem;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 class InitEquipmentRecipes
 {
   static void nuggetSmelting(Item item,EnumMaterial material)
   {
+    /*
     GameRegistry.addSmelting(
         new ItemStack(item,1,OreDictionary.WILDCARD_VALUE),
         SubstratumItems.getStack(EnumMaterialItem.NUGGET, material), 0);
+        */
   }
   
   static void init()
   {
+    /*
     for(Entry<EnumMaterial, ItemPickaxeSubstratum> tool:SubstratumItems.pickaxes.entrySet())
     {
       GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(tool.getValue()),
@@ -134,5 +122,6 @@ class InitEquipmentRecipes
           'I',"ingot" + armor.getKey().suffix));
       nuggetSmelting(armor.getValue(),armor.getKey());
     }
+    */
   }
 }

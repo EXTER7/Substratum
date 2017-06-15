@@ -7,68 +7,66 @@ import net.minecraftforge.oredict.OreDictionary;
 public enum EnumMaterial
 {
   NULL(null),
-  STONE("Stone"),
-  COAL("Coal"),
-  CHARCOAL("Charcoal"),
-  IRON("Iron"),
-  GOLD("Gold"),
-  COPPER("Copper"),
-  TIN("Tin"),
-  BRONZE("Bronze"),
-  ELECTRUM("Electrum"),
-  INVAR("Invar"),
-  NICKEL("Nickel"),
-  ZINC("Zinc"),
-  BRASS("Brass"),
-  SILVER("Silver"),
-  STEEL("Steel"),
-  LEAD("Lead"),
-  PLATINUM("Platinum"),
-  CUPRONICKEL("Cupronickel", "Constantan"),
-  REDSTONE("Redstone"),
-  GLOWSTONE("Glowstone"),
-  ENDERPEARL("Enderpearl"),
-  SIGNALUM("Signalum"),
-  LUMIUM("Lumium"),
-  ENDERIUM("Enderium"),
-  SULFUR("Sulfur"),
-  NITER("Niter"),
-  GUNPOWDER("Gunpowder"),
-  OBSIDIAN("Obsidian"),
-  BLAZE("Blaze"),
-  ALUMINA("Alumina"),
-  ALUMINIUM("Aluminium", "Aluminum"),
-  CHROMIUM("Chrome", "Chromium");
+  STONE("stone"),
+  COAL("coal"),
+  CHARCOAL("charcoal"),
+  IRON("iron"),
+  GOLD("gold"),
+  COPPER("copper"),
+  TIN("tin"),
+  BRONZE("bronze"),
+  ELECTRUM("electrum"),
+  INVAR("invar"),
+  NICKEL("nickel"),
+  ZINC("zinc"),
+  BRASS("brass"),
+  SILVER("silver"),
+  STEEL("steel"),
+  LEAD("lead"),
+  PLATINUM("platinum"),
+  CUPRONICKEL("cupronickel", "Constantan"),
+  REDSTONE("redstone"),
+  GLOWSTONE("glowstone"),
+  ENDERPEARL("enderpearl"),
+  SIGNALUM("signalum"),
+  LUMIUM("lumium"),
+  ENDERIUM("enderium"),
+  SULFUR("sulfur"),
+  NITER("niter"),
+  GUNPOWDER("gunpowder"),
+  OBSIDIAN("obsidian"),
+  BLAZE("blaze"),
+  ALUMINA("alumina"),
+  ALUMINIUM("aluminium", "Aluminum"),
+  CHROMIUM("chrome", "Chromium");
   
-  public final String suffix;
+  public final String name;
 
-  public final String suffix_alias;
+  public final String ore_suffix_alias;
 
-  public final String suffix_lc;
+  public final String ore_suffix;
   
   public void registerItemInOreDictionary(ItemStack item,String prefix)
   {
-    if(suffix != null)
+    if(ore_suffix != null)
     {
-      OreDictionary.registerOre(prefix + suffix, item);
+      OreDictionary.registerOre(prefix + ore_suffix, item);
     }
-    if(suffix_alias != null)
+    if(ore_suffix_alias != null)
     {
-      OreDictionary.registerOre(prefix + suffix_alias, item);
+      OreDictionary.registerOre(prefix + ore_suffix_alias, item);
     }
   }
 
-  EnumMaterial(String suffix)
+  EnumMaterial(String name)
   {
-    this.suffix = suffix;
-    this.suffix_alias = null;
-    this.suffix_lc = SubstratumUtils.convertToRegistryName(suffix);
+    this(name,null);
   }
 
-  EnumMaterial(String suffix, String suffix_alias)
+  EnumMaterial(String name, String ore_suffix_alias)
   {
-    this.suffix = suffix;
-    this.suffix_alias = suffix_alias;
-    this.suffix_lc = SubstratumUtils.convertToRegistryName(suffix);
+    this.name = name;
+    this.ore_suffix_alias = ore_suffix_alias;
+    this.ore_suffix = SubstratumUtils.convertToOreDictionaryName(name, true);
   }
 }

@@ -1,25 +1,10 @@
 package exter.substratum.init;
 
-import java.util.Map;
-
-import exter.substratum.block.BlockOre;
-import exter.substratum.block.SubstratumBlocks;
-import exter.substratum.config.SubstratumConfig;
-import exter.substratum.item.SubstratumItems;
-import exter.substratum.material.EnumDyePowderColor;
-import exter.substratum.material.EnumMaterial;
-import exter.substratum.material.EnumMaterialItem;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 
 public class InitRecipes
 {
+  /*
   static private void addDyeMix(EnumDyePowderColor result,String... ingredients)
   {
     Object[] ing_oredict = new Object[ingredients.length];
@@ -39,10 +24,11 @@ public class InitRecipes
     GameRegistry.addRecipe(new ShapelessOreRecipe(
         SubstratumItems.item_dye_powder_small.getStack(result,ingredients.length),
         ing_oredict));
-  }
+  }*/
   
   static public void init()
   {
+    /*
     InitBlendRecipes.init();
     InitEquipmentRecipes.init();
     
@@ -315,12 +301,6 @@ public class InitRecipes
       }
     }
     
-    // Conversion recipe from old Iron Nugget to new vanilla Iron Nugget TODO: Remove in later versions
-    GameRegistry.addShapelessRecipe(
-        new ItemStack(Items.field_191525_da/*IRON_NUGGET*/),
-        new ItemStack(SubstratumItems.item_materials.get(EnumMaterialItem.NUGGET),1,
-            EnumMaterialItem.NUGGET.materials.indexOf(EnumMaterial.IRON)));
-
     //Block <-> Ingot crafting recipes.
     for(Map.Entry<EnumMaterial, ItemStack> entry:SubstratumBlocks.block_stacks.entrySet())
     {
@@ -510,5 +490,6 @@ public class InitRecipes
             mortar, SubstratumItems.getStack(EnumMaterialItem.ROD, mat)));
       }
     }
+      */
   }
 }

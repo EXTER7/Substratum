@@ -46,7 +46,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
     @Override
     public String getName()
     {
-      return material.suffix.toLowerCase();
+      return material.name;
     }
 
     @Override
@@ -68,7 +68,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
     
     public PropertyVariant(Variant[] variants)
     {
-      super("metal",Variant.class);
+      super("variant",Variant.class);
       int i = 0;
       this.variants = new HashMap<String,Variant>();
       for (Variant v : variants)
@@ -175,7 +175,7 @@ public abstract class BlockMetalSlab extends BlockSlab implements IBlockVariants
   @Override
   public String getUnlocalizedName(int meta)
   {
-    return String.format("%s_%s",getUnlocalizedName(),getStateFromMeta(meta).getValue(getVariantProperty()).material.suffix_lc);
+    return String.format("%s_%s",getUnlocalizedName(),getStateFromMeta(meta).getValue(getVariantProperty()).material.name);
   }
 
   @Override

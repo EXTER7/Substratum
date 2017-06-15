@@ -1,14 +1,28 @@
 {
-  "variants":
-  {
-    "half=top,metal=lumium": { "model": "substratum:slab_double_lumium"  },
-    "half=top,metal=enderium": { "model": "substratum:slab_double_enderium"  },
-    "half=top,metal=aluminium": { "model": "substratum:slab_double_aluminium"  },
-    "half=top,metal=chrome": { "model": "substratum:slab_double_chrome"  },
-    "half=bottom,metal=lumium": { "model": "substratum:slab_double_lumium"  },
-    "half=bottom,metal=enderium": { "model": "substratum:slab_double_enderium"  },
-    "half=bottom,metal=aluminium": { "model": "substratum:slab_double_aluminium"  },
-    "half=bottom,metal=chrome": { "model": "substratum:slab_double_chrome"  }
+  "variants": {
+    "half=top,variant=lumium": {
+      "model": "substratum:slab_double_lumium"
+    },
+    "half=bottom,variant=lumium": {
+      "model": "substratum:slab_double_lumium"
+    },
+    "half=top,variant=enderium": {
+      "model": "substratum:slab_double_enderium"
+    },
+    "half=bottom,variant=enderium": {
+      "model": "substratum:slab_double_enderium"
+    },
+    "half=top,variant=aluminium": {
+      "model": "substratum:slab_double_aluminium"
+    },
+    "half=bottom,variant=aluminium": {
+      "model": "substratum:slab_double_aluminium"
+    },
+    "half=top,variant=chrome": {
+      "model": "substratum:slab_double_chrome"
+    },
+    "half=bottom,variant=chrome": {
+      "model": "substratum:slab_double_chrome"
+    }
   }
 }
-

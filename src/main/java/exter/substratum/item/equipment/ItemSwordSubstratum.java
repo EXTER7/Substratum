@@ -8,7 +8,7 @@ public class ItemSwordSubstratum extends ItemSword
   public ItemSwordSubstratum(EnumMaterialEquipment equipment)
   {
     super(equipment.tool);
-    setUnlocalizedName("substratum.sword_" + equipment.material.suffix_lc);
-    setRegistryName("sword_" + equipment.material.suffix_lc);
+    setUnlocalizedName("substratum.sword_" + equipment.material.name);
+    setRegistryName("sword_" + equipment.material.name);
   }
 }

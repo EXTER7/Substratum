@@ -1,22 +1,52 @@
 {
-  "variants":
-  {
-    "half=top,metal=iron": { "model": "substratum:slab_top_iron" },
-    "half=top,metal=gold": { "model": "substratum:slab_top_gold" },
-    "half=top,metal=copper": { "model": "substratum:slab_top_copper" },
-    "half=top,metal=tin": { "model": "substratum:slab_top_tin" },
-    "half=top,metal=bronze": { "model": "substratum:slab_top_bronze" },
-    "half=top,metal=electrum": { "model": "substratum:slab_top_electrum" },
-    "half=top,metal=invar": { "model": "substratum:slab_top_invar" },
-    "half=top,metal=nickel": { "model": "substratum:slab_top_nickel" },
-    "half=bottom,metal=iron": { "model": "substratum:slab_bottom_iron" },
-    "half=bottom,metal=gold": { "model": "substratum:slab_bottom_gold" },
-    "half=bottom,metal=copper": { "model": "substratum:slab_bottom_copper" },
-    "half=bottom,metal=tin": { "model": "substratum:slab_bottom_tin" },
-    "half=bottom,metal=bronze": { "model": "substratum:slab_bottom_bronze" },
-    "half=bottom,metal=electrum": { "model": "substratum:slab_bottom_electrum" },
-    "half=bottom,metal=invar": { "model": "substratum:slab_bottom_invar" },
-    "half=bottom,metal=nickel": { "model": "substratum:slab_bottom_nickel" }
+  "variants": {
+    "half=top,variant=iron": {
+      "model": "substratum:slab_top_iron"
+    },
+    "half=bottom,variant=iron": {
+      "model": "substratum:slab_bottom_iron"
+    },
+    "half=top,variant=gold": {
+      "model": "substratum:slab_top_gold"
+    },
+    "half=bottom,variant=gold": {
+      "model": "substratum:slab_bottom_gold"
+    },
+    "half=top,variant=copper": {
+      "model": "substratum:slab_top_copper"
+    },
+    "half=bottom,variant=copper": {
+      "model": "substratum:slab_bottom_copper"
+    },
+    "half=top,variant=tin": {
+      "model": "substratum:slab_top_tin"
+    },
+    "half=bottom,variant=tin": {
+      "model": "substratum:slab_bottom_tin"
+    },
+    "half=top,variant=bronze": {
+      "model": "substratum:slab_top_bronze"
+    },
+    "half=bottom,variant=bronze": {
+      "model": "substratum:slab_bottom_bronze"
+    },
+    "half=top,variant=electrum": {
+      "model": "substratum:slab_top_electrum"
+    },
+    "half=bottom,variant=electrum": {
+      "model": "substratum:slab_bottom_electrum"
+    },
+    "half=top,variant=invar": {
+      "model": "substratum:slab_top_invar"
+    },
+    "half=bottom,variant=invar": {
+      "model": "substratum:slab_bottom_invar"
+    },
+    "half=top,variant=nickel": {
+      "model": "substratum:slab_top_nickel"
+    },
+    "half=bottom,variant=nickel": {
+      "model": "substratum:slab_bottom_nickel"
+    }
   }
 }
-

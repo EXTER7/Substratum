@@ -1,19 +1,12 @@
 package exter.substratum.init;
 
-import exter.substratum.config.SubstratumConfig;
-import exter.substratum.item.SubstratumItems;
-import exter.substratum.material.EnumMaterial;
-import exter.substratum.material.EnumMaterialItem;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 class InitBlendRecipes
 {
   static void init()
   {
+    // TODO: Convert to JSON recipes.
+    /*
     if(SubstratumConfig.blend_bronze_enable)
     {
       GameRegistry.addRecipe(
@@ -207,5 +200,6 @@ class InitBlendRecipes
           "bottleLiquidEnderpearl",
           "bottleLiquidEnderpearl" ));
     }
+    */
   }
 }

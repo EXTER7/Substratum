@@ -34,8 +34,8 @@ public class ItemMaterial extends Item
     this.item = material_item;
     setCreativeTab(TabMaterials.tab);
     setHasSubtypes(true);
-    setUnlocalizedName("substratum." + material_item.prefix_lc);
-    setRegistryName(material_item.prefix_lc);
+    setUnlocalizedName("substratum." + material_item.name);
+    setRegistryName(material_item.name);
   }
   
   public ItemMaterial setSpecialHandler(ISpecialHandler special)
@@ -47,7 +47,7 @@ public class ItemMaterial extends Item
   @Override
   public String getUnlocalizedName(ItemStack itemstack)
   {
-    return String.format("%s_%s", getUnlocalizedName(), item.materials.get(itemstack.getMetadata()).suffix_lc);
+    return String.format("%s_%s", getUnlocalizedName(), item.materials.get(itemstack.getMetadata()).name);
   }
 
   @Override

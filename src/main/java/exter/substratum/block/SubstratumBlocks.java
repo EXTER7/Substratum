@@ -18,7 +18,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class SubstratumBlocks
 {
-  private static final BlockMetal.Variant[] BLOCK1_METALS = 
+  public static final BlockMetal.Variant[] BLOCK1_METALS = 
   {
       new BlockMetal.Variant(EnumMaterial.COPPER),
       new BlockMetal.Variant(EnumMaterial.TIN),
@@ -37,14 +37,14 @@ public class SubstratumBlocks
       new BlockMetal.Variant(EnumMaterial.LUMIUM),
   };
 
-  private static final BlockMetal.Variant[] BLOCK2_METALS = 
+  public static final BlockMetal.Variant[] BLOCK2_METALS = 
   {
       new BlockMetal.Variant(EnumMaterial.ENDERIUM),
       new BlockMetal.Variant(EnumMaterial.ALUMINIUM),
       new BlockMetal.Variant(EnumMaterial.CHROMIUM)
   };
 
-  private static final BlockMetalSlab.Variant[] SLAB1_METALS = 
+  public static final BlockMetalSlab.Variant[] SLAB1_METALS = 
   {
     new BlockMetalSlab.Variant(EnumMaterial.IRON),
     new BlockMetalSlab.Variant(EnumMaterial.GOLD),
@@ -56,7 +56,7 @@ public class SubstratumBlocks
     new BlockMetalSlab.Variant(EnumMaterial.NICKEL)
   };
   
-  private static final BlockMetalSlab.Variant[] SLAB2_METALS = 
+  public static final BlockMetalSlab.Variant[] SLAB2_METALS = 
   {
     new BlockMetalSlab.Variant(EnumMaterial.ZINC),
     new BlockMetalSlab.Variant(EnumMaterial.BRASS),
@@ -68,7 +68,7 @@ public class SubstratumBlocks
     new BlockMetalSlab.Variant(EnumMaterial.SIGNALUM)
   };
 
-  private static final BlockMetalSlab.Variant[] SLAB3_METALS = 
+  public static final BlockMetalSlab.Variant[] SLAB3_METALS = 
   {
     new BlockMetalSlab.Variant(EnumMaterial.LUMIUM),
     new BlockMetalSlab.Variant(EnumMaterial.ENDERIUM),
@@ -148,10 +148,10 @@ public class SubstratumBlocks
         IBlockState state = block_slab[i].getBottomVariant(v);
         ItemStack item = new ItemStack(block_slab[i],1,block_slab[i].getMetaFromState(state));
         slab_stacks.put(v.material, item);
-        OreDictionary.registerOre("slab" + v.material.suffix, item);
-        if(v.material.suffix_alias != null)
+        OreDictionary.registerOre("slab" + v.material.ore_suffix, item);
+        if(v.material.ore_suffix_alias != null)
         {
-          OreDictionary.registerOre("slab" + v.material.suffix_alias, item);
+          OreDictionary.registerOre("slab" + v.material.ore_suffix_alias, item);
         }
       }
     }
@@ -163,10 +163,10 @@ public class SubstratumBlocks
     register(block);
     ItemStack item = new ItemStack(block);
     stairs_stacks.put(material,item);
-    OreDictionary.registerOre("stairs" + material.suffix, item);
-    if(material.suffix_alias != null)
+    OreDictionary.registerOre("stairs" + material.ore_suffix, item);
+    if(material.ore_suffix_alias != null)
     {
-      OreDictionary.registerOre("stairs" + material.suffix_alias, item);
+      OreDictionary.registerOre("stairs" + material.ore_suffix_alias, item);
     }
   }
   
@@ -188,10 +188,10 @@ public class SubstratumBlocks
         IBlockState state = block_metal[i].getVariantState(v);
         ItemStack item = new ItemStack(block_metal[i],1,block_metal[i].getMetaFromState(state));
         block_stacks.put(v.material, item);
-        OreDictionary.registerOre("block" + v.material.suffix, item);
-        if(v.material.suffix_alias != null)
+        OreDictionary.registerOre("block" + v.material.ore_suffix, item);
+        if(v.material.ore_suffix_alias != null)
         {
-          OreDictionary.registerOre("block" + v.material.suffix_alias, item);
+          OreDictionary.registerOre("block" + v.material.ore_suffix_alias, item);
         }
         registerStairs(v.material,state);
       }
@@ -202,10 +202,10 @@ public class SubstratumBlocks
     {
       ItemStack item = block_ore.asItemStack(ore);
       ore_stacks.put(ore.material, item);
-      OreDictionary.registerOre("ore" + ore.material.suffix, item);
-      if(ore.material.suffix_alias != null)
+      OreDictionary.registerOre("ore" + ore.material.ore_suffix, item);
+      if(ore.material.ore_suffix_alias != null)
       {
-        OreDictionary.registerOre("ore" + ore.material.suffix_alias, item);
+        OreDictionary.registerOre("ore" + ore.material.ore_suffix_alias, item);
       }
     }
 
@@ -214,10 +214,10 @@ public class SubstratumBlocks
     {
       ItemStack item = block_ore_dust.asItemStack(ore);
       ore_stacks.put(ore.material, item);
-      OreDictionary.registerOre("ore" + ore.material.suffix, item);
-      if(ore.material.suffix_alias != null)
+      OreDictionary.registerOre("ore" + ore.material.ore_suffix, item);
+      if(ore.material.ore_suffix_alias != null)
       {
-        OreDictionary.registerOre("ore" + ore.material.suffix_alias, item);
+        OreDictionary.registerOre("ore" + ore.material.ore_suffix_alias, item);
       }
     }
 

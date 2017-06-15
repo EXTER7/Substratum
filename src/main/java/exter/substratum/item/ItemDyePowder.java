@@ -27,7 +27,7 @@ public class ItemDyePowder extends Item
   @Override
   public String getUnlocalizedName(ItemStack itemstack)
   {
-    return String.format("%s_%s", getUnlocalizedName(), EnumDyePowderColor.values()[itemstack.getMetadata()].name_lc);
+    return String.format("%s_%s", getUnlocalizedName(), EnumDyePowderColor.values()[itemstack.getMetadata()].name);
   }
 
   @Override

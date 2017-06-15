@@ -1,21 +1,49 @@
 {
-  "variants":
-  { 
-    "variant=copper": { "model": "substratum:block_copper" },
-    "variant=tin": { "model": "substratum:block_tin" },
-    "variant=nickel": { "model": "substratum:block_nickel" },
-    "variant=zinc": { "model": "substratum:block_zinc" },
-    "variant=silver": { "model": "substratum:block_silver" },
-    "variant=lead": { "model": "substratum:block_lead" },
-    "variant=bronze": { "model": "substratum:block_bronze" },
-    "variant=electrum": { "model": "substratum:block_electrum" },
-    "variant=invar": { "model": "substratum:block_invar" },
-    "variant=brass": { "model": "substratum:block_brass" },
-    "variant=steel": { "model": "substratum:block_steel" },
-    "variant=platinum": { "model": "substratum:block_platinum" },
-    "variant=cupronickel": { "model": "substratum:block_cupronickel"  },
-    "variant=signalum": { "model": "substratum:block_signalum"  },
-    "variant=lumium": { "model": "substratum:block_lumium"  }
+  "variants": {
+    "variant=copper": {
+      "model": "substratum:block_copper"
+    },
+    "variant=tin": {
+      "model": "substratum:block_tin"
+    },
+    "variant=bronze": {
+      "model": "substratum:block_bronze"
+    },
+    "variant=electrum": {
+      "model": "substratum:block_electrum"
+    },
+    "variant=invar": {
+      "model": "substratum:block_invar"
+    },
+    "variant=nickel": {
+      "model": "substratum:block_nickel"
+    },
+    "variant=zinc": {
+      "model": "substratum:block_zinc"
+    },
+    "variant=brass": {
+      "model": "substratum:block_brass"
+    },
+    "variant=silver": {
+      "model": "substratum:block_silver"
+    },
+    "variant=steel": {
+      "model": "substratum:block_steel"
+    },
+    "variant=lead": {
+      "model": "substratum:block_lead"
+    },
+    "variant=platinum": {
+      "model": "substratum:block_platinum"
+    },
+    "variant=cupronickel": {
+      "model": "substratum:block_cupronickel"
+    },
+    "variant=signalum": {
+      "model": "substratum:block_signalum"
+    },
+    "variant=lumium": {
+      "model": "substratum:block_lumium"
+    }
   }
 }
-
