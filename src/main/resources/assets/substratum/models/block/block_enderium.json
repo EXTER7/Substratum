@@ -1,7 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
-  "textures":
-  {
+  "textures": {
     "all": "substratum:blocks/block_enderium"
   }
 }

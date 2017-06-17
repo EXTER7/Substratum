@@ -24,13 +24,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockSubstratumLiquid extends BlockFluidClassic
 {
 
-  public BlockSubstratumLiquid(FluidSubstratum fluid, String name)
+  public BlockSubstratumLiquid(FluidSubstratum fluid)
   {
     super(fluid, Material.LAVA);
     setLightOpacity(0);
     setLightLevel(1.0f);
-    setUnlocalizedName("substratum." + name);
-    setRegistryName(name);
+    setUnlocalizedName("substratum.liquid_" + fluid.material.name);
+    setRegistryName("liquid_" + fluid.material.name);
     setCreativeTab(TabMaterials.tab);
   }
  

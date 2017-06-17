@@ -3,73 +3,87 @@ package exter.substratum.material;
 import java.util.HashSet;
 import java.util.Set;
 
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraftforge.common.util.EnumHelper;
 
 public enum EnumMaterialEquipment
 {
   COPPER(EnumMaterial.COPPER,
-      EnumHelper.addToolMaterial("SUBSTRATUM_COPPER", 1, 160, 5.0F, 1.0F, 5),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_COPPER", "copper", 10, new int[]{1, 3, 4, 1}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
-      8.0F, -3.2F),
+      1, 160, 5.0F, 1.0F, 5,  8.0F, -3.2F,
+      10, new int[]{1, 3, 4, 1}, 9, "item.armor.equip_iron", 0.0F ),
   BRONZE(EnumMaterial.BRONZE,
-      EnumHelper.addToolMaterial("SUBSTRATUM_BRONZE", 2, 200, 6.0F, 1.8F, 14),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_BRONZE", "bronze", 12, new int[]{2, 4, 5, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
-      8.0F, -3.2F),
+      2, 200, 6.0F, 1.8F, 14, 8.0F, -3.2F,
+      12, new int[]{2, 4, 5, 2}, 9, "item.armor.equip_iron", 0.0F),
   INVAR(EnumMaterial.INVAR,
-      EnumHelper.addToolMaterial("SUBSTRATUM_INVAR", 2, 250, 6.5F, 2.1F, 10),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_INVAR", "invar", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
-      8.0F, -3.1F),
+      2, 250, 6.5F, 2.1F, 10, 8.0F, -3.1F,
+      15, new int[]{2, 5, 6, 2}, 9, "item.armor.equip_iron", 0.0F),
   SILVER(EnumMaterial.SILVER,
-      EnumHelper.addToolMaterial("SUBSTRATUM_SILVER", 0, 32, 12.0F, 0.5F, 22),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_SILVER", "silver", 6, new int[]{1, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F),
-      6.0F, -3.0F),
+      0, 32, 12.0F, 0.5F, 22, 6.0F, -3.0F,
+      6, new int[]{1, 3, 5, 2}, 25, "item.armor.equip_gold", 0.0F),
   ELECTRUM(EnumMaterial.ELECTRUM,
-      EnumHelper.addToolMaterial("SUBSTRATUM_ELECTRUM", 0, 32, 15.0F, 0.6F, 35),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_ELECTRUM", "electrum", 6, new int[]{1, 3, 5, 2}, 35, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F),
-      6.0F, -3.0F),
+      0, 32, 15.0F, 0.6F, 35, 6.0F, -3.0F,
+      6, new int[]{1, 3, 5, 2}, 35, "item.armor.equip_gold", 0.0F),
   ALUMINIUM(EnumMaterial.ALUMINIUM,
-      EnumHelper.addToolMaterial("SUBSTRATUM_ALUMINIUM", 2, 220, 12.0F, 1.8F, 14),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_ALUMINIUM", "aluminium", 13, new int[]{2, 4, 5, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
-      8.0F, -2.8F),
+      2, 220, 12.0F, 1.8F, 14, 8.0F, -2.8F,
+      13, new int[]{2, 4, 5, 2}, 9, "item.armor.equip_iron", 0.0F),
   STEEL(EnumMaterial.STEEL,
-      EnumHelper.addToolMaterial("SUBSTRATUM_STEEL", 2, 350, 6.5F, 2.5F, 14),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_STEEL", "steel", 20, new int[]{2, 6, 7, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
-      8.0F, -3.15F),
+      2, 350, 6.5F, 2.5F, 14, 8.0F, -3.15F,
+      20, new int[]{2, 6, 7, 2}, 9, "item.armor.equip_iron", 0.0F),
   SIGNALUM(EnumMaterial.SIGNALUM,
-      EnumHelper.addToolMaterial("SUBSTRATUM_SIGNALUM", 2, 500, 10.0F, 2.0F, 14),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_SIGNALUM", "signalum", 15, new int[]{2, 4, 5, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
-      7.0F, -3.0F),
+      2, 500, 10.0F, 2.0F, 14, 7.0F, -3.0F,
+      15, new int[]{2, 4, 5, 2}, 12, "item.armor.equip_iron", 0.0F),
   LUMIUM(EnumMaterial.LUMIUM,
-      EnumHelper.addToolMaterial("SUBSTRATUM_LUMIUM", 2, 600, 12.0F, 2.5F, 14),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_LUMIUM", "lumium", 15, new int[]{2, 4, 5, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F),
-      7.0F, -3.0F),
+      2, 600, 12.0F, 2.5F, 14, 7.0F, -3.0F,
+      15, new int[]{2, 4, 5, 2}, 12, "item.armor.equip_iron", 0.0F),
   ENDERIUM(EnumMaterial.ENDERIUM,
-      EnumHelper.addToolMaterial("SUBSTRATUM_ENDERIUM", 3, 1000, 10.0F, 4.0F, 20),
-      EnumHelper.addArmorMaterial("SUBSTRATUM_ENDERIUM", "enderium", 40, new int[]{4, 7, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F),
-      8.0F, -3.0F);
-  
+      3, 1000, 10.0F, 4.0F, 20, 8.0F, -3.0F,
+      40, new int[]{4, 7, 9, 4}, 20, "item.armor.equip_iron", 2.0F);
   
   public final EnumMaterial material;
-  public final ToolMaterial tool;
-  public final ArmorMaterial armor;
+  public final int harvestLevel;
+  public final int maxUses;
+  public final float efficiency;
+  public final float damage;
+  public final int tool_enchantability;
   public final float axe_damage;
   public final float axe_speed;
+  public final int durability;
+  public final int[] reductionAmounts;
+  public final int armor_enchantability;
+  public final String soundOnEquip;
+  public final float toughness;
   
-  static private Set<EnumMaterial> materials = null;
-  
-  ;
-  EnumMaterialEquipment(EnumMaterial material,ToolMaterial tool,ArmorMaterial armor,float axe_damage,float axe_speed)
+  EnumMaterialEquipment(
+      EnumMaterial material,
+      int harvestLevel,
+      int maxUses,
+      float efficiency,
+      float damage,
+      int tool_enchantability,
+      float axe_damage,
+      float axe_speed,
+      int durability,
+      int[] reductionAmounts,
+      int armor_enchantability,
+      String soundOnEquip,
+      float toughness)
   {
     this.material = material;
-    this.tool = tool;
-    this.armor = armor;
+    this.harvestLevel = harvestLevel;
+    this.maxUses = maxUses;
+    this.efficiency = efficiency;
+    this.damage = damage;
+    this.tool_enchantability = tool_enchantability;
     this.axe_damage = axe_damage;
     this.axe_speed = axe_speed;
+    this.durability = durability;
+    this.reductionAmounts = reductionAmounts;
+    this.armor_enchantability = armor_enchantability;
+    this.soundOnEquip = soundOnEquip;
+    this.toughness = toughness;
   }
   
+  
+  static private Set<EnumMaterial> materials = null;
+
   static public Set<EnumMaterial> getMaterials()
   {
     if(materials == null)

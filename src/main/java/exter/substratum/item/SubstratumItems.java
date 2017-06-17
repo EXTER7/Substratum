@@ -2,6 +2,7 @@ package exter.substratum.item;
 
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import exter.substratum.config.SubstratumConfig;
@@ -20,8 +21,13 @@ import exter.substratum.material.EnumMaterialEquipment;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -140,7 +146,7 @@ public class SubstratumItems
     vanilla_items.put(new MaterialItem(EnumMaterialItem.INGOT, EnumMaterial.IRON), new ItemStack(Items.IRON_INGOT));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.INGOT, EnumMaterial.GOLD), new ItemStack(Items.GOLD_INGOT));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.NUGGET, EnumMaterial.GOLD), new ItemStack(Items.GOLD_NUGGET));
-    vanilla_items.put(new MaterialItem(EnumMaterialItem.NUGGET, EnumMaterial.IRON), new ItemStack(Items.field_191525_da/*IRON_NUGGET*/));
+    vanilla_items.put(new MaterialItem(EnumMaterialItem.NUGGET, EnumMaterial.IRON), new ItemStack(Items.IRON_NUGGET));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.REDSTONE), new ItemStack(Items.REDSTONE));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GLOWSTONE), new ItemStack(Items.GLOWSTONE_DUST));
     vanilla_items.put(new MaterialItem(EnumMaterialItem.DUST, EnumMaterial.GUNPOWDER), new ItemStack(Items.GUNPOWDER));
@@ -149,39 +155,56 @@ public class SubstratumItems
 
     for(EnumMaterialEquipment equipment:EnumMaterialEquipment.values())
     {
-      equipment.tool.setRepairItem(getStack(EnumMaterialItem.INGOT,equipment.material));
+      String enum_name = "SUBSTRATUM_" + equipment.material.name.toUpperCase(Locale.ENGLISH);
+      ToolMaterial tool = EnumHelper.addToolMaterial(
+          enum_name,
+          equipment.harvestLevel,
+          equipment.maxUses,
+          equipment.efficiency,
+          equipment.damage,
+          equipment.tool_enchantability);
+      ArmorMaterial armor = EnumHelper.addArmorMaterial(
+          enum_name,
+          equipment.material.name,
+          equipment.durability,
+          equipment.reductionAmounts,
+          equipment.armor_enchantability,
+          SoundEvent.REGISTRY.getObject(new ResourceLocation(equipment.soundOnEquip)),
+          equipment.toughness);
+
+      tool.setRepairItem(getStack(EnumMaterialItem.INGOT,equipment.material));
       MaterialRecipeConfig mat_config = SubstratumConfig.material_recipes.get(equipment.material);
       if(mat_config.tool_pickaxe)
       {
-        ItemPickaxeSubstratum item = new ItemPickaxeSubstratum(equipment);
+        ItemPickaxeSubstratum item = new ItemPickaxeSubstratum(tool, equipment.material);
         GameRegistry.register(item);
         pickaxes.put(equipment.material, item);
         equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "pickaxe");
       }
       if(mat_config.tool_axe)
       {
-        ItemAxeSubstratum item = new ItemAxeSubstratum(equipment);
+        ItemAxeSubstratum item = new ItemAxeSubstratum(tool, equipment.material, equipment.axe_damage, equipment.axe_speed);
         GameRegistry.register(item);
         axes.put(equipment.material, item);
         equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "axe");
       }
       if(mat_config.tool_shovel)
       {
-        ItemShovelSubstratum item = new ItemShovelSubstratum(equipment);
+        ItemShovelSubstratum item = new ItemShovelSubstratum(tool, equipment.material);
         GameRegistry.register(item);
         shovels.put(equipment.material, item);
         equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "shovel");
       }
       if(mat_config.tool_hoe)
       {
-        ItemHoeSubstratum item = new ItemHoeSubstratum(equipment);
+        ItemHoeSubstratum item = new ItemHoeSubstratum(tool, equipment.material);
         GameRegistry.register(item);
         hoes.put(equipment.material, item);
         equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "hoe");
       }
       if(mat_config.tool_sword)
       {
-        ItemSwordSubstratum item = new ItemSwordSubstratum(equipment);
+        ItemSwordSubstratum item = new ItemSwordSubstratum(tool, equipment.material);
         GameRegistry.register(item);
         swords.put(equipment.material, item);
         equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "sword");
@@ -189,28 +212,28 @@ public class SubstratumItems
 
       if(mat_config.armor_helmet)
       {
-        ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.HEAD);
+        ItemArmorSubstratum item = new ItemArmorSubstratum(armor, equipment.material, EntityEquipmentSlot.HEAD);
         GameRegistry.register(item);
         helmets.put(equipment.material, item);
         equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "helmet");
       }
       if(mat_config.armor_chestplate)
       {
-        ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.CHEST);
+        ItemArmorSubstratum item = new ItemArmorSubstratum(armor, equipment.material, EntityEquipmentSlot.CHEST);
         GameRegistry.register(item);
         chestplates.put(equipment.material, item);
         equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "chestplate");
       }
       if(mat_config.armor_leggings)
       {
-        ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.LEGS);
+        ItemArmorSubstratum item = new ItemArmorSubstratum(armor, equipment.material, EntityEquipmentSlot.LEGS);
         GameRegistry.register(item);        
         leggings.put(equipment.material, item);
         equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "leggings");
       }
       if(mat_config.armor_boots)
       {
-        ItemArmorSubstratum item = new ItemArmorSubstratum(equipment,EntityEquipmentSlot.FEET);
+        ItemArmorSubstratum item = new ItemArmorSubstratum(armor, equipment.material, EntityEquipmentSlot.FEET);
         GameRegistry.register(item);
         boots.put(equipment.material, item);
         equipment.material.registerItemInOreDictionary(new ItemStack(item,1,0), "boots");

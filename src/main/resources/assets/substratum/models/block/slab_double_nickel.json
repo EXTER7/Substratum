@@ -1,8 +1,7 @@
 {
   "parent": "block/cube_column",
-  "textures":
-  {
-     "end": "substratum:blocks/block_nickel",
-     "side": "substratum:blocks/slab_nickel"
+  "textures": {
+    "side": "substratum:blocks/slab_nickel",
+    "end": "substratum:blocks/block_nickel"
   }
 }

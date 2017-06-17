@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "substratum:items/shovel_copper"
-    }
+  "parent": "iminecraft:tem/handheld",
+  "textures": {
+    "layer0": "substratum:items/shovel_copper"
+  }
 }

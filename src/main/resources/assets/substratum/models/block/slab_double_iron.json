@@ -1,8 +1,7 @@
 {
   "parent": "block/cube_column",
-  "textures":
-  {
-     "end": "minecraft:blocks/iron_block",
-     "side": "substratum:blocks/slab_iron"
+  "textures": {
+    "side": "substratum:blocks/slab_iron",
+    "end": "minecraft:blocks/iron_block"
   }
 }

@@ -12,6 +12,7 @@ import exter.substratum.block.BlockOre;
 import exter.substratum.item.SubstratumItems;
 import exter.substratum.material.EnumDyePowderColor;
 import exter.substratum.material.EnumMaterial;
+import exter.substratum.material.EnumMaterialFluid;
 import exter.substratum.material.EnumMaterialItem;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -24,7 +25,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.BlockFluidBase;
-import net.minecraftforge.fluids.Fluid;
 
 public class ClientProxy extends CommonProxy
 {
@@ -53,46 +53,25 @@ public class ClientProxy extends CommonProxy
   {
     name = "substratum:" + name;
     ModelBakery.registerItemVariants(item, new ResourceLocation(name));
-    Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
-    .register(item, meta, new ModelResourceLocation(name, "inventory"));
+    ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(name));
   }
 
   private void registerItemModel(Item item,String name)
   {
-    name = "substratum:" + name;
-    ModelBakery.registerItemVariants(item, new ResourceLocation(name));
-    Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
-    .register(item, new SimpleItemMeshDefinition(new ModelResourceLocation(name, "inventory")));
+    registerItemModel(item,name,0);
   }
   
-  private void registerFluidModel(Fluid fluid,String name)
-  {
-    Block block = fluid.getBlock();
-    Item item = Item.getItemFromBlock(block);
-    ModelBakery.registerItemVariants(item);
-    ModelLoader.setCustomMeshDefinition( item, new SimpleItemMeshDefinition(new ModelResourceLocation("substratum:" + name)));
-    ModelLoader.setCustomStateMapper(block, (new StateMap.Builder()).ignore(BlockFluidBase.LEVEL).build());
-  }
-
   @Override
   public void preInit()
   {
-    registerFluidModel(SubstratumFluids.liquid_redstone,"liquid_redstone");
-    registerFluidModel(SubstratumFluids.liquid_glowstone,"liquid_glowstone");
-    registerFluidModel(SubstratumFluids.liquid_enderpearl,"liquid_enderpearl");
-  }
-  
-  private void registerEquipment(Map<EnumMaterial,? extends Item> map,String prefix)
-  {
-    for(Map.Entry<EnumMaterial,? extends Item> e:map.entrySet())
+    for(EnumMaterialFluid fluid_material:EnumMaterialFluid.values())
     {
-      registerItemModel(e.getValue(),String.format("%s_%s", prefix, e.getKey().name));
+      Block block = SubstratumFluids.fluids.get(fluid_material.material).getBlock();
+      Item item = Item.getItemFromBlock(block);
+      ModelBakery.registerItemVariants(item);
+      ModelLoader.setCustomMeshDefinition( item, new SimpleItemMeshDefinition(new ModelResourceLocation("substratum:liquid_" + fluid_material.material.name)));
+      ModelLoader.setCustomStateMapper(block, (new StateMap.Builder()).ignore(BlockFluidBase.LEVEL).build());
     }
-  }
-
-  @Override
-  public void init()
-  {   
     for(BlockOre.EnumVariant ore:BlockOre.EnumVariant.values())
     {
       registerItemModel(SubstratumBlocks.block_ore,"ore_" + ore.material.name, ore.ordinal());
@@ -115,14 +94,14 @@ public class ClientProxy extends CommonProxy
     {
       for(BlockMetalSlab.Variant v:block.getVariants())
       {
-        registerItemModel(block,"slab_" + v.material.name, block.getBottomVariantMeta(v));
+        registerItemModel(block,"slab_bottom_" + v.material.name, block.getBottomVariantMeta(v));
       }
     }
 
     for(Map.Entry<EnumMaterial, ItemStack> e:SubstratumBlocks.stairs_stacks.entrySet())
     {
       ItemStack item = e.getValue();
-      registerItemModel(item.getItem(),"stairs_" + e.getKey().name,item.getMetadata());
+      registerItemModel(item.getItem(),"stairs_straight_" + e.getKey().name,item.getMetadata());
     }
 
 
@@ -162,6 +141,20 @@ public class ClientProxy extends CommonProxy
     registerEquipment(SubstratumItems.chestplates,"chestplate");
     registerEquipment(SubstratumItems.leggings,"leggings");
     registerEquipment(SubstratumItems.boots,"boots");
+  }
+  
+  private void registerEquipment(Map<EnumMaterial,? extends Item> map,String prefix)
+  {
+    for(Map.Entry<EnumMaterial,? extends Item> e:map.entrySet())
+    {
+      registerItemModel(e.getValue(),String.format("%s_%s", prefix, e.getKey().name));
+    }
+  }
+
+  @Override
+  public void init()
+  {   
+
   }
   
 

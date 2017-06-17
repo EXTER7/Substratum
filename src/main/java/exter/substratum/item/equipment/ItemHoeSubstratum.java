@@ -1,14 +1,14 @@
 package exter.substratum.item.equipment;
 
-import exter.substratum.material.EnumMaterialEquipment;
+import exter.substratum.material.EnumMaterial;
 import net.minecraft.item.ItemHoe;
 
 public class ItemHoeSubstratum extends ItemHoe
 {
-  public ItemHoeSubstratum(EnumMaterialEquipment equipment)
+  public ItemHoeSubstratum(ToolMaterial tool, EnumMaterial material)
   {
-    super(equipment.tool);
-    setUnlocalizedName("substratum.hoe_" + equipment.material.name);
-    setRegistryName("hoe_" + equipment.material.name);
+    super(tool);
+    setUnlocalizedName("substratum.hoe_" + material.name);
+    setRegistryName("hoe_" + material.name);
   }
 }

@@ -1,9 +1,8 @@
 {
   "parent": "minecraft:block/upper_slab",
-  "textures":
-  {
-    "bottom": "substratum:blocks/block_cupronickel",
+  "textures": {
+    "side": "substratum:blocks/slab_cupronickel",
     "top": "substratum:blocks/block_cupronickel",
-    "side": "substratum:blocks/slab_cupronickel"
+    "bottom": "substratum:blocks/block_cupronickel"
   }
 }

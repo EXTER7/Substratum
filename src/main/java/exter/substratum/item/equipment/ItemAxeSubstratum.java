@@ -1,14 +1,14 @@
 package exter.substratum.item.equipment;
 
-import exter.substratum.material.EnumMaterialEquipment;
+import exter.substratum.material.EnumMaterial;
 import net.minecraft.item.ItemAxe;
 
 public class ItemAxeSubstratum extends ItemAxe
 {
-  public ItemAxeSubstratum(EnumMaterialEquipment equipment)
+  public ItemAxeSubstratum(ToolMaterial tool, EnumMaterial material, float axe_damage, float axe_speed)
   {
-    super(equipment.tool,equipment.axe_damage,equipment.axe_speed);
-    setUnlocalizedName("substratum.axe_" + equipment.material.name);
-    setRegistryName("axe_" + equipment.material.name);
+    super(tool,axe_damage,axe_speed);
+    setUnlocalizedName("substratum.axe_" + material.name);
+    setRegistryName("axe_" + material.name);
   }
 }

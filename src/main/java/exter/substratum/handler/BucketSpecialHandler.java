@@ -114,7 +114,7 @@ public class BucketSpecialHandler extends FluidSpecialHandler
 
       SoundEvent soundevent = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
       world.playSound(player, pos, soundevent, SoundCategory.BLOCKS, 1.0F, 1.0F);
-      world.setBlockState(pos, SubstratumFluids.material_fluids.get(material).getBlock().getDefaultState(), 11);
+      world.setBlockState(pos, SubstratumFluids.fluids.get(material).getBlock().getDefaultState(), 11);
       return true;
     }
   }

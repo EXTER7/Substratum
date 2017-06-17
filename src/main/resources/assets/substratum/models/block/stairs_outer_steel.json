@@ -1,9 +1,8 @@
 {
   "parent": "minecraft:block/outer_stairs",
-  "textures":
-  {
-    "bottom": "substratum:blocks/block_steel",
+  "textures": {
+    "side": "substratum:blocks/block_steel",
     "top": "substratum:blocks/block_steel",
-    "side": "substratum:blocks/block_steel"
+    "bottom": "substratum:blocks/block_steel"
   }
 }

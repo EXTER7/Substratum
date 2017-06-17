@@ -1,9 +1,8 @@
 {
   "parent": "minecraft:block/upper_slab",
-  "textures":
-  {
-    "bottom": "substratum:blocks/block_nickel",
+  "textures": {
+    "side": "substratum:blocks/slab_nickel",
     "top": "substratum:blocks/block_nickel",
-    "side": "substratum:blocks/slab_nickel"
+    "bottom": "substratum:blocks/block_nickel"
   }
 }

@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "substratum:items/pickaxe_electrum"
-    }
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "substratum:items/pickaxe_electrum"
+  }
 }

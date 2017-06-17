@@ -1,9 +1,8 @@
 {
   "parent": "minecraft:block/inner_stairs",
-  "textures":
-  {
-    "bottom": "substratum:blocks/block_bronze",
+  "textures": {
+    "side": "substratum:blocks/block_bronze",
     "top": "substratum:blocks/block_bronze",
-    "side": "substratum:blocks/block_bronze"
+    "bottom": "substratum:blocks/block_bronze"
   }
 }

@@ -18,13 +18,12 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 
 
 public abstract class BlockMetal extends Block implements IBlockVariants
 {
-  static public class Variant implements IStringSerializable,Comparable<Variant>
+  static public class Variant implements Comparable<Variant>,IBlockVariants.IMaterialProperty
   {
     public final EnumMaterial material;
     public int id;
@@ -33,12 +32,6 @@ public abstract class BlockMetal extends Block implements IBlockVariants
     {
       this.material = material;
       this.id = -1;
-    }
-
-    @Override
-    public String getName()
-    {
-      return material.name;
     }
 
     @Override
@@ -51,6 +44,12 @@ public abstract class BlockMetal extends Block implements IBlockVariants
     public int compareTo(Variant o)
     {
       return id - o.id;
+    }
+
+    @Override
+    public EnumMaterial getMaterial()
+    {
+      return material;
     }
   }
   

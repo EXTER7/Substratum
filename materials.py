@@ -2,25 +2,11 @@
 import os.path
 from items import *
 
-def _od_suffix(name):
-  result = name[0].upper()
-  upper = False
-  for c in name[1:]:
-    if c == '_':
-      upper = True
-    elif upper:
-      result = result + c.upper()
-    upper = False
-  return result
-
 
 class Material:
   def __init__(self,name,local_name):
     self.name = name
     self.local_name = local_name
-    self.od_suffix = _od_suffix(name)
-    self.items = []
-    self.vanilla_items = []
     self.special_loc = {}
     for itype in ITEM_TYPES:
       if os.path.isfile(itype.texture % name):

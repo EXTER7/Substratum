@@ -1,9 +1,8 @@
 {
   "parent": "minecraft:block/upper_slab",
-  "textures":
-  {
-    "bottom": "substratum:blocks/block_platinum",
+  "textures": {
+    "side": "substratum:blocks/slab_platinum",
     "top": "substratum:blocks/block_platinum",
-    "side": "substratum:blocks/slab_platinum"
+    "bottom": "substratum:blocks/block_platinum"
   }
 }

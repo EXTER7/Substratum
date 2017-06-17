@@ -1,14 +1,14 @@
 package exter.substratum.item.equipment;
 
-import exter.substratum.material.EnumMaterialEquipment;
+import exter.substratum.material.EnumMaterial;
 import net.minecraft.item.ItemPickaxe;
 
 public class ItemPickaxeSubstratum extends ItemPickaxe
 {
-  public ItemPickaxeSubstratum(EnumMaterialEquipment equipment)
+  public ItemPickaxeSubstratum(ToolMaterial tool, EnumMaterial material)
   {
-    super(equipment.tool);
-    setUnlocalizedName("substratum.pickaxe_" + equipment.material.name);
-    setRegistryName("pickaxe_" + equipment.material.name);
+    super(tool);
+    setUnlocalizedName("substratum.pickaxe_" + material.name);
+    setRegistryName("pickaxe_" + material.name);
   }
 }

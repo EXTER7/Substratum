@@ -1,9 +1,8 @@
 {
   "parent": "minecraft:block/upper_slab",
-  "textures":
-  {
-    "bottom": "substratum:blocks/block_aluminium",
+  "textures": {
+    "side": "substratum:blocks/slab_aluminium",
     "top": "substratum:blocks/block_aluminium",
-    "side": "substratum:blocks/slab_aluminium"
+    "bottom": "substratum:blocks/block_aluminium"
   }
 }

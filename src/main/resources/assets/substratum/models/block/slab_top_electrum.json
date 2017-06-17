@@ -1,9 +1,8 @@
 {
   "parent": "minecraft:block/upper_slab",
-  "textures":
-  {
-    "bottom": "substratum:blocks/block_electrum",
+  "textures": {
+    "side": "substratum:blocks/slab_electrum",
     "top": "substratum:blocks/block_electrum",
-    "side": "substratum:blocks/slab_electrum"
+    "bottom": "substratum:blocks/block_electrum"
   }
 }

@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "substratum:items/gear_lead"
-    }
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "substratum:items/gear_lead"
+  }
 }

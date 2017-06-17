@@ -1,9 +1,8 @@
 {
   "parent": "minecraft:block/stairs",
-  "textures":
-  {
-    "bottom": "minecraft:blocks/iron_block",
+  "textures": {
+    "side": "minecraft:blocks/iron_block",
     "top": "minecraft:blocks/iron_block",
-    "side": "minecraft:blocks/iron_block"
+    "bottom": "minecraft:blocks/iron_block"
   }
 }

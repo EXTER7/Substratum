@@ -1,8 +1,7 @@
 {
   "parent": "block/cube_column",
-  "textures":
-  {
-     "end": "minecraft:blocks/gold_block",
-     "side": "substratum:blocks/slab_gold"
+  "textures": {
+    "side": "substratum:blocks/slab_gold",
+    "end": "minecraft:blocks/gold_block"
   }
 }

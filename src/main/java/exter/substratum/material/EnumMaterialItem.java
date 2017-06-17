@@ -57,7 +57,7 @@ public enum EnumMaterialItem
       EnumMaterial.CHROMIUM)),
   
   NUGGET("nugget",ImmutableList.of(
-      EnumMaterial.IRON,
+      EnumMaterial.NULL,
       EnumMaterial.COPPER,
       EnumMaterial.TIN,
       EnumMaterial.BRONZE,
@@ -125,18 +125,18 @@ public enum EnumMaterialItem
       EnumMaterial.ALUMINIUM,
       EnumMaterial.CHROMIUM)),  
   
-  BOTTLE_DUST("bottleDust", ImmutableList.of(
+  BOTTLE_DUST("bottle_dust", ImmutableList.of(
       EnumMaterial.REDSTONE,
       EnumMaterial.GLOWSTONE,
       EnumMaterial.ENDERPEARL)),
 
-  BUCKET_LIQUID("bucketLiquid", ImmutableList.of(
+  BUCKET_LIQUID("bucket_liquid", ImmutableList.of(
       EnumMaterial.REDSTONE,
       EnumMaterial.GLOWSTONE,
       EnumMaterial.ENDERPEARL)),
 
   //4 bottles = 1 bucket
-  BOTTLE_LIQUID("bottleLiquid", ImmutableList.of(
+  BOTTLE_LIQUID("bottle_liquid", ImmutableList.of(
       EnumMaterial.REDSTONE,
       EnumMaterial.GLOWSTONE,
       EnumMaterial.ENDERPEARL)),
@@ -165,7 +165,7 @@ public enum EnumMaterialItem
       EnumMaterial.CHROMIUM)),
   
   //4 small dust = 1 dust
-  DUST_SMALL("dustSmall",ImmutableList.of(
+  DUST_SMALL("dust_small",ImmutableList.of(
       EnumMaterial.COAL,
       EnumMaterial.IRON,
       EnumMaterial.GOLD,

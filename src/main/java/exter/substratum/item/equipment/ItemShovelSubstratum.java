@@ -1,14 +1,14 @@
 package exter.substratum.item.equipment;
 
-import exter.substratum.material.EnumMaterialEquipment;
+import exter.substratum.material.EnumMaterial;
 import net.minecraft.item.ItemSpade;
 
 public class ItemShovelSubstratum extends ItemSpade
 {
-  public ItemShovelSubstratum(EnumMaterialEquipment equipment)
+  public ItemShovelSubstratum(ToolMaterial tool, EnumMaterial material)
   {
-    super(equipment.tool);
-    setUnlocalizedName("substratum.shovel_" + equipment.material.name);
-    setRegistryName("shovel_" + equipment.material.name);
+    super(tool);
+    setUnlocalizedName("substratum.shovel_" + material.name);
+    setRegistryName("shovel_" + material.name);
   }
 }

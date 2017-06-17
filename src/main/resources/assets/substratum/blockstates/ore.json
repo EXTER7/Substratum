@@ -1,15 +1,31 @@
 {
- "variants":
- { 
-   "variant=copper": { "model": "substratum:ore_copper" },
-   "variant=tin": { "model": "substratum:ore_tin" },
-   "variant=nickel": { "model": "substratum:ore_nickel" },
-   "variant=zinc": { "model": "substratum:ore_zinc" },
-   "variant=silver": { "model": "substratum:ore_silver" },
-   "variant=lead": { "model": "substratum:ore_lead" },
-   "variant=platinum": { "model": "substratum:ore_platinum" },
-   "variant=alumina": { "model": "substratum:ore_alumina" },
-   "variant=chrome": { "model": "substratum:ore_chrome" }
+  "variants": {
+    "variant=copper": {
+      "model": "substratum:ore_copper"
+    },
+    "variant=tin": {
+      "model": "substratum:ore_tin"
+    },
+    "variant=nickel": {
+      "model": "substratum:ore_nickel"
+    },
+    "variant=zinc": {
+      "model": "substratum:ore_zinc"
+    },
+    "variant=silver": {
+      "model": "substratum:ore_silver"
+    },
+    "variant=lead": {
+      "model": "substratum:ore_lead"
+    },
+    "variant=platinum": {
+      "model": "substratum:ore_platinum"
+    },
+    "variant=alumina": {
+      "model": "substratum:ore_alumina"
+    },
+    "variant=chrome": {
+      "model": "substratum:ore_chrome"
+    }
   }
 }
-

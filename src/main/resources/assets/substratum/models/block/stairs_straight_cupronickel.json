@@ -1,9 +1,8 @@
 {
   "parent": "minecraft:block/stairs",
-  "textures":
-  {
-    "bottom": "substratum:blocks/block_cupronickel",
+  "textures": {
+    "side": "substratum:blocks/block_cupronickel",
     "top": "substratum:blocks/block_cupronickel",
-    "side": "substratum:blocks/block_cupronickel"
+    "bottom": "substratum:blocks/block_cupronickel"
   }
 }

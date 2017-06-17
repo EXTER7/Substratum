@@ -16,7 +16,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -27,7 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockDustOre extends Block implements IBlockVariants
 {
 
-  public enum EnumVariant implements IStringSerializable
+  public enum EnumVariant implements IBlockVariants.IMaterialProperty
   {
     SULFUR(EnumMaterial.SULFUR),
     NITER(EnumMaterial.NITER);
@@ -42,15 +41,15 @@ public class BlockDustOre extends Block implements IBlockVariants
     }
 
     @Override
-    public String getName()
-    {
-      return material.name;
-    }
-
-    @Override
     public String toString()
     {
       return getName();
+    }
+
+    @Override
+    public EnumMaterial getMaterial()
+    {
+      return material;
     }
   }
 

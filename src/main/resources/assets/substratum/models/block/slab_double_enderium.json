@@ -1,8 +1,7 @@
 {
   "parent": "block/cube_column",
-  "textures":
-  {
-     "end": "substratum:blocks/block_enderium",
-     "side": "substratum:blocks/slab_enderium"
+  "textures": {
+    "side": "substratum:blocks/slab_enderium",
+    "end": "substratum:blocks/block_enderium"
   }
 }

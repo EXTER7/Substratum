@@ -10,7 +10,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockOre extends Block implements IBlockVariants
 {
 
-  public enum EnumVariant implements IStringSerializable
+  public enum EnumVariant implements IBlockVariants.IMaterialProperty
   {
     COPPER(EnumMaterial.COPPER,1),
     TIN(EnumMaterial.TIN,1),
@@ -40,15 +39,15 @@ public class BlockOre extends Block implements IBlockVariants
     }
 
     @Override
-    public String getName()
-    {
-      return material.name;
-    }
-
-    @Override
     public String toString()
     {
       return getName();
+    }
+
+    @Override
+    public EnumMaterial getMaterial()
+    {
+      return material;
     }
   }
 

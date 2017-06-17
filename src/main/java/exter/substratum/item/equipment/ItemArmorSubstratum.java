@@ -1,7 +1,6 @@
 package exter.substratum.item.equipment;
 
 import exter.substratum.material.EnumMaterial;
-import exter.substratum.material.EnumMaterialEquipment;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
@@ -11,10 +10,10 @@ public class ItemArmorSubstratum extends ItemArmor
 {
   EnumMaterial material;
   
-  public ItemArmorSubstratum(EnumMaterialEquipment equipment, EntityEquipmentSlot slot)
+  public ItemArmorSubstratum(ArmorMaterial armor, EnumMaterial material, EntityEquipmentSlot slot)
   {
-    super(equipment.armor, 0, slot);
-    material = equipment.material;
+    super(armor, 0, slot);
+    this.material = material;
     switch(slot)
     {
       case HEAD:

@@ -1,9 +1,8 @@
 {
   "parent": "minecraft:block/stairs",
-  "textures":
-  {
-    "bottom": "substratum:blocks/block_aluminium",
+  "textures": {
+    "side": "substratum:blocks/block_aluminium",
     "top": "substratum:blocks/block_aluminium",
-    "side": "substratum:blocks/block_aluminium"
+    "bottom": "substratum:blocks/block_aluminium"
   }
 }

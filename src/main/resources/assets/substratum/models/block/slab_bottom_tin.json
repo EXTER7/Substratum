@@ -1,9 +1,8 @@
 {
-   "parent": "minecraft:block/half_slab",
-   "textures":
-   {
-     "bottom": "substratum:blocks/block_tin",
-     "top": "substratum:blocks/block_tin",
-     "side": "substratum:blocks/slab_tin"
+  "parent": "minecraft:block/half_slab",
+  "textures": {
+    "side": "substratum:blocks/slab_tin",
+    "top": "substratum:blocks/block_tin",
+    "bottom": "substratum:blocks/block_tin"
   }
 }
