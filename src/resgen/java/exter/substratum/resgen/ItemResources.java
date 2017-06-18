@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import com.google.gson.stream.JsonWriter;
 
+import exter.substratum.material.EnumDyePowderColor;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialEquipment;
 import exter.substratum.material.EnumMaterialItem;
@@ -14,7 +15,7 @@ public class ItemResources
 {
   private static void writeItemJson(String output, String parent, String texture) throws IOException
   {
-    FileWriter writer = new FileWriter(new File(String.join(File.separator, new String[] { ResourcePaths.MODELS, "item", output })));
+    FileWriter writer = new FileWriter(new File(String.join(File.separator, new String[] { ResourcePaths.MODELS, "item", output + ".json" })));
     JsonWriter json = new JsonWriter(writer);
     json.beginObject();
     json.setIndent("  ");
@@ -38,7 +39,7 @@ public class ItemResources
           if(mat != EnumMaterial.NULL)
           {
             String model = String.format("%s_%s", item.name, mat.name);
-            writeItemJson(model + ".json", "minecraft:item/generated", "substratum:items/" + model);
+            writeItemJson(model, "minecraft:item/generated", "substratum:items/" + model);
           }
         }
       }
@@ -48,26 +49,34 @@ public class ItemResources
         if(equipment.material != EnumMaterial.NULL)
         {
           String model = "helmet_" + equipment.material.name;
-          writeItemJson(model + ".json", "minecraft:item/generated", "substratum:items/" + model);
+          writeItemJson(model, "minecraft:item/generated", "substratum:items/" + model);
           model = "chestplate_" + equipment.material.name;
-          writeItemJson(model + ".json", "minecraft:item/generated", "substratum:items/" + model);
+          writeItemJson(model, "minecraft:item/generated", "substratum:items/" + model);
           model = "leggings_" + equipment.material.name;
-          writeItemJson(model + ".json", "minecraft:item/generated", "substratum:items/" + model);
+          writeItemJson(model, "minecraft:item/generated", "substratum:items/" + model);
           model = "boots_" + equipment.material.name;
-          writeItemJson(model + ".json", "minecraft:item/generated", "substratum:items/" + model);
+          writeItemJson(model, "minecraft:item/generated", "substratum:items/" + model);
           model = "pickaxe_" + equipment.material.name;
-          writeItemJson(model + ".json", "minecraft:item/handheld", "substratum:items/" + model);
+          writeItemJson(model, "minecraft:item/handheld", "substratum:items/" + model);
           model = "axe_" + equipment.material.name;
-          writeItemJson(model + ".json", "minecraft:item/handheld", "substratum:items/" + model);
+          writeItemJson(model, "minecraft:item/handheld", "substratum:items/" + model);
           model = "sword_" + equipment.material.name;
-          writeItemJson(model + ".json", "minecraft:item/handheld", "substratum:items/" + model);
+          writeItemJson(model, "minecraft:item/handheld", "substratum:items/" + model);
           model = "shovel_" + equipment.material.name;
-          writeItemJson(model + ".json", "iminecraft:tem/handheld", "substratum:items/" + model);
+          writeItemJson(model, "iminecraft:tem/handheld", "substratum:items/" + model);
           model = "hoe_" + equipment.material.name;
-          writeItemJson(model + ".json", "minecraft:item/handheld", "substratum:items/" + model);
+          writeItemJson(model, "minecraft:item/handheld", "substratum:items/" + model);
         }
       }
 
+      for(EnumDyePowderColor color : EnumDyePowderColor.values())
+      {
+        String model = "dye_" + color.name;
+        writeItemJson(model, "minecraft:item/generated", "substratum:items/" + model);
+        model = "dye_small_" + color.name;
+        writeItemJson(model, "minecraft:item/generated", "substratum:items/" + model);
+      }
+      
       writeItemJson("mortar.json", "minecraft:item/generated", "substratum:items/mortar");
 
     } catch(IOException e)

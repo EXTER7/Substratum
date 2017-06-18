@@ -1,5 +1,4 @@
 
-import os.path
 from items import *
 
 
@@ -8,6 +7,7 @@ class Material:
     self.name = name
     self.local_name = local_name
     self.special_loc = {}
+    self.items = []
     for itype in ITEM_TYPES:
       if os.path.isfile(itype.texture % name):
         self.items.append(itype.name)

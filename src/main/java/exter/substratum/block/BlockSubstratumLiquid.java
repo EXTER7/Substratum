@@ -35,6 +35,12 @@ public class BlockSubstratumLiquid extends BlockFluidClassic
   }
  
   @Override
+  public String getUnlocalizedName()
+  {
+    return getFluid().getUnlocalizedName();
+  }
+  
+  @Override
   public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face)
   {
     return 300;

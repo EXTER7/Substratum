@@ -330,7 +330,7 @@ public class BlockResources
         StairState.writeToJson(String.format("stairs_%s", mat.name), mat);
       }
       StairState.writeToJson("stairs_iron", EnumMaterial.IRON);
-      StairState.writeToJson("stairs_iron", EnumMaterial.GOLD);
+      StairState.writeToJson("stairs_gold", EnumMaterial.GOLD);
     } catch(IOException e)
     {
       e.printStackTrace();

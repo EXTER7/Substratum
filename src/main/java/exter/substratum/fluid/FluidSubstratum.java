@@ -3,7 +3,9 @@ package exter.substratum.fluid;
 import exter.substratum.material.EnumMaterial;
 import exter.substratum.material.EnumMaterialFluid;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 
 public class FluidSubstratum extends Fluid
 {
@@ -18,5 +20,12 @@ public class FluidSubstratum extends Fluid
     setUnlocalizedName("substratum.liquid_" + material.name);
     setTemperature(fluid_material.temperature);
     setLuminosity(fluid_material.luminosity);
+  }
+  
+  @Override
+  public String getLocalizedName(FluidStack stack)
+  {
+      String s = this.getUnlocalizedName();
+      return s == null ? "" : I18n.translateToLocal(s + ".name");
   }
 }

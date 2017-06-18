@@ -1,18 +1,7 @@
 from enum import Enum
+import os.path
 
-_texure_dir="src/main/resources/assets/substratum/textures"
-
-
-def _od_prefix(name):
-  upper = False
-  result = ""
-  for c in name:
-    if c == '_':
-      upper = True
-    elif upper:
-      result = result + c.upper()
-    upper = False
-  return result
+_texure_dir = os.path.join("src","main","resources","assets","substratum","textures")
 
 class Registry(Enum):
   BLOCK = "tile"
@@ -21,12 +10,11 @@ class Registry(Enum):
 
 class ItemType:
 
-  def __init__(self, name, regtype, tool, texture, local_name):
+  def __init__(self, name, regtype, texture, local_name):
     self.name = name
     self.regtype = regtype
     self.local_name = local_name
-    self.od_prefix = _od_prefix(name)
-    self.texture = _texure_dir + "/" + texture
+    self.texture = os.path.join(_texure_dir, texture)
 
 ITEM_TYPES = [
   ItemType("ore",           Registry.BLOCK,  "blocks/ore_%s.png",          "%s Ore", ),
@@ -55,7 +43,7 @@ ITEM_TYPES = [
   ItemType("sword",         Registry.ITEM,   "items/sword_%s.png",         "%s Sword"),
   ItemType("shovel",        Registry.ITEM,   "items/shovel_%s.png",        "%s Shovel"),
   ItemType("hoe",           Registry.ITEM,   "items/hoe_%s.png",           "%s Hoe"),
-  ItemType("liquid",        Registry.FLUID,  "blocks/liquid_%s.png",       "Liquid %s")
+  ItemType("liquid",        Registry.FLUID,  "blocks/liquid_%s_still.png", "Liquid %s")
 ]
 
 ITEM_TYPES_DICT = {}

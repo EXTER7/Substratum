@@ -22,7 +22,7 @@ public class FluidResources
     json.name("normal").beginObject();
     json.name("model").value("forge:fluid");
     json.name("custom").beginObject();
-    json.name("fluid").value("liquid" + material.name);
+    json.name("fluid").value("liquid_" + material.name);
     json.endObject();
     json.endObject();
     json.endObject();
